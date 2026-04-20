@@ -1,0 +1,1228 @@
+2020-06-09 00:08:48 -Validating all active sessions...
+2020-06-09 00:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 00:09:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 58549]
+2020-06-09 00:39:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 59054]
+2020-06-09 01:08:48 -Validating all active sessions...
+2020-06-09 01:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 01:09:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 59559]
+2020-06-09 01:39:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 60064]
+2020-06-09 02:08:48 -Validating all active sessions...
+2020-06-09 02:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 02:09:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 60569]
+2020-06-09 02:39:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 61074]
+2020-06-09 03:08:48 -Validating all active sessions...
+2020-06-09 03:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 03:09:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 61579]
+2020-06-09 03:39:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 62084]
+2020-06-09 04:08:48 -Validating all active sessions...
+2020-06-09 04:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 04:09:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 62589]
+2020-06-09 04:39:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 63094]
+2020-06-09 05:08:48 -Validating all active sessions...
+2020-06-09 05:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 05:09:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 63599]
+2020-06-09 05:39:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 64104]
+2020-06-09 06:08:48 -Validating all active sessions...
+2020-06-09 06:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 06:09:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 64609]
+2020-06-09 06:39:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 65114]
+2020-06-09 07:08:48 -Validating all active sessions...
+2020-06-09 07:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 07:09:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 65619]
+2020-06-09 07:39:31 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 66124]
+2020-06-09 08:08:48 -Validating all active sessions...
+2020-06-09 08:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 08:09:32 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 66629]
+2020-06-09 08:39:32 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 10 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(10)-CONNECTED(10)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 114], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 18], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 67134]
+2020-06-09 09:08:42 -请求地址 : http://localhost:8066/login;JSESSIONID=a2593349-f611-43f7-a45c-ef83a9f3956e
+2020-06-09 09:08:42 -HTTP METHOD : GET
+2020-06-09 09:08:42 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2020-06-09 09:08:42 -参数 : []
+2020-06-09 09:08:42 -耗时 : 1
+2020-06-09 09:08:42 -返回值 : login
+2020-06-09 09:08:42 -请求地址 : http://localhost:8066/login;JSESSIONID=a2593349-f611-43f7-a45c-ef83a9f3956e
+2020-06-09 09:08:42 -HTTP METHOD : GET
+2020-06-09 09:08:42 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2020-06-09 09:08:42 -参数 : []
+2020-06-09 09:08:42 -耗时 : 1
+2020-06-09 09:08:42 -返回值 : login
+2020-06-09 09:08:43 -请求地址 : http://localhost:8066/login
+2020-06-09 09:08:43 -HTTP METHOD : POST
+2020-06-09 09:08:43 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2020-06-09 09:08:43 -参数 : [admin, 111111]
+2020-06-09 09:08:43 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2020-06-09 09:08:43 -==> Parameters: admin(String)
+2020-06-09 09:08:43 -<==      Total: 1
+2020-06-09 09:08:43 -耗时 : 187
+2020-06-09 09:08:43 -返回值 : {msg=操作成功, code=0}
+2020-06-09 09:08:43 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-06-09 09:08:43 -==> Parameters: 1(Long), admin(String), 登录(String), 188(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2020-06-09 09:08:43.739(Timestamp)
+2020-06-09 09:08:43 -请求地址 : http://localhost:8066/index
+2020-06-09 09:08:43 -HTTP METHOD : GET
+2020-06-09 09:08:43 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2020-06-09 09:08:43 -参数 : [{}]
+2020-06-09 09:08:43 -<==    Updates: 1
+2020-06-09 09:08:43 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2020-06-09 09:08:43 -==> Parameters: 1(Long)
+2020-06-09 09:08:43 -<==      Total: 27
+2020-06-09 09:08:43 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2020-06-09 09:08:43 -==> Parameters: 142(Long)
+2020-06-09 09:08:43 -<==      Total: 1
+2020-06-09 09:08:43 -耗时 : 28
+2020-06-09 09:08:43 -返回值 : index_v1
+2020-06-09 09:08:43 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-06-09 09:08:43 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 28(Integer), com.bootdo.system.controller.LoginController.index()(String), null, 127.0.0.1(String), 2020-06-09 09:08:43.786(Timestamp)
+2020-06-09 09:08:43 -请求地址 : http://localhost:8066/main
+2020-06-09 09:08:43 -HTTP METHOD : GET
+2020-06-09 09:08:43 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-06-09 09:08:43 -参数 : []
+2020-06-09 09:08:43 -耗时 : 0
+2020-06-09 09:08:43 -返回值 : main
+2020-06-09 09:08:43 -<==    Updates: 1
+2020-06-09 09:08:43 -请求地址 : http://localhost:8066/oa/notify/message
+2020-06-09 09:08:43 -HTTP METHOD : GET
+2020-06-09 09:08:43 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2020-06-09 09:08:43 -参数 : []
+2020-06-09 09:08:43 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2020-06-09 09:08:43 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2020-06-09 09:08:43 -<==      Total: 0
+2020-06-09 09:08:43 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2020-06-09 09:08:43 -==> Parameters: 1(Long), 0(String)
+2020-06-09 09:08:43 -<==      Total: 1
+2020-06-09 09:08:43 -耗时 : 6
+2020-06-09 09:08:43 -返回值 : com.bootdo.common.utils.PageUtils@600b7aa4
+2020-06-09 09:08:43 -请求地址 : http://localhost:8066/main
+2020-06-09 09:08:43 -HTTP METHOD : GET
+2020-06-09 09:08:43 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-06-09 09:08:43 -参数 : []
+2020-06-09 09:08:43 -耗时 : 1
+2020-06-09 09:08:43 -返回值 : main
+2020-06-09 09:08:48 -Validating all active sessions...
+2020-06-09 09:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 09:09:32 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 11 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(11)-CONNECTED(11)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 8, active threads = 0, queued tasks = 0, completed tasks = 126], outboundChannelpool size = 2, active threads = 0, queued tasks = 0, completed tasks = 20], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 67638]
+2020-06-09 09:09:37 -Starting BootdoApplication on PC-20190419SWLO with PID 8664 (C:\Users\Administrator\Desktop\bootdo\bootdo\target\classes started by Administrator in C:\Users\Administrator\Desktop\bootdo\bootdo)
+2020-06-09 09:09:37 -Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2020-06-09 09:09:37 -The following profiles are active: dev
+2020-06-09 09:09:37 -HV000001: Hibernate Validator 5.3.6.Final
+2020-06-09 09:09:37 -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@130c12b7: startup date [Tue Jun 09 09:09:37 CST 2020]; root of context hierarchy
+2020-06-09 09:09:39 -Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-06-09 09:09:39 -Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-06-09 09:09:39 -Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$ea41ba61] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Bean 'org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration' of type [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration$$EnhancerBySpringCGLIB$$deb57f05] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Bean 'spring.cache-org.springframework.boot.autoconfigure.cache.CacheProperties' of type [org.springframework.boot.autoconfigure.cache.CacheProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Bean 'cacheManagerCustomizers' of type [org.springframework.boot.autoconfigure.cache.CacheManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Bean 'org.springframework.boot.autoconfigure.cache.EhCacheCacheConfiguration' of type [org.springframework.boot.autoconfigure.cache.EhCacheCacheConfiguration$$EnhancerBySpringCGLIB$$79544c03] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Bean 'ehCacheCacheManager' of type [net.sf.ehcache.CacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Bean 'cacheManager' of type [org.springframework.cache.ehcache.EhCacheCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Bean 'cacheAutoConfigurationValidator' of type [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration$CacheManagerValidator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a12f8443] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Bean 'shiroConfig' of type [com.bootdo.system.config.ShiroConfig$$EnhancerBySpringCGLIB$$9388b2ea] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Bean 'userRealm' of type [com.bootdo.system.shiro.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/C:/Users/Administrator/.m2/repository/net/sf/ehcache/ehcache-core/2.5.3/ehcache-core-2.5.3.jar!/ehcache-failsafe.xml
+2020-06-09 09:09:40 -Bean 'ehCacheManager' of type [org.apache.shiro.cache.ehcache.EhCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Cache with name 'com.bootdo.system.shiro.UserRealm.authorizationCache' does not yet exist.  Creating now.
+2020-06-09 09:09:40 -Added EhCache named [com.bootdo.system.shiro.UserRealm.authorizationCache]
+2020-06-09 09:09:40 -Bean 'sessionDAO' of type [org.apache.shiro.session.mgt.eis.MemorySessionDAO] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Bean 'sessionManager' of type [org.apache.shiro.web.session.mgt.DefaultWebSessionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:40 -Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-09 09:09:41 -Tomcat initialized with port(s): 8066 (http)
+2020-06-09 09:09:41 -Starting service [Tomcat]
+2020-06-09 09:09:41 -Starting Servlet Engine: Apache Tomcat/8.5.23
+2020-06-09 09:09:41 -Initializing Spring embedded WebApplicationContext
+2020-06-09 09:09:41 -Root WebApplicationContext: initialization completed in 4081 ms
+2020-06-09 09:09:41 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2020-06-09 09:09:41 -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2020-06-09 09:09:41 -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2020-06-09 09:09:41 -Mapping filter: 'requestContextFilter' to: [/*]
+2020-06-09 09:09:41 -Mapping filter: 'springSecurityFilterChain' to: [/*]
+2020-06-09 09:09:41 -Filter xssFilter was not registered (disabled)
+2020-06-09 09:09:41 -Mapping filter: 'webStatFilter' to urls: [/*]
+2020-06-09 09:09:41 -Mapping filter: 'shiroFilterFactoryBean' to: [/*]
+2020-06-09 09:09:41 -Mapping servlet: 'statViewServlet' to [/druid/*]
+2020-06-09 09:09:41 -Mapping servlet: 'dispatcherServlet' to [/]
+2020-06-09 09:09:42 -{dataSource-1} inited
+2020-06-09 09:09:44 -ProcessEngine default created
+2020-06-09 09:09:45 -ApplicationContext registed-->org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@130c12b7: startup date [Tue Jun 09 09:09:37 CST 2020]; root of context hierarchy
+2020-06-09 09:09:45 -Using default implementation for ThreadExecutor
+2020-06-09 09:09:45 -Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2020-06-09 09:09:45 -Quartz Scheduler v.2.2.1 created.
+2020-06-09 09:09:45 -RAMJobStore initialized.
+2020-06-09 09:09:45 -Scheduler meta-data: Quartz Scheduler (v2.2.1) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2020-06-09 09:09:45 -Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+2020-06-09 09:09:45 -Quartz scheduler version: 2.2.1
+2020-06-09 09:09:45 -JobFactory set to: com.bootdo.common.quartz.factory.JobFactory@24fc2c80
+2020-06-09 09:09:46 -Initializing ExecutorService  'clientInboundChannelExecutor'
+2020-06-09 09:09:46 -Initializing ExecutorService  'clientOutboundChannelExecutor'
+2020-06-09 09:09:47 -Mapped "{[/activiti/model/{id}],methods=[DELETE]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ModelController.remove(java.lang.String)
+2020-06-09 09:09:47 -Mapped "{[/activiti/model/list],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.activiti.controller.ModelController.list(int,int)
+2020-06-09 09:09:47 -Mapped "{[/activiti/model/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ModelController.batchRemove(java.lang.String[])
+2020-06-09 09:09:47 -Mapped "{[/activiti/model],methods=[GET]}" onto org.springframework.web.servlet.ModelAndView com.bootdo.activiti.controller.ModelController.model()
+2020-06-09 09:09:47 -Mapped "{[/activiti/model/{modelId}/save],methods=[PUT]}" onto public void com.bootdo.activiti.controller.ModelController.saveModel(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2020-06-09 09:09:47 -Mapped "{[/activiti/model/export/{id}],methods=[GET]}" onto public void com.bootdo.activiti.controller.ModelController.exportToXml(java.lang.String,javax.servlet.http.HttpServletResponse)
+2020-06-09 09:09:47 -Mapped "{[/activiti/model/add]}" onto public void com.bootdo.activiti.controller.ModelController.newModel(javax.servlet.http.HttpServletResponse) throws java.io.UnsupportedEncodingException
+2020-06-09 09:09:47 -Mapped "{[/activiti/model/{modelId}/json],methods=[GET]}" onto public com.fasterxml.jackson.databind.node.ObjectNode com.bootdo.activiti.controller.ModelController.getEditorJson(java.lang.String)
+2020-06-09 09:09:47 -Mapped "{[/activiti/editor/stencilset],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.lang.String com.bootdo.activiti.controller.ModelController.getStencilset()
+2020-06-09 09:09:47 -Mapped "{[/activiti/model/edit/{id}],methods=[GET]}" onto public void com.bootdo.activiti.controller.ModelController.edit(javax.servlet.http.HttpServletResponse,java.lang.String)
+2020-06-09 09:09:47 -Mapped "{[/activiti/model/deploy/{id}],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ModelController.deploy(java.lang.String) throws java.lang.Exception
+2020-06-09 09:09:47 -Mapped "{[/activiti/process/add],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.bootdo.activiti.controller.ProcessController.add()
+2020-06-09 09:09:47 -Mapped "{[/activiti/process/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ProcessController.remove(java.lang.String)
+2020-06-09 09:09:47 -Mapped "{[/activiti/process/list],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.activiti.controller.ProcessController.list(int,int)
+2020-06-09 09:09:47 -Mapped "{[/activiti/process/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ProcessController.batchRemove(java.lang.String[])
+2020-06-09 09:09:47 -Mapped "{[/activiti/process],methods=[GET]}" onto org.springframework.web.servlet.ModelAndView com.bootdo.activiti.controller.ProcessController.process()
+2020-06-09 09:09:47 -Mapped "{[/activiti/process/resource/read/{xml}/{id}]}" onto public void com.bootdo.activiti.controller.ProcessController.resourceRead(java.lang.String,java.lang.String,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2020-06-09 09:09:47 -Mapped "{[/activiti/process/convertToModel/{procDefId}]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ProcessController.convertToModel(java.lang.String,org.springframework.web.servlet.mvc.support.RedirectAttributes) throws java.io.UnsupportedEncodingException,javax.xml.stream.XMLStreamException
+2020-06-09 09:09:47 -Mapped "{[/activiti/process/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.ProcessController.deploy(java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile)
+2020-06-09 09:09:47 -Mapped "{[/act/salary/form],methods=[GET]}" onto java.lang.String com.bootdo.activiti.controller.SalaryController.add()
+2020-06-09 09:09:47 -Mapped "{[/act/salary/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.SalaryController.remove(java.lang.String)
+2020-06-09 09:09:47 -Mapped "{[/act/salary/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.SalaryController.remove(java.lang.String[])
+2020-06-09 09:09:47 -Mapped "{[/act/salary/update]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.SalaryController.update(com.bootdo.activiti.domain.SalaryDO)
+2020-06-09 09:09:47 -Mapped "{[/act/salary/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.activiti.controller.SalaryController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2020-06-09 09:09:47 -Mapped "{[/act/salary],methods=[GET]}" onto java.lang.String com.bootdo.activiti.controller.SalaryController.Salary()
+2020-06-09 09:09:47 -Mapped "{[/act/salary/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.activiti.controller.SalaryController.saveOrUpdate(com.bootdo.activiti.domain.SalaryDO)
+2020-06-09 09:09:47 -Mapped "{[/act/salary/form/{taskId}],methods=[GET]}" onto java.lang.String com.bootdo.activiti.controller.SalaryController.edit(java.lang.String,org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/activiti/task/form/{procDefId}/{taskId}],methods=[GET]}" onto public void com.bootdo.activiti.controller.TaskController.form(java.lang.String,java.lang.String,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+2020-06-09 09:09:47 -Mapped "{[/activiti/task/gotoList],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.activiti.controller.TaskController.list(int,int)
+2020-06-09 09:09:47 -Mapped "{[/activiti/task/goto],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.bootdo.activiti.controller.TaskController.gotoTask()
+2020-06-09 09:09:47 -Mapped "{[/activiti/task/form/{procDefId}],methods=[GET]}" onto public void com.bootdo.activiti.controller.TaskController.startForm(java.lang.String,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+2020-06-09 09:09:47 -Mapped "{[/activiti/task/todo],methods=[GET]}" onto org.springframework.web.servlet.ModelAndView com.bootdo.activiti.controller.TaskController.todo()
+2020-06-09 09:09:47 -Mapped "{[/activiti/task/todoList],methods=[GET]}" onto java.util.List<com.bootdo.activiti.vo.TaskVO> com.bootdo.activiti.controller.TaskController.todoList()
+2020-06-09 09:09:47 -Mapped "{[/activiti/task/trace/photo/{procDefId}/{execId}]}" onto public void com.bootdo.activiti.controller.TaskController.tracePhoto(java.lang.String,java.lang.String,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2020-06-09 09:09:47 -Mapped "{[/blog/open/post/{cid}],methods=[GET]}" onto java.lang.String com.bootdo.blog.controller.BlogController.post(java.lang.Long,org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/blog/open/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.blog.controller.BlogController.opentList(java.util.Map<java.lang.String, java.lang.Object>)
+2020-06-09 09:09:47 -Mapped "{[/blog],methods=[GET]}" onto java.lang.String com.bootdo.blog.controller.BlogController.blog()
+2020-06-09 09:09:47 -Mapped "{[/blog/open/page/{categories}],methods=[GET]}" onto java.lang.String com.bootdo.blog.controller.BlogController.about(java.lang.String,org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/blog/bContent/add],methods=[GET]}" onto java.lang.String com.bootdo.blog.controller.ContentController.add()
+2020-06-09 09:09:47 -Mapped "{[/blog/bContent/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.blog.controller.ContentController.remove(java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/blog/bContent/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.blog.controller.ContentController.remove(java.lang.Long[])
+2020-06-09 09:09:47 -Mapped "{[/blog/bContent/update]}" onto public com.bootdo.common.utils.R com.bootdo.blog.controller.ContentController.update(com.bootdo.blog.domain.ContentDO)
+2020-06-09 09:09:47 -Mapped "{[/blog/bContent/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.blog.controller.ContentController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2020-06-09 09:09:47 -Mapped "{[/blog/bContent/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.blog.controller.ContentController.save(com.bootdo.blog.domain.ContentDO)
+2020-06-09 09:09:47 -Mapped "{[/blog/bContent],methods=[GET]}" onto java.lang.String com.bootdo.blog.controller.ContentController.bContent()
+2020-06-09 09:09:47 -Mapped "{[/blog/bContent/edit/{cid}],methods=[GET]}" onto java.lang.String com.bootdo.blog.controller.ContentController.edit(java.lang.Long,org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/common/dict/add],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.DictController.add()
+2020-06-09 09:09:47 -Mapped "{[/common/dict/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.DictController.remove(java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/common/dict/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.DictController.remove(java.lang.Long[])
+2020-06-09 09:09:47 -Mapped "{[/common/dict/update]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.DictController.update(com.bootdo.common.domain.DictDO)
+2020-06-09 09:09:47 -Mapped "{[/common/dict/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.common.controller.DictController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2020-06-09 09:09:47 -Mapped "{[/common/dict/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.DictController.save(com.bootdo.common.domain.DictDO)
+2020-06-09 09:09:47 -Mapped "{[/common/dict/type],methods=[GET]}" onto public java.util.List<com.bootdo.common.domain.DictDO> com.bootdo.common.controller.DictController.listType()
+2020-06-09 09:09:47 -Mapped "{[/common/dict],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.DictController.dict()
+2020-06-09 09:09:47 -Mapped "{[/common/dict/add/{type}/{description}],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.DictController.addD(org.springframework.ui.Model,java.lang.String,java.lang.String)
+2020-06-09 09:09:47 -Mapped "{[/common/dict/list/{type}],methods=[GET]}" onto public java.util.List<com.bootdo.common.domain.DictDO> com.bootdo.common.controller.DictController.listByType(java.lang.String)
+2020-06-09 09:09:47 -Mapped "{[/common/dict/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.DictController.edit(java.lang.Long,org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/common/sysFile/add],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.FileController.add()
+2020-06-09 09:09:47 -Mapped "{[/common/sysFile/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.remove(java.lang.Long,javax.servlet.http.HttpServletRequest)
+2020-06-09 09:09:47 -Mapped "{[/common/sysFile/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.remove(java.lang.Long[])
+2020-06-09 09:09:47 -Mapped "{[/common/sysFile/update]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.update(com.bootdo.common.domain.FileDO)
+2020-06-09 09:09:47 -Mapped "{[/common/sysFile/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.common.controller.FileController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2020-06-09 09:09:47 -Mapped "{[/common/sysFile/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.save(com.bootdo.common.domain.FileDO)
+2020-06-09 09:09:47 -Mapped "{[/common/sysFile/info/{id}]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.FileController.info(java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/common/sysFile],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.FileController.sysFile(org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/common/sysFile/upload],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.common.controller.FileController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2020-06-09 09:09:47 -Mapped "{[/common/sysFile/edit],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.FileController.edit(java.lang.Long,org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/common/generator/update],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.common.controller.GeneratorController.update(java.util.Map<java.lang.String, java.lang.Object>)
+2020-06-09 09:09:47 -Mapped "{[/common/generator/list],methods=[GET]}" onto java.util.List<java.util.Map<java.lang.String, java.lang.Object>> com.bootdo.common.controller.GeneratorController.list()
+2020-06-09 09:09:47 -Mapped "{[/common/generator/code/{tableName}]}" onto public void com.bootdo.common.controller.GeneratorController.code(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,java.lang.String) throws java.io.IOException
+2020-06-09 09:09:47 -Mapped "{[/common/generator],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.GeneratorController.generator()
+2020-06-09 09:09:47 -Mapped "{[/common/generator/batchCode]}" onto public void com.bootdo.common.controller.GeneratorController.batchCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,java.lang.String) throws java.io.IOException
+2020-06-09 09:09:47 -Mapped "{[/common/generator/edit],methods=[GET]}" onto public java.lang.String com.bootdo.common.controller.GeneratorController.edit(org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/common/job/add],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.JobController.add()
+2020-06-09 09:09:47 -Mapped "{[/common/job/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.JobController.remove(java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/common/job/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.JobController.remove(java.lang.Long[])
+2020-06-09 09:09:47 -Mapped "{[/common/job/update],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.JobController.update(com.bootdo.common.domain.TaskDO)
+2020-06-09 09:09:47 -Mapped "{[/common/job/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.common.controller.JobController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2020-06-09 09:09:47 -Mapped "{[/common/job/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.JobController.save(com.bootdo.common.domain.TaskDO)
+2020-06-09 09:09:47 -Mapped "{[/common/job/info/{id}]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.JobController.info(java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/common/job/changeJobStatus],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.common.controller.JobController.changeJobStatus(java.lang.Long,java.lang.String)
+2020-06-09 09:09:47 -Mapped "{[/common/job],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.JobController.taskScheduleJob()
+2020-06-09 09:09:47 -Mapped "{[/common/job/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.JobController.edit(java.lang.Long,org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/common/log/remove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.common.controller.LogController.remove(java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/common/log],methods=[GET]}" onto java.lang.String com.bootdo.common.controller.LogController.log()
+2020-06-09 09:09:47 -Mapped "{[/common/log/list],methods=[GET]}" onto com.bootdo.common.domain.PageDO<com.bootdo.common.domain.LogDO> com.bootdo.common.controller.LogController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2020-06-09 09:09:47 -Mapped "{[/common/log/batchRemove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.common.controller.LogController.batchRemove(java.lang.Long[])
+2020-06-09 09:09:47 -Mapped "{[/error]}" onto public com.bootdo.common.utils.R com.bootdo.common.exception.MainsiteErrorController.handleError(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2020-06-09 09:09:47 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView com.bootdo.common.exception.MainsiteErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2020-06-09 09:09:47 -Mapped "{[/oa/notify/add],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.add()
+2020-06-09 09:09:47 -Mapped "{[/oa/notify/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.oa.controller.NotifyController.remove(java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/oa/notify/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.oa.controller.NotifyController.remove(java.lang.Long[])
+2020-06-09 09:09:47 -Mapped "{[/oa/notify/update]}" onto public com.bootdo.common.utils.R com.bootdo.oa.controller.NotifyController.update(com.bootdo.oa.domain.NotifyDO)
+2020-06-09 09:09:47 -Mapped "{[/oa/notify/read/{id}],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.read(java.lang.Long,org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/oa/notify/list],methods=[GET]}" onto public com.bootdo.common.utils.PageUtils com.bootdo.oa.controller.NotifyController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2020-06-09 09:09:47 -Mapped "{[/oa/notify/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.oa.controller.NotifyController.save(com.bootdo.oa.domain.NotifyDO)
+2020-06-09 09:09:47 -Mapped "{[/oa/notify/message],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.oa.controller.NotifyController.message()
+2020-06-09 09:09:47 -Mapped "{[/oa/notify/selfList],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.oa.controller.NotifyController.selfList(java.util.Map<java.lang.String, java.lang.Object>)
+2020-06-09 09:09:47 -Mapped "{[/oa/notify],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.oaNotify()
+2020-06-09 09:09:47 -Mapped "{[/oa/notify/selfNotify],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.selefNotify()
+2020-06-09 09:09:47 -Mapped "{[/oa/notify/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.oa.controller.NotifyController.edit(java.lang.Long,org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/autotest],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.AutoTestController.welcome(org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/system/sysDept/add/{pId}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.DeptController.add(java.lang.Long,org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/system/sysDept/remove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.DeptController.remove(java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/system/sysDept/batchRemove],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.DeptController.remove(java.lang.Long[])
+2020-06-09 09:09:47 -Mapped "{[/system/sysDept/update]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.DeptController.update(com.bootdo.system.domain.DeptDO)
+2020-06-09 09:09:47 -Mapped "{[/system/sysDept/list],methods=[GET]}" onto public java.util.List<com.bootdo.system.domain.DeptDO> com.bootdo.system.controller.DeptController.list()
+2020-06-09 09:09:47 -Mapped "{[/system/sysDept/save],methods=[POST]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.DeptController.save(com.bootdo.system.domain.DeptDO)
+2020-06-09 09:09:47 -Mapped "{[/system/sysDept/tree],methods=[GET]}" onto public com.bootdo.common.domain.Tree<com.bootdo.system.domain.DeptDO> com.bootdo.system.controller.DeptController.tree()
+2020-06-09 09:09:47 -Mapped "{[/system/sysDept],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.DeptController.dept()
+2020-06-09 09:09:47 -Mapped "{[/system/sysDept/treeView],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.DeptController.treeView()
+2020-06-09 09:09:47 -Mapped "{[/system/sysDept/edit/{deptId}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.DeptController.edit(java.lang.Long,org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/index],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.index(org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/main],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.main()
+2020-06-09 09:09:47 -Mapped "{[/info],methods=[GET]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.LoginController.info()
+2020-06-09 09:09:47 -Mapped "{[/login],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.login()
+2020-06-09 09:09:47 -Mapped "{[/logout],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.logout()
+2020-06-09 09:09:47 -Mapped "{[/ || ],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.LoginController.welcome(org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/login],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.LoginController.ajaxLogin(java.lang.String,java.lang.String)
+2020-06-09 09:09:47 -Mapped "{[/sys/menu/add/{pId}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.MenuController.add(org.springframework.ui.Model,java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/sys/menu/remove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.MenuController.remove(java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/sys/menu/update],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.MenuController.update(com.bootdo.system.domain.MenuDO)
+2020-06-09 09:09:47 -Mapped "{[/sys/menu/list]}" onto java.util.List<com.bootdo.system.domain.MenuDO> com.bootdo.system.controller.MenuController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2020-06-09 09:09:47 -Mapped "{[/sys/menu/save],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.MenuController.save(com.bootdo.system.domain.MenuDO)
+2020-06-09 09:09:47 -Mapped "{[/sys/menu/tree/{roleId}],methods=[GET]}" onto com.bootdo.common.domain.Tree<com.bootdo.system.domain.MenuDO> com.bootdo.system.controller.MenuController.tree(java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/sys/menu/tree],methods=[GET]}" onto com.bootdo.common.domain.Tree<com.bootdo.system.domain.MenuDO> com.bootdo.system.controller.MenuController.tree()
+2020-06-09 09:09:47 -Mapped "{[/sys/menu],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.MenuController.menu(org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/sys/menu/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.MenuController.edit(org.springframework.ui.Model,java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/sys/role/add],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.RoleController.add()
+2020-06-09 09:09:47 -Mapped "{[/sys/role/update],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.RoleController.update(com.bootdo.system.domain.RoleDO)
+2020-06-09 09:09:47 -Mapped "{[/sys/role/list],methods=[GET]}" onto java.util.List<com.bootdo.system.domain.RoleDO> com.bootdo.system.controller.RoleController.list()
+2020-06-09 09:09:47 -Mapped "{[/sys/role/remove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.RoleController.save(java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/sys/role/save],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.RoleController.save(com.bootdo.system.domain.RoleDO)
+2020-06-09 09:09:47 -Mapped "{[/sys/role/batchRemove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.RoleController.batchRemove(java.lang.Long[])
+2020-06-09 09:09:47 -Mapped "{[/sys/role],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.RoleController.role()
+2020-06-09 09:09:47 -Mapped "{[/sys/role/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.RoleController.edit(java.lang.Long,org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/say/getUserName],methods=[GET]}" onto public java.lang.String com.bootdo.system.controller.SayController.getUserName(java.lang.Integer)
+2020-06-09 09:09:47 -Mapped "{[/say/updatePassword]}" onto public java.lang.String com.bootdo.system.controller.SayController.updatePassword(java.lang.Integer,java.lang.String,java.lang.String)
+2020-06-09 09:09:47 -Mapped "{[/sys/online/list]}" onto public java.util.List<com.bootdo.system.domain.UserOnline> com.bootdo.system.controller.SessionController.list()
+2020-06-09 09:09:47 -Mapped "{[/sys/online/forceLogout/{sessionId}]}" onto public com.bootdo.common.utils.R com.bootdo.system.controller.SessionController.forceLogout(java.lang.String,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2020-06-09 09:09:47 -Mapped "{[/sys/online/sessionList]}" onto public java.util.Collection<org.apache.shiro.session.Session> com.bootdo.system.controller.SessionController.sessionList()
+2020-06-09 09:09:47 -Mapped "{[/sys/online],methods=[GET]}" onto public java.lang.String com.bootdo.system.controller.SessionController.online()
+2020-06-09 09:09:47 -Mapped "{[/sys/user/exit],methods=[POST]}" onto boolean com.bootdo.system.controller.UserController.exit(java.util.Map<java.lang.String, java.lang.Object>)
+2020-06-09 09:09:47 -Mapped "{[/sys/user/add],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.add(org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/sys/user/remove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.remove(java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/sys/user/update],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.update(com.bootdo.system.domain.UserDO)
+2020-06-09 09:09:47 -Mapped "{[/sys/user/list],methods=[GET]}" onto com.bootdo.common.utils.PageUtils com.bootdo.system.controller.UserController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2020-06-09 09:09:47 -Mapped "{[/sys/user/save],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.save(com.bootdo.system.domain.UserDO)
+2020-06-09 09:09:47 -Mapped "{[/sys/user/batchRemove],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.batchRemove(java.lang.Long[])
+2020-06-09 09:09:47 -Mapped "{[/sys/user/tree],methods=[GET]}" onto public com.bootdo.common.domain.Tree<com.bootdo.system.domain.DeptDO> com.bootdo.system.controller.UserController.tree()
+2020-06-09 09:09:47 -Mapped "{[/sys/user],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.user(org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/sys/user/treeView],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.treeView()
+2020-06-09 09:09:47 -Mapped "{[/sys/user/updatePeronal],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.updatePeronal(com.bootdo.system.domain.UserDO)
+2020-06-09 09:09:47 -Mapped "{[/sys/user/resetPwd],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.resetPwd(com.bootdo.system.vo.UserVO)
+2020-06-09 09:09:47 -Mapped "{[/sys/user/resetPwd/{id}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.resetPwd(java.lang.Long,org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/sys/user/adminResetPwd],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.adminResetPwd(com.bootdo.system.vo.UserVO)
+2020-06-09 09:09:47 -Mapped "{[/sys/user/personal],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.personal(org.springframework.ui.Model)
+2020-06-09 09:09:47 -Mapped "{[/sys/user/uploadImg],methods=[POST]}" onto com.bootdo.common.utils.R com.bootdo.system.controller.UserController.uploadImg(org.springframework.web.multipart.MultipartFile,java.lang.String,javax.servlet.http.HttpServletRequest)
+2020-06-09 09:09:47 -Mapped "{[/sys/user/edit/{id}],methods=[GET]}" onto java.lang.String com.bootdo.system.controller.UserController.edit(org.springframework.ui.Model,java.lang.Long)
+2020-06-09 09:09:47 -Mapped "{[/v2/api-docs],methods=[GET],produces=[application/json || application/hal+json]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)
+2020-06-09 09:09:47 -Mapped "{[/swagger-resources/configuration/security]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2020-06-09 09:09:47 -Mapped "{[/swagger-resources/configuration/ui]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2020-06-09 09:09:47 -Mapped "{[/swagger-resources]}" onto org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2020-06-09 09:09:47 -Initializing ExecutorService  'messageBrokerTaskScheduler'
+2020-06-09 09:09:47 -Mapped URL path [/endpointChat/**] onto handler of type [class org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler]
+2020-06-09 09:09:47 -Initializing ExecutorService  'brokerChannelExecutor'
+2020-06-09 09:09:47 -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@130c12b7: startup date [Tue Jun 09 09:09:37 CST 2020]; root of context hierarchy
+2020-06-09 09:09:47 -Mapped URL path [/files/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-06-09 09:09:47 -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-06-09 09:09:47 -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-06-09 09:09:48 -Detected @ExceptionHandler methods in BDExceptionHandler
+2020-06-09 09:09:48 -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-06-09 09:09:49 -Cluster created with settings {hosts=[127.0.0.1:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2020-06-09 09:09:49 -Adding discovered server 127.0.0.1:27017 to client view of cluster
+2020-06-09 09:09:50 -
+
+Using default security password: 9b536d28-3359-4d34-a56f-8ccc3cefeae4
+
+2020-06-09 09:09:50 -Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/css/**'], Ant [pattern='/js/**'], Ant [pattern='/images/**'], Ant [pattern='/webjars/**'], Ant [pattern='/**/favicon.ico'], Ant [pattern='/error']]], []
+2020-06-09 09:09:50 -Creating filter chain: org.springframework.boot.autoconfigure.security.SpringBootWebSecurityConfiguration$ApplicationNoWebSecurityConfigurerAdapter$1@113a6636, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@63062eea, org.springframework.security.web.context.SecurityContextPersistenceFilter@261f5a45, org.springframework.security.web.header.HeaderWriterFilter@3ac326c0, org.springframework.security.web.csrf.CsrfFilter@11a7840f, org.springframework.security.web.authentication.logout.LogoutFilter@7dfca9e6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6d41200c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6f7241c2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7bad18f5, org.springframework.security.web.session.SessionManagementFilter@2570851e, org.springframework.security.web.access.ExceptionTranslationFilter@6be1f37f]
+2020-06-09 09:09:50 -Exception in monitor thread while connecting to server 127.0.0.1:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:115)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:113)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:57)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 common frames omitted
+2020-06-09 09:09:50 -Registering beans for JMX exposure on startup
+2020-06-09 09:09:50 -Bean with name 'dataSource' has been autodetected for JMX exposure
+2020-06-09 09:09:50 -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2020-06-09 09:09:50 -Starting beans in phase 2147483647
+2020-06-09 09:09:50 -Context refreshed
+2020-06-09 09:09:50 -Found 1 custom documentation plugin(s)
+2020-06-09 09:09:50 -Scanning for api listing references
+2020-06-09 09:09:50 -Generating unique operation named: removeUsingPOST_1
+2020-06-09 09:09:51 -Generating unique operation named: addUsingGET_1
+2020-06-09 09:09:51 -Generating unique operation named: editUsingGET_1
+2020-06-09 09:09:51 -Generating unique operation named: listUsingGET_1
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_2
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_3
+2020-06-09 09:09:51 -Generating unique operation named: saveUsingPOST_1
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingGET_1
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingHEAD_1
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPOST_1
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPUT_1
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPATCH_1
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingDELETE_1
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingOPTIONS_1
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingTRACE_1
+2020-06-09 09:09:51 -Generating unique operation named: addUsingGET_2
+2020-06-09 09:09:51 -Generating unique operation named: editUsingGET_2
+2020-06-09 09:09:51 -Generating unique operation named: listUsingGET_2
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_4
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_5
+2020-06-09 09:09:51 -Generating unique operation named: saveUsingPOST_2
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingGET_2
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingHEAD_2
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPOST_2
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPUT_2
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPATCH_2
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingDELETE_2
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingOPTIONS_2
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingTRACE_2
+2020-06-09 09:09:51 -Generating unique operation named: addUsingGET_3
+2020-06-09 09:09:51 -Generating unique operation named: editUsingGET_3
+2020-06-09 09:09:51 -Generating unique operation named: listUsingGET_3
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_6
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_7
+2020-06-09 09:09:51 -Generating unique operation named: saveUsingPOST_3
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingGET_3
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingHEAD_3
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPOST_3
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPUT_3
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPATCH_3
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingDELETE_3
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingOPTIONS_3
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingTRACE_3
+2020-06-09 09:09:51 -Generating unique operation named: editUsingGET_4
+2020-06-09 09:09:51 -Generating unique operation named: listUsingGET_4
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPOST_4
+2020-06-09 09:09:51 -Generating unique operation named: addUsingGET_4
+2020-06-09 09:09:51 -Generating unique operation named: editUsingGET_5
+2020-06-09 09:09:51 -Generating unique operation named: infoUsingGET_1
+2020-06-09 09:09:51 -Generating unique operation named: infoUsingHEAD_1
+2020-06-09 09:09:51 -Generating unique operation named: infoUsingPOST_1
+2020-06-09 09:09:51 -Generating unique operation named: infoUsingPUT_1
+2020-06-09 09:09:51 -Generating unique operation named: infoUsingPATCH_1
+2020-06-09 09:09:51 -Generating unique operation named: infoUsingDELETE_1
+2020-06-09 09:09:51 -Generating unique operation named: infoUsingOPTIONS_1
+2020-06-09 09:09:51 -Generating unique operation named: infoUsingTRACE_1
+2020-06-09 09:09:51 -Generating unique operation named: listUsingGET_5
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_8
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_9
+2020-06-09 09:09:51 -Generating unique operation named: saveUsingPOST_4
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPOST_5
+2020-06-09 09:09:51 -Generating unique operation named: listUsingGET_6
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_10
+2020-06-09 09:09:51 -Generating unique operation named: infoUsingGET_2
+2020-06-09 09:09:51 -Generating unique operation named: welcomeUsingGET_1
+2020-06-09 09:09:51 -Generating unique operation named: welcomeUsingGET_2
+2020-06-09 09:09:51 -Generating unique operation named: addUsingGET_5
+2020-06-09 09:09:51 -Generating unique operation named: editUsingGET_6
+2020-06-09 09:09:51 -Generating unique operation named: listUsingGET_7
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_11
+2020-06-09 09:09:51 -Generating unique operation named: saveUsingPOST_5
+2020-06-09 09:09:51 -Generating unique operation named: treeUsingGET_1
+2020-06-09 09:09:51 -Generating unique operation named: treeUsingGET_2
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPOST_6
+2020-06-09 09:09:51 -Generating unique operation named: batchRemoveUsingPOST_1
+2020-06-09 09:09:51 -Generating unique operation named: editUsingGET_7
+2020-06-09 09:09:51 -Generating unique operation named: listUsingGET_8
+2020-06-09 09:09:51 -Generating unique operation named: addUsingGET_6
+2020-06-09 09:09:51 -Generating unique operation named: editUsingGET_8
+2020-06-09 09:09:51 -Generating unique operation named: listUsingGET_9
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_12
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_13
+2020-06-09 09:09:51 -Generating unique operation named: saveUsingPOST_6
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingGET_4
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingHEAD_4
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPOST_7
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPUT_4
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPATCH_4
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingDELETE_4
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingOPTIONS_4
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingTRACE_4
+2020-06-09 09:09:51 -Generating unique operation named: addUsingGET_7
+2020-06-09 09:09:51 -Generating unique operation named: batchRemoveUsingPOST_2
+2020-06-09 09:09:51 -Generating unique operation named: deployUsingPOST_1
+2020-06-09 09:09:51 -Generating unique operation named: listUsingGET_10
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_14
+2020-06-09 09:09:51 -Generating unique operation named: addUsingGET_8
+2020-06-09 09:09:51 -Generating unique operation named: batchRemoveUsingPOST_3
+2020-06-09 09:09:51 -Generating unique operation named: editUsingGET_9
+2020-06-09 09:09:51 -Generating unique operation named: listUsingGET_11
+2020-06-09 09:09:51 -Generating unique operation named: saveUsingPOST_7
+2020-06-09 09:09:51 -Generating unique operation named: saveUsingPOST_8
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPOST_8
+2020-06-09 09:09:51 -Generating unique operation named: addUsingGET_9
+2020-06-09 09:09:51 -Generating unique operation named: editUsingGET_10
+2020-06-09 09:09:51 -Generating unique operation named: listUsingGET_12
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_15
+2020-06-09 09:09:51 -Generating unique operation named: removeUsingPOST_16
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingGET_5
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingHEAD_5
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPOST_9
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPUT_5
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingPATCH_5
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingDELETE_5
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingOPTIONS_5
+2020-06-09 09:09:51 -Generating unique operation named: updateUsingTRACE_5
+2020-06-09 09:09:52 -Generating unique operation named: listUsingGET_13
+2020-06-09 09:09:52 -Generating unique operation named: listUsingHEAD_1
+2020-06-09 09:09:52 -Generating unique operation named: listUsingPOST_1
+2020-06-09 09:09:52 -Generating unique operation named: listUsingPUT_1
+2020-06-09 09:09:52 -Generating unique operation named: listUsingPATCH_1
+2020-06-09 09:09:52 -Generating unique operation named: listUsingDELETE_1
+2020-06-09 09:09:52 -Generating unique operation named: listUsingOPTIONS_1
+2020-06-09 09:09:52 -Generating unique operation named: listUsingTRACE_1
+2020-06-09 09:09:52 -Generating unique operation named: listUsingGET_14
+2020-06-09 09:09:52 -Generating unique operation named: addUsingGET_10
+2020-06-09 09:09:52 -Generating unique operation named: batchRemoveUsingPOST_4
+2020-06-09 09:09:52 -Generating unique operation named: editUsingGET_11
+2020-06-09 09:09:52 -Generating unique operation named: listUsingGET_15
+2020-06-09 09:09:52 -Generating unique operation named: removeUsingPOST_17
+2020-06-09 09:09:52 -Generating unique operation named: saveUsingPOST_9
+2020-06-09 09:09:52 -Generating unique operation named: treeUsingGET_3
+2020-06-09 09:09:52 -Generating unique operation named: treeViewUsingGET_1
+2020-06-09 09:09:52 -Generating unique operation named: updateUsingPOST_10
+2020-06-09 09:09:52 -Starting Quartz Scheduler now
+2020-06-09 09:09:52 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+2020-06-09 09:09:52 -Starting...
+2020-06-09 09:09:52 -BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2020-06-09 09:09:52 -Started.
+2020-06-09 09:09:52 -Initializing ProtocolHandler ["http-nio-8066"]
+2020-06-09 09:09:52 -Starting ProtocolHandler ["http-nio-8066"]
+2020-06-09 09:09:52 -Failed to start end point associated with ProtocolHandler ["http-nio-8066"]
+java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:990)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:635)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1022)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225)
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.addPreviouslyRemovedConnectors(TomcatEmbeddedServletContainer.java:250)
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.start(TomcatEmbeddedServletContainer.java:193)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.startEmbeddedServletContainer(EmbeddedWebApplicationContext.java:297)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.finishRefresh(EmbeddedWebApplicationContext.java:145)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.bootdo.BootdoApplication.main(BootdoApplication.java:18)
+2020-06-09 09:09:52 -Failed to start connector [Connector[HTTP/1.1-8066]]
+org.apache.catalina.LifecycleException: Failed to start component [Connector[HTTP/1.1-8066]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225)
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.addPreviouslyRemovedConnectors(TomcatEmbeddedServletContainer.java:250)
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.start(TomcatEmbeddedServletContainer.java:193)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.startEmbeddedServletContainer(EmbeddedWebApplicationContext.java:297)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.finishRefresh(EmbeddedWebApplicationContext.java:145)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.bootdo.BootdoApplication.main(BootdoApplication.java:18)
+Caused by: org.apache.catalina.LifecycleException: service.getName(): "Tomcat";  Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1031)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 13 common frames omitted
+Caused by: java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:990)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:635)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1022)
+	... 14 common frames omitted
+2020-06-09 09:09:52 -Pausing ProtocolHandler ["http-nio-8066"]
+2020-06-09 09:09:52 -Stopping service [Tomcat]
+2020-06-09 09:09:52 -The stop() method was called on component [StandardServer[-1]] after stop() had already been called. The second call will be ignored.
+2020-06-09 09:09:52 -Stopping ProtocolHandler ["http-nio-8066"]
+2020-06-09 09:09:52 -Destroying ProtocolHandler ["http-nio-8066"]
+2020-06-09 09:09:52 -
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2020-06-09 09:09:52 -
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8066 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8066, or configure this application to listen on another port.
+
+2020-06-09 09:09:52 -Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@130c12b7: startup date [Tue Jun 09 09:09:37 CST 2020]; root of context hierarchy
+2020-06-09 09:09:52 -Stopping beans in phase 2147483647
+2020-06-09 09:09:52 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+2020-06-09 09:09:52 -Stopping...
+2020-06-09 09:09:52 -BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2020-06-09 09:09:52 -Stopped.
+2020-06-09 09:09:52 -Unregistering JMX-exposed beans on shutdown
+2020-06-09 09:09:52 -Unregistering JMX-exposed beans
+2020-06-09 09:09:52 -Shutting down ExecutorService 'brokerChannelExecutor'
+2020-06-09 09:09:52 -Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2020-06-09 09:09:52 -Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2020-06-09 09:09:52 -Shutting down ExecutorService 'clientInboundChannelExecutor'
+2020-06-09 09:09:52 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+2020-06-09 09:09:52 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+2020-06-09 09:09:52 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+2020-06-09 09:09:52 -Shutting down Quartz Scheduler
+2020-06-09 09:09:52 -{dataSource-1} closed
+2020-06-09 09:27:07 -请求地址 : http://localhost:8066/main
+2020-06-09 09:27:07 -HTTP METHOD : GET
+2020-06-09 09:27:07 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-06-09 09:27:07 -参数 : []
+2020-06-09 09:27:07 -耗时 : 1
+2020-06-09 09:27:07 -返回值 : main
+2020-06-09 09:27:11 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2020-06-09 09:27:11 -==> Parameters: 1(Long)
+2020-06-09 09:27:11 -<==      Total: 47
+2020-06-09 09:27:11 -请求地址 : http://localhost:8066/common/dict
+2020-06-09 09:27:11 -HTTP METHOD : GET
+2020-06-09 09:27:11 -CLASS_METHOD : com.bootdo.common.controller.DictController.dict
+2020-06-09 09:27:11 -参数 : []
+2020-06-09 09:27:11 -耗时 : 1
+2020-06-09 09:27:11 -返回值 : common/dict/dict
+2020-06-09 09:27:12 -请求地址 : http://localhost:8066/common/dict/type
+2020-06-09 09:27:12 -HTTP METHOD : GET
+2020-06-09 09:27:12 -CLASS_METHOD : com.bootdo.common.controller.DictController.listType
+2020-06-09 09:27:12 -参数 : []
+2020-06-09 09:27:12 -==>  Preparing: select distinct `type` , description from sys_dict 
+2020-06-09 09:27:12 -==> Parameters: 
+2020-06-09 09:27:12 -请求地址 : http://localhost:8066/common/dict/list
+2020-06-09 09:27:12 -HTTP METHOD : GET
+2020-06-09 09:27:12 -CLASS_METHOD : com.bootdo.common.controller.DictController.list
+2020-06-09 09:27:12 -参数 : [{limit=10, offset=0}]
+2020-06-09 09:27:12 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict order by id desc limit ?, ? 
+2020-06-09 09:27:12 -==> Parameters: 0(Integer), 10(Integer)
+2020-06-09 09:27:12 -<==      Total: 31
+2020-06-09 09:27:12 -耗时 : 83
+2020-06-09 09:27:12 -返回值 : [DictDO{id=null, name='null', value='null', type='del_flag', description='删除标记', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='show_hide', description='显示/隐藏', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='yes_no', description='是/否', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='color', description='颜色值', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='theme', description='主题方案', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_area_type', description='区域类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_type', description='机构类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_common', description='快捷通用部门', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_grade', description='机构等级', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_data_scope', description='数据范围', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_user_type', description='用户类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_theme', description='站点主题', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_module', description='栏目模型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_show_modes', description='展现方式', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_del_flag', description='内容状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_posid', description='推荐位', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_guestbook', description='留言板分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_leave_type', description='请假类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_log_type', description='日志类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='act_type', description='流程类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='act_category', description='流程分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_category', description='代码生成分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_query_type', description='查询方式', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_show_type', description='字段生成方案', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_java_type', description='Java类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sex', description='性别', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_type', description='通知通告类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_status', description='通知通告状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_read', description='通知通告状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='blog_type', description='博客类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='hobby', description='爱好', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}]
+2020-06-09 09:27:12 -<==      Total: 10
+2020-06-09 09:27:12 -==>  Preparing: select count(*) from sys_dict 
+2020-06-09 09:27:12 -==> Parameters: 
+2020-06-09 09:27:12 -<==      Total: 1
+2020-06-09 09:27:12 -耗时 : 151
+2020-06-09 09:27:12 -返回值 : com.bootdo.common.utils.PageUtils@34245b58
+2020-06-09 09:39:32 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 11 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(11)-CONNECTED(11)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 126], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 20], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 68143]
+2020-06-09 10:08:48 -Validating all active sessions...
+2020-06-09 10:08:48 -Finished session validation.  [1] sessions were stopped.
+2020-06-09 10:09:32 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 11 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(11)-CONNECTED(11)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 126], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 20], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 68648]
+2020-06-09 10:39:32 -WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 11 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(11)-CONNECTED(11)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 126], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 20], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 69153]
+2020-06-09 10:50:41 -请求地址 : http://192.168.7.124:8066/login
+2020-06-09 10:50:41 -HTTP METHOD : POST
+2020-06-09 10:50:41 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2020-06-09 10:50:41 -参数 : [admin, 111111]
+2020-06-09 10:50:41 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2020-06-09 10:50:41 -==> Parameters: admin(String)
+2020-06-09 10:50:41 -<==      Total: 1
+2020-06-09 10:50:41 -耗时 : 6
+2020-06-09 10:50:41 -返回值 : {msg=操作成功, code=0}
+2020-06-09 10:50:41 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-06-09 10:50:41 -==> Parameters: 1(Long), admin(String), 登录(String), 7(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 192.168.7.104(String), 2020-06-09 10:50:41.329(Timestamp)
+2020-06-09 10:50:41 -<==    Updates: 1
+2020-06-09 10:50:47 -请求地址 : http://localhost:8066/login;JSESSIONID=f57698de-439a-461f-85af-ac09432fe489
+2020-06-09 10:50:47 -HTTP METHOD : GET
+2020-06-09 10:50:47 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2020-06-09 10:50:47 -参数 : []
+2020-06-09 10:50:47 -耗时 : 0
+2020-06-09 10:50:47 -返回值 : login
+2020-06-09 10:50:48 -请求地址 : http://localhost:8066/login;JSESSIONID=f57698de-439a-461f-85af-ac09432fe489
+2020-06-09 10:50:48 -HTTP METHOD : GET
+2020-06-09 10:50:48 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2020-06-09 10:50:48 -参数 : []
+2020-06-09 10:50:48 -耗时 : 1
+2020-06-09 10:50:48 -返回值 : login
+2020-06-09 10:50:50 -请求地址 : http://localhost:8066/login
+2020-06-09 10:50:50 -HTTP METHOD : POST
+2020-06-09 10:50:50 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2020-06-09 10:50:50 -参数 : [admin, 111111]
+2020-06-09 10:50:50 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2020-06-09 10:50:50 -==> Parameters: admin(String)
+2020-06-09 10:50:50 -<==      Total: 1
+2020-06-09 10:50:50 -耗时 : 4
+2020-06-09 10:50:50 -返回值 : {msg=操作成功, code=0}
+2020-06-09 10:50:50 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-06-09 10:50:50 -==> Parameters: 1(Long), admin(String), 登录(String), 5(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2020-06-09 10:50:50.063(Timestamp)
+2020-06-09 10:50:50 -<==    Updates: 1
+2020-06-09 10:50:50 -请求地址 : http://localhost:8066/index
+2020-06-09 10:50:50 -HTTP METHOD : GET
+2020-06-09 10:50:50 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2020-06-09 10:50:50 -参数 : [{}]
+2020-06-09 10:50:50 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2020-06-09 10:50:50 -==> Parameters: 1(Long)
+2020-06-09 10:50:50 -<==      Total: 27
+2020-06-09 10:50:50 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2020-06-09 10:50:50 -==> Parameters: 142(Long)
+2020-06-09 10:50:50 -<==      Total: 1
+2020-06-09 10:50:50 -耗时 : 7
+2020-06-09 10:50:50 -返回值 : index_v1
+2020-06-09 10:50:50 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-06-09 10:50:50 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 7(Integer), com.bootdo.system.controller.LoginController.index()(String), null, 127.0.0.1(String), 2020-06-09 10:50:50.089(Timestamp)
+2020-06-09 10:50:50 -<==    Updates: 1
+2020-06-09 10:50:50 -请求地址 : http://localhost:8066/main
+2020-06-09 10:50:50 -HTTP METHOD : GET
+2020-06-09 10:50:50 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-06-09 10:50:50 -参数 : []
+2020-06-09 10:50:50 -耗时 : 0
+2020-06-09 10:50:50 -返回值 : main
+2020-06-09 10:50:50 -请求地址 : http://localhost:8066/oa/notify/message
+2020-06-09 10:50:50 -HTTP METHOD : GET
+2020-06-09 10:50:50 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2020-06-09 10:50:50 -参数 : []
+2020-06-09 10:50:50 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2020-06-09 10:50:50 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2020-06-09 10:50:50 -<==      Total: 0
+2020-06-09 10:50:50 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2020-06-09 10:50:50 -==> Parameters: 1(Long), 0(String)
+2020-06-09 10:50:50 -<==      Total: 1
+2020-06-09 10:50:50 -耗时 : 9
+2020-06-09 10:50:50 -返回值 : com.bootdo.common.utils.PageUtils@577499e9
+2020-06-09 10:50:50 -请求地址 : http://localhost:8066/main
+2020-06-09 10:50:50 -HTTP METHOD : GET
+2020-06-09 10:50:50 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-06-09 10:50:50 -参数 : []
+2020-06-09 10:50:50 -耗时 : 0
+2020-06-09 10:50:50 -返回值 : main
+2020-06-09 10:50:51 -请求地址 : http://localhost:8066/sys/online
+2020-06-09 10:50:51 -HTTP METHOD : GET
+2020-06-09 10:50:51 -CLASS_METHOD : com.bootdo.system.controller.SessionController.online
+2020-06-09 10:50:51 -参数 : []
+2020-06-09 10:50:51 -耗时 : 22
+2020-06-09 10:50:51 -返回值 : system/online/online
+2020-06-09 10:50:51 -请求地址 : http://localhost:8066/sys/online/list
+2020-06-09 10:50:51 -HTTP METHOD : GET
+2020-06-09 10:50:51 -CLASS_METHOD : com.bootdo.system.controller.SessionController.list
+2020-06-09 10:50:51 -参数 : []
+2020-06-09 10:50:51 -耗时 : 1
+2020-06-09 10:50:51 -返回值 : [com.bootdo.system.domain.UserOnline@71d7add9, com.bootdo.system.domain.UserOnline@290c66b9]
+2020-06-09 10:51:16 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2020-06-09 10:51:16 -==> Parameters: 1(Long)
+2020-06-09 10:51:16 -<==      Total: 47
+2020-06-09 10:51:16 -请求地址 : http://localhost:8066/common/dict
+2020-06-09 10:51:16 -HTTP METHOD : GET
+2020-06-09 10:51:16 -CLASS_METHOD : com.bootdo.common.controller.DictController.dict
+2020-06-09 10:51:16 -参数 : []
+2020-06-09 10:51:16 -耗时 : 1
+2020-06-09 10:51:16 -返回值 : common/dict/dict
+2020-06-09 10:51:16 -请求地址 : http://localhost:8066/common/dict/type
+2020-06-09 10:51:16 -HTTP METHOD : GET
+2020-06-09 10:51:16 -CLASS_METHOD : com.bootdo.common.controller.DictController.listType
+2020-06-09 10:51:16 -参数 : []
+2020-06-09 10:51:16 -==>  Preparing: select distinct `type` , description from sys_dict 
+2020-06-09 10:51:16 -==> Parameters: 
+2020-06-09 10:51:16 -<==      Total: 31
+2020-06-09 10:51:16 -耗时 : 3
+2020-06-09 10:51:16 -返回值 : [DictDO{id=null, name='null', value='null', type='del_flag', description='删除标记', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='show_hide', description='显示/隐藏', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='yes_no', description='是/否', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='color', description='颜色值', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='theme', description='主题方案', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_area_type', description='区域类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_type', description='机构类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_common', description='快捷通用部门', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_grade', description='机构等级', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_data_scope', description='数据范围', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_user_type', description='用户类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_theme', description='站点主题', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_module', description='栏目模型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_show_modes', description='展现方式', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_del_flag', description='内容状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_posid', description='推荐位', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_guestbook', description='留言板分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_leave_type', description='请假类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_log_type', description='日志类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='act_type', description='流程类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='act_category', description='流程分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_category', description='代码生成分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_query_type', description='查询方式', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_show_type', description='字段生成方案', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_java_type', description='Java类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sex', description='性别', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_type', description='通知通告类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_status', description='通知通告状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_read', description='通知通告状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='blog_type', description='博客类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='hobby', description='爱好', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}]
+2020-06-09 10:51:16 -请求地址 : http://localhost:8066/common/dict/list
+2020-06-09 10:51:16 -HTTP METHOD : GET
+2020-06-09 10:51:16 -CLASS_METHOD : com.bootdo.common.controller.DictController.list
+2020-06-09 10:51:16 -参数 : [{limit=10, offset=0}]
+2020-06-09 10:51:16 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict order by id desc limit ?, ? 
+2020-06-09 10:51:16 -==> Parameters: 0(Integer), 10(Integer)
+2020-06-09 10:51:16 -<==      Total: 10
+2020-06-09 10:51:16 -==>  Preparing: select count(*) from sys_dict 
+2020-06-09 10:51:16 -==> Parameters: 
+2020-06-09 10:51:16 -<==      Total: 1
+2020-06-09 10:51:16 -耗时 : 21
+2020-06-09 10:51:16 -返回值 : com.bootdo.common.utils.PageUtils@3d90f8a8
+2020-06-09 10:51:18 -请求地址 : http://localhost:8066/sys/user/
+2020-06-09 10:51:18 -HTTP METHOD : GET
+2020-06-09 10:51:18 -CLASS_METHOD : com.bootdo.system.controller.UserController.user
+2020-06-09 10:51:18 -参数 : [{}]
+2020-06-09 10:51:18 -耗时 : 2
+2020-06-09 10:51:18 -返回值 : system/user/user
+2020-06-09 10:51:18 -请求地址 : http://localhost:8066/system/sysDept/tree
+2020-06-09 10:51:18 -HTTP METHOD : GET
+2020-06-09 10:51:18 -CLASS_METHOD : com.bootdo.system.controller.DeptController.tree
+2020-06-09 10:51:18 -参数 : []
+2020-06-09 10:51:18 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept order by dept_id desc 
+2020-06-09 10:51:18 -==> Parameters: 
+2020-06-09 10:51:18 -<==      Total: 10
+2020-06-09 10:51:18 -耗时 : 3
+2020-06-09 10:51:18 -返回值 : {"checked":true,"children":[{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"15","parentId":"13","state":{"opened":true},"text":"测试二部"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"14","parentId":"13","state":{"opened":true},"text":"测试一部"}],"hasChildren":true,"hasParent":false,"id":"13","parentId":"0","state":{"opened":true},"text":"测试部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"12","parentId":"11","state":{"opened":true},"text":"产品一部"}],"hasChildren":true,"hasParent":false,"id":"11","parentId":"0","state":{"opened":true},"text":"产品部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"10","parentId":"9","state":{"opened":true},"text":"销售一部"}],"hasChildren":true,"hasParent":false,"id":"9","parentId":"0","state":{"opened":true},"text":"销售部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"8","parentId":"6","state":{"opened":true},"text":"研发二部"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"7","parentId":"6","state":{"opened":true},"text":"研發一部"}],"hasChildren":true,"hasParent":false,"id":"6","parentId":"0","state":{"opened":true},"text":"研发部"}],"hasChildren":true,"hasParent":false,"id":"-1","parentId":"","state":{"opened":true},"text":"顶级节点"}
+2020-06-09 10:51:18 -请求地址 : http://localhost:8066/sys/user/list
+2020-06-09 10:51:18 -HTTP METHOD : GET
+2020-06-09 10:51:18 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2020-06-09 10:51:18 -参数 : [{limit=10, offset=0, name=, deptId=}]
+2020-06-09 10:51:18 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user order by user_id desc limit ?, ? 
+2020-06-09 10:51:18 -==> Parameters: 0(Integer), 10(Integer)
+2020-06-09 10:51:18 -<==      Total: 10
+2020-06-09 10:51:18 -==>  Preparing: select count(*) from sys_user 
+2020-06-09 10:51:18 -==> Parameters: 
+2020-06-09 10:51:18 -<==      Total: 1
+2020-06-09 10:51:18 -耗时 : 5
+2020-06-09 10:51:18 -返回值 : com.bootdo.common.utils.PageUtils@76e2330e
+2020-06-09 10:51:38 -请求地址 : http://192.168.7.124:8066/login
+2020-06-09 10:51:38 -HTTP METHOD : POST
+2020-06-09 10:51:38 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2020-06-09 10:51:38 -参数 : [ldh, 123456]
+2020-06-09 10:51:38 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2020-06-09 10:51:38 -==> Parameters: ldh(String)
+2020-06-09 10:51:38 -<==      Total: 1
+2020-06-09 10:51:38 -耗时 : 4
+2020-06-09 10:51:38 -返回值 : {msg=用户或密码错误, code=500}
+2020-06-09 10:51:38 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-06-09 10:51:38 -==> Parameters: 1(Long), admin(String), 登录(String), 5(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 192.168.7.104(String), 2020-06-09 10:51:38.568(Timestamp)
+2020-06-09 10:51:38 -<==    Updates: 1
+2020-06-09 10:51:43 -请求地址 : http://localhost:8066/common/log
+2020-06-09 10:51:43 -HTTP METHOD : GET
+2020-06-09 10:51:43 -CLASS_METHOD : com.bootdo.common.controller.LogController.log
+2020-06-09 10:51:43 -参数 : []
+2020-06-09 10:51:43 -耗时 : 1
+2020-06-09 10:51:43 -返回值 : common/log/log
+2020-06-09 10:51:43 -请求地址 : http://localhost:8066/common/log/list
+2020-06-09 10:51:43 -HTTP METHOD : GET
+2020-06-09 10:51:43 -CLASS_METHOD : com.bootdo.common.controller.LogController.list
+2020-06-09 10:51:43 -参数 : [{limit=10, offset=0, sort=gmt_create, order=desc, operation=, username=}]
+2020-06-09 10:51:43 -==>  Preparing: select count(*) from sys_log 
+2020-06-09 10:51:43 -==> Parameters: 
+2020-06-09 10:51:43 -<==      Total: 1
+2020-06-09 10:51:43 -==>  Preparing: select `id`,`user_id`,`username`,`operation`,`time`,`method`,`params`,`ip`,`gmt_create` from sys_log order by gmt_create desc limit ?, ? 
+2020-06-09 10:51:43 -==> Parameters: 0(Integer), 10(Integer)
+2020-06-09 10:51:43 -<==      Total: 10
+2020-06-09 10:51:43 -耗时 : 62
+2020-06-09 10:51:43 -返回值 : PageDO{offset=0, limit=10, total=562, params={}, param='', rows=[LogDO{id=565, userId=1, username='admin', operation='登录', time=5, method='com.bootdo.system.controller.LoginController.ajaxLogin()', params='null', ip='192.168.7.104', gmtCreate=Tue Jun 09 10:51:38 CST 2020}, LogDO{id=563, userId=1, username='admin', operation='登录', time=5, method='com.bootdo.system.controller.LoginController.ajaxLogin()', params='null', ip='127.0.0.1', gmtCreate=Tue Jun 09 10:50:50 CST 2020}, LogDO{id=564, userId=1, username='admin', operation='请求访问主页', time=7, method='com.bootdo.system.controller.LoginController.index()', params='null', ip='127.0.0.1', gmtCreate=Tue Jun 09 10:50:50 CST 2020}, LogDO{id=562, userId=1, username='admin', operation='登录', time=7, method='com.bootdo.system.controller.LoginController.ajaxLogin()', params='null', ip='192.168.7.104', gmtCreate=Tue Jun 09 10:50:41 CST 2020}, LogDO{id=560, userId=1, username='admin', operation='登录', time=188, method='com.bootdo.system.controller.LoginController.ajaxLogin()', params='null', ip='127.0.0.1', gmtCreate=Tue Jun 09 09:08:43 CST 2020}, LogDO{id=561, userId=1, username='admin', operation='请求访问主页', time=28, method='com.bootdo.system.controller.LoginController.index()', params='null', ip='127.0.0.1', gmtCreate=Tue Jun 09 09:08:43 CST 2020}, LogDO{id=559, userId=1, username='admin', operation='请求访问主页', time=21, method='com.bootdo.system.controller.LoginController.index()', params='null', ip='127.0.0.1', gmtCreate=Mon Jun 08 18:04:59 CST 2020}, LogDO{id=557, userId=1, username='admin', operation='登录', time=97, method='com.bootdo.system.controller.LoginController.ajaxLogin()', params='null', ip='127.0.0.1', gmtCreate=Mon Jun 08 18:03:54 CST 2020}, LogDO{id=558, userId=1, username='admin', operation='请求访问主页', time=305, method='com.bootdo.system.controller.LoginController.index()', params='null', ip='127.0.0.1', gmtCreate=Mon Jun 08 18:03:54 CST 2020}, LogDO{id=556, userId=1, username='admin', operation='登录', time=8, method='com.bootdo.system.controller.LoginController.ajaxLogin()', params='null', ip='192.168.7.104', gmtCreate=Mon Jun 08 16:18:51 CST 2020}]}
+2020-06-09 10:52:05 -请求地址 : http://192.168.7.124:8066/login
+2020-06-09 10:52:05 -HTTP METHOD : POST
+2020-06-09 10:52:05 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2020-06-09 10:52:05 -参数 : [ldh, 111111]
+2020-06-09 10:52:05 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2020-06-09 10:52:05 -==> Parameters: ldh(String)
+2020-06-09 10:52:05 -<==      Total: 1
+2020-06-09 10:52:05 -耗时 : 5
+2020-06-09 10:52:05 -返回值 : {msg=操作成功, code=0}
+2020-06-09 10:52:05 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-06-09 10:52:05 -==> Parameters: 36(Long), ldh(String), 登录(String), 5(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 192.168.7.104(String), 2020-06-09 10:52:05.749(Timestamp)
+2020-06-09 10:52:05 -<==    Updates: 1
+2020-06-09 10:52:09 -请求地址 : http://localhost:8066/sys/online/list
+2020-06-09 10:52:09 -HTTP METHOD : GET
+2020-06-09 10:52:09 -CLASS_METHOD : com.bootdo.system.controller.SessionController.list
+2020-06-09 10:52:09 -参数 : []
+2020-06-09 10:52:09 -耗时 : 1
+2020-06-09 10:52:09 -返回值 : [com.bootdo.system.domain.UserOnline@4b74fd30, com.bootdo.system.domain.UserOnline@7b5ae06]
+2020-06-09 10:52:17 -请求地址 : http://localhost:8066/oa/notify
+2020-06-09 10:52:17 -HTTP METHOD : GET
+2020-06-09 10:52:17 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.oaNotify
+2020-06-09 10:52:17 -参数 : []
+2020-06-09 10:52:17 -耗时 : 0
+2020-06-09 10:52:17 -返回值 : oa/notify/notify
+2020-06-09 10:52:17 -请求地址 : http://localhost:8066/oa/notify/list
+2020-06-09 10:52:17 -HTTP METHOD : GET
+2020-06-09 10:52:17 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.list
+2020-06-09 10:52:17 -参数 : [{limit=10, offset=0}]
+2020-06-09 10:52:17 -==>  Preparing: select `id`,`type`,`title`,`content`,`files`,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify order by id desc limit ?, ? 
+2020-06-09 10:52:17 -==> Parameters: 0(Integer), 10(Integer)
+2020-06-09 10:52:17 -<==      Total: 5
+2020-06-09 10:52:17 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2020-06-09 10:52:17 -==> Parameters: 3(String), oa_notify_type(String)
+2020-06-09 10:52:17 -<==      Total: 1
+2020-06-09 10:52:17 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2020-06-09 10:52:17 -==> Parameters: 3(String), oa_notify_type(String)
+2020-06-09 10:52:17 -<==      Total: 1
+2020-06-09 10:52:17 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2020-06-09 10:52:17 -==> Parameters: 3(String), oa_notify_type(String)
+2020-06-09 10:52:17 -<==      Total: 1
+2020-06-09 10:52:17 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2020-06-09 10:52:17 -==> Parameters: 3(String), oa_notify_type(String)
+2020-06-09 10:52:17 -<==      Total: 1
+2020-06-09 10:52:17 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2020-06-09 10:52:17 -==> Parameters: 3(String), oa_notify_type(String)
+2020-06-09 10:52:17 -<==      Total: 1
+2020-06-09 10:52:17 -==>  Preparing: select count(*) from oa_notify 
+2020-06-09 10:52:17 -==> Parameters: 
+2020-06-09 10:52:17 -<==      Total: 1
+2020-06-09 10:52:17 -耗时 : 72
+2020-06-09 10:52:17 -返回值 : com.bootdo.common.utils.PageUtils@3a4dacc6
+2020-06-09 10:53:01 -请求地址 : http://localhost:8066/sys/online
+2020-06-09 10:53:01 -HTTP METHOD : GET
+2020-06-09 10:53:01 -CLASS_METHOD : com.bootdo.system.controller.SessionController.online
+2020-06-09 10:53:01 -参数 : []
+2020-06-09 10:53:01 -耗时 : 1
+2020-06-09 10:53:01 -返回值 : system/online/online
+2020-06-09 10:53:01 -请求地址 : http://localhost:8066/sys/online/list
+2020-06-09 10:53:01 -HTTP METHOD : GET
+2020-06-09 10:53:01 -CLASS_METHOD : com.bootdo.system.controller.SessionController.list
+2020-06-09 10:53:01 -参数 : []
+2020-06-09 10:53:01 -耗时 : 1
+2020-06-09 10:53:01 -返回值 : [com.bootdo.system.domain.UserOnline@38b7788d, com.bootdo.system.domain.UserOnline@1b306246]
+2020-06-09 10:53:03 -请求地址 : http://localhost:8066/oa/notify
+2020-06-09 10:53:03 -HTTP METHOD : GET
+2020-06-09 10:53:03 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.oaNotify
+2020-06-09 10:53:03 -参数 : []
+2020-06-09 10:53:03 -耗时 : 1
+2020-06-09 10:53:03 -返回值 : oa/notify/notify
+2020-06-09 10:53:03 -请求地址 : http://localhost:8066/oa/notify/list
+2020-06-09 10:53:03 -HTTP METHOD : GET
+2020-06-09 10:53:03 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.list
+2020-06-09 10:53:03 -参数 : [{limit=10, offset=0}]
+2020-06-09 10:53:03 -==>  Preparing: select `id`,`type`,`title`,`content`,`files`,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify order by id desc limit ?, ? 
+2020-06-09 10:53:03 -==> Parameters: 0(Integer), 10(Integer)
+2020-06-09 10:53:03 -<==      Total: 5
+2020-06-09 10:53:03 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2020-06-09 10:53:03 -==> Parameters: 3(String), oa_notify_type(String)
+2020-06-09 10:53:03 -<==      Total: 1
+2020-06-09 10:53:03 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2020-06-09 10:53:03 -==> Parameters: 3(String), oa_notify_type(String)
+2020-06-09 10:53:03 -<==      Total: 1
+2020-06-09 10:53:03 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2020-06-09 10:53:03 -==> Parameters: 3(String), oa_notify_type(String)
+2020-06-09 10:53:03 -<==      Total: 1
+2020-06-09 10:53:03 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2020-06-09 10:53:03 -==> Parameters: 3(String), oa_notify_type(String)
+2020-06-09 10:53:03 -<==      Total: 1
+2020-06-09 10:53:03 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE value = ? and type = ? order by id desc 
+2020-06-09 10:53:03 -==> Parameters: 3(String), oa_notify_type(String)
+2020-06-09 10:53:03 -<==      Total: 1
+2020-06-09 10:53:03 -==>  Preparing: select count(*) from oa_notify 
+2020-06-09 10:53:03 -==> Parameters: 
+2020-06-09 10:53:03 -<==      Total: 1
+2020-06-09 10:53:03 -耗时 : 34
+2020-06-09 10:53:03 -返回值 : com.bootdo.common.utils.PageUtils@5a756819
+2020-06-09 10:53:07 -请求地址 : http://localhost:8066/common/generator
+2020-06-09 10:53:07 -HTTP METHOD : GET
+2020-06-09 10:53:07 -CLASS_METHOD : com.bootdo.common.controller.GeneratorController.generator
+2020-06-09 10:53:07 -参数 : []
+2020-06-09 10:53:07 -耗时 : 3
+2020-06-09 10:53:07 -返回值 : common/generator/list
+2020-06-09 10:53:07 -请求地址 : http://localhost:8066/common/generator/list
+2020-06-09 10:53:07 -HTTP METHOD : GET
+2020-06-09 10:53:07 -CLASS_METHOD : com.bootdo.common.controller.GeneratorController.list
+2020-06-09 10:53:07 -参数 : []
+2020-06-09 10:53:07 -==>  Preparing: select table_name tableName, engine, table_comment tableComment, create_time createTime from information_schema.tables where table_schema = (select database()) 
+2020-06-09 10:53:07 -==> Parameters: 
+2020-06-09 10:53:07 -<==      Total: 40
+2020-06-09 10:53:07 -耗时 : 559
+2020-06-09 10:53:07 -返回值 : [{engine=InnoDB, createTime=2020-06-01 14:09:18.0, tableComment=, tableName=act_evt_log}, {engine=InnoDB, createTime=2020-06-01 14:09:17.0, tableComment=, tableName=act_ge_bytearray}, {engine=InnoDB, createTime=2020-06-01 14:09:17.0, tableComment=, tableName=act_ge_property}, {engine=InnoDB, createTime=2020-06-01 14:09:20.0, tableComment=, tableName=act_hi_actinst}, {engine=InnoDB, createTime=2020-06-01 14:09:20.0, tableComment=, tableName=act_hi_attachment}, {engine=InnoDB, createTime=2020-06-01 14:09:20.0, tableComment=, tableName=act_hi_comment}, {engine=InnoDB, createTime=2020-06-01 14:09:20.0, tableComment=, tableName=act_hi_detail}, {engine=InnoDB, createTime=2020-06-01 14:09:20.0, tableComment=, tableName=act_hi_identitylink}, {engine=InnoDB, createTime=2020-06-01 14:09:20.0, tableComment=, tableName=act_hi_procinst}, {engine=InnoDB, createTime=2020-06-01 14:09:20.0, tableComment=, tableName=act_hi_taskinst}, {engine=InnoDB, createTime=2020-06-01 14:09:20.0, tableComment=, tableName=act_hi_varinst}, {engine=InnoDB, createTime=2020-06-01 14:09:21.0, tableComment=, tableName=act_id_group}, {engine=InnoDB, createTime=2020-06-01 14:09:21.0, tableComment=, tableName=act_id_info}, {engine=InnoDB, createTime=2020-06-01 14:09:21.0, tableComment=, tableName=act_id_membership}, {engine=InnoDB, createTime=2020-06-01 14:09:21.0, tableComment=, tableName=act_id_user}, {engine=InnoDB, createTime=2020-06-01 14:09:18.0, tableComment=, tableName=act_procdef_info}, {engine=InnoDB, createTime=2020-06-01 14:09:18.0, tableComment=, tableName=act_re_deployment}, {engine=InnoDB, createTime=2020-06-01 14:09:18.0, tableComment=, tableName=act_re_model}, {engine=InnoDB, createTime=2020-06-01 14:09:18.0, tableComment=, tableName=act_re_procdef}, {engine=InnoDB, createTime=2020-06-01 14:09:18.0, tableComment=, tableName=act_ru_event_subscr}, {engine=InnoDB, createTime=2020-06-01 14:09:18.0, tableComment=, tableName=act_ru_execution}, {engine=InnoDB, createTime=2020-06-01 14:09:18.0, tableComment=, tableName=act_ru_identitylink}, {engine=InnoDB, createTime=2020-06-01 14:09:18.0, tableComment=, tableName=act_ru_job}, {engine=InnoDB, createTime=2020-06-01 14:09:18.0, tableComment=, tableName=act_ru_task}, {engine=InnoDB, createTime=2020-06-01 14:09:18.0, tableComment=, tableName=act_ru_variable}, {engine=InnoDB, createTime=2020-06-01 14:07:07.0, tableComment=文章内容, tableName=blog_content}, {engine=InnoDB, createTime=2020-06-01 14:07:08.0, tableComment=通知通告, tableName=oa_notify}, {engine=InnoDB, createTime=2020-06-01 14:07:08.0, tableComment=通知通告发送记录, tableName=oa_notify_record}, {engine=InnoDB, createTime=2020-06-01 14:07:08.0, tableComment=审批流程测试表, tableName=salary}, {engine=InnoDB, createTime=2020-06-01 14:07:08.0, tableComment=部门管理, tableName=sys_dept}, {engine=InnoDB, createTime=2020-06-01 14:07:08.0, tableComment=字典表, tableName=sys_dict}, {engine=InnoDB, createTime=2020-06-01 14:07:10.0, tableComment=文件上传, tableName=sys_file}, {engine=InnoDB, createTime=2020-06-01 14:07:10.0, tableComment=系统日志, tableName=sys_log}, {engine=InnoDB, createTime=2020-06-01 14:07:15.0, tableComment=菜单管理, tableName=sys_menu}, {engine=InnoDB, createTime=2020-06-01 14:07:16.0, tableComment=角色, tableName=sys_role}, {engine=InnoDB, createTime=2020-06-01 14:07:16.0, tableComment=角色与菜单对应关系, tableName=sys_role_menu}, {engine=MyISAM, createTime=2020-06-01 14:07:19.0, tableComment=, tableName=sys_task}, {engine=InnoDB, createTime=2020-06-01 14:07:19.0, tableComment=, tableName=sys_user}, {engine=InnoDB, createTime=2020-06-01 14:07:19.0, tableComment=, tableName=sys_user_plus}, {engine=InnoDB, createTime=2020-06-01 14:07:19.0, tableComment=用户与角色对应关系, tableName=sys_user_role}]
+2020-06-09 11:08:48 -Validating all active sessions...
+2020-06-09 11:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 11:09:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 12 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(12)-CONNECTED(12)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 141], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 23], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 69619]
+2020-06-09 11:39:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 12 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(12)-CONNECTED(12)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 141], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 23], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 70052]
+2020-06-09 12:08:48 -Validating all active sessions...
+2020-06-09 12:08:48 -Finished session validation.  [2] sessions were stopped.
+2020-06-09 12:09:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 12 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(12)-CONNECTED(12)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 141], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 23], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 70485]
+2020-06-09 12:39:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 12 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(12)-CONNECTED(12)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 141], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 23], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 70918]
+2020-06-09 13:08:48 -Validating all active sessions...
+2020-06-09 13:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 13:09:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 12 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(12)-CONNECTED(12)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 141], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 23], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 71351]
+2020-06-09 13:39:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 12 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(12)-CONNECTED(12)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 141], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 23], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 71784]
+2020-06-09 14:08:48 -Validating all active sessions...
+2020-06-09 14:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 14:09:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 12 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(12)-CONNECTED(12)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 141], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 23], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 72217]
+2020-06-09 14:39:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 12 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(12)-CONNECTED(12)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 141], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 23], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 72650]
+2020-06-09 15:08:48 -Validating all active sessions...
+2020-06-09 15:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 15:09:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 12 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(12)-CONNECTED(12)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 141], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 23], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 73083]
+2020-06-09 15:39:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 12 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(12)-CONNECTED(12)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 141], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 23], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 73516]
+2020-06-09 16:08:48 -Validating all active sessions...
+2020-06-09 16:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 16:09:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 12 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(12)-CONNECTED(12)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 141], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 23], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 73949]
+2020-06-09 16:39:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 12 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(12)-CONNECTED(12)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 141], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 23], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 74382]
+2020-06-09 16:52:59 -请求地址 : http://localhost:8066/login;JSESSIONID=5fb3707c-ed9f-48b4-a8af-42b2d9eda164
+2020-06-09 16:52:59 -HTTP METHOD : GET
+2020-06-09 16:52:59 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2020-06-09 16:52:59 -参数 : []
+2020-06-09 16:52:59 -耗时 : 1
+2020-06-09 16:52:59 -返回值 : login
+2020-06-09 16:53:00 -请求地址 : http://localhost:8066/login;JSESSIONID=5fb3707c-ed9f-48b4-a8af-42b2d9eda164
+2020-06-09 16:53:00 -HTTP METHOD : GET
+2020-06-09 16:53:00 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2020-06-09 16:53:00 -参数 : []
+2020-06-09 16:53:00 -耗时 : 1
+2020-06-09 16:53:00 -返回值 : login
+2020-06-09 16:53:01 -请求地址 : http://localhost:8066/login
+2020-06-09 16:53:01 -HTTP METHOD : POST
+2020-06-09 16:53:01 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2020-06-09 16:53:01 -参数 : [admin, 111111]
+2020-06-09 16:53:01 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2020-06-09 16:53:01 -==> Parameters: admin(String)
+2020-06-09 16:53:01 -<==      Total: 1
+2020-06-09 16:53:01 -耗时 : 194
+2020-06-09 16:53:01 -返回值 : {msg=操作成功, code=0}
+2020-06-09 16:53:01 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-06-09 16:53:01 -==> Parameters: 1(Long), admin(String), 登录(String), 195(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2020-06-09 16:53:01.757(Timestamp)
+2020-06-09 16:53:01 -请求地址 : http://localhost:8066/index
+2020-06-09 16:53:01 -HTTP METHOD : GET
+2020-06-09 16:53:01 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2020-06-09 16:53:01 -参数 : [{}]
+2020-06-09 16:53:02 -<==    Updates: 1
+2020-06-09 16:53:02 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2020-06-09 16:53:02 -==> Parameters: 1(Long)
+2020-06-09 16:53:02 -<==      Total: 27
+2020-06-09 16:53:02 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2020-06-09 16:53:02 -==> Parameters: 142(Long)
+2020-06-09 16:53:02 -<==      Total: 1
+2020-06-09 16:53:02 -耗时 : 466
+2020-06-09 16:53:02 -返回值 : index_v1
+2020-06-09 16:53:02 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-06-09 16:53:02 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 466(Integer), com.bootdo.system.controller.LoginController.index()(String), null, 127.0.0.1(String), 2020-06-09 16:53:02.279(Timestamp)
+2020-06-09 16:53:02 -<==    Updates: 1
+2020-06-09 16:53:02 -请求地址 : http://localhost:8066/main
+2020-06-09 16:53:02 -HTTP METHOD : GET
+2020-06-09 16:53:02 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-06-09 16:53:02 -参数 : []
+2020-06-09 16:53:02 -耗时 : 0
+2020-06-09 16:53:02 -返回值 : main
+2020-06-09 16:53:02 -请求地址 : http://localhost:8066/oa/notify/message
+2020-06-09 16:53:02 -HTTP METHOD : GET
+2020-06-09 16:53:02 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2020-06-09 16:53:02 -参数 : []
+2020-06-09 16:53:02 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2020-06-09 16:53:02 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2020-06-09 16:53:02 -请求地址 : http://localhost:8066/main
+2020-06-09 16:53:02 -HTTP METHOD : GET
+2020-06-09 16:53:02 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-06-09 16:53:02 -参数 : []
+2020-06-09 16:53:02 -耗时 : 1
+2020-06-09 16:53:02 -返回值 : main
+2020-06-09 16:53:02 -<==      Total: 0
+2020-06-09 16:53:02 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2020-06-09 16:53:02 -==> Parameters: 1(Long), 0(String)
+2020-06-09 16:53:02 -<==      Total: 1
+2020-06-09 16:53:02 -耗时 : 417
+2020-06-09 16:53:02 -返回值 : com.bootdo.common.utils.PageUtils@63d983ff
+2020-06-09 16:53:04 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2020-06-09 16:53:04 -==> Parameters: 1(Long)
+2020-06-09 16:53:04 -<==      Total: 47
+2020-06-09 16:53:04 -请求地址 : http://localhost:8066/common/dict
+2020-06-09 16:53:04 -HTTP METHOD : GET
+2020-06-09 16:53:04 -CLASS_METHOD : com.bootdo.common.controller.DictController.dict
+2020-06-09 16:53:04 -参数 : []
+2020-06-09 16:53:04 -耗时 : 1
+2020-06-09 16:53:04 -返回值 : common/dict/dict
+2020-06-09 16:53:05 -请求地址 : http://localhost:8066/common/dict/type
+2020-06-09 16:53:05 -HTTP METHOD : GET
+2020-06-09 16:53:05 -CLASS_METHOD : com.bootdo.common.controller.DictController.listType
+2020-06-09 16:53:05 -参数 : []
+2020-06-09 16:53:05 -==>  Preparing: select distinct `type` , description from sys_dict 
+2020-06-09 16:53:05 -==> Parameters: 
+2020-06-09 16:53:05 -请求地址 : http://localhost:8066/common/dict/list
+2020-06-09 16:53:05 -HTTP METHOD : GET
+2020-06-09 16:53:05 -CLASS_METHOD : com.bootdo.common.controller.DictController.list
+2020-06-09 16:53:05 -参数 : [{limit=10, offset=0}]
+2020-06-09 16:53:05 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict order by id desc limit ?, ? 
+2020-06-09 16:53:05 -==> Parameters: 0(Integer), 10(Integer)
+2020-06-09 16:53:05 -<==      Total: 31
+2020-06-09 16:53:05 -耗时 : 81
+2020-06-09 16:53:05 -返回值 : [DictDO{id=null, name='null', value='null', type='del_flag', description='删除标记', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='show_hide', description='显示/隐藏', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='yes_no', description='是/否', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='color', description='颜色值', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='theme', description='主题方案', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_area_type', description='区域类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_type', description='机构类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_common', description='快捷通用部门', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_grade', description='机构等级', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_data_scope', description='数据范围', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_user_type', description='用户类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_theme', description='站点主题', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_module', description='栏目模型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_show_modes', description='展现方式', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_del_flag', description='内容状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_posid', description='推荐位', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_guestbook', description='留言板分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_leave_type', description='请假类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_log_type', description='日志类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='act_type', description='流程类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='act_category', description='流程分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_category', description='代码生成分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_query_type', description='查询方式', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_show_type', description='字段生成方案', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_java_type', description='Java类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sex', description='性别', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_type', description='通知通告类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_status', description='通知通告状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_read', description='通知通告状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='blog_type', description='博客类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='hobby', description='爱好', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}]
+2020-06-09 16:53:05 -<==      Total: 10
+2020-06-09 16:53:05 -==>  Preparing: select count(*) from sys_dict 
+2020-06-09 16:53:05 -==> Parameters: 
+2020-06-09 16:53:05 -<==      Total: 1
+2020-06-09 16:53:05 -耗时 : 132
+2020-06-09 16:53:05 -返回值 : com.bootdo.common.utils.PageUtils@67a8414a
+2020-06-09 16:53:06 -请求地址 : http://localhost:8066/sys/user/personal
+2020-06-09 16:53:06 -HTTP METHOD : GET
+2020-06-09 16:53:06 -CLASS_METHOD : com.bootdo.system.controller.UserController.personal
+2020-06-09 16:53:06 -参数 : [{}]
+2020-06-09 16:53:07 -==>  Preparing: select role_id from sys_user_role where user_id=? 
+2020-06-09 16:53:07 -==> Parameters: 1(Long)
+2020-06-09 16:53:07 -<==      Total: 1
+2020-06-09 16:53:07 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2020-06-09 16:53:07 -==> Parameters: 1(Long)
+2020-06-09 16:53:07 -<==      Total: 1
+2020-06-09 16:53:07 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept where dept_id = ? 
+2020-06-09 16:53:07 -==> Parameters: 6(Long)
+2020-06-09 16:53:07 -<==      Total: 1
+2020-06-09 16:53:07 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE type = ? order by id desc 
+2020-06-09 16:53:07 -==> Parameters: hobby(String)
+2020-06-09 16:53:07 -<==      Total: 2
+2020-06-09 16:53:07 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict WHERE type = ? order by id desc 
+2020-06-09 16:53:07 -==> Parameters: sex(String)
+2020-06-09 16:53:07 -<==      Total: 2
+2020-06-09 16:53:07 -耗时 : 121
+2020-06-09 16:53:07 -返回值 : system/user/personal
+2020-06-09 16:58:05 -请求地址 : http://localhost:8066/sys/user/uploadImg
+2020-06-09 16:58:05 -HTTP METHOD : POST
+2020-06-09 16:58:05 -CLASS_METHOD : com.bootdo.system.controller.UserController.uploadImg
+2020-06-09 16:58:05 -参数 : [org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@699efa02, {"x":395.35934065934026,"y":1129.5296703296697,"height":3413.6,"width":3413.6,"rotate":0}, org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@7592e894]
+2020-06-09 16:58:14 -==>  Preparing: insert into sys_file ( `type`, `url`, `create_date` ) values ( ?, ?, ? ) 
+2020-06-09 16:58:14 -==> Parameters: 0(Integer), /files/40dadf34-e01b-41c7-8311-d87ab8adb3c0.png(String), 2020-06-09 16:58:05.836(Timestamp)
+2020-06-09 16:58:14 -<==    Updates: 1
+2020-06-09 16:58:14 -==>  Preparing: update sys_user SET `pic_id` = ? where user_id = ? 
+2020-06-09 16:58:14 -==> Parameters: 143(Long), 1(Long)
+2020-06-09 16:58:14 -<==    Updates: 1
+2020-06-09 16:58:15 -耗时 : 9238
+2020-06-09 16:58:15 -返回值 : {msg=操作成功, code=0, url=/files/40dadf34-e01b-41c7-8311-d87ab8adb3c0.png}
+2020-06-09 16:58:22 -请求地址 : http://localhost:8066/main
+2020-06-09 16:58:22 -HTTP METHOD : GET
+2020-06-09 16:58:22 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-06-09 16:58:22 -参数 : []
+2020-06-09 16:58:22 -耗时 : 1
+2020-06-09 16:58:22 -返回值 : main
+2020-06-09 16:58:25 -请求地址 : http://localhost:8066/
+2020-06-09 16:58:25 -HTTP METHOD : GET
+2020-06-09 16:58:25 -CLASS_METHOD : com.bootdo.system.controller.LoginController.welcome
+2020-06-09 16:58:25 -参数 : [{}]
+2020-06-09 16:58:25 -耗时 : 1
+2020-06-09 16:58:25 -返回值 : login
+2020-06-09 16:58:27 -请求地址 : http://localhost:8066/login
+2020-06-09 16:58:27 -HTTP METHOD : POST
+2020-06-09 16:58:27 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2020-06-09 16:58:27 -参数 : [admin, 111111]
+2020-06-09 16:58:27 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2020-06-09 16:58:27 -==> Parameters: admin(String)
+2020-06-09 16:58:27 -<==      Total: 1
+2020-06-09 16:58:27 -耗时 : 22
+2020-06-09 16:58:27 -返回值 : {msg=操作成功, code=0}
+2020-06-09 16:58:27 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-06-09 16:58:27 -==> Parameters: 1(Long), admin(String), 登录(String), 22(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2020-06-09 16:58:27.156(Timestamp)
+2020-06-09 16:58:27 -请求地址 : http://localhost:8066/index
+2020-06-09 16:58:27 -HTTP METHOD : GET
+2020-06-09 16:58:27 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2020-06-09 16:58:27 -参数 : [{}]
+2020-06-09 16:58:27 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2020-06-09 16:58:27 -==> Parameters: 1(Long)
+2020-06-09 16:58:27 -<==      Total: 27
+2020-06-09 16:58:27 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2020-06-09 16:58:27 -==> Parameters: 143(Long)
+2020-06-09 16:58:27 -<==      Total: 1
+2020-06-09 16:58:27 -耗时 : 49
+2020-06-09 16:58:27 -返回值 : index_v1
+2020-06-09 16:58:27 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-06-09 16:58:27 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 49(Integer), com.bootdo.system.controller.LoginController.index()(String), null, 127.0.0.1(String), 2020-06-09 16:58:27.22(Timestamp)
+2020-06-09 16:58:27 -<==    Updates: 1
+2020-06-09 16:58:27 -<==    Updates: 1
+2020-06-09 16:58:27 -请求地址 : http://localhost:8066/main
+2020-06-09 16:58:27 -HTTP METHOD : GET
+2020-06-09 16:58:27 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-06-09 16:58:27 -参数 : []
+2020-06-09 16:58:27 -耗时 : 1
+2020-06-09 16:58:27 -返回值 : main
+2020-06-09 16:58:27 -请求地址 : http://localhost:8066/oa/notify/message
+2020-06-09 16:58:27 -HTTP METHOD : GET
+2020-06-09 16:58:27 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2020-06-09 16:58:27 -参数 : []
+2020-06-09 16:58:27 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2020-06-09 16:58:27 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2020-06-09 16:58:27 -<==      Total: 0
+2020-06-09 16:58:27 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2020-06-09 16:58:27 -==> Parameters: 1(Long), 0(String)
+2020-06-09 16:58:27 -<==      Total: 1
+2020-06-09 16:58:27 -耗时 : 4
+2020-06-09 16:58:27 -返回值 : com.bootdo.common.utils.PageUtils@6ec57686
+2020-06-09 16:58:27 -请求地址 : http://localhost:8066/main
+2020-06-09 16:58:27 -HTTP METHOD : GET
+2020-06-09 16:58:27 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-06-09 16:58:27 -参数 : []
+2020-06-09 16:58:27 -耗时 : 1
+2020-06-09 16:58:27 -返回值 : main
+2020-06-09 16:58:32 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2020-06-09 16:58:32 -==> Parameters: 1(Long)
+2020-06-09 16:58:32 -<==      Total: 47
+2020-06-09 16:58:32 -请求地址 : http://localhost:8066/common/dict
+2020-06-09 16:58:32 -HTTP METHOD : GET
+2020-06-09 16:58:32 -CLASS_METHOD : com.bootdo.common.controller.DictController.dict
+2020-06-09 16:58:32 -参数 : []
+2020-06-09 16:58:32 -耗时 : 0
+2020-06-09 16:58:32 -返回值 : common/dict/dict
+2020-06-09 16:58:32 -请求地址 : http://localhost:8066/common/dict/type
+2020-06-09 16:58:32 -HTTP METHOD : GET
+2020-06-09 16:58:32 -CLASS_METHOD : com.bootdo.common.controller.DictController.listType
+2020-06-09 16:58:32 -参数 : []
+2020-06-09 16:58:32 -==>  Preparing: select distinct `type` , description from sys_dict 
+2020-06-09 16:58:32 -==> Parameters: 
+2020-06-09 16:58:32 -请求地址 : http://localhost:8066/common/dict/list
+2020-06-09 16:58:32 -HTTP METHOD : GET
+2020-06-09 16:58:32 -CLASS_METHOD : com.bootdo.common.controller.DictController.list
+2020-06-09 16:58:32 -参数 : [{limit=10, offset=0}]
+2020-06-09 16:58:32 -==>  Preparing: select `id`,`name`,`value`,`type`,`description`,`sort`,`parent_id`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from sys_dict order by id desc limit ?, ? 
+2020-06-09 16:58:32 -==> Parameters: 0(Integer), 10(Integer)
+2020-06-09 16:58:32 -<==      Total: 31
+2020-06-09 16:58:32 -<==      Total: 10
+2020-06-09 16:58:32 -耗时 : 43
+2020-06-09 16:58:32 -==>  Preparing: select count(*) from sys_dict 
+2020-06-09 16:58:32 -==> Parameters: 
+2020-06-09 16:58:32 -返回值 : [DictDO{id=null, name='null', value='null', type='del_flag', description='删除标记', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='show_hide', description='显示/隐藏', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='yes_no', description='是/否', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='color', description='颜色值', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='theme', description='主题方案', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_area_type', description='区域类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_type', description='机构类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_common', description='快捷通用部门', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_office_grade', description='机构等级', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_data_scope', description='数据范围', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_user_type', description='用户类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_theme', description='站点主题', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_module', description='栏目模型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_show_modes', description='展现方式', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_del_flag', description='内容状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_posid', description='推荐位', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='cms_guestbook', description='留言板分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_leave_type', description='请假类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sys_log_type', description='日志类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='act_type', description='流程类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='act_category', description='流程分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_category', description='代码生成分类', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_query_type', description='查询方式', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_show_type', description='字段生成方案', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='gen_java_type', description='Java类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='sex', description='性别', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_type', description='通知通告类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_status', description='通知通告状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='oa_notify_read', description='通知通告状态', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='blog_type', description='博客类型', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}, DictDO{id=null, name='null', value='null', type='hobby', description='爱好', sort=null, parentId=null, createBy=null, createDate=null, updateBy=null, updateDate=null, remarks='null', delFlag='null'}]
+2020-06-09 16:58:32 -<==      Total: 1
+2020-06-09 16:58:32 -耗时 : 40
+2020-06-09 16:58:32 -返回值 : com.bootdo.common.utils.PageUtils@3403853c
+2020-06-09 16:58:33 -请求地址 : http://localhost:8066/sys/user/
+2020-06-09 16:58:33 -HTTP METHOD : GET
+2020-06-09 16:58:33 -CLASS_METHOD : com.bootdo.system.controller.UserController.user
+2020-06-09 16:58:33 -参数 : [{}]
+2020-06-09 16:58:33 -耗时 : 1
+2020-06-09 16:58:33 -返回值 : system/user/user
+2020-06-09 16:58:33 -请求地址 : http://localhost:8066/system/sysDept/tree
+2020-06-09 16:58:33 -HTTP METHOD : GET
+2020-06-09 16:58:33 -CLASS_METHOD : com.bootdo.system.controller.DeptController.tree
+2020-06-09 16:58:33 -参数 : []
+2020-06-09 16:58:33 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept order by dept_id desc 
+2020-06-09 16:58:33 -==> Parameters: 
+2020-06-09 16:58:33 -请求地址 : http://localhost:8066/sys/user/list
+2020-06-09 16:58:33 -HTTP METHOD : GET
+2020-06-09 16:58:33 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2020-06-09 16:58:33 -参数 : [{limit=10, offset=0, name=, deptId=}]
+2020-06-09 16:58:33 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user order by user_id desc limit ?, ? 
+2020-06-09 16:58:33 -<==      Total: 10
+2020-06-09 16:58:33 -==> Parameters: 0(Integer), 10(Integer)
+2020-06-09 16:58:33 -耗时 : 69
+2020-06-09 16:58:33 -返回值 : {"checked":true,"children":[{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"15","parentId":"13","state":{"opened":true},"text":"测试二部"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"14","parentId":"13","state":{"opened":true},"text":"测试一部"}],"hasChildren":true,"hasParent":false,"id":"13","parentId":"0","state":{"opened":true},"text":"测试部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"12","parentId":"11","state":{"opened":true},"text":"产品一部"}],"hasChildren":true,"hasParent":false,"id":"11","parentId":"0","state":{"opened":true},"text":"产品部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"10","parentId":"9","state":{"opened":true},"text":"销售一部"}],"hasChildren":true,"hasParent":false,"id":"9","parentId":"0","state":{"opened":true},"text":"销售部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"8","parentId":"6","state":{"opened":true},"text":"研发二部"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"7","parentId":"6","state":{"opened":true},"text":"研發一部"}],"hasChildren":true,"hasParent":false,"id":"6","parentId":"0","state":{"opened":true},"text":"研发部"}],"hasChildren":true,"hasParent":false,"id":"-1","parentId":"","state":{"opened":true},"text":"顶级节点"}
+2020-06-09 16:58:33 -<==      Total: 10
+2020-06-09 16:58:33 -==>  Preparing: select count(*) from sys_user 
+2020-06-09 16:58:33 -==> Parameters: 
+2020-06-09 16:58:33 -<==      Total: 1
+2020-06-09 16:58:33 -耗时 : 38
+2020-06-09 16:58:33 -返回值 : com.bootdo.common.utils.PageUtils@7e76899a
+2020-06-09 17:08:48 -Validating all active sessions...
+2020-06-09 17:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 17:09:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 74814]
+2020-06-09 17:39:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 75247]
+2020-06-09 18:08:48 -Validating all active sessions...
+2020-06-09 18:08:48 -Finished session validation.  [1] sessions were stopped.
+2020-06-09 18:09:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 75680]
+2020-06-09 18:39:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 76113]
+2020-06-09 19:08:48 -Validating all active sessions...
+2020-06-09 19:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 19:09:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 76546]
+2020-06-09 19:39:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 76979]
+2020-06-09 20:08:48 -Validating all active sessions...
+2020-06-09 20:08:48 -Finished session validation.  No sessions were stopped.
+2020-06-09 20:09:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 77412]
+2020-06-09 20:39:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 77845]
+2020-06-09 21:08:49 -Validating all active sessions...
+2020-06-09 21:08:49 -Finished session validation.  No sessions were stopped.
+2020-06-09 21:09:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 78278]
+2020-06-09 21:39:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 78711]
+2020-06-09 22:08:49 -Validating all active sessions...
+2020-06-09 22:08:49 -Finished session validation.  No sessions were stopped.
+2020-06-09 22:09:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 79144]
+2020-06-09 22:39:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 79577]
+2020-06-09 23:08:49 -Validating all active sessions...
+2020-06-09 23:08:49 -Finished session validation.  No sessions were stopped.
+2020-06-09 23:09:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 80010]
+2020-06-09 23:39:32 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 80443]

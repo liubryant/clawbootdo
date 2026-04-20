@@ -1,0 +1,822 @@
+2020-10-30 00:06:51 -Validating all active sessions...
+2020-10-30 00:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 00:07:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 5207]
+2020-10-30 00:37:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 5640]
+2020-10-30 01:06:51 -Validating all active sessions...
+2020-10-30 01:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 01:07:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 6073]
+2020-10-30 01:37:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 6506]
+2020-10-30 02:06:51 -Validating all active sessions...
+2020-10-30 02:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 02:07:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 6939]
+2020-10-30 02:37:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 7372]
+2020-10-30 03:06:51 -Validating all active sessions...
+2020-10-30 03:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 03:07:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 7805]
+2020-10-30 03:37:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 8238]
+2020-10-30 04:06:51 -Validating all active sessions...
+2020-10-30 04:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 04:07:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 8671]
+2020-10-30 04:37:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 9104]
+2020-10-30 05:06:51 -Validating all active sessions...
+2020-10-30 05:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 05:07:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 9537]
+2020-10-30 05:37:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 9970]
+2020-10-30 06:06:51 -Validating all active sessions...
+2020-10-30 06:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 06:07:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 10403]
+2020-10-30 06:37:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 10836]
+2020-10-30 07:06:51 -Validating all active sessions...
+2020-10-30 07:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 07:07:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 11269]
+2020-10-30 07:37:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 11702]
+2020-10-30 08:06:51 -Validating all active sessions...
+2020-10-30 08:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 08:07:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 12135]
+2020-10-30 08:37:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 12568]
+2020-10-30 09:06:51 -Validating all active sessions...
+2020-10-30 09:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 09:07:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 13001]
+2020-10-30 09:37:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 13434]
+2020-10-30 10:06:51 -Validating all active sessions...
+2020-10-30 10:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 10:07:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 13867]
+2020-10-30 10:37:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 14300]
+2020-10-30 11:06:51 -Validating all active sessions...
+2020-10-30 11:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 11:07:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 14733]
+2020-10-30 11:37:42 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 15166]
+2020-10-30 12:06:51 -Validating all active sessions...
+2020-10-30 12:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 12:07:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 15599]
+2020-10-30 12:37:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 16032]
+2020-10-30 13:06:51 -Validating all active sessions...
+2020-10-30 13:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 13:07:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 16465]
+2020-10-30 13:37:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 16898]
+2020-10-30 14:06:51 -Validating all active sessions...
+2020-10-30 14:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 14:07:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 17331]
+2020-10-30 14:37:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 17764]
+2020-10-30 15:06:51 -Validating all active sessions...
+2020-10-30 15:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 15:07:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 18197]
+2020-10-30 15:37:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 18630]
+2020-10-30 15:53:46 -请求地址 : http://localhost:8066/login;JSESSIONID=26b83c2c-00b1-40bf-bace-4ceb746c2409
+2020-10-30 15:53:46 -HTTP METHOD : GET
+2020-10-30 15:53:46 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2020-10-30 15:53:46 -参数 : []
+2020-10-30 15:53:46 -耗时 : 0
+2020-10-30 15:53:46 -返回值 : login
+2020-10-30 15:53:46 -请求地址 : http://localhost:8066/login;JSESSIONID=26b83c2c-00b1-40bf-bace-4ceb746c2409
+2020-10-30 15:53:46 -HTTP METHOD : GET
+2020-10-30 15:53:46 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2020-10-30 15:53:46 -参数 : []
+2020-10-30 15:53:46 -耗时 : 0
+2020-10-30 15:53:46 -返回值 : login
+2020-10-30 15:53:48 -请求地址 : http://localhost:8066/login
+2020-10-30 15:53:48 -HTTP METHOD : POST
+2020-10-30 15:53:48 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2020-10-30 15:53:48 -参数 : [admin, 111111]
+2020-10-30 15:53:48 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2020-10-30 15:53:48 -==> Parameters: admin(String)
+2020-10-30 15:53:48 -<==      Total: 1
+2020-10-30 15:53:48 -耗时 : 37
+2020-10-30 15:53:48 -返回值 : {msg=操作成功, code=0}
+2020-10-30 15:53:48 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-30 15:53:48 -==> Parameters: 1(Long), admin(String), 登录(String), 37(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2020-10-30 15:53:48.471(Timestamp)
+2020-10-30 15:53:48 -<==    Updates: 1
+2020-10-30 15:53:48 -请求地址 : http://localhost:8066/index
+2020-10-30 15:53:48 -HTTP METHOD : GET
+2020-10-30 15:53:48 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2020-10-30 15:53:48 -参数 : [{}]
+2020-10-30 15:53:48 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2020-10-30 15:53:48 -==> Parameters: 1(Long)
+2020-10-30 15:53:48 -<==      Total: 27
+2020-10-30 15:53:48 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2020-10-30 15:53:48 -==> Parameters: 143(Long)
+2020-10-30 15:53:48 -<==      Total: 1
+2020-10-30 15:53:48 -耗时 : 69
+2020-10-30 15:53:48 -返回值 : index_v1
+2020-10-30 15:53:48 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-30 15:53:48 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 69(Integer), com.bootdo.system.controller.LoginController.index()(String), null, 127.0.0.1(String), 2020-10-30 15:53:48.577(Timestamp)
+2020-10-30 15:53:48 -<==    Updates: 1
+2020-10-30 15:53:48 -请求地址 : http://localhost:8066/main
+2020-10-30 15:53:48 -HTTP METHOD : GET
+2020-10-30 15:53:48 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-10-30 15:53:48 -参数 : []
+2020-10-30 15:53:48 -耗时 : 0
+2020-10-30 15:53:48 -返回值 : main
+2020-10-30 15:53:48 -请求地址 : http://localhost:8066/oa/notify/message
+2020-10-30 15:53:48 -HTTP METHOD : GET
+2020-10-30 15:53:48 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2020-10-30 15:53:48 -参数 : []
+2020-10-30 15:53:48 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2020-10-30 15:53:48 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2020-10-30 15:53:48 -请求地址 : http://localhost:8066/main
+2020-10-30 15:53:48 -<==      Total: 0
+2020-10-30 15:53:48 -HTTP METHOD : GET
+2020-10-30 15:53:48 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-10-30 15:53:48 -参数 : []
+2020-10-30 15:53:48 -耗时 : 1
+2020-10-30 15:53:48 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2020-10-30 15:53:48 -返回值 : main
+2020-10-30 15:53:48 -==> Parameters: 1(Long), 0(String)
+2020-10-30 15:53:48 -<==      Total: 1
+2020-10-30 15:53:48 -耗时 : 61
+2020-10-30 15:53:48 -返回值 : com.bootdo.common.utils.PageUtils@3ccea2c0
+2020-10-30 15:53:50 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2020-10-30 15:53:50 -==> Parameters: 1(Long)
+2020-10-30 15:53:50 -<==      Total: 47
+2020-10-30 15:53:50 -请求地址 : http://localhost:8066/sys/user/
+2020-10-30 15:53:50 -HTTP METHOD : GET
+2020-10-30 15:53:50 -CLASS_METHOD : com.bootdo.system.controller.UserController.user
+2020-10-30 15:53:50 -参数 : [{}]
+2020-10-30 15:53:50 -耗时 : 0
+2020-10-30 15:53:50 -返回值 : system/user/user
+2020-10-30 15:53:50 -请求地址 : http://localhost:8066/system/sysDept/tree
+2020-10-30 15:53:50 -HTTP METHOD : GET
+2020-10-30 15:53:50 -CLASS_METHOD : com.bootdo.system.controller.DeptController.tree
+2020-10-30 15:53:50 -参数 : []
+2020-10-30 15:53:50 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept order by dept_id desc 
+2020-10-30 15:53:50 -==> Parameters: 
+2020-10-30 15:53:50 -<==      Total: 10
+2020-10-30 15:53:50 -耗时 : 8
+2020-10-30 15:53:50 -返回值 : {"checked":true,"children":[{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"15","parentId":"13","state":{"opened":true},"text":"测试二部"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"14","parentId":"13","state":{"opened":true},"text":"测试一部"}],"hasChildren":true,"hasParent":false,"id":"13","parentId":"0","state":{"opened":true},"text":"测试部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"12","parentId":"11","state":{"opened":true},"text":"产品一部"}],"hasChildren":true,"hasParent":false,"id":"11","parentId":"0","state":{"opened":true},"text":"产品部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"10","parentId":"9","state":{"opened":true},"text":"销售一部"}],"hasChildren":true,"hasParent":false,"id":"9","parentId":"0","state":{"opened":true},"text":"销售部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"8","parentId":"6","state":{"opened":true},"text":"研发二部"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"7","parentId":"6","state":{"opened":true},"text":"研發一部"}],"hasChildren":true,"hasParent":false,"id":"6","parentId":"0","state":{"opened":true},"text":"研发部"}],"hasChildren":true,"hasParent":false,"id":"-1","parentId":"","state":{"opened":true},"text":"顶级节点"}
+2020-10-30 15:53:50 -请求地址 : http://localhost:8066/sys/user/list
+2020-10-30 15:53:50 -HTTP METHOD : GET
+2020-10-30 15:53:50 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2020-10-30 15:53:50 -参数 : [{limit=10, offset=0, name=, deptId=}]
+2020-10-30 15:53:50 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user order by user_id desc limit ?, ? 
+2020-10-30 15:53:50 -==> Parameters: 0(Integer), 10(Integer)
+2020-10-30 15:53:50 -<==      Total: 10
+2020-10-30 15:53:50 -==>  Preparing: select count(*) from sys_user 
+2020-10-30 15:53:50 -==> Parameters: 
+2020-10-30 15:53:50 -<==      Total: 1
+2020-10-30 15:53:50 -耗时 : 11
+2020-10-30 15:53:50 -返回值 : com.bootdo.common.utils.PageUtils@62a0d567
+2020-10-30 15:53:55 -请求地址 : http://localhost:8066/sys/user/resetPwd/167
+2020-10-30 15:53:55 -HTTP METHOD : GET
+2020-10-30 15:53:55 -CLASS_METHOD : com.bootdo.system.controller.UserController.resetPwd
+2020-10-30 15:53:55 -参数 : [167, {}]
+2020-10-30 15:53:55 -耗时 : 1
+2020-10-30 15:53:55 -返回值 : system/user/reset_pwd
+2020-10-30 15:53:55 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-30 15:53:55 -==> Parameters: 1(Long), admin(String), 请求更改用户密码(String), 1(Integer), com.bootdo.system.controller.UserController.resetPwd()(String), null, 127.0.0.1(String), 2020-10-30 15:53:55.374(Timestamp)
+2020-10-30 15:53:55 -<==    Updates: 1
+2020-10-30 15:53:57 -请求地址 : http://localhost:8066/sys/user/edit/167
+2020-10-30 15:53:57 -HTTP METHOD : GET
+2020-10-30 15:53:57 -CLASS_METHOD : com.bootdo.system.controller.UserController.edit
+2020-10-30 15:53:57 -参数 : [{}, 167]
+2020-10-30 15:53:57 -==>  Preparing: select role_id from sys_user_role where user_id=? 
+2020-10-30 15:53:57 -==> Parameters: 167(Long)
+2020-10-30 15:53:57 -<==      Total: 1
+2020-10-30 15:53:57 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2020-10-30 15:53:57 -==> Parameters: 167(Long)
+2020-10-30 15:53:57 -<==      Total: 1
+2020-10-30 15:53:57 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept where dept_id = ? 
+2020-10-30 15:53:57 -==> Parameters: null
+2020-10-30 15:53:57 -<==      Total: 0
+2020-10-30 15:53:57 -null
+java.lang.NullPointerException: null
+	at com.bootdo.system.service.impl.UserServiceImpl.get(UserServiceImpl.java:54)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:282)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at com.sun.proxy.$Proxy141.get(Unknown Source)
+	at com.bootdo.system.controller.UserController.edit(UserController.java:71)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:741)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:52)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)
+	at com.bootdo.common.aspect.WebLogAspect.doAround(WebLogAspect.java:53)
+	at sun.reflect.GeneratedMethodAccessor148.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:52)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)
+	at com.bootdo.common.aspect.LogAspect.around(LogAspect.java:50)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:168)
+	at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor$1.proceed(AopAllianceAnnotationsAuthorizingMethodInterceptor.java:82)
+	at org.apache.shiro.authz.aop.AuthorizingMethodInterceptor.invoke(AuthorizingMethodInterceptor.java:39)
+	at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor.invoke(AopAllianceAnnotationsAuthorizingMethodInterceptor.java:115)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:673)
+	at com.bootdo.system.controller.UserController$$EnhancerBySpringCGLIB$$7cd10845.edit(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:383)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:208)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:347)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:263)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2020-10-30 15:53:57 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-30 15:53:57 -==> Parameters: 1(Long), admin(String), error(String), null, http://localhost:8066/sys/user/edit/167(String), java.lang.NullPointerException(String), null, 2020-10-30 15:53:57.802(Timestamp)
+2020-10-30 15:53:57 -<==    Updates: 1
+2020-10-30 15:54:00 -请求地址 : http://localhost:8066/sys/user/edit/138
+2020-10-30 15:54:00 -HTTP METHOD : GET
+2020-10-30 15:54:00 -CLASS_METHOD : com.bootdo.system.controller.UserController.edit
+2020-10-30 15:54:00 -参数 : [{}, 138]
+2020-10-30 15:54:00 -==>  Preparing: select role_id from sys_user_role where user_id=? 
+2020-10-30 15:54:00 -==> Parameters: 138(Long)
+2020-10-30 15:54:00 -<==      Total: 1
+2020-10-30 15:54:00 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2020-10-30 15:54:00 -==> Parameters: 138(Long)
+2020-10-30 15:54:00 -<==      Total: 1
+2020-10-30 15:54:00 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept where dept_id = ? 
+2020-10-30 15:54:00 -==> Parameters: 9(Long)
+2020-10-30 15:54:00 -<==      Total: 1
+2020-10-30 15:54:00 -==>  Preparing: select role_id from sys_user_role where user_id=? 
+2020-10-30 15:54:00 -==> Parameters: 138(Long)
+2020-10-30 15:54:00 -<==      Total: 1
+2020-10-30 15:54:00 -==>  Preparing: select `role_id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified` from sys_role order by role_id desc 
+2020-10-30 15:54:00 -==> Parameters: 
+2020-10-30 15:54:00 -<==      Total: 1
+2020-10-30 15:54:00 -耗时 : 16
+2020-10-30 15:54:00 -返回值 : system/user/edit
+2020-10-30 15:54:00 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-30 15:54:00 -==> Parameters: 1(Long), admin(String), 编辑用户(String), 16(Integer), com.bootdo.system.controller.UserController.edit()(String), null, 127.0.0.1(String), 2020-10-30 15:54:00.446(Timestamp)
+2020-10-30 15:54:00 -<==    Updates: 1
+2020-10-30 15:54:02 -请求地址 : http://localhost:8066/sys/user/edit/167
+2020-10-30 15:54:02 -HTTP METHOD : GET
+2020-10-30 15:54:02 -CLASS_METHOD : com.bootdo.system.controller.UserController.edit
+2020-10-30 15:54:02 -参数 : [{}, 167]
+2020-10-30 15:54:02 -==>  Preparing: select role_id from sys_user_role where user_id=? 
+2020-10-30 15:54:02 -==> Parameters: 167(Long)
+2020-10-30 15:54:02 -<==      Total: 1
+2020-10-30 15:54:02 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2020-10-30 15:54:02 -==> Parameters: 167(Long)
+2020-10-30 15:54:02 -<==      Total: 1
+2020-10-30 15:54:02 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept where dept_id = ? 
+2020-10-30 15:54:02 -==> Parameters: null
+2020-10-30 15:54:02 -<==      Total: 0
+2020-10-30 15:54:02 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-30 15:54:02 -null
+java.lang.NullPointerException: null
+	at com.bootdo.system.service.impl.UserServiceImpl.get(UserServiceImpl.java:54)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:282)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at com.sun.proxy.$Proxy141.get(Unknown Source)
+	at com.bootdo.system.controller.UserController.edit(UserController.java:71)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:741)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:52)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)
+	at com.bootdo.common.aspect.WebLogAspect.doAround(WebLogAspect.java:53)
+	at sun.reflect.GeneratedMethodAccessor148.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:52)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)
+	at com.bootdo.common.aspect.LogAspect.around(LogAspect.java:50)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:168)
+	at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor$1.proceed(AopAllianceAnnotationsAuthorizingMethodInterceptor.java:82)
+	at org.apache.shiro.authz.aop.AuthorizingMethodInterceptor.invoke(AuthorizingMethodInterceptor.java:39)
+	at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor.invoke(AopAllianceAnnotationsAuthorizingMethodInterceptor.java:115)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:673)
+	at com.bootdo.system.controller.UserController$$EnhancerBySpringCGLIB$$7cd10845.edit(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:383)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:208)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:347)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:263)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2020-10-30 15:54:02 -==> Parameters: 1(Long), admin(String), error(String), null, http://localhost:8066/sys/user/edit/167(String), java.lang.NullPointerException(String), null, 2020-10-30 15:54:02.372(Timestamp)
+2020-10-30 15:54:02 -<==    Updates: 1
+2020-10-30 15:54:04 -请求地址 : http://localhost:8066/sys/user/edit/166
+2020-10-30 15:54:04 -HTTP METHOD : GET
+2020-10-30 15:54:04 -CLASS_METHOD : com.bootdo.system.controller.UserController.edit
+2020-10-30 15:54:04 -参数 : [{}, 166]
+2020-10-30 15:54:04 -==>  Preparing: select role_id from sys_user_role where user_id=? 
+2020-10-30 15:54:04 -==> Parameters: 166(Long)
+2020-10-30 15:54:04 -<==      Total: 1
+2020-10-30 15:54:04 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2020-10-30 15:54:04 -==> Parameters: 166(Long)
+2020-10-30 15:54:04 -<==      Total: 1
+2020-10-30 15:54:04 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept where dept_id = ? 
+2020-10-30 15:54:04 -==> Parameters: 12(Long)
+2020-10-30 15:54:04 -<==      Total: 1
+2020-10-30 15:54:04 -==>  Preparing: select role_id from sys_user_role where user_id=? 
+2020-10-30 15:54:04 -==> Parameters: 166(Long)
+2020-10-30 15:54:04 -<==      Total: 1
+2020-10-30 15:54:04 -==>  Preparing: select `role_id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified` from sys_role order by role_id desc 
+2020-10-30 15:54:04 -==> Parameters: 
+2020-10-30 15:54:04 -<==      Total: 1
+2020-10-30 15:54:04 -耗时 : 17
+2020-10-30 15:54:04 -返回值 : system/user/edit
+2020-10-30 15:54:04 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-30 15:54:04 -==> Parameters: 1(Long), admin(String), 编辑用户(String), 17(Integer), com.bootdo.system.controller.UserController.edit()(String), null, 127.0.0.1(String), 2020-10-30 15:54:04.27(Timestamp)
+2020-10-30 15:54:04 -<==    Updates: 1
+2020-10-30 15:54:07 -请求地址 : http://localhost:8066/index
+2020-10-30 15:54:07 -HTTP METHOD : GET
+2020-10-30 15:54:07 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2020-10-30 15:54:07 -参数 : [{}]
+2020-10-30 15:54:07 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2020-10-30 15:54:07 -==> Parameters: 1(Long)
+2020-10-30 15:54:07 -<==      Total: 27
+2020-10-30 15:54:07 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2020-10-30 15:54:07 -==> Parameters: 143(Long)
+2020-10-30 15:54:07 -<==      Total: 1
+2020-10-30 15:54:07 -耗时 : 12
+2020-10-30 15:54:07 -返回值 : index_v1
+2020-10-30 15:54:07 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-30 15:54:07 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 13(Integer), com.bootdo.system.controller.LoginController.index()(String), null, 127.0.0.1(String), 2020-10-30 15:54:07.464(Timestamp)
+2020-10-30 15:54:07 -<==    Updates: 1
+2020-10-30 15:54:07 -请求地址 : http://localhost:8066/main
+2020-10-30 15:54:07 -HTTP METHOD : GET
+2020-10-30 15:54:07 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-10-30 15:54:07 -参数 : []
+2020-10-30 15:54:07 -耗时 : 0
+2020-10-30 15:54:07 -返回值 : main
+2020-10-30 15:54:07 -请求地址 : http://localhost:8066/oa/notify/message
+2020-10-30 15:54:07 -HTTP METHOD : GET
+2020-10-30 15:54:07 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2020-10-30 15:54:07 -参数 : []
+2020-10-30 15:54:07 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2020-10-30 15:54:07 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2020-10-30 15:54:07 -<==      Total: 0
+2020-10-30 15:54:07 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2020-10-30 15:54:07 -==> Parameters: 1(Long), 0(String)
+2020-10-30 15:54:07 -<==      Total: 1
+2020-10-30 15:54:07 -耗时 : 3
+2020-10-30 15:54:07 -返回值 : com.bootdo.common.utils.PageUtils@920234
+2020-10-30 15:54:07 -请求地址 : http://localhost:8066/main
+2020-10-30 15:54:07 -HTTP METHOD : GET
+2020-10-30 15:54:07 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-10-30 15:54:07 -参数 : []
+2020-10-30 15:54:07 -耗时 : 1
+2020-10-30 15:54:07 -返回值 : main
+2020-10-30 15:54:09 -请求地址 : http://localhost:8066/sys/user/
+2020-10-30 15:54:09 -HTTP METHOD : GET
+2020-10-30 15:54:09 -CLASS_METHOD : com.bootdo.system.controller.UserController.user
+2020-10-30 15:54:09 -参数 : [{}]
+2020-10-30 15:54:09 -耗时 : 1
+2020-10-30 15:54:09 -返回值 : system/user/user
+2020-10-30 15:54:09 -请求地址 : http://localhost:8066/system/sysDept/tree
+2020-10-30 15:54:09 -HTTP METHOD : GET
+2020-10-30 15:54:09 -CLASS_METHOD : com.bootdo.system.controller.DeptController.tree
+2020-10-30 15:54:09 -参数 : []
+2020-10-30 15:54:09 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept order by dept_id desc 
+2020-10-30 15:54:09 -==> Parameters: 
+2020-10-30 15:54:09 -<==      Total: 10
+2020-10-30 15:54:09 -耗时 : 4
+2020-10-30 15:54:09 -返回值 : {"checked":true,"children":[{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"15","parentId":"13","state":{"opened":true},"text":"测试二部"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"14","parentId":"13","state":{"opened":true},"text":"测试一部"}],"hasChildren":true,"hasParent":false,"id":"13","parentId":"0","state":{"opened":true},"text":"测试部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"12","parentId":"11","state":{"opened":true},"text":"产品一部"}],"hasChildren":true,"hasParent":false,"id":"11","parentId":"0","state":{"opened":true},"text":"产品部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"10","parentId":"9","state":{"opened":true},"text":"销售一部"}],"hasChildren":true,"hasParent":false,"id":"9","parentId":"0","state":{"opened":true},"text":"销售部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"8","parentId":"6","state":{"opened":true},"text":"研发二部"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"7","parentId":"6","state":{"opened":true},"text":"研發一部"}],"hasChildren":true,"hasParent":false,"id":"6","parentId":"0","state":{"opened":true},"text":"研发部"}],"hasChildren":true,"hasParent":false,"id":"-1","parentId":"","state":{"opened":true},"text":"顶级节点"}
+2020-10-30 15:54:09 -请求地址 : http://localhost:8066/sys/user/list
+2020-10-30 15:54:09 -HTTP METHOD : GET
+2020-10-30 15:54:09 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2020-10-30 15:54:09 -参数 : [{limit=10, offset=0, name=, deptId=}]
+2020-10-30 15:54:09 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user order by user_id desc limit ?, ? 
+2020-10-30 15:54:09 -==> Parameters: 0(Integer), 10(Integer)
+2020-10-30 15:54:09 -<==      Total: 10
+2020-10-30 15:54:09 -==>  Preparing: select count(*) from sys_user 
+2020-10-30 15:54:09 -==> Parameters: 
+2020-10-30 15:54:09 -<==      Total: 1
+2020-10-30 15:54:09 -耗时 : 8
+2020-10-30 15:54:09 -返回值 : com.bootdo.common.utils.PageUtils@2fc71dc
+2020-10-30 15:54:11 -请求地址 : http://localhost:8066/sys/user/edit/167
+2020-10-30 15:54:11 -HTTP METHOD : GET
+2020-10-30 15:54:11 -CLASS_METHOD : com.bootdo.system.controller.UserController.edit
+2020-10-30 15:54:11 -参数 : [{}, 167]
+2020-10-30 15:54:11 -==>  Preparing: select role_id from sys_user_role where user_id=? 
+2020-10-30 15:54:11 -==> Parameters: 167(Long)
+2020-10-30 15:54:11 -<==      Total: 1
+2020-10-30 15:54:11 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2020-10-30 15:54:11 -==> Parameters: 167(Long)
+2020-10-30 15:54:11 -<==      Total: 1
+2020-10-30 15:54:11 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept where dept_id = ? 
+2020-10-30 15:54:11 -==> Parameters: null
+2020-10-30 15:54:11 -<==      Total: 0
+2020-10-30 15:54:11 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-30 15:54:11 -null
+java.lang.NullPointerException: null
+	at com.bootdo.system.service.impl.UserServiceImpl.get(UserServiceImpl.java:54)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:282)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at com.sun.proxy.$Proxy141.get(Unknown Source)
+	at com.bootdo.system.controller.UserController.edit(UserController.java:71)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:741)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:52)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)
+	at com.bootdo.common.aspect.WebLogAspect.doAround(WebLogAspect.java:53)
+	at sun.reflect.GeneratedMethodAccessor148.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:52)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)
+	at com.bootdo.common.aspect.LogAspect.around(LogAspect.java:50)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:168)
+	at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor$1.proceed(AopAllianceAnnotationsAuthorizingMethodInterceptor.java:82)
+	at org.apache.shiro.authz.aop.AuthorizingMethodInterceptor.invoke(AuthorizingMethodInterceptor.java:39)
+	at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor.invoke(AopAllianceAnnotationsAuthorizingMethodInterceptor.java:115)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:673)
+	at com.bootdo.system.controller.UserController$$EnhancerBySpringCGLIB$$7cd10845.edit(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:383)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:208)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:347)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:263)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2020-10-30 15:54:11 -==> Parameters: 1(Long), admin(String), error(String), null, http://localhost:8066/sys/user/edit/167(String), java.lang.NullPointerException(String), null, 2020-10-30 15:54:11.186(Timestamp)
+2020-10-30 15:54:11 -<==    Updates: 1
+2020-10-30 15:54:12 -请求地址 : http://localhost:8066/
+2020-10-30 15:54:12 -HTTP METHOD : GET
+2020-10-30 15:54:12 -CLASS_METHOD : com.bootdo.system.controller.LoginController.welcome
+2020-10-30 15:54:12 -参数 : [{}]
+2020-10-30 15:54:12 -耗时 : 1
+2020-10-30 15:54:12 -返回值 : login
+2020-10-30 15:54:12 -请求地址 : http://localhost:8066/
+2020-10-30 15:54:12 -HTTP METHOD : GET
+2020-10-30 15:54:12 -CLASS_METHOD : com.bootdo.system.controller.LoginController.welcome
+2020-10-30 15:54:12 -参数 : [{}]
+2020-10-30 15:54:12 -耗时 : 0
+2020-10-30 15:54:12 -返回值 : login
+2020-10-30 15:54:13 -请求地址 : http://localhost:8066/login
+2020-10-30 15:54:13 -HTTP METHOD : POST
+2020-10-30 15:54:13 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2020-10-30 15:54:13 -参数 : [admin, 111111]
+2020-10-30 15:54:13 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2020-10-30 15:54:13 -==> Parameters: admin(String)
+2020-10-30 15:54:13 -<==      Total: 1
+2020-10-30 15:54:13 -耗时 : 5
+2020-10-30 15:54:13 -返回值 : {msg=操作成功, code=0}
+2020-10-30 15:54:13 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-30 15:54:13 -==> Parameters: 1(Long), admin(String), 登录(String), 5(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2020-10-30 15:54:13.855(Timestamp)
+2020-10-30 15:54:13 -请求地址 : http://localhost:8066/index
+2020-10-30 15:54:13 -HTTP METHOD : GET
+2020-10-30 15:54:13 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2020-10-30 15:54:13 -参数 : [{}]
+2020-10-30 15:54:13 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2020-10-30 15:54:13 -==> Parameters: 1(Long)
+2020-10-30 15:54:13 -<==      Total: 27
+2020-10-30 15:54:13 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2020-10-30 15:54:13 -==> Parameters: 143(Long)
+2020-10-30 15:54:13 -<==      Total: 1
+2020-10-30 15:54:13 -耗时 : 29
+2020-10-30 15:54:13 -返回值 : index_v1
+2020-10-30 15:54:13 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-30 15:54:13 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 29(Integer), com.bootdo.system.controller.LoginController.index()(String), null, 127.0.0.1(String), 2020-10-30 15:54:13.904(Timestamp)
+2020-10-30 15:54:13 -<==    Updates: 1
+2020-10-30 15:54:13 -<==    Updates: 1
+2020-10-30 15:54:13 -请求地址 : http://localhost:8066/main
+2020-10-30 15:54:13 -HTTP METHOD : GET
+2020-10-30 15:54:13 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-10-30 15:54:13 -参数 : []
+2020-10-30 15:54:13 -耗时 : 1
+2020-10-30 15:54:13 -返回值 : main
+2020-10-30 15:54:13 -请求地址 : http://localhost:8066/oa/notify/message
+2020-10-30 15:54:13 -HTTP METHOD : GET
+2020-10-30 15:54:13 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2020-10-30 15:54:13 -参数 : []
+2020-10-30 15:54:13 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2020-10-30 15:54:13 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2020-10-30 15:54:13 -请求地址 : http://localhost:8066/main
+2020-10-30 15:54:13 -HTTP METHOD : GET
+2020-10-30 15:54:13 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-10-30 15:54:13 -参数 : []
+2020-10-30 15:54:13 -耗时 : 0
+2020-10-30 15:54:13 -返回值 : main
+2020-10-30 15:54:14 -<==      Total: 0
+2020-10-30 15:54:14 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2020-10-30 15:54:14 -==> Parameters: 1(Long), 0(String)
+2020-10-30 15:54:14 -<==      Total: 1
+2020-10-30 15:54:14 -耗时 : 54
+2020-10-30 15:54:14 -返回值 : com.bootdo.common.utils.PageUtils@272acefc
+2020-10-30 16:06:51 -Validating all active sessions...
+2020-10-30 16:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 16:07:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 19061]
+2020-10-30 16:37:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 19494]
+2020-10-30 17:06:51 -Validating all active sessions...
+2020-10-30 17:06:51 -Finished session validation.  [1] sessions were stopped.
+2020-10-30 17:07:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 19927]
+2020-10-30 17:37:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 20360]
+2020-10-30 18:06:51 -Validating all active sessions...
+2020-10-30 18:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 18:07:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 20793]
+2020-10-30 18:37:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 21226]
+2020-10-30 19:06:51 -Validating all active sessions...
+2020-10-30 19:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 19:07:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 21659]
+2020-10-30 19:37:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 22092]
+2020-10-30 20:06:51 -Validating all active sessions...
+2020-10-30 20:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 20:07:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 22525]
+2020-10-30 20:37:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 22958]
+2020-10-30 21:06:51 -Validating all active sessions...
+2020-10-30 21:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 21:07:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 23391]
+2020-10-30 21:37:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 23824]
+2020-10-30 22:06:51 -Validating all active sessions...
+2020-10-30 22:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 22:07:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 24257]
+2020-10-30 22:37:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 24690]
+2020-10-30 23:06:51 -Validating all active sessions...
+2020-10-30 23:06:51 -Finished session validation.  No sessions were stopped.
+2020-10-30 23:07:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 25123]
+2020-10-30 23:37:43 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 25556]

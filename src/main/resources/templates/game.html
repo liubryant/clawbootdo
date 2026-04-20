@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1">
+    <title>春江月明</title>
+    <!-- boostrap核心css文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <!--jQuery文件。务必在bootstrap.min.js 之前引入-->
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Make the image fully responsive */
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+
+        p {
+            text-indent: 2em;
+            font-size: 14px;
+        }
+
+        li {
+            font-size: 23px;
+            font-style: normal;
+            margin-left: 40px;
+        }
+
+        .beiandiv {
+            width: 100%;
+            height: 120px;
+            background: #000000;
+            text-align: left;
+        }
+
+        .gameImg {
+            width: 200px;
+            height: 200px;
+            background: #000000;
+            margin-bottom: 20px;
+            margin-left: 20px;
+            text-align: left;
+        }
+
+        .gameButton {
+            width: 200px;
+            background: #ffffff;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+    <link href="/css/home.css" rel="stylesheet">
+</head>
+<body>
+<!--导航栏-->
+<br/>
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail" width="200px" height="200px">
+            <img class="gameImg" width="200px" height="200px" src="img/7.png"
+                 alt="通用的占位符缩略图">
+            <br/>
+            <div class="gameButton" >
+                <a href="http://nicecreator.gitee.io/nicecreator.gitee.io/sgxxl/" target="_blank"><p style="font-size: 26px ;color: #000000">水果消消乐</p></a>
+                <a href="http://nicecreator.gitee.io/nicecreator.gitee.io/sgxxl" target="_blank"><p style="font-size: 18px ;color: #000000">推荐指数：100</p></a>
+                <p>
+                    <a href="http://nicecreator.gitee.io/nicecreator.gitee.io/sgxxl" type="button" class="btn btn-primary btn-lg btn-success">进入游戏</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gameLayout">
+    <div >
+        <div class="thumbnail" width="200px" height="200px">
+            <img class="gameImg" width="200px" height="200px" src="img/1.jpg"
+                 alt="通用的占位符缩略图">
+            <br/>
+            <div class="gameButton">
+                <a href="http://cocos-games.fir.show/games/0000086-tyt-2.4.4/index.html" target="_blank"><p style="font-size: 26px ;color: #000000">跳一跳</p></a>
+                <a href="http://cocos-games.fir.show/games/0000086-tyt-2.4.4/index.html" target="_blank"><p style="font-size: 18px ;color: #000000">推荐指数：100</p></a>
+                <p>
+                    <a href="http://cocos-games.fir.show/games/0000086-tyt-2.4.4/index.html" type="button" class="btn btn-primary btn-lg">进入游戏</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail" width="200px" height="200px">
+            <img class="gameImg" width="200px" height="200px" src="img/2.png"
+                 alt="通用的占位符缩略图">
+            <br/>
+            <div class="gameButton">
+                <a href="http://cocos-games.fir.show/games/0000042-tankwar-2.2.2/index.html" target="_blank"><p style="font-size: 26px ;color: #000000">坦克大战</p></a>
+                <a href="http://cocos-games.fir.show/games/0000042-tankwar-2.2.2/index.html" target="_blank"><p style="font-size: 18px ;color: #000000">推荐指数：100</p></a>
+                <p>
+                    <a href="http://cocos-games.fir.show/games/0000042-tankwar-2.2.2/index.html" type="button" class="btn btn-primary btn-lg">进入游戏</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail" width="200px" height="200px">
+            <img class="gameImg" width="200px" height="200px" src="img/3.png"
+                 alt="通用的占位符缩略图">
+            <br/>
+            <div class="gameButton">
+                <a href="http://cocos-games.fir.show/games/0000079-basketball-2.4.4/index.html" target="_blank"><p style="font-size: 26px ;color: #000000">投篮游戏</p></a>
+                <a href="http://cocos-games.fir.show/games/0000079-basketball-2.4.4/index.html" target="_blank"><p style="font-size: 18px ;color: #000000">推荐指数：100</p></a>
+                <p>
+                    <a href="http://cocos-games.fir.show/games/0000079-basketball-2.4.4/index.html" type="button" class="btn btn-primary btn-lg">进入游戏</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail" width="200px" height="200px">
+            <img class="gameImg" width="200px" height="200px" src="img/4.jpg"
+                 alt="通用的占位符缩略图">
+            <br/>
+            <div class="gameButton">
+                <a href="http://cocos-games.fir.show/games/0000067-qieshuiguo-2.4.3/index.html" target="_blank"><p style="font-size: 26px ;color: #000000">切西瓜</p></a>
+                <a href="http://cocos-games.fir.show/games/0000067-qieshuiguo-2.4.3/index.html" target="_blank"><p style="font-size: 18px ;color: #000000">推荐指数：100</p></a>
+                <p>
+                    <a href="http://cocos-games.fir.show/games/0000067-qieshuiguo-2.4.3/index.html" type="button" class="btn btn-primary btn-lg">进入游戏</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail" width="200px" height="200px">
+            <img class="gameImg" width="200px" height="200px" src="img/5.png"
+                 alt="通用的占位符缩略图">
+            <br/>
+            <div class="gameButton">
+                <a href="http://cocos-games.fir.show/games/0000058-zdr-2.4.4/index.html" target="_blank"><p style="font-size: 26px ;color: #000000">炸弹人</p></a>
+                <a href="http://cocos-games.fir.show/games/0000058-zdr-2.4.4/index.html" target="_blank"><p style="font-size: 18px ;color: #000000">推荐指数：100</p></a>
+                <p>
+                    <a href="http://cocos-games.fir.show/games/0000058-zdr-2.4.4/index.html" type="button" class="btn btn-primary btn-lg">进入游戏</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail" width="200px" height="200px">
+            <img class="gameImg" width="200px" height="200px" src="img/6.png"
+                 alt="通用的占位符缩略图">
+            <br/>
+            <div class="gameButton">
+                <a href="http://cocos-games.fir.show/games/0000007-idiom-2.4.3/index.html" target="_blank"><p style="font-size: 26px ;color: #000000">成语大师</p></a>
+                <a href="http://cocos-games.fir.show/games/0000007-idiom-2.4.3/index.html" target="_blank"><p style="font-size: 18px ;color: #000000">推荐指数：100</p></a>
+                <p>
+                    <a href="http://cocos-games.fir.show/games/0000007-idiom-2.4.3/index.html" type="button" class="btn btn-primary btn-lg">进入游戏</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail" width="200px" height="200px">
+            <img class="gameImg" width="200px" height="200px" src="img/8.png"
+                 alt="通用的占位符缩略图">
+            <br/>
+            <div class="gameButton">
+                <a href="http://cocos-games.fir.show/games/0000071-xmdy-2.4.3/index.html" target="_blank"><p style="font-size: 26px ;color: #000000">小猫钓鱼</p></a>
+                <a href="http://cocos-games.fir.show/games/0000071-xmdy-2.4.3/index.html" target="_blank"><p style="font-size: 18px ;color: #000000">推荐指数：100</p></a>
+                <p>
+                    <a href="http://cocos-games.fir.show/games/0000071-xmdy-2.4.3/index.html" type="button" class="btn btn-primary btn-lg">进入游戏</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail" width="200px" height="200px">
+            <img class="gameImg" width="200px" height="200px" src="img/9.jpg"
+                 alt="通用的占位符缩略图">
+            <br/>
+            <div class="gameButton">
+                <a href=" http://cocos-games.fir.show/games/0000045-football-2.4.4/index.html" target="_blank"><p style="font-size: 26px ;color: #000000">足球大战</p></a>
+                <a href=" http://cocos-games.fir.show/games/0000045-football-2.4.4/index.html" target="_blank"><p style="font-size: 18px ;color: #000000">推荐指数：100</p></a>
+                <p>
+                    <a href=" http://cocos-games.fir.show/games/0000045-football-2.4.4/index.html" type="button" class="btn btn-primary btn-lg btn-success">进入游戏</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ul class="nav nav-pills navbar-dark" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000086-tyt-2.4.4/index.html">跳一跳</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000042-tankwar-2.2.2/index.html">坦克大战</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000082-PopBubble-2.4.3/index.html">泡泡龙高手</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000067-qieshuiguo-2.4.3/index.html">切水果</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000068-ssn-2.4.3/index.html">问答烧脑</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000063-dsq-2.4.3/index.html">斗兽棋</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000056-fkgl-2.4.3/index.html">疯狂灌篮</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000058-zdr-2.4.4/index.html">炸弹人</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000033-tcsdzfk-2.4.3/index.html">贪吃蛇大战方块</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000007-idiom-2.4.3/index.html">成语小状元</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000030-quanmingchiji-2.3.3/index.html">全民吃鸡</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000015-goldworker-2.4.3/index.html">黄金矿工</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000079-basketball-2.4.4/index.html">投篮</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://nicecreator.gitee.io/nicecreator.gitee.io/sgxxl/">水果消消乐</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/zbsn/index.html">装扮少女</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000078-zhaonimei-2.4.4/index.html">找你妹</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000055-cbkj-2.4.3/index.html">冲吧柯基</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000087-Tetris-2.2.2/index.html">俄罗斯方块</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000085-pigfarm-2.4.4/index.html">养猪农场</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000073-ydamx-2.2.2/index.html">印第安人冒险</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000070-sw-2.2.2/index.html">星球大战</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000057-mmgl-2.0.8/index.html">猫咪攻略</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000052-djfw-2.2.2/index.html">顶级富翁</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="ttp://cocos-games.fir.show/games/0000051-gjcs-2.4.4/index.html">弓箭传说</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000048-quanminpiaoyi-2.2.2/index.html">全民漂移</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000042-tankwar-2.2.2/index.html">枪手传说</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="ttp://cocos-games.fir.show/games/0000041-qscs-2.0.8/index.html">陨石破坏王</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000040-ysphw-2.0.8/index.html">王国保卫战</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000038-kingdom_rush-2.0.8/index.html">奔跑吧小鹅鹅</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000034-bpbxee-2.0.8/index.html">枪神之神</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="ttp://cocos-games.fir.show/games/0000032-qszs-2.2.2/index.html">僵尸碰碰车</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000008-masherz-2.2.2/index.html">消灭病毒</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000049-cleanVirus-2.2.2/index.html">贪吃蛇大作战</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000037-tcs-2.4.4/index.html">梦幻厨房</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="ttp://cocos-games.fir.show/games/0000004-cookhouse-2.4.4/index.html">动物同化</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000019-animalgame-2.4.3/index.html">疯狂数字消</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000083-number4-2.4.3/index.html">泡泡龙高手</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000082-PopBubble-2.4.3/index.html">欢乐水果大作战</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000081-bomb_ball-2.4.4/index.html">欢乐猫咪杯</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000080-Cocktails-2.4.3/index.html">天天跑酷</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000074-coolrun-2.4.3/index.html">消除星星</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000072-starpop-2.4.3/index.html">小猫钓鱼</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000071-xmdy-2.4.3/index.html">套牛</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000069-class_cow-2.4.3/index.html">问答烧脑</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000068-ssn-2.4.3/index.html">切水果</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000067-qieshuiguo-2.4.3/index.html">爬梯达人</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000066-ptdr-2.4.3/index.html">欢乐水杯</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000064-shuibei-2.4.3/index.html">斗兽棋</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="ttp://cocos-games.fir.show/games/0000063-dsq-2.4.3/index.html">打地鼠</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000061-MouseHit-2.4.3/index.html">超能战队</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000060-CHAOneng-2.4.3/index.html">海岛逃命</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000059-climb-2.4.3/index.html">炸弹人</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000058-zdr-2.4.4/index.html">疯狂灌篮</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000056-fkgl-2.4.3/index.html">冲吧柯基</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000055-cbkj-2.4.3/index.html">迷雾之町</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000054-zsbyda-2.4.3/index.html">伐木工人</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000050-famu-2.4.3/index.html">全民水浒</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000047-LingChongZhuan-2.4.3/index.html">ColorUp</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000046-ColorUp-2.4.3/index.html">弹弹球</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000043-tqgs-2.4.3/index.html">颜色跳跃</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000039-colorjump-2.4.3/index.html">不停歇的球</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000036-firing_balls-2.4.3/index.html">飞机合成</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000035-merepalne-2.4.4/index.html">贪吃蛇大战方块</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="ttp://cocos-games.fir.show/games/0000033-tcsdzfk-2.4.3/index.html">环与环</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000031-HuanYuHuan-2.4.3/index.html">疯狂赛车</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000029-carmatch-2.4.3/index.html">牧羊人</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000028-feedsheep-2.4.3/index.html">忍者跳跃</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000024-rzjump-2.4.3/index.html">100关推箱子</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="ttp://cocos-games.fir.show/games/0000023-pushbox-2.4.3/index.html">左右跳</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000022-jumplr-2.4.4/index.html">大炮英雄</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000021-gunhero-2.4.3/index.html">重力球</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000020-gravityball-2.4.3/index.html">成语小状元</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000007-idiom-2.4.3/index.html">旺旺食神猪</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000009-PigAndCate-2.4.3/index.html">泡泡龙</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="ttp://cocos-games.fir.show/games/0000010-ppl-2.4.3/index.html">抢红包</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000012-rob_money-2.4.3/index.html">打地鼠</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000013-dadishu-2.4.3/index.html">打飞机</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000014-aircraft_war-2.4.3/index.html">黄金矿工</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="ttp://cocos-games.fir.show/games/0000015-goldworker-2.4.3/index.html">扫雷</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="ttp://cocos-games.fir.show/games/0000016-saolei-2.4.3/index.html">当官消消乐</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000017-dangguanxxl-2.4.3/index.html">果冻爆爆乐</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000026-ManyDragon-2.4.3/index.html">FlappyBird</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000075-FlappyBird-2.4.3/index.html">动物连一连</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000005-fruitlines-2.4.3/index.html">方块鸟</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000027-SquareBird-2.4.4/index.html">全民吃鸡</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000030-quanmingchiji-2.3.3/index.html">双指足球</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000045-football-2.4.4/index.html">人间大炮</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="ttp://cocos-games.fir.show/games/0000053-FullFire-2.4.4/index.html">消除怪兽</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="ttp://cocos-games.fir.show/games/0000065-killMonster-2.4.4/index.html">找你妹</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000078-zhaonimei-2.4.4/index.html">成语拼拼</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000077-cypp-2.4.4/index.html">投篮</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000079-basketball-2.4.4/index.html">数钱</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000011-count_money-2.4.4/index.html">六边形</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000003-lbx-2.4.4/index.html">泡泡大乱斗</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000002-ppdld-2.4.4/index.html">一个亿</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000001-YiGeYi-2.4.4/index.html">沙滩足球</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000025-sandfootball-2.4.4/index.html">合成大西瓜</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/games/0000084-WatermelonFusion-2.4.3/index.html">水果开心乐</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/shuiguokaixinle/index.html">比特小队</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/bitexiaodui/index.html">比特小鱼</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/bitxiaoyu/index.html">火柴人大战</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/huochairen/index.html">精灵大战</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/jinglingdazhan/index.html">农场消消乐</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/ncxxx/index.html">羊场老手</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/ycls/index.html">一弹球手</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/yitanqiushou/index.html">一个月秃头</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/yigeyuetutou/index.html">creatorWeb3Demo</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/creatorWeb3Demo/index.html">象棋</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/xiangqi/index.html">钢铁猪猪</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="https://cdn.198434.com/cli/H5/FightPigGit/">救救小鸡</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://learncocos.com/iwae/">我真有绝招</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="https://cdn.pabble.net/preview/wzyjz/index.html">奔跑吧巨人</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/benpaojuren/index.html">装扮少女</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/zbsn/index.html">豆腐少女</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/dfsn/index.html">塔塔塔防</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/tttf/index.html">奇怪的连连看</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="https://llkcdn.cyhy.online/llk2/web-desktop/index.html">垃圾分类</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/ljfl/index.html">接粽达人</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/jzdr/index.html">蛇的一天</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://cocos-games.fir.show/sdyt/index.html">水果消消乐</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="http://nicecreator.gitee.io/nicecreator.gitee.io/sgxxl/">音乐消消乐</a>
+    </li>
+</ul>
+
+<div class="beiandiv">
+    <br/>
+    <p style="font-size: 12px ;color: #FFFFFF">© 2021深圳市春江月明科技有限公司 版权所有</p>
+    <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"><p style="font-size: 12px ;color: #FFFFFF">粤ICP备2021000703号</p></a><br/>
+</div>
+</body>
+<script>
+    $(function () {
+        $(".product1").click(function () {
+            alert("跳到产品1!")
+            parent.location.href = '/login';
+        });
+    });
+</script>
+</html>

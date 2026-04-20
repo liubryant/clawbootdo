@@ -1,0 +1,261 @@
+2020-10-22 00:05:07 -Validating all active sessions...
+2020-10-22 00:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 00:05:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 10838]
+2020-10-22 00:35:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 11199]
+2020-10-22 01:05:07 -Validating all active sessions...
+2020-10-22 01:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 01:05:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 11560]
+2020-10-22 01:35:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 11921]
+2020-10-22 02:05:07 -Validating all active sessions...
+2020-10-22 02:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 02:05:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 12282]
+2020-10-22 02:35:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 12643]
+2020-10-22 03:05:07 -Validating all active sessions...
+2020-10-22 03:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 03:05:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 13004]
+2020-10-22 03:35:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 13365]
+2020-10-22 04:05:07 -Validating all active sessions...
+2020-10-22 04:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 04:05:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 13726]
+2020-10-22 04:35:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 14087]
+2020-10-22 05:05:07 -Validating all active sessions...
+2020-10-22 05:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 05:05:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 14448]
+2020-10-22 05:35:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 14809]
+2020-10-22 06:05:07 -Validating all active sessions...
+2020-10-22 06:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 06:05:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 15170]
+2020-10-22 06:35:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 15531]
+2020-10-22 07:05:07 -Validating all active sessions...
+2020-10-22 07:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 07:05:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 15892]
+2020-10-22 07:35:59 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 16253]
+2020-10-22 08:05:07 -Validating all active sessions...
+2020-10-22 08:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 08:06:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 16614]
+2020-10-22 08:36:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 16975]
+2020-10-22 09:05:07 -Validating all active sessions...
+2020-10-22 09:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 09:06:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 17336]
+2020-10-22 09:36:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 17697]
+2020-10-22 10:05:07 -Validating all active sessions...
+2020-10-22 10:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 10:06:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 18058]
+2020-10-22 10:36:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 18419]
+2020-10-22 11:05:07 -Validating all active sessions...
+2020-10-22 11:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 11:06:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 18780]
+2020-10-22 11:36:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 19141]
+2020-10-22 12:05:07 -Validating all active sessions...
+2020-10-22 12:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 12:06:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 19502]
+2020-10-22 12:36:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 19863]
+2020-10-22 13:05:07 -Validating all active sessions...
+2020-10-22 13:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 13:06:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 20224]
+2020-10-22 13:36:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 20585]
+2020-10-22 14:05:07 -Validating all active sessions...
+2020-10-22 14:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 14:06:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 20946]
+2020-10-22 14:36:00 -WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 6], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 1, completed tasks = 21307]
+2020-10-22 15:00:13 -请求地址 : http://localhost:8066/
+2020-10-22 15:00:13 -HTTP METHOD : GET
+2020-10-22 15:00:13 -CLASS_METHOD : com.bootdo.system.controller.LoginController.welcome
+2020-10-22 15:00:13 -参数 : [{}]
+2020-10-22 15:00:13 -耗时 : 1
+2020-10-22 15:00:13 -返回值 : login
+2020-10-22 15:00:19 -请求地址 : http://localhost:8066/login;JSESSIONID=4f1a0aa0-6ffe-4df1-89e9-43e256ba19ac
+2020-10-22 15:00:19 -HTTP METHOD : GET
+2020-10-22 15:00:19 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2020-10-22 15:00:19 -参数 : []
+2020-10-22 15:00:19 -耗时 : 1
+2020-10-22 15:00:19 -返回值 : login
+2020-10-22 15:00:31 -请求地址 : http://localhost:8066/login
+2020-10-22 15:00:31 -HTTP METHOD : GET
+2020-10-22 15:00:31 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2020-10-22 15:00:31 -参数 : []
+2020-10-22 15:00:31 -耗时 : 1
+2020-10-22 15:00:31 -返回值 : login
+2020-10-22 15:00:39 -请求地址 : http://localhost:8066/login
+2020-10-22 15:00:39 -HTTP METHOD : GET
+2020-10-22 15:00:39 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2020-10-22 15:00:39 -参数 : []
+2020-10-22 15:00:39 -耗时 : 0
+2020-10-22 15:00:39 -返回值 : login
+2020-10-22 15:01:21 -请求地址 : http://localhost:8066/login
+2020-10-22 15:01:21 -HTTP METHOD : GET
+2020-10-22 15:01:21 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2020-10-22 15:01:21 -参数 : []
+2020-10-22 15:01:21 -耗时 : 1
+2020-10-22 15:01:21 -返回值 : login
+2020-10-22 15:01:22 -请求地址 : http://localhost:8066/login
+2020-10-22 15:01:22 -HTTP METHOD : POST
+2020-10-22 15:01:22 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2020-10-22 15:01:22 -参数 : [admin, 111111]
+2020-10-22 15:01:22 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2020-10-22 15:01:22 -==> Parameters: admin(String)
+2020-10-22 15:01:22 -<==      Total: 1
+2020-10-22 15:01:22 -耗时 : 31
+2020-10-22 15:01:22 -返回值 : {msg=操作成功, code=0}
+2020-10-22 15:01:22 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-22 15:01:22 -==> Parameters: 1(Long), admin(String), 登录(String), 31(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2020-10-22 15:01:22.41(Timestamp)
+2020-10-22 15:01:22 -<==    Updates: 1
+2020-10-22 15:01:24 -请求地址 : http://localhost:8066/index
+2020-10-22 15:01:24 -HTTP METHOD : GET
+2020-10-22 15:01:24 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2020-10-22 15:01:24 -参数 : [{}]
+2020-10-22 15:01:24 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2020-10-22 15:01:24 -==> Parameters: 1(Long)
+2020-10-22 15:01:24 -<==      Total: 27
+2020-10-22 15:01:24 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2020-10-22 15:01:24 -==> Parameters: 143(Long)
+2020-10-22 15:01:24 -<==      Total: 1
+2020-10-22 15:01:24 -耗时 : 241
+2020-10-22 15:01:24 -返回值 : index_v1
+2020-10-22 15:01:24 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-22 15:01:24 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 242(Integer), com.bootdo.system.controller.LoginController.index()(String), null, 127.0.0.1(String), 2020-10-22 15:01:24.285(Timestamp)
+2020-10-22 15:01:24 -<==    Updates: 1
+2020-10-22 15:01:24 -请求地址 : http://localhost:8066/main
+2020-10-22 15:01:24 -HTTP METHOD : GET
+2020-10-22 15:01:24 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-10-22 15:01:24 -参数 : []
+2020-10-22 15:01:24 -耗时 : 0
+2020-10-22 15:01:24 -返回值 : main
+2020-10-22 15:01:24 -请求地址 : http://localhost:8066/oa/notify/message
+2020-10-22 15:01:24 -HTTP METHOD : GET
+2020-10-22 15:01:24 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2020-10-22 15:01:24 -参数 : []
+2020-10-22 15:01:24 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2020-10-22 15:01:24 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2020-10-22 15:01:24 -请求地址 : http://localhost:8066/main
+2020-10-22 15:01:24 -HTTP METHOD : GET
+2020-10-22 15:01:24 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-10-22 15:01:24 -参数 : []
+2020-10-22 15:01:24 -耗时 : 1
+2020-10-22 15:01:24 -返回值 : main
+2020-10-22 15:01:24 -<==      Total: 0
+2020-10-22 15:01:24 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2020-10-22 15:01:24 -==> Parameters: 1(Long), 0(String)
+2020-10-22 15:01:24 -<==      Total: 1
+2020-10-22 15:01:24 -耗时 : 22
+2020-10-22 15:01:24 -返回值 : com.bootdo.common.utils.PageUtils@598a7ae1
+2020-10-22 15:01:26 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2020-10-22 15:01:26 -==> Parameters: 1(Long)
+2020-10-22 15:01:26 -<==      Total: 47
+2020-10-22 15:01:26 -请求地址 : http://localhost:8066/sys/role
+2020-10-22 15:01:26 -HTTP METHOD : GET
+2020-10-22 15:01:26 -CLASS_METHOD : com.bootdo.system.controller.RoleController.role
+2020-10-22 15:01:26 -参数 : []
+2020-10-22 15:01:26 -耗时 : 0
+2020-10-22 15:01:26 -返回值 : system/role/role
+2020-10-22 15:01:27 -请求地址 : http://localhost:8066/sys/role/list
+2020-10-22 15:01:27 -HTTP METHOD : GET
+2020-10-22 15:01:27 -CLASS_METHOD : com.bootdo.system.controller.RoleController.list
+2020-10-22 15:01:27 -参数 : []
+2020-10-22 15:01:27 -==>  Preparing: select `role_id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified` from sys_role order by role_id desc 
+2020-10-22 15:01:27 -==> Parameters: 
+2020-10-22 15:01:27 -<==      Total: 1
+2020-10-22 15:01:27 -耗时 : 59
+2020-10-22 15:01:27 -返回值 : [RoleDO{roleId=1, roleName='超级用户角色', roleSign='admin', remark='拥有最高权限', userIdCreate=2, gmtCreate=2017-08-12 00:43:52.0, gmtModified=2017-08-12 19:14:59.0, menuIds=null}]
+2020-10-22 15:01:29 -请求地址 : http://localhost:8066/sys/user/
+2020-10-22 15:01:29 -HTTP METHOD : GET
+2020-10-22 15:01:29 -CLASS_METHOD : com.bootdo.system.controller.UserController.user
+2020-10-22 15:01:29 -参数 : [{}]
+2020-10-22 15:01:29 -耗时 : 0
+2020-10-22 15:01:29 -返回值 : system/user/user
+2020-10-22 15:01:29 -请求地址 : http://localhost:8066/system/sysDept/tree
+2020-10-22 15:01:29 -HTTP METHOD : GET
+2020-10-22 15:01:29 -CLASS_METHOD : com.bootdo.system.controller.DeptController.tree
+2020-10-22 15:01:29 -参数 : []
+2020-10-22 15:01:29 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept order by dept_id desc 
+2020-10-22 15:01:29 -==> Parameters: 
+2020-10-22 15:01:29 -请求地址 : http://localhost:8066/sys/user/list
+2020-10-22 15:01:29 -HTTP METHOD : GET
+2020-10-22 15:01:29 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2020-10-22 15:01:29 -参数 : [{limit=10, offset=0, name=, deptId=}]
+2020-10-22 15:01:29 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user order by user_id desc limit ?, ? 
+2020-10-22 15:01:29 -==> Parameters: 0(Integer), 10(Integer)
+2020-10-22 15:01:29 -<==      Total: 10
+2020-10-22 15:01:29 -==>  Preparing: select count(*) from sys_user 
+2020-10-22 15:01:29 -<==      Total: 10
+2020-10-22 15:01:29 -==> Parameters: 
+2020-10-22 15:01:29 -耗时 : 24
+2020-10-22 15:01:29 -<==      Total: 1
+2020-10-22 15:01:29 -返回值 : {"checked":true,"children":[{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"15","parentId":"13","state":{"opened":true},"text":"测试二部"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"14","parentId":"13","state":{"opened":true},"text":"测试一部"}],"hasChildren":true,"hasParent":false,"id":"13","parentId":"0","state":{"opened":true},"text":"测试部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"12","parentId":"11","state":{"opened":true},"text":"产品一部"}],"hasChildren":true,"hasParent":false,"id":"11","parentId":"0","state":{"opened":true},"text":"产品部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"10","parentId":"9","state":{"opened":true},"text":"销售一部"}],"hasChildren":true,"hasParent":false,"id":"9","parentId":"0","state":{"opened":true},"text":"销售部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"8","parentId":"6","state":{"opened":true},"text":"研发二部"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"7","parentId":"6","state":{"opened":true},"text":"研發一部"}],"hasChildren":true,"hasParent":false,"id":"6","parentId":"0","state":{"opened":true},"text":"研发部"}],"hasChildren":true,"hasParent":false,"id":"-1","parentId":"","state":{"opened":true},"text":"顶级节点"}
+2020-10-22 15:01:29 -耗时 : 14
+2020-10-22 15:01:29 -返回值 : com.bootdo.common.utils.PageUtils@759b1d3f
+2020-10-22 15:05:07 -Validating all active sessions...
+2020-10-22 15:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 15:06:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 4 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(4)-CONNECTED(4)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 45], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 7], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 21679]
+2020-10-22 15:18:48 -请求地址 : http://localhost:8066/index
+2020-10-22 15:18:48 -HTTP METHOD : GET
+2020-10-22 15:18:48 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2020-10-22 15:18:48 -参数 : [{}]
+2020-10-22 15:18:48 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2020-10-22 15:18:48 -==> Parameters: 1(Long)
+2020-10-22 15:18:48 -<==      Total: 27
+2020-10-22 15:18:49 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2020-10-22 15:18:49 -==> Parameters: 143(Long)
+2020-10-22 15:18:49 -<==      Total: 1
+2020-10-22 15:18:49 -耗时 : 16
+2020-10-22 15:18:49 -返回值 : index_v1
+2020-10-22 15:18:49 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-22 15:18:49 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 16(Integer), com.bootdo.system.controller.LoginController.index()(String), null, 127.0.0.1(String), 2020-10-22 15:18:49.005(Timestamp)
+2020-10-22 15:18:49 -<==    Updates: 1
+2020-10-22 15:18:49 -请求地址 : http://localhost:8066/main
+2020-10-22 15:18:49 -HTTP METHOD : GET
+2020-10-22 15:18:49 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-10-22 15:18:49 -参数 : []
+2020-10-22 15:18:49 -耗时 : 0
+2020-10-22 15:18:49 -返回值 : main
+2020-10-22 15:18:49 -请求地址 : http://localhost:8066/oa/notify/message
+2020-10-22 15:18:49 -HTTP METHOD : GET
+2020-10-22 15:18:49 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2020-10-22 15:18:49 -参数 : []
+2020-10-22 15:18:49 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2020-10-22 15:18:49 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2020-10-22 15:18:49 -<==      Total: 0
+2020-10-22 15:18:49 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2020-10-22 15:18:49 -==> Parameters: 1(Long), 0(String)
+2020-10-22 15:18:49 -<==      Total: 1
+2020-10-22 15:18:49 -耗时 : 4
+2020-10-22 15:18:49 -返回值 : com.bootdo.common.utils.PageUtils@14fb426
+2020-10-22 15:18:49 -请求地址 : http://localhost:8066/main
+2020-10-22 15:18:49 -HTTP METHOD : GET
+2020-10-22 15:18:49 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2020-10-22 15:18:49 -参数 : []
+2020-10-22 15:18:49 -耗时 : 0
+2020-10-22 15:18:49 -返回值 : main
+2020-10-22 15:36:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 22111]
+2020-10-22 16:05:07 -Validating all active sessions...
+2020-10-22 16:05:07 -Finished session validation.  [1] sessions were stopped.
+2020-10-22 16:06:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 22544]
+2020-10-22 16:36:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 22977]
+2020-10-22 17:05:07 -Validating all active sessions...
+2020-10-22 17:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 17:06:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 23410]
+2020-10-22 17:36:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 23843]
+2020-10-22 18:05:07 -Validating all active sessions...
+2020-10-22 18:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 18:06:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 24276]
+2020-10-22 18:36:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 24709]
+2020-10-22 19:05:07 -Validating all active sessions...
+2020-10-22 19:05:07 -Finished session validation.  No sessions were stopped.
+2020-10-22 19:06:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 25142]
+2020-10-22 19:36:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 25575]
+2020-10-22 20:05:08 -Validating all active sessions...
+2020-10-22 20:05:08 -Finished session validation.  No sessions were stopped.
+2020-10-22 20:06:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 26008]
+2020-10-22 20:36:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 26441]
+2020-10-22 21:05:08 -Validating all active sessions...
+2020-10-22 21:05:08 -Finished session validation.  No sessions were stopped.
+2020-10-22 21:06:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 26874]
+2020-10-22 21:36:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 27307]
+2020-10-22 22:05:08 -Validating all active sessions...
+2020-10-22 22:05:08 -Finished session validation.  No sessions were stopped.
+2020-10-22 22:06:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 27740]
+2020-10-22 22:36:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 28173]
+2020-10-22 23:05:08 -Validating all active sessions...
+2020-10-22 23:05:08 -Finished session validation.  No sessions were stopped.
+2020-10-22 23:06:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 28606]
+2020-10-22 23:36:00 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 57], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 29039]

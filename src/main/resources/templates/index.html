@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>春江月明 官网</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body { margin: 0; font-family: "Helvetica Neue", Arial, sans-serif; color: #333; background: #fff; }
+
+        /* Hero 区 */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('img1.png') center/cover no-repeat;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 4vw;
+            color: #000;
+            margin-bottom: 20px;
+            font-weight: 500;
+            text-shadow: 0 2px 8px rgba(255,255,255,0.8);
+        }
+        .hero .btn-primary {
+            background-color: #000; border: none;
+            padding: 14px 40px; font-size: 1.2rem;
+            border-radius: 0; transition: background .3s;
+        }
+        .hero .btn-primary:hover { background-color: #333; }
+
+        /* 产品展示 */
+        .products { padding: 80px 20px; text-align: center; }
+        .products h2 { font-size: 2.5rem; margin-bottom: 50px; font-weight: 500; }
+        .card {
+            border: none; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+        .card img { width: 100%; height: auto; }
+        .card-body { padding: 20px; }
+        .card-title { font-size: 1.5rem; margin-bottom: 10px; }
+        .card-text { color: #555; font-size: 0.95rem; }
+
+        /* 底部 */
+        .footer { text-align: center; padding: 30px; font-size: 13px; color: #777; background: #f9f9f9; }
+        .footer a { color: #777; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<!-- Hero 区 -->
+<section class="hero">
+    <h1>极简科技 · 引领未来</h1>
+    <a href="#products" class="btn btn-primary">探索我们的产品</a>
+</section>
+
+<!-- 产品展示 -->
+<section id="products" class="products container">
+    <h2>我们的产品</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="img2.jpg" alt="最美天气">
+                <div class="card-body">
+                    <h5 class="card-title">最美天气</h5>
+                    <p class="card-text">精准天气预报，清新界面体验，随时掌握天气变化。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="img3.jpg" alt="卫星导航地图">
+                <div class="card-body">
+                    <h5 class="card-title">卫星导航地图</h5>
+                    <p class="card-text">实时定位，智能规划出行路线，安全高效。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="img1.png" alt="轻言相机">
+                <div class="card-body">
+                    <h5 class="card-title">轻言相机</h5>
+                    <p class="card-text">丰富滤镜与智能优化，轻松拍出高质感照片。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 公司介绍 -->
+<section class="container my-5">
+    <p><strong>深圳市春江月明科技有限公司</strong> 成立于2019年，位于广东省深圳市，是一家以软件研发和终端销售为主的企业。</p>
+    <p>春江工作室自主研发多款主流应用，包括最美天气、卫星导航地图、轻言相机、春江AI问答、天天读书、Steam资讯等。</p>
+</section>
+
+<!-- 底部备案 -->
+<div class="footer">
+    © 2024 深圳市春江月明科技有限公司 版权所有 |
+    <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">粤ICP备2024188934号-1</a>
+</div>
+
+</body>
+</html>

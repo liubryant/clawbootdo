@@ -1,0 +1,810 @@
+2019-03-22 00:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 6514]
+2019-03-22 00:55:04 -Validating all active sessions...
+2019-03-22 00:55:04 -Finished session validation.  No sessions were stopped.
+2019-03-22 00:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 6947]
+2019-03-22 01:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 7380]
+2019-03-22 01:55:04 -Validating all active sessions...
+2019-03-22 01:55:04 -Finished session validation.  No sessions were stopped.
+2019-03-22 01:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 7813]
+2019-03-22 02:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 8246]
+2019-03-22 02:55:04 -Validating all active sessions...
+2019-03-22 02:55:04 -Finished session validation.  No sessions were stopped.
+2019-03-22 02:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 8679]
+2019-03-22 03:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 9112]
+2019-03-22 03:55:04 -Validating all active sessions...
+2019-03-22 03:55:04 -Finished session validation.  No sessions were stopped.
+2019-03-22 03:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 9545]
+2019-03-22 04:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 9978]
+2019-03-22 04:55:05 -Validating all active sessions...
+2019-03-22 04:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 04:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 10411]
+2019-03-22 05:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 10844]
+2019-03-22 05:55:05 -Validating all active sessions...
+2019-03-22 05:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 05:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 11277]
+2019-03-22 06:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 11710]
+2019-03-22 06:55:05 -Validating all active sessions...
+2019-03-22 06:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 06:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 12143]
+2019-03-22 07:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 12576]
+2019-03-22 07:55:05 -Validating all active sessions...
+2019-03-22 07:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 07:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 13009]
+2019-03-22 08:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 13442]
+2019-03-22 08:55:05 -Validating all active sessions...
+2019-03-22 08:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 08:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 13875]
+2019-03-22 09:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 14 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(14)-CONNECTED(14)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 165], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 27], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 14308]
+2019-03-22 09:40:38 -请求地址 : http://localhost/login;JSESSIONID=6ac975eb-0af8-43c0-bbea-de72e33fe4a2
+2019-03-22 09:40:38 -HTTP METHOD : GET
+2019-03-22 09:40:38 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2019-03-22 09:40:38 -参数 : []
+2019-03-22 09:40:38 -耗时 : 0
+2019-03-22 09:40:38 -返回值 : login
+2019-03-22 09:40:38 -请求地址 : http://localhost/login
+2019-03-22 09:40:38 -HTTP METHOD : GET
+2019-03-22 09:40:38 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2019-03-22 09:40:38 -参数 : []
+2019-03-22 09:40:38 -耗时 : 0
+2019-03-22 09:40:38 -返回值 : login
+2019-03-22 09:40:39 -请求地址 : http://localhost/login
+2019-03-22 09:40:39 -HTTP METHOD : POST
+2019-03-22 09:40:39 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2019-03-22 09:40:39 -参数 : [admin, 111111]
+2019-03-22 09:40:39 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2019-03-22 09:40:39 -==> Parameters: admin(String)
+2019-03-22 09:40:39 -<==      Total: 1
+2019-03-22 09:40:39 -耗时 : 18
+2019-03-22 09:40:39 -返回值 : {msg=操作成功, code=0}
+2019-03-22 09:40:39 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-03-22 09:40:39 -==> Parameters: 1(Long), admin(String), 登录(String), 18(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2019-03-22 09:40:39.529(Timestamp)
+2019-03-22 09:40:39 -请求地址 : http://localhost/index
+2019-03-22 09:40:39 -HTTP METHOD : GET
+2019-03-22 09:40:39 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2019-03-22 09:40:39 -参数 : [{}]
+2019-03-22 09:40:39 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2019-03-22 09:40:39 -==> Parameters: 1(Long)
+2019-03-22 09:40:39 -<==      Total: 27
+2019-03-22 09:40:39 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2019-03-22 09:40:39 -==> Parameters: 138(Long)
+2019-03-22 09:40:39 -<==      Total: 1
+2019-03-22 09:40:39 -耗时 : 12
+2019-03-22 09:40:39 -返回值 : index_v1
+2019-03-22 09:40:39 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-03-22 09:40:39 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 12(Integer), com.bootdo.system.controller.LoginController.index()(String), null, 127.0.0.1(String), 2019-03-22 09:40:39.554(Timestamp)
+2019-03-22 09:40:39 -<==    Updates: 1
+2019-03-22 09:40:39 -<==    Updates: 1
+2019-03-22 09:40:39 -请求地址 : http://localhost/main
+2019-03-22 09:40:39 -HTTP METHOD : GET
+2019-03-22 09:40:39 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2019-03-22 09:40:39 -参数 : []
+2019-03-22 09:40:39 -耗时 : 0
+2019-03-22 09:40:39 -返回值 : main
+2019-03-22 09:40:39 -请求地址 : http://localhost/oa/notify/message
+2019-03-22 09:40:39 -HTTP METHOD : GET
+2019-03-22 09:40:39 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2019-03-22 09:40:39 -参数 : []
+2019-03-22 09:40:39 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2019-03-22 09:40:39 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2019-03-22 09:40:39 -<==      Total: 0
+2019-03-22 09:40:39 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2019-03-22 09:40:39 -==> Parameters: 1(Long), 0(String)
+2019-03-22 09:40:39 -<==      Total: 1
+2019-03-22 09:40:39 -耗时 : 5
+2019-03-22 09:40:39 -返回值 : com.bootdo.common.utils.PageUtils@2c45d49f
+2019-03-22 09:40:39 -请求地址 : http://localhost/main
+2019-03-22 09:40:39 -HTTP METHOD : GET
+2019-03-22 09:40:39 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2019-03-22 09:40:39 -参数 : []
+2019-03-22 09:40:39 -耗时 : 0
+2019-03-22 09:40:39 -返回值 : main
+2019-03-22 09:55:05 -Validating all active sessions...
+2019-03-22 09:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 09:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 15 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(15)-CONNECTED(15)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 177], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 29], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 14740]
+2019-03-22 10:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 15 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(15)-CONNECTED(15)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 177], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 29], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 15173]
+2019-03-22 10:35:09 -请求地址 : http://localhost/login;JSESSIONID=90ab0a6f-af01-4b91-802a-2a8e45e58a65
+2019-03-22 10:35:09 -HTTP METHOD : GET
+2019-03-22 10:35:09 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2019-03-22 10:35:09 -参数 : []
+2019-03-22 10:35:09 -耗时 : 1
+2019-03-22 10:35:09 -返回值 : login
+2019-03-22 10:35:10 -请求地址 : http://localhost/login
+2019-03-22 10:35:10 -HTTP METHOD : POST
+2019-03-22 10:35:10 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2019-03-22 10:35:10 -参数 : [admin, 111111]
+2019-03-22 10:35:10 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2019-03-22 10:35:10 -==> Parameters: admin(String)
+2019-03-22 10:35:10 -<==      Total: 1
+2019-03-22 10:35:10 -耗时 : 11
+2019-03-22 10:35:10 -返回值 : {msg=操作成功, code=0}
+2019-03-22 10:35:10 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-03-22 10:35:10 -==> Parameters: 1(Long), admin(String), 登录(String), 11(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2019-03-22 10:35:10.502(Timestamp)
+2019-03-22 10:35:10 -请求地址 : http://localhost/index
+2019-03-22 10:35:10 -HTTP METHOD : GET
+2019-03-22 10:35:10 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2019-03-22 10:35:10 -参数 : [{}]
+2019-03-22 10:35:10 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2019-03-22 10:35:10 -==> Parameters: 1(Long)
+2019-03-22 10:35:10 -<==      Total: 27
+2019-03-22 10:35:10 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2019-03-22 10:35:10 -==> Parameters: 138(Long)
+2019-03-22 10:35:10 -<==      Total: 1
+2019-03-22 10:35:10 -耗时 : 10
+2019-03-22 10:35:10 -返回值 : index_v1
+2019-03-22 10:35:10 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-03-22 10:35:10 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 10(Integer), com.bootdo.system.controller.LoginController.index()(String), null, 127.0.0.1(String), 2019-03-22 10:35:10.531(Timestamp)
+2019-03-22 10:35:10 -请求地址 : http://localhost/main
+2019-03-22 10:35:10 -HTTP METHOD : GET
+2019-03-22 10:35:10 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2019-03-22 10:35:10 -参数 : []
+2019-03-22 10:35:10 -耗时 : 0
+2019-03-22 10:35:10 -返回值 : main
+2019-03-22 10:35:10 -请求地址 : http://localhost/oa/notify/message
+2019-03-22 10:35:10 -HTTP METHOD : GET
+2019-03-22 10:35:10 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2019-03-22 10:35:10 -参数 : []
+2019-03-22 10:35:10 -请求地址 : http://localhost/main
+2019-03-22 10:35:10 -HTTP METHOD : GET
+2019-03-22 10:35:10 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2019-03-22 10:35:10 -参数 : []
+2019-03-22 10:35:10 -耗时 : 0
+2019-03-22 10:35:10 -返回值 : main
+2019-03-22 10:35:10 -<==    Updates: 1
+2019-03-22 10:35:10 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2019-03-22 10:35:10 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2019-03-22 10:35:10 -<==      Total: 0
+2019-03-22 10:35:10 -<==    Updates: 1
+2019-03-22 10:35:10 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2019-03-22 10:35:10 -==> Parameters: 1(Long), 0(String)
+2019-03-22 10:35:10 -<==      Total: 1
+2019-03-22 10:35:10 -耗时 : 198
+2019-03-22 10:35:10 -返回值 : com.bootdo.common.utils.PageUtils@27c918bc
+2019-03-22 10:44:01 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2019-03-22 10:44:01 -==> Parameters: 1(Long)
+2019-03-22 10:44:01 -<==      Total: 47
+2019-03-22 10:44:01 -请求地址 : http://localhost/common/sysFile
+2019-03-22 10:44:01 -HTTP METHOD : GET
+2019-03-22 10:44:01 -CLASS_METHOD : com.bootdo.common.controller.FileController.sysFile
+2019-03-22 10:44:01 -参数 : [{}]
+2019-03-22 10:44:01 -耗时 : 0
+2019-03-22 10:44:01 -返回值 : common/file/file
+2019-03-22 10:44:01 -请求地址 : http://localhost/common/sysFile/list
+2019-03-22 10:44:01 -HTTP METHOD : GET
+2019-03-22 10:44:01 -CLASS_METHOD : com.bootdo.common.controller.FileController.list
+2019-03-22 10:44:01 -参数 : [{limit=12, offset=0, type=}]
+2019-03-22 10:44:01 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file order by id desc limit ?, ? 
+2019-03-22 10:44:01 -==> Parameters: 0(Integer), 12(Integer)
+2019-03-22 10:44:01 -<==      Total: 8
+2019-03-22 10:44:01 -==>  Preparing: select count(*) from sys_file 
+2019-03-22 10:44:01 -==> Parameters: 
+2019-03-22 10:44:01 -<==      Total: 1
+2019-03-22 10:44:01 -耗时 : 4
+2019-03-22 10:44:01 -返回值 : com.bootdo.common.utils.PageUtils@5a924d00
+2019-03-22 10:44:04 -请求地址 : http://localhost/system/sysDept
+2019-03-22 10:44:04 -HTTP METHOD : GET
+2019-03-22 10:44:04 -CLASS_METHOD : com.bootdo.system.controller.DeptController.dept
+2019-03-22 10:44:04 -参数 : []
+2019-03-22 10:44:04 -耗时 : 1
+2019-03-22 10:44:04 -返回值 : system/dept/dept
+2019-03-22 10:44:04 -请求地址 : http://localhost/system/sysDept/list
+2019-03-22 10:44:04 -HTTP METHOD : GET
+2019-03-22 10:44:04 -CLASS_METHOD : com.bootdo.system.controller.DeptController.list
+2019-03-22 10:44:04 -参数 : []
+2019-03-22 10:44:04 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept order by dept_id desc 
+2019-03-22 10:44:04 -==> Parameters: 
+2019-03-22 10:44:04 -<==      Total: 11
+2019-03-22 10:44:04 -耗时 : 2
+2019-03-22 10:44:04 -返回值 : [DeptDO{deptId=16, parentId=0, name='运维部', orderNum=1, delFlag=null}, DeptDO{deptId=15, parentId=13, name='测试软件', orderNum=2, delFlag=1}, DeptDO{deptId=14, parentId=13, name='测试硬件', orderNum=1, delFlag=1}, DeptDO{deptId=13, parentId=0, name='测试部', orderNum=5, delFlag=1}, DeptDO{deptId=12, parentId=11, name='产品一部', orderNum=1, delFlag=1}, DeptDO{deptId=11, parentId=0, name='产品部', orderNum=3, delFlag=1}, DeptDO{deptId=10, parentId=9, name='销售一部', orderNum=1, delFlag=1}, DeptDO{deptId=9, parentId=0, name='销售部', orderNum=2, delFlag=1}, DeptDO{deptId=8, parentId=6, name='Windows研发中心', orderNum=2, delFlag=1}, DeptDO{deptId=7, parentId=6, name='Android研发中心', orderNum=1, delFlag=1}, DeptDO{deptId=6, parentId=0, name='研发部', orderNum=1, delFlag=1}]
+2019-03-22 10:44:04 -请求地址 : http://localhost/sys/user/
+2019-03-22 10:44:04 -HTTP METHOD : GET
+2019-03-22 10:44:04 -CLASS_METHOD : com.bootdo.system.controller.UserController.user
+2019-03-22 10:44:04 -参数 : [{}]
+2019-03-22 10:44:04 -耗时 : 0
+2019-03-22 10:44:04 -返回值 : system/user/user
+2019-03-22 10:44:04 -请求地址 : http://localhost/system/sysDept/tree
+2019-03-22 10:44:04 -HTTP METHOD : GET
+2019-03-22 10:44:04 -CLASS_METHOD : com.bootdo.system.controller.DeptController.tree
+2019-03-22 10:44:04 -参数 : []
+2019-03-22 10:44:04 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept order by dept_id desc 
+2019-03-22 10:44:04 -==> Parameters: 
+2019-03-22 10:44:04 -<==      Total: 11
+2019-03-22 10:44:04 -耗时 : 3
+2019-03-22 10:44:04 -返回值 : {"checked":true,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":false,"id":"16","parentId":"0","state":{"opened":true},"text":"运维部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"15","parentId":"13","state":{"opened":true},"text":"测试软件"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"14","parentId":"13","state":{"opened":true},"text":"测试硬件"}],"hasChildren":true,"hasParent":false,"id":"13","parentId":"0","state":{"opened":true},"text":"测试部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"12","parentId":"11","state":{"opened":true},"text":"产品一部"}],"hasChildren":true,"hasParent":false,"id":"11","parentId":"0","state":{"opened":true},"text":"产品部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"10","parentId":"9","state":{"opened":true},"text":"销售一部"}],"hasChildren":true,"hasParent":false,"id":"9","parentId":"0","state":{"opened":true},"text":"销售部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"8","parentId":"6","state":{"opened":true},"text":"Windows研发中心"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"7","parentId":"6","state":{"opened":true},"text":"Android研发中心"}],"hasChildren":true,"hasParent":false,"id":"6","parentId":"0","state":{"opened":true},"text":"研发部"}],"hasChildren":true,"hasParent":false,"id":"-1","parentId":"","state":{"opened":true},"text":"顶级节点"}
+2019-03-22 10:44:05 -请求地址 : http://localhost/sys/user/list
+2019-03-22 10:44:05 -HTTP METHOD : GET
+2019-03-22 10:44:05 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 10:44:05 -参数 : [{limit=10, offset=0, name=, deptId=}]
+2019-03-22 10:44:05 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user order by user_id desc limit ?, ? 
+2019-03-22 10:44:05 -==> Parameters: 0(Integer), 10(Integer)
+2019-03-22 10:44:05 -<==      Total: 10
+2019-03-22 10:44:05 -==>  Preparing: select count(*) from sys_user 
+2019-03-22 10:44:05 -==> Parameters: 
+2019-03-22 10:44:05 -<==      Total: 1
+2019-03-22 10:44:05 -耗时 : 12
+2019-03-22 10:44:05 -返回值 : com.bootdo.common.utils.PageUtils@60b1cb83
+2019-03-22 10:55:05 -Validating all active sessions...
+2019-03-22 10:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 10:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 16 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(16)-CONNECTED(16)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 189], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 31], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 15605]
+2019-03-22 11:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 16 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(16)-CONNECTED(16)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 189], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 31], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 16038]
+2019-03-22 11:55:05 -Validating all active sessions...
+2019-03-22 11:55:05 -Finished session validation.  [1] sessions were stopped.
+2019-03-22 11:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 16 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(16)-CONNECTED(16)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 189], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 31], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 16471]
+2019-03-22 12:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 16 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(16)-CONNECTED(16)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 189], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 31], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 16904]
+2019-03-22 12:55:05 -Validating all active sessions...
+2019-03-22 12:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 12:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 16 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(16)-CONNECTED(16)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 189], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 31], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 17337]
+2019-03-22 13:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 16 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(16)-CONNECTED(16)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 189], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 31], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 17770]
+2019-03-22 13:55:05 -Validating all active sessions...
+2019-03-22 13:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 13:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 16 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(16)-CONNECTED(16)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 189], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 31], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 18203]
+2019-03-22 14:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 16 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(16)-CONNECTED(16)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 189], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 31], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 18636]
+2019-03-22 14:55:05 -Validating all active sessions...
+2019-03-22 14:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 14:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 16 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(16)-CONNECTED(16)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 189], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 31], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 19069]
+2019-03-22 15:22:37 -请求地址 : http://localhost/login;JSESSIONID=b7fb1e60-0fe2-4c47-b327-c6b2e1e85ef3
+2019-03-22 15:22:37 -HTTP METHOD : GET
+2019-03-22 15:22:37 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2019-03-22 15:22:37 -参数 : []
+2019-03-22 15:22:37 -耗时 : 1
+2019-03-22 15:22:37 -返回值 : login
+2019-03-22 15:22:37 -请求地址 : http://localhost/login
+2019-03-22 15:22:37 -HTTP METHOD : GET
+2019-03-22 15:22:37 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2019-03-22 15:22:37 -参数 : []
+2019-03-22 15:22:37 -耗时 : 0
+2019-03-22 15:22:37 -返回值 : login
+2019-03-22 15:22:37 -请求地址 : http://localhost/login;JSESSIONID=b7fb1e60-0fe2-4c47-b327-c6b2e1e85ef3
+2019-03-22 15:22:37 -HTTP METHOD : GET
+2019-03-22 15:22:37 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2019-03-22 15:22:37 -参数 : []
+2019-03-22 15:22:37 -耗时 : 0
+2019-03-22 15:22:37 -返回值 : login
+2019-03-22 15:22:37 -请求地址 : http://localhost/login
+2019-03-22 15:22:37 -HTTP METHOD : GET
+2019-03-22 15:22:37 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2019-03-22 15:22:37 -参数 : []
+2019-03-22 15:22:37 -耗时 : 0
+2019-03-22 15:22:37 -返回值 : login
+2019-03-22 15:22:38 -请求地址 : http://localhost/login;JSESSIONID=b7fb1e60-0fe2-4c47-b327-c6b2e1e85ef3
+2019-03-22 15:22:38 -HTTP METHOD : GET
+2019-03-22 15:22:38 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2019-03-22 15:22:38 -参数 : []
+2019-03-22 15:22:38 -耗时 : 1
+2019-03-22 15:22:38 -返回值 : login
+2019-03-22 15:22:38 -请求地址 : http://localhost/login
+2019-03-22 15:22:38 -HTTP METHOD : GET
+2019-03-22 15:22:38 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2019-03-22 15:22:38 -参数 : []
+2019-03-22 15:22:38 -耗时 : 0
+2019-03-22 15:22:38 -返回值 : login
+2019-03-22 15:22:38 -请求地址 : http://localhost/login
+2019-03-22 15:22:38 -HTTP METHOD : POST
+2019-03-22 15:22:38 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2019-03-22 15:22:38 -参数 : [admin, 111111]
+2019-03-22 15:22:38 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2019-03-22 15:22:38 -==> Parameters: admin(String)
+2019-03-22 15:22:38 -<==      Total: 1
+2019-03-22 15:22:38 -耗时 : 8
+2019-03-22 15:22:38 -返回值 : {msg=操作成功, code=0}
+2019-03-22 15:22:38 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-03-22 15:22:38 -==> Parameters: 1(Long), admin(String), 登录(String), 8(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2019-03-22 15:22:38.852(Timestamp)
+2019-03-22 15:22:38 -请求地址 : http://localhost/index
+2019-03-22 15:22:38 -HTTP METHOD : GET
+2019-03-22 15:22:38 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2019-03-22 15:22:38 -参数 : [{}]
+2019-03-22 15:22:38 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2019-03-22 15:22:38 -==> Parameters: 1(Long)
+2019-03-22 15:22:38 -<==      Total: 27
+2019-03-22 15:22:38 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2019-03-22 15:22:38 -==> Parameters: 138(Long)
+2019-03-22 15:22:38 -<==      Total: 1
+2019-03-22 15:22:38 -耗时 : 7
+2019-03-22 15:22:38 -返回值 : index_v1
+2019-03-22 15:22:38 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-03-22 15:22:38 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 7(Integer), com.bootdo.system.controller.LoginController.index()(String), null, 127.0.0.1(String), 2019-03-22 15:22:38.9(Timestamp)
+2019-03-22 15:22:38 -<==    Updates: 1
+2019-03-22 15:22:38 -请求地址 : http://localhost/main
+2019-03-22 15:22:38 -HTTP METHOD : GET
+2019-03-22 15:22:38 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2019-03-22 15:22:38 -参数 : []
+2019-03-22 15:22:38 -耗时 : 0
+2019-03-22 15:22:38 -返回值 : main
+2019-03-22 15:22:38 -<==    Updates: 1
+2019-03-22 15:22:39 -请求地址 : http://localhost/oa/notify/message
+2019-03-22 15:22:39 -HTTP METHOD : GET
+2019-03-22 15:22:39 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2019-03-22 15:22:39 -参数 : []
+2019-03-22 15:22:39 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2019-03-22 15:22:39 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2019-03-22 15:22:39 -<==      Total: 0
+2019-03-22 15:22:39 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2019-03-22 15:22:39 -==> Parameters: 1(Long), 0(String)
+2019-03-22 15:22:39 -<==      Total: 1
+2019-03-22 15:22:39 -耗时 : 26
+2019-03-22 15:22:39 -返回值 : com.bootdo.common.utils.PageUtils@5c7fec00
+2019-03-22 15:22:39 -请求地址 : http://localhost/main
+2019-03-22 15:22:39 -HTTP METHOD : GET
+2019-03-22 15:22:39 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2019-03-22 15:22:39 -参数 : []
+2019-03-22 15:22:39 -耗时 : 0
+2019-03-22 15:22:39 -返回值 : main
+2019-03-22 15:22:40 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2019-03-22 15:22:40 -==> Parameters: 1(Long)
+2019-03-22 15:22:40 -<==      Total: 47
+2019-03-22 15:22:40 -请求地址 : http://localhost/common/sysFile
+2019-03-22 15:22:40 -HTTP METHOD : GET
+2019-03-22 15:22:40 -CLASS_METHOD : com.bootdo.common.controller.FileController.sysFile
+2019-03-22 15:22:40 -参数 : [{}]
+2019-03-22 15:22:40 -耗时 : 0
+2019-03-22 15:22:40 -返回值 : common/file/file
+2019-03-22 15:22:40 -请求地址 : http://localhost/common/sysFile/list
+2019-03-22 15:22:40 -HTTP METHOD : GET
+2019-03-22 15:22:40 -CLASS_METHOD : com.bootdo.common.controller.FileController.list
+2019-03-22 15:22:40 -参数 : [{limit=12, offset=0, type=}]
+2019-03-22 15:22:40 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file order by id desc limit ?, ? 
+2019-03-22 15:22:40 -==> Parameters: 0(Integer), 12(Integer)
+2019-03-22 15:22:40 -<==      Total: 8
+2019-03-22 15:22:40 -==>  Preparing: select count(*) from sys_file 
+2019-03-22 15:22:40 -==> Parameters: 
+2019-03-22 15:22:40 -<==      Total: 1
+2019-03-22 15:22:40 -耗时 : 3
+2019-03-22 15:22:40 -返回值 : com.bootdo.common.utils.PageUtils@53414e03
+2019-03-22 15:22:41 -请求地址 : http://localhost/sys/role
+2019-03-22 15:22:41 -HTTP METHOD : GET
+2019-03-22 15:22:41 -CLASS_METHOD : com.bootdo.system.controller.RoleController.role
+2019-03-22 15:22:41 -参数 : []
+2019-03-22 15:22:41 -耗时 : 1
+2019-03-22 15:22:41 -返回值 : system/role/role
+2019-03-22 15:22:42 -请求地址 : http://localhost/sys/role/list
+2019-03-22 15:22:42 -HTTP METHOD : GET
+2019-03-22 15:22:42 -CLASS_METHOD : com.bootdo.system.controller.RoleController.list
+2019-03-22 15:22:42 -参数 : []
+2019-03-22 15:22:42 -==>  Preparing: select `role_id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified` from sys_role order by role_id desc 
+2019-03-22 15:22:42 -==> Parameters: 
+2019-03-22 15:22:42 -<==      Total: 2
+2019-03-22 15:22:42 -耗时 : 3
+2019-03-22 15:22:42 -返回值 : [RoleDO{roleId=59, roleName='管理员', roleSign='null', remark='权限很多，都有了', userIdCreate=null, gmtCreate=null, gmtModified=null, menuIds=null}, RoleDO{roleId=1, roleName='超级用户角色', roleSign='admin', remark='拥有最高权限', userIdCreate=2, gmtCreate=2017-08-12 00:43:52.0, gmtModified=2017-08-12 19:14:59.0, menuIds=null}]
+2019-03-22 15:22:42 -请求地址 : http://localhost/sys/user/
+2019-03-22 15:22:42 -HTTP METHOD : GET
+2019-03-22 15:22:42 -CLASS_METHOD : com.bootdo.system.controller.UserController.user
+2019-03-22 15:22:42 -参数 : [{}]
+2019-03-22 15:22:42 -耗时 : 0
+2019-03-22 15:22:42 -返回值 : system/user/user
+2019-03-22 15:22:42 -请求地址 : http://localhost/system/sysDept/tree
+2019-03-22 15:22:42 -HTTP METHOD : GET
+2019-03-22 15:22:42 -CLASS_METHOD : com.bootdo.system.controller.DeptController.tree
+2019-03-22 15:22:42 -参数 : []
+2019-03-22 15:22:42 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept order by dept_id desc 
+2019-03-22 15:22:42 -==> Parameters: 
+2019-03-22 15:22:42 -<==      Total: 11
+2019-03-22 15:22:42 -耗时 : 3
+2019-03-22 15:22:42 -返回值 : {"checked":true,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":false,"id":"16","parentId":"0","state":{"opened":true},"text":"运维部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"15","parentId":"13","state":{"opened":true},"text":"测试软件"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"14","parentId":"13","state":{"opened":true},"text":"测试硬件"}],"hasChildren":true,"hasParent":false,"id":"13","parentId":"0","state":{"opened":true},"text":"测试部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"12","parentId":"11","state":{"opened":true},"text":"产品一部"}],"hasChildren":true,"hasParent":false,"id":"11","parentId":"0","state":{"opened":true},"text":"产品部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"10","parentId":"9","state":{"opened":true},"text":"销售一部"}],"hasChildren":true,"hasParent":false,"id":"9","parentId":"0","state":{"opened":true},"text":"销售部"},{"checked":false,"children":[{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"8","parentId":"6","state":{"opened":true},"text":"Windows研发中心"},{"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"7","parentId":"6","state":{"opened":true},"text":"Android研发中心"}],"hasChildren":true,"hasParent":false,"id":"6","parentId":"0","state":{"opened":true},"text":"研发部"}],"hasChildren":true,"hasParent":false,"id":"-1","parentId":"","state":{"opened":true},"text":"顶级节点"}
+2019-03-22 15:22:42 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:22:42 -HTTP METHOD : GET
+2019-03-22 15:22:42 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:22:42 -参数 : [{limit=10, offset=0, name=, deptId=}]
+2019-03-22 15:22:42 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user order by user_id desc limit ?, ? 
+2019-03-22 15:22:42 -==> Parameters: 0(Integer), 10(Integer)
+2019-03-22 15:22:42 -<==      Total: 10
+2019-03-22 15:22:42 -==>  Preparing: select count(*) from sys_user 
+2019-03-22 15:22:42 -==> Parameters: 
+2019-03-22 15:22:42 -<==      Total: 1
+2019-03-22 15:22:42 -耗时 : 7
+2019-03-22 15:22:42 -返回值 : com.bootdo.common.utils.PageUtils@56038b26
+2019-03-22 15:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 19501]
+2019-03-22 15:41:43 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:41:43 -HTTP METHOD : GET
+2019-03-22 15:41:43 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:41:43 -参数 : [{limit=10, offset=0, name=, deptId=8}]
+2019-03-22 15:41:43 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:41:43 -==> Parameters: 8(String), 0(Integer), 10(Integer)
+2019-03-22 15:41:43 -<==      Total: 1
+2019-03-22 15:41:43 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:41:43 -==> Parameters: 8(String)
+2019-03-22 15:41:43 -<==      Total: 1
+2019-03-22 15:41:43 -耗时 : 17
+2019-03-22 15:41:43 -返回值 : com.bootdo.common.utils.PageUtils@2a728e9c
+2019-03-22 15:41:44 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:41:44 -HTTP METHOD : GET
+2019-03-22 15:41:44 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:41:44 -参数 : [{limit=10, offset=0, name=, deptId=7}]
+2019-03-22 15:41:44 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:41:44 -==> Parameters: 7(String), 0(Integer), 10(Integer)
+2019-03-22 15:41:44 -<==      Total: 4
+2019-03-22 15:41:44 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:41:44 -==> Parameters: 7(String)
+2019-03-22 15:41:44 -<==      Total: 1
+2019-03-22 15:41:44 -耗时 : 26
+2019-03-22 15:41:44 -返回值 : com.bootdo.common.utils.PageUtils@677834d2
+2019-03-22 15:41:46 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2019-03-22 15:41:46 -==> Parameters: 1(Long)
+2019-03-22 15:41:46 -<==      Total: 47
+2019-03-22 15:41:46 -请求地址 : http://localhost/sys/user/edit/139
+2019-03-22 15:41:46 -HTTP METHOD : GET
+2019-03-22 15:41:46 -CLASS_METHOD : com.bootdo.system.controller.UserController.edit
+2019-03-22 15:41:46 -参数 : [{}, 139]
+2019-03-22 15:41:46 -==>  Preparing: select role_id from sys_user_role where user_id=? 
+2019-03-22 15:41:46 -==> Parameters: 139(Long)
+2019-03-22 15:41:46 -<==      Total: 1
+2019-03-22 15:41:46 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2019-03-22 15:41:46 -==> Parameters: 139(Long)
+2019-03-22 15:41:46 -<==      Total: 1
+2019-03-22 15:41:46 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept where dept_id = ? 
+2019-03-22 15:41:46 -==> Parameters: 7(Long)
+2019-03-22 15:41:46 -<==      Total: 1
+2019-03-22 15:41:46 -==>  Preparing: select role_id from sys_user_role where user_id=? 
+2019-03-22 15:41:46 -==> Parameters: 139(Long)
+2019-03-22 15:41:46 -<==      Total: 1
+2019-03-22 15:41:46 -==>  Preparing: select `role_id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified` from sys_role order by role_id desc 
+2019-03-22 15:41:46 -==> Parameters: 
+2019-03-22 15:41:46 -<==      Total: 2
+2019-03-22 15:41:46 -耗时 : 15
+2019-03-22 15:41:46 -返回值 : system/user/edit
+2019-03-22 15:41:46 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-03-22 15:41:46 -==> Parameters: 1(Long), admin(String), 编辑用户(String), 16(Integer), com.bootdo.system.controller.UserController.edit()(String), null, 127.0.0.1(String), 2019-03-22 15:41:46.994(Timestamp)
+2019-03-22 15:41:47 -<==    Updates: 1
+2019-03-22 15:42:22 -请求地址 : http://localhost/sys/user/update
+2019-03-22 15:42:22 -HTTP METHOD : POST
+2019-03-22 15:42:22 -CLASS_METHOD : com.bootdo.system.controller.UserController.update
+2019-03-22 15:42:22 -参数 : [UserDO{userId=139, username='123', name='布莱恩特', password='null', deptId=7, deptName='Android研发中心', email='570006518@qq.com', mobile='null', status=0, userIdCreate=null, gmtCreate=null, gmtModified=null, roleIds=[59], sex=null, birth=null, picId=null, liveAddress='null', hobby='null', province='null', city='null', district='null'}]
+2019-03-22 15:42:22 -==>  Preparing: update sys_user SET `username` = ?, `name` = ?, `dept_id` = ?, `email` = ?, `status` = ? where user_id = ? 
+2019-03-22 15:42:22 -==> Parameters: 123(String), 布莱恩特(String), 7(Long), 570006518@qq.com(String), 0(Integer), 139(Long)
+2019-03-22 15:42:22 -<==    Updates: 1
+2019-03-22 15:42:22 -==>  Preparing: delete from sys_user_role where user_id=? 
+2019-03-22 15:42:22 -==> Parameters: 139(Long)
+2019-03-22 15:42:22 -<==    Updates: 1
+2019-03-22 15:42:22 -==>  Preparing: INSERT INTO sys_user_role(user_id, role_id) values (?,?) 
+2019-03-22 15:42:22 -==> Parameters: 139(Long), 59(Long)
+2019-03-22 15:42:22 -<==    Updates: 1
+2019-03-22 15:42:22 -耗时 : 163
+2019-03-22 15:42:22 -返回值 : {msg=操作成功, code=0}
+2019-03-22 15:42:22 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-03-22 15:42:22 -==> Parameters: 1(Long), admin(String), 更新用户(String), 163(Integer), com.bootdo.system.controller.UserController.update()(String), null, 127.0.0.1(String), 2019-03-22 15:42:22.932(Timestamp)
+2019-03-22 15:42:22 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:22 -HTTP METHOD : GET
+2019-03-22 15:42:22 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:22 -参数 : [{limit=10, offset=0, name=, deptId=}]
+2019-03-22 15:42:22 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user order by user_id desc limit ?, ? 
+2019-03-22 15:42:22 -==> Parameters: 0(Integer), 10(Integer)
+2019-03-22 15:42:22 -<==      Total: 10
+2019-03-22 15:42:22 -==>  Preparing: select count(*) from sys_user 
+2019-03-22 15:42:22 -==> Parameters: 
+2019-03-22 15:42:22 -<==      Total: 1
+2019-03-22 15:42:22 -耗时 : 8
+2019-03-22 15:42:22 -返回值 : com.bootdo.common.utils.PageUtils@4dbd85d1
+2019-03-22 15:42:22 -<==    Updates: 1
+2019-03-22 15:42:37 -请求地址 : http://localhost/sys/user/resetPwd/138
+2019-03-22 15:42:37 -HTTP METHOD : GET
+2019-03-22 15:42:37 -CLASS_METHOD : com.bootdo.system.controller.UserController.resetPwd
+2019-03-22 15:42:37 -参数 : [138, {}]
+2019-03-22 15:42:37 -耗时 : 0
+2019-03-22 15:42:37 -返回值 : system/user/reset_pwd
+2019-03-22 15:42:37 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-03-22 15:42:37 -==> Parameters: 1(Long), admin(String), 请求更改用户密码(String), 0(Integer), com.bootdo.system.controller.UserController.resetPwd()(String), null, 127.0.0.1(String), 2019-03-22 15:42:37.219(Timestamp)
+2019-03-22 15:42:37 -<==    Updates: 1
+2019-03-22 15:42:40 -请求地址 : http://localhost/sys/user/adminResetPwd
+2019-03-22 15:42:40 -HTTP METHOD : POST
+2019-03-22 15:42:40 -CLASS_METHOD : com.bootdo.system.controller.UserController.adminResetPwd
+2019-03-22 15:42:40 -参数 : [com.bootdo.system.vo.UserVO@2fdd8ae2]
+2019-03-22 15:42:40 -==>  Preparing: select role_id from sys_user_role where user_id=? 
+2019-03-22 15:42:40 -==> Parameters: 138(Long)
+2019-03-22 15:42:40 -<==      Total: 2
+2019-03-22 15:42:40 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2019-03-22 15:42:40 -==> Parameters: 138(Long)
+2019-03-22 15:42:40 -<==      Total: 1
+2019-03-22 15:42:40 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept where dept_id = ? 
+2019-03-22 15:42:40 -==> Parameters: 7(Long)
+2019-03-22 15:42:40 -<==      Total: 1
+2019-03-22 15:42:40 -==>  Preparing: update sys_user SET `username` = ?, `name` = ?, `password` = ?, `dept_id` = ?, `email` = ?, `mobile` = ?, `status` = ?, `sex` = ?, `birth` = ?, `live_address` = ?, `hobby` = ?, `province` = ?, `city` = ?, `district` = ? where user_id = ? 
+2019-03-22 15:42:40 -==> Parameters: 123456(String), 老詹(String), b7847569506ec5972e509b5ba56964af(String), 7(Long), 570006518@qq.com(String), 18575552059(String), 1(Integer), 97(Long), 2012-03-12 00:00:00.0(Timestamp), 玫瑰海岸(String), 121;(String), 广东省(String), 深圳市(String), 罗湖区(String), 138(Long)
+2019-03-22 15:42:40 -<==    Updates: 1
+2019-03-22 15:42:40 -耗时 : 32
+2019-03-22 15:42:40 -返回值 : {msg=操作成功, code=0}
+2019-03-22 15:42:40 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-03-22 15:42:40 -==> Parameters: 1(Long), admin(String), admin提交更改用户密码(String), 32(Integer), com.bootdo.system.controller.UserController.adminResetPwd()(String), null, 127.0.0.1(String), 2019-03-22 15:42:40.722(Timestamp)
+2019-03-22 15:42:40 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:40 -HTTP METHOD : GET
+2019-03-22 15:42:40 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:40 -参数 : [{limit=10, offset=0, name=, deptId=}]
+2019-03-22 15:42:40 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user order by user_id desc limit ?, ? 
+2019-03-22 15:42:40 -==> Parameters: 0(Integer), 10(Integer)
+2019-03-22 15:42:40 -<==      Total: 10
+2019-03-22 15:42:40 -==>  Preparing: select count(*) from sys_user 
+2019-03-22 15:42:40 -==> Parameters: 
+2019-03-22 15:42:40 -<==      Total: 1
+2019-03-22 15:42:40 -耗时 : 5
+2019-03-22 15:42:40 -返回值 : com.bootdo.common.utils.PageUtils@507340f8
+2019-03-22 15:42:40 -<==    Updates: 1
+2019-03-22 15:42:42 -请求地址 : http://localhost/sys/user/resetPwd/139
+2019-03-22 15:42:42 -HTTP METHOD : GET
+2019-03-22 15:42:42 -CLASS_METHOD : com.bootdo.system.controller.UserController.resetPwd
+2019-03-22 15:42:42 -参数 : [139, {}]
+2019-03-22 15:42:42 -耗时 : 0
+2019-03-22 15:42:42 -返回值 : system/user/reset_pwd
+2019-03-22 15:42:42 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-03-22 15:42:42 -==> Parameters: 1(Long), admin(String), 请求更改用户密码(String), 1(Integer), com.bootdo.system.controller.UserController.resetPwd()(String), null, 127.0.0.1(String), 2019-03-22 15:42:42.649(Timestamp)
+2019-03-22 15:42:42 -<==    Updates: 1
+2019-03-22 15:42:43 -请求地址 : http://localhost/sys/user/adminResetPwd
+2019-03-22 15:42:43 -HTTP METHOD : POST
+2019-03-22 15:42:43 -CLASS_METHOD : com.bootdo.system.controller.UserController.adminResetPwd
+2019-03-22 15:42:43 -参数 : [com.bootdo.system.vo.UserVO@62367c3c]
+2019-03-22 15:42:43 -==>  Preparing: select role_id from sys_user_role where user_id=? 
+2019-03-22 15:42:43 -==> Parameters: 139(Long)
+2019-03-22 15:42:43 -<==      Total: 1
+2019-03-22 15:42:43 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = ? 
+2019-03-22 15:42:43 -==> Parameters: 139(Long)
+2019-03-22 15:42:43 -<==      Total: 1
+2019-03-22 15:42:43 -==>  Preparing: select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept where dept_id = ? 
+2019-03-22 15:42:43 -==> Parameters: 7(Long)
+2019-03-22 15:42:43 -<==      Total: 1
+2019-03-22 15:42:43 -==>  Preparing: update sys_user SET `username` = ?, `name` = ?, `password` = ?, `dept_id` = ?, `email` = ?, `status` = ? where user_id = ? 
+2019-03-22 15:42:43 -==> Parameters: 123(String), 布莱恩特(String), 4bbe288462987c8237271e96a10ffb1f(String), 7(Long), 570006518@qq.com(String), 0(Integer), 139(Long)
+2019-03-22 15:42:43 -<==    Updates: 1
+2019-03-22 15:42:43 -耗时 : 32
+2019-03-22 15:42:43 -返回值 : {msg=操作成功, code=0}
+2019-03-22 15:42:43 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-03-22 15:42:43 -==> Parameters: 1(Long), admin(String), admin提交更改用户密码(String), 32(Integer), com.bootdo.system.controller.UserController.adminResetPwd()(String), null, 127.0.0.1(String), 2019-03-22 15:42:43.848(Timestamp)
+2019-03-22 15:42:43 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:43 -HTTP METHOD : GET
+2019-03-22 15:42:43 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:43 -参数 : [{limit=10, offset=0, name=, deptId=}]
+2019-03-22 15:42:43 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user order by user_id desc limit ?, ? 
+2019-03-22 15:42:43 -==> Parameters: 0(Integer), 10(Integer)
+2019-03-22 15:42:43 -<==      Total: 10
+2019-03-22 15:42:43 -==>  Preparing: select count(*) from sys_user 
+2019-03-22 15:42:43 -==> Parameters: 
+2019-03-22 15:42:43 -<==      Total: 1
+2019-03-22 15:42:43 -耗时 : 6
+2019-03-22 15:42:43 -返回值 : com.bootdo.common.utils.PageUtils@2aab8e8d
+2019-03-22 15:42:43 -<==    Updates: 1
+2019-03-22 15:42:45 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:45 -HTTP METHOD : GET
+2019-03-22 15:42:45 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:45 -参数 : [{limit=10, offset=0, name=, deptId=8}]
+2019-03-22 15:42:45 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:45 -==> Parameters: 8(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:45 -<==      Total: 1
+2019-03-22 15:42:45 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:45 -==> Parameters: 8(String)
+2019-03-22 15:42:45 -<==      Total: 1
+2019-03-22 15:42:45 -耗时 : 9
+2019-03-22 15:42:45 -返回值 : com.bootdo.common.utils.PageUtils@6b216d20
+2019-03-22 15:42:48 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:48 -HTTP METHOD : GET
+2019-03-22 15:42:48 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:48 -参数 : [{limit=10, offset=0, name=, deptId=10}]
+2019-03-22 15:42:48 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:48 -==> Parameters: 10(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:48 -<==      Total: 0
+2019-03-22 15:42:48 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:48 -==> Parameters: 10(String)
+2019-03-22 15:42:48 -<==      Total: 1
+2019-03-22 15:42:48 -耗时 : 7
+2019-03-22 15:42:48 -返回值 : com.bootdo.common.utils.PageUtils@3a3b0d37
+2019-03-22 15:42:49 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:49 -HTTP METHOD : GET
+2019-03-22 15:42:49 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:49 -参数 : [{limit=10, offset=0, name=, deptId=12}]
+2019-03-22 15:42:49 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:49 -==> Parameters: 12(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:49 -<==      Total: 1
+2019-03-22 15:42:49 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:49 -==> Parameters: 12(String)
+2019-03-22 15:42:49 -<==      Total: 1
+2019-03-22 15:42:49 -耗时 : 8
+2019-03-22 15:42:49 -返回值 : com.bootdo.common.utils.PageUtils@43432a64
+2019-03-22 15:42:50 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:50 -HTTP METHOD : GET
+2019-03-22 15:42:50 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:50 -参数 : [{limit=10, offset=0, name=, deptId=14}]
+2019-03-22 15:42:50 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:50 -==> Parameters: 14(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:50 -<==      Total: 0
+2019-03-22 15:42:50 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:50 -==> Parameters: 14(String)
+2019-03-22 15:42:50 -<==      Total: 1
+2019-03-22 15:42:50 -耗时 : 5
+2019-03-22 15:42:50 -返回值 : com.bootdo.common.utils.PageUtils@415a21f
+2019-03-22 15:42:51 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:51 -HTTP METHOD : GET
+2019-03-22 15:42:51 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:51 -参数 : [{limit=10, offset=0, name=, deptId=15}]
+2019-03-22 15:42:51 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:51 -==> Parameters: 15(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:51 -<==      Total: 0
+2019-03-22 15:42:51 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:51 -==> Parameters: 15(String)
+2019-03-22 15:42:51 -<==      Total: 1
+2019-03-22 15:42:51 -耗时 : 4
+2019-03-22 15:42:51 -返回值 : com.bootdo.common.utils.PageUtils@74ee0946
+2019-03-22 15:42:52 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:52 -HTTP METHOD : GET
+2019-03-22 15:42:52 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:52 -参数 : [{limit=10, offset=0, name=, deptId=16}]
+2019-03-22 15:42:52 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:52 -==> Parameters: 16(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:52 -<==      Total: 0
+2019-03-22 15:42:52 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:52 -==> Parameters: 16(String)
+2019-03-22 15:42:52 -<==      Total: 1
+2019-03-22 15:42:52 -耗时 : 6
+2019-03-22 15:42:52 -返回值 : com.bootdo.common.utils.PageUtils@4f37518d
+2019-03-22 15:42:53 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:53 -HTTP METHOD : GET
+2019-03-22 15:42:53 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:53 -参数 : [{limit=10, offset=0, name=, deptId=14}]
+2019-03-22 15:42:53 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:53 -==> Parameters: 14(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:53 -<==      Total: 0
+2019-03-22 15:42:53 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:53 -==> Parameters: 14(String)
+2019-03-22 15:42:53 -<==      Total: 1
+2019-03-22 15:42:53 -耗时 : 9
+2019-03-22 15:42:53 -返回值 : com.bootdo.common.utils.PageUtils@5e72f296
+2019-03-22 15:42:54 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:54 -HTTP METHOD : GET
+2019-03-22 15:42:54 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:54 -参数 : [{limit=10, offset=0, name=, deptId=14}]
+2019-03-22 15:42:54 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:54 -==> Parameters: 14(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:54 -<==      Total: 0
+2019-03-22 15:42:54 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:54 -==> Parameters: 14(String)
+2019-03-22 15:42:54 -<==      Total: 1
+2019-03-22 15:42:54 -耗时 : 7
+2019-03-22 15:42:54 -返回值 : com.bootdo.common.utils.PageUtils@e7f12d5
+2019-03-22 15:42:55 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:55 -HTTP METHOD : GET
+2019-03-22 15:42:55 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:55 -参数 : [{limit=10, offset=0, name=, deptId=14}]
+2019-03-22 15:42:55 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:55 -==> Parameters: 14(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:55 -<==      Total: 0
+2019-03-22 15:42:55 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:55 -==> Parameters: 14(String)
+2019-03-22 15:42:55 -<==      Total: 1
+2019-03-22 15:42:55 -耗时 : 10
+2019-03-22 15:42:55 -返回值 : com.bootdo.common.utils.PageUtils@4b281c74
+2019-03-22 15:42:55 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:55 -HTTP METHOD : GET
+2019-03-22 15:42:55 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:55 -参数 : [{limit=10, offset=0, name=, deptId=14}]
+2019-03-22 15:42:55 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:55 -==> Parameters: 14(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:55 -<==      Total: 0
+2019-03-22 15:42:55 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:55 -==> Parameters: 14(String)
+2019-03-22 15:42:55 -<==      Total: 1
+2019-03-22 15:42:55 -耗时 : 7
+2019-03-22 15:42:55 -返回值 : com.bootdo.common.utils.PageUtils@37d2a73
+2019-03-22 15:42:55 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:55 -HTTP METHOD : GET
+2019-03-22 15:42:55 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:55 -参数 : [{limit=10, offset=0, name=, deptId=14}]
+2019-03-22 15:42:55 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:55 -==> Parameters: 14(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:55 -<==      Total: 0
+2019-03-22 15:42:55 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:55 -==> Parameters: 14(String)
+2019-03-22 15:42:55 -<==      Total: 1
+2019-03-22 15:42:55 -耗时 : 8
+2019-03-22 15:42:55 -返回值 : com.bootdo.common.utils.PageUtils@47021d2f
+2019-03-22 15:42:56 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:56 -HTTP METHOD : GET
+2019-03-22 15:42:56 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:56 -参数 : [{limit=10, offset=0, name=, deptId=14}]
+2019-03-22 15:42:56 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:56 -==> Parameters: 14(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:56 -<==      Total: 0
+2019-03-22 15:42:56 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:56 -==> Parameters: 14(String)
+2019-03-22 15:42:56 -<==      Total: 1
+2019-03-22 15:42:56 -耗时 : 8
+2019-03-22 15:42:56 -返回值 : com.bootdo.common.utils.PageUtils@118ae85a
+2019-03-22 15:42:56 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:56 -HTTP METHOD : GET
+2019-03-22 15:42:56 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:56 -参数 : [{limit=10, offset=0, name=, deptId=14}]
+2019-03-22 15:42:56 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:56 -==> Parameters: 14(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:56 -<==      Total: 0
+2019-03-22 15:42:56 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:56 -==> Parameters: 14(String)
+2019-03-22 15:42:56 -<==      Total: 1
+2019-03-22 15:42:56 -耗时 : 7
+2019-03-22 15:42:56 -返回值 : com.bootdo.common.utils.PageUtils@6f39f840
+2019-03-22 15:42:57 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:57 -HTTP METHOD : GET
+2019-03-22 15:42:57 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:57 -参数 : [{limit=10, offset=0, name=, deptId=14}]
+2019-03-22 15:42:57 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:57 -==> Parameters: 14(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:57 -<==      Total: 0
+2019-03-22 15:42:57 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:57 -==> Parameters: 14(String)
+2019-03-22 15:42:57 -<==      Total: 1
+2019-03-22 15:42:57 -耗时 : 10
+2019-03-22 15:42:57 -返回值 : com.bootdo.common.utils.PageUtils@20d6e1b5
+2019-03-22 15:42:58 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:58 -HTTP METHOD : GET
+2019-03-22 15:42:58 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:58 -参数 : [{limit=10, offset=0, name=, deptId=10}]
+2019-03-22 15:42:58 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:58 -==> Parameters: 10(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:58 -<==      Total: 0
+2019-03-22 15:42:58 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:58 -==> Parameters: 10(String)
+2019-03-22 15:42:58 -<==      Total: 1
+2019-03-22 15:42:58 -耗时 : 6
+2019-03-22 15:42:58 -返回值 : com.bootdo.common.utils.PageUtils@1201a87c
+2019-03-22 15:42:59 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:42:59 -HTTP METHOD : GET
+2019-03-22 15:42:59 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:42:59 -参数 : [{limit=10, offset=0, name=, deptId=8}]
+2019-03-22 15:42:59 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:42:59 -==> Parameters: 8(String), 0(Integer), 10(Integer)
+2019-03-22 15:42:59 -<==      Total: 1
+2019-03-22 15:42:59 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:42:59 -==> Parameters: 8(String)
+2019-03-22 15:42:59 -<==      Total: 1
+2019-03-22 15:42:59 -耗时 : 8
+2019-03-22 15:42:59 -返回值 : com.bootdo.common.utils.PageUtils@369b94d2
+2019-03-22 15:43:00 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:43:00 -HTTP METHOD : GET
+2019-03-22 15:43:00 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:43:00 -参数 : [{limit=10, offset=0, name=, deptId=7}]
+2019-03-22 15:43:00 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:43:00 -==> Parameters: 7(String), 0(Integer), 10(Integer)
+2019-03-22 15:43:00 -<==      Total: 4
+2019-03-22 15:43:00 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:43:00 -==> Parameters: 7(String)
+2019-03-22 15:43:00 -<==      Total: 1
+2019-03-22 15:43:00 -耗时 : 11
+2019-03-22 15:43:00 -返回值 : com.bootdo.common.utils.PageUtils@54ed733d
+2019-03-22 15:43:02 -请求地址 : http://localhost/sys/user/list
+2019-03-22 15:43:02 -HTTP METHOD : GET
+2019-03-22 15:43:02 -CLASS_METHOD : com.bootdo.system.controller.UserController.list
+2019-03-22 15:43:02 -参数 : [{limit=10, offset=0, name=, deptId=8}]
+2019-03-22 15:43:02 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE dept_id = ? order by user_id desc limit ?, ? 
+2019-03-22 15:43:02 -==> Parameters: 8(String), 0(Integer), 10(Integer)
+2019-03-22 15:43:02 -<==      Total: 1
+2019-03-22 15:43:02 -==>  Preparing: select count(*) from sys_user WHERE dept_id = ? 
+2019-03-22 15:43:02 -==> Parameters: 8(String)
+2019-03-22 15:43:02 -<==      Total: 1
+2019-03-22 15:43:02 -耗时 : 8
+2019-03-22 15:43:02 -返回值 : com.bootdo.common.utils.PageUtils@278dbc8e
+2019-03-22 15:55:05 -Validating all active sessions...
+2019-03-22 15:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 15:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 19934]
+2019-03-22 16:25:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 20367]
+2019-03-22 16:55:05 -Validating all active sessions...
+2019-03-22 16:55:05 -Finished session validation.  [1] sessions were stopped.
+2019-03-22 16:55:54 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 20800]
+2019-03-22 17:25:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 21233]
+2019-03-22 17:55:05 -Validating all active sessions...
+2019-03-22 17:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 17:55:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 21666]
+2019-03-22 18:25:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 22099]
+2019-03-22 18:55:05 -Validating all active sessions...
+2019-03-22 18:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 18:55:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 22532]
+2019-03-22 19:25:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 22965]
+2019-03-22 19:55:05 -Validating all active sessions...
+2019-03-22 19:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 19:55:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 23398]
+2019-03-22 20:25:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 23831]
+2019-03-22 20:55:05 -Validating all active sessions...
+2019-03-22 20:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 20:55:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 24264]
+2019-03-22 21:25:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 24697]
+2019-03-22 21:55:05 -Validating all active sessions...
+2019-03-22 21:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 21:55:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 25130]
+2019-03-22 22:25:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 25563]
+2019-03-22 22:55:05 -Validating all active sessions...
+2019-03-22 22:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 22:55:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 25996]
+2019-03-22 23:25:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 26429]
+2019-03-22 23:55:05 -Validating all active sessions...
+2019-03-22 23:55:05 -Finished session validation.  No sessions were stopped.
+2019-03-22 23:55:55 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 17 total, 0 closed abnormally (0 connect failure, 0 send limit, 1 transport error)], stompSubProtocol[processed CONNECT(17)-CONNECTED(17)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 201], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 26862]
