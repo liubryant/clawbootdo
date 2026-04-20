@@ -7,8 +7,8 @@ logging:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/bootdo?useUnicode=true&characterEncoding=utf8&useSSL=false
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/bootdo?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     username: root
     password: root
     initialSize: 1
@@ -48,3 +48,15 @@ spring:
         max-active: 100
         # 连接池最大阻塞等待时间（使用负值表示没有限制）
         max-wait: -1
+
+ai:
+  enabled: true
+  # 可选：配置后要求客户端带 Authorization: Bearer <gatewayToken>
+  gatewayToken:
+  connectTimeoutMs: 15000
+  readTimeoutMs: 600000
+  glm:
+    baseUrl: https://open.bigmodel.cn/api/paas/v4
+    # 临时固定 key（按你的要求）；后续建议改回环境变量
+    apiKey: 45cfef5dea844f3e88116d202dcdda07.h0CAEbeWmhVxF9FI
+    model: glm-5.1

@@ -7,8 +7,8 @@ logging:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/bootdo?useUnicode=true&characterEncoding=utf8&useSSL=false
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/bootdo?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
 #    url: jdbc:mysql://124.70.218.113:3306/bootdo?useUnicode=true&characterEncoding=utf8
     username: root
     password: root
@@ -54,3 +54,15 @@ spring:
       host: 127.0.0.1
       port: 27017
       database: dbdemo
+
+ai:
+  enabled: true
+  # 可选：配置后要求客户端带 Authorization: Bearer <gatewayToken>
+  gatewayToken:
+  connectTimeoutMs: 15000
+  readTimeoutMs: 600000
+  glm:
+    baseUrl: https://open.bigmodel.cn/api/paas/v4
+    # 临时固定 key（按你的要求）；后续建议改回环境变量
+    apiKey: 45cfef5dea844f3e88116d202dcdda07.h0CAEbeWmhVxF9FI
+    model: glm-5.1
