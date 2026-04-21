@@ -66,6 +66,10 @@ public class GlmChatService {
                 }
 
                 String compat = convertToOpenAiDelta(data);
+                if (compat == null || compat.trim().isEmpty()) {
+                    // 过滤仅包含 reasoning_content 的分片，避免前端收到大量“思维链 token”
+                    continue;
+                }
                 writer.write("data: " + compat + "\n\n");
                 writer.flush();
             }
@@ -83,7 +87,11 @@ public class GlmChatService {
         response.setStatus(code >= 400 ? 502 : 200);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(body == null ? "{}" : body);
+        String compatBody = body;
+        if (code < 400) {
+            compatBody = convertToOpenAiResponse(body);
+        }
+        response.getWriter().write(compatBody == null ? "{}" : compatBody);
         conn.disconnect();
     }
 
@@ -114,10 +122,7 @@ public class GlmChatService {
 
     private String buildUpstreamPayload(ChatCompletionRequest request, boolean stream) {
         JSONObject root = new JSONObject();
-        String model = request.getModel();
-        if (model == null || model.trim().isEmpty()) {
-            model = aiProperties.getGlm().getModel();
-        }
+        String model = resolveModelForUpstream(request.getModel());
         root.put("model", model);
         root.put("stream", stream);
         if (request.getTemperature() != null) {
@@ -144,22 +149,64 @@ public class GlmChatService {
             if (choices != null && !choices.isEmpty()) {
                 JSONObject first = choices.getJSONObject(0);
                 JSONObject delta = first.getJSONObject("delta");
-                if (delta != null && delta.getString("content") != null) {
-                    return data;
+                if (delta != null) {
+                    String content = delta.getString("content");
+                    if (content != null && !content.isEmpty()) {
+                        // 统一输出最小 OpenAI 兼容分片，避免把 reasoning_content 等字段透传给客户端
+                        return buildCompatDelta(content);
+                    }
                 }
 
                 JSONObject message = first.getJSONObject("message");
                 if (message != null) {
                     String content = message.getString("content");
-                    if (content != null) {
+                    if (content != null && !content.isEmpty()) {
                         return buildCompatDelta(content);
                     }
                 }
             }
         } catch (Exception ignore) {
-            // 尽量兼容，解析失败时直接透传
+            // 解析失败时跳过该分片，保证下游只消费标准 delta.content
         }
-        return data;
+        return null;
+    }
+
+    private String resolveModelForUpstream(String requestModel) {
+        String defaultModel = aiProperties.getGlm().getModel();
+        String model = requestModel == null ? "" : requestModel.trim();
+        if (model.isEmpty()) {
+            return defaultModel;
+        }
+        // 兼容 INMOClawX 默认模型别名：openclaw:main
+        if ("openclaw".equalsIgnoreCase(model) || model.toLowerCase().startsWith("openclaw:")) {
+            return defaultModel;
+        }
+        return model;
+    }
+
+    private String convertToOpenAiResponse(String body) {
+        if (body == null || body.trim().isEmpty()) {
+            return body;
+        }
+        try {
+            JSONObject root = JSON.parseObject(body);
+            JSONArray choices = root.getJSONArray("choices");
+            if (choices != null) {
+                for (int i = 0; i < choices.size(); i++) {
+                    JSONObject choice = choices.getJSONObject(i);
+                    if (choice == null) {
+                        continue;
+                    }
+                    JSONObject message = choice.getJSONObject("message");
+                    if (message != null && message.containsKey("reasoning_content")) {
+                        message.remove("reasoning_content");
+                    }
+                }
+            }
+            return root.toJSONString();
+        } catch (Exception ignore) {
+            return body;
+        }
     }
 
     private String buildCompatDelta(String content) {
