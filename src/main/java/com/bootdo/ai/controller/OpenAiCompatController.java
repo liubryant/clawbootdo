@@ -62,6 +62,38 @@ public class OpenAiCompatController {
         }
     }
 
+    @PostMapping("/v1/token/usage")
+    public void tokenUsage(@RequestBody(required = false) ChatCompletionRequest request,
+                           HttpServletRequest httpRequest,
+                           HttpServletResponse response) throws IOException {
+        if (!aiProperties.isEnabled()) {
+            writeJson(response, 503, error("service_disabled", "AI compatibility API is disabled"));
+            return;
+        }
+
+        if (request == null || request.getMessages() == null || request.getMessages().isEmpty()) {
+            writeJson(response, 400, error("invalid_request", "messages cannot be empty"));
+            return;
+        }
+
+        String expectedToken = safeTrim(aiProperties.getGatewayToken());
+        if (!expectedToken.isEmpty()) {
+            String auth = safeTrim(httpRequest.getHeader("Authorization"));
+            String prefix = "Bearer ";
+            if (!auth.startsWith(prefix) || !expectedToken.equals(auth.substring(prefix.length()).trim())) {
+                writeJson(response, 401, error("unauthorized", "invalid gateway token"));
+                return;
+            }
+        }
+
+        try {
+            JSONObject usage = glmChatService.buildTokenUsage(request);
+            writeJson(response, 200, usage == null ? new JSONObject() : usage);
+        } catch (IOException ex) {
+            writeJson(response, 502, error("upstream_error", ex.getMessage()));
+        }
+    }
+
     private void writeJson(HttpServletResponse response, int status, JSONObject json) throws IOException {
         response.setStatus(status);
         response.setCharacterEncoding("UTF-8");

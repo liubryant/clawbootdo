@@ -95,6 +95,25 @@ public class GlmChatService {
         conn.disconnect();
     }
 
+    public JSONObject buildTokenUsage(ChatCompletionRequest request) throws IOException {
+        HttpURLConnection conn = openConnection(buildUpstreamPayload(request, false), false);
+        int code = conn.getResponseCode();
+        InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
+        String body = readAll(stream);
+        conn.disconnect();
+
+        if (code >= 400) {
+            throw new IOException("GLM upstream error: HTTP " + code + ", body=" + body);
+        }
+
+        JSONObject root = JSON.parseObject(body);
+        JSONObject usage = extractUsage(root);
+        if (usage == null) {
+            usage = estimateUsage(request, root);
+        }
+        return usage;
+    }
+
     private HttpURLConnection openConnection(String payload, boolean stream) throws IOException {
         String apiKey = aiProperties.getGlm().getApiKey();
         if (apiKey == null || apiKey.trim().isEmpty()) {
@@ -219,6 +238,115 @@ public class GlmChatService {
         choices.add(first);
         root.put("choices", choices);
         return root.toJSONString();
+    }
+
+    private JSONObject extractUsage(JSONObject root) {
+        if (root == null) {
+            return null;
+        }
+        JSONObject usage = root.getJSONObject("usage");
+        if (usage != null) {
+            Long prompt = firstLong(usage, "prompt_tokens", "input_tokens", "promptTokens", "inputTokens");
+            Long completion = firstLong(usage, "completion_tokens", "output_tokens", "completionTokens", "outputTokens");
+            Long total = firstLong(usage, "total_tokens", "totalTokens");
+            if (prompt != null || completion != null || total != null) {
+                return normalizeUsage(prompt, completion, total);
+            }
+        }
+        return null;
+    }
+
+    private JSONObject estimateUsage(ChatCompletionRequest request, JSONObject root) {
+        StringBuilder promptText = new StringBuilder();
+        if (request != null && request.getMessages() != null) {
+            for (ChatCompletionRequest.Message message : request.getMessages()) {
+                if (message == null) {
+                    continue;
+                }
+                if (message.getRole() != null) {
+                    promptText.append(message.getRole()).append(':');
+                }
+                if (message.getContent() != null) {
+                    promptText.append(message.getContent());
+                }
+                promptText.append('\n');
+            }
+        }
+
+        String completionText = "";
+        if (root != null) {
+            JSONArray choices = root.getJSONArray("choices");
+            if (choices != null && !choices.isEmpty()) {
+                JSONObject first = choices.getJSONObject(0);
+                if (first != null) {
+                    JSONObject msg = first.getJSONObject("message");
+                    if (msg != null) {
+                        completionText = safe(msg.getString("content"));
+                    }
+                }
+            }
+        }
+
+        long prompt = roughTokenCount(promptText.toString());
+        long completion = roughTokenCount(completionText);
+        return normalizeUsage(prompt, completion, prompt + completion);
+    }
+
+    private long roughTokenCount(String text) {
+        if (text == null || text.isEmpty()) {
+            return 0L;
+        }
+        int length = text.trim().length();
+        return Math.max(1, (long) Math.ceil(length / 4.0d));
+    }
+
+    private JSONObject normalizeUsage(Long promptTokens, Long completionTokens, Long totalTokens) {
+        long prompt = promptTokens == null ? 0L : Math.max(promptTokens, 0L);
+        long completion = completionTokens == null ? 0L : Math.max(completionTokens, 0L);
+        long total;
+        if (totalTokens == null || totalTokens < 0) {
+            total = prompt + completion;
+        } else {
+            total = totalTokens;
+        }
+
+        JSONObject usage = new JSONObject();
+        usage.put("prompt_tokens", prompt);
+        usage.put("completion_tokens", completion);
+        usage.put("total_tokens", total);
+        return usage;
+    }
+
+    private Long firstLong(JSONObject obj, String... keys) {
+        if (obj == null || keys == null) {
+            return null;
+        }
+        for (String key : keys) {
+            Object value = obj.get(key);
+            Long converted = asLong(value);
+            if (converted != null) {
+                return converted;
+            }
+        }
+        return null;
+    }
+
+    private Long asLong(Object value) {
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof Number) {
+            return ((Number) value).longValue();
+        }
+        try {
+            return Long.parseLong(String.valueOf(value).trim());
+        } catch (Exception ignore) {
+            return null;
+        }
+    }
+
+    private String safe(String value) {
+        return value == null ? "" : value;
     }
 
     private String readAll(InputStream stream) throws IOException {
