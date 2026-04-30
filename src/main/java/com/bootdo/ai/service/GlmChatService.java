@@ -67,7 +67,6 @@ public class GlmChatService {
 
                 String compat = convertToOpenAiDelta(data);
                 if (compat == null || compat.trim().isEmpty()) {
-                    // 过滤仅包含 reasoning_content 的分片，避免前端收到大量“思维链 token”
                     continue;
                 }
                 writer.write("data: " + compat + "\n\n");
@@ -154,10 +153,25 @@ public class GlmChatService {
                 JSONObject m = new JSONObject();
                 m.put("role", msg.getRole());
                 m.put("content", msg.getContent());
+                if (msg.getName() != null && !msg.getName().trim().isEmpty()) {
+                    m.put("name", msg.getName().trim());
+                }
+                if (msg.getToolCallId() != null && !msg.getToolCallId().trim().isEmpty()) {
+                    m.put("tool_call_id", msg.getToolCallId().trim());
+                }
+                if (msg.getToolCalls() != null && !msg.getToolCalls().isEmpty()) {
+                    m.put("tool_calls", msg.getToolCalls());
+                }
                 messages.add(m);
             }
         }
         root.put("messages", messages);
+        if (request.getTools() != null && !request.getTools().isEmpty()) {
+            root.put("tools", request.getTools());
+        }
+        if (request.getToolChoice() != null) {
+            root.put("tool_choice", request.getToolChoice());
+        }
         return root.toJSONString();
     }
 
@@ -166,26 +180,51 @@ public class GlmChatService {
             JSONObject obj = JSON.parseObject(data);
             JSONArray choices = obj.getJSONArray("choices");
             if (choices != null && !choices.isEmpty()) {
-                JSONObject first = choices.getJSONObject(0);
-                JSONObject delta = first.getJSONObject("delta");
-                if (delta != null) {
-                    String content = delta.getString("content");
-                    if (content != null && !content.isEmpty()) {
-                        // 统一输出最小 OpenAI 兼容分片，避免把 reasoning_content 等字段透传给客户端
-                        return buildCompatDelta(content);
+                JSONArray compatChoices = new JSONArray();
+                for (int i = 0; i < choices.size(); i++) {
+                    JSONObject upstreamChoice = choices.getJSONObject(i);
+                    if (upstreamChoice == null) {
+                        continue;
+                    }
+
+                    JSONObject compatChoice = new JSONObject();
+                    if (upstreamChoice.containsKey("index")) {
+                        compatChoice.put("index", upstreamChoice.get("index"));
+                    }
+
+                    JSONObject compatDelta = sanitizeDelta(upstreamChoice.getJSONObject("delta"));
+                    if (!compatDelta.isEmpty()) {
+                        compatChoice.put("delta", compatDelta);
+                    }
+
+                    if (upstreamChoice.containsKey("finish_reason")) {
+                        compatChoice.put("finish_reason", upstreamChoice.get("finish_reason"));
+                    }
+
+                    if (!compatChoice.isEmpty()) {
+                        compatChoices.add(compatChoice);
+                        continue;
+                    }
+
+                    JSONObject compatMessage = sanitizeMessage(upstreamChoice.getJSONObject("message"));
+                    if (!compatMessage.isEmpty()) {
+                        JSONObject fallbackChoice = new JSONObject();
+                        fallbackChoice.put("delta", compatMessage);
+                        if (upstreamChoice.containsKey("finish_reason")) {
+                            fallbackChoice.put("finish_reason", upstreamChoice.get("finish_reason"));
+                        }
+                        compatChoices.add(fallbackChoice);
                     }
                 }
 
-                JSONObject message = first.getJSONObject("message");
-                if (message != null) {
-                    String content = message.getString("content");
-                    if (content != null && !content.isEmpty()) {
-                        return buildCompatDelta(content);
-                    }
+                if (!compatChoices.isEmpty()) {
+                    JSONObject compatRoot = new JSONObject();
+                    compatRoot.put("choices", compatChoices);
+                    return compatRoot.toJSONString();
                 }
             }
         } catch (Exception ignore) {
-            // 解析失败时跳过该分片，保证下游只消费标准 delta.content
+            // skip invalid upstream chunk
         }
         return null;
     }
@@ -196,7 +235,6 @@ public class GlmChatService {
         if (model.isEmpty()) {
             return defaultModel;
         }
-        // 兼容 INMOClawX 默认模型别名：openclaw:main
         if ("openclaw".equalsIgnoreCase(model) || model.toLowerCase().startsWith("openclaw:")) {
             return defaultModel;
         }
@@ -228,16 +266,50 @@ public class GlmChatService {
         }
     }
 
-    private String buildCompatDelta(String content) {
-        JSONObject root = new JSONObject();
-        JSONArray choices = new JSONArray();
-        JSONObject first = new JSONObject();
-        JSONObject delta = new JSONObject();
-        delta.put("content", content);
-        first.put("delta", delta);
-        choices.add(first);
-        root.put("choices", choices);
-        return root.toJSONString();
+    private JSONObject sanitizeDelta(JSONObject delta) {
+        JSONObject compatDelta = new JSONObject();
+        if (delta == null) {
+            return compatDelta;
+        }
+        if (delta.containsKey("role")) {
+            compatDelta.put("role", delta.get("role"));
+        }
+        if (delta.containsKey("content")) {
+            Object content = delta.get("content");
+            if (content != null) {
+                compatDelta.put("content", content);
+            }
+        }
+        if (delta.containsKey("tool_calls")) {
+            Object toolCalls = delta.get("tool_calls");
+            if (toolCalls != null) {
+                compatDelta.put("tool_calls", toolCalls);
+            }
+        }
+        return compatDelta;
+    }
+
+    private JSONObject sanitizeMessage(JSONObject message) {
+        JSONObject compatMessage = new JSONObject();
+        if (message == null) {
+            return compatMessage;
+        }
+        if (message.containsKey("role")) {
+            compatMessage.put("role", message.get("role"));
+        }
+        if (message.containsKey("content")) {
+            Object content = message.get("content");
+            if (content != null) {
+                compatMessage.put("content", content);
+            }
+        }
+        if (message.containsKey("tool_calls")) {
+            Object toolCalls = message.get("tool_calls");
+            if (toolCalls != null) {
+                compatMessage.put("tool_calls", toolCalls);
+            }
+        }
+        return compatMessage;
     }
 
     private JSONObject extractUsage(JSONObject root) {
@@ -360,14 +432,16 @@ public class GlmChatService {
                 sb.append(line).append('\n');
             }
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
 
-    private String errorJson(String code, String message, String detail) {
+    private String errorJson(String code, String message, String upstream) {
         JSONObject err = new JSONObject();
         err.put("code", code);
         err.put("message", message);
-        err.put("detail", detail);
+        if (upstream != null && !upstream.trim().isEmpty()) {
+            err.put("upstream", upstream);
+        }
         JSONObject root = new JSONObject();
         root.put("error", err);
         return root.toJSONString();
