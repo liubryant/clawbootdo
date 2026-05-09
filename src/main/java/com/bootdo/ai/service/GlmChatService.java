@@ -5,6 +5,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bootdo.ai.config.AiProperties;
 import com.bootdo.ai.dto.ChatCompletionRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
@@ -21,10 +23,14 @@ import java.nio.charset.StandardCharsets;
 @Service
 public class GlmChatService {
 
-    private final AiProperties aiProperties;
+    private static final Logger log = LoggerFactory.getLogger(GlmChatService.class);
 
-    public GlmChatService(AiProperties aiProperties) {
+    private final AiProperties aiProperties;
+    private final GlmApiKeyProvider apiKeyProvider;
+
+    public GlmChatService(AiProperties aiProperties, GlmApiKeyProvider apiKeyProvider) {
         this.aiProperties = aiProperties;
+        this.apiKeyProvider = apiKeyProvider;
     }
 
     public void streamCompletion(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
@@ -114,9 +120,15 @@ public class GlmChatService {
     }
 
     private HttpURLConnection openConnection(String payload, boolean stream) throws IOException {
-        String apiKey = aiProperties.getGlm().getApiKey();
+        String apiKey = apiKeyProvider.getApiKey();
         if (apiKey == null || apiKey.trim().isEmpty()) {
             throw new IOException("GLM apiKey is empty, please set ai.glm.apiKey or GLM_API_KEY");
+        }
+
+        // 按你的要求：每次请求都打印当前实际使用的 apiKey（仅最后 6 位，避免泄露）
+        if (log.isInfoEnabled()) {
+            String tail6 = lastN(apiKey.trim(), 6);
+            log.info("GLM upstream request using apiKey tail6={}", tail6);
         }
 
         String base = aiProperties.getGlm().getBaseUrl();
@@ -136,6 +148,20 @@ public class GlmChatService {
             os.write(bytes);
         }
         return conn;
+    }
+
+    private String lastN(String v, int n) {
+        if (v == null) {
+            return "";
+        }
+        String s = v.trim();
+        if (s.isEmpty()) {
+            return "";
+        }
+        if (n <= 0) {
+            return "";
+        }
+        return s.length() <= n ? s : s.substring(s.length() - n);
     }
 
     private String buildUpstreamPayload(ChatCompletionRequest request, boolean stream) {

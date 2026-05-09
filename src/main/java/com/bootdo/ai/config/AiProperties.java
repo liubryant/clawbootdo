@@ -22,6 +22,18 @@ public class AiProperties {
         private String apiKey;
         private String model = "glm-4.7";
 
+        /** 动态获取 apiKey 的信息接口（例如：http://cjym123.cn/api/info） */
+        private String apiInfoUrl;
+
+        /** 动态 apiKey 刷新间隔（毫秒）。默认 2 分钟 */
+        private long apiKeyRefreshMs = 120000L;
+
+        /** 拉取 apiInfo 的连接超时（毫秒）。建议较小，如 2000ms */
+        private int apiInfoConnectTimeoutMs = 2000;
+
+        /** 拉取 apiInfo 的读取超时（毫秒）。建议较小，如 3000ms */
+        private int apiInfoReadTimeoutMs = 3000;
+
         public String getBaseUrl() {
             return baseUrl;
         }
@@ -44,6 +56,38 @@ public class AiProperties {
 
         public void setModel(String model) {
             this.model = model;
+        }
+
+        public String getApiInfoUrl() {
+            return apiInfoUrl;
+        }
+
+        public void setApiInfoUrl(String apiInfoUrl) {
+            this.apiInfoUrl = apiInfoUrl;
+        }
+
+        public long getApiKeyRefreshMs() {
+            return apiKeyRefreshMs;
+        }
+
+        public void setApiKeyRefreshMs(long apiKeyRefreshMs) {
+            this.apiKeyRefreshMs = apiKeyRefreshMs;
+        }
+
+        public int getApiInfoConnectTimeoutMs() {
+            return apiInfoConnectTimeoutMs;
+        }
+
+        public void setApiInfoConnectTimeoutMs(int apiInfoConnectTimeoutMs) {
+            this.apiInfoConnectTimeoutMs = apiInfoConnectTimeoutMs;
+        }
+
+        public int getApiInfoReadTimeoutMs() {
+            return apiInfoReadTimeoutMs;
+        }
+
+        public void setApiInfoReadTimeoutMs(int apiInfoReadTimeoutMs) {
+            this.apiInfoReadTimeoutMs = apiInfoReadTimeoutMs;
         }
     }
 

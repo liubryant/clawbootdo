@@ -64,5 +64,13 @@ ai:
   glm:
     baseUrl: https://open.bigmodel.cn/api/paas/v4
     # 临时固定 key（按你的要求）；后续建议改回环境变量
-    apiKey: 45cfef5dea844f3e88116d202dcdda07.h0CAEbeWmhVxF9FI
+    apiKey: 099876dd5b834400b0b7c97e231addba.e1mBdIQgNibogCdl
     model: glm-5.1
+
+    # 动态 key：从该接口拉取 data.apiKey（resultCode==200 才生效）
+    apiInfoUrl: http://cjym123.cn/api/info
+    # 每 2 分钟拉取一次；只有 key 变化时才会更新内存缓存
+    apiKeyRefreshMs: 120000
+    # 拉取 /api/info 的超时建议设置短一些，避免卡住刷新线程
+    apiInfoConnectTimeoutMs: 2000
+    apiInfoReadTimeoutMs: 3000
