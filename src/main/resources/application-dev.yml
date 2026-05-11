@@ -66,6 +66,10 @@ ai:
     # 临时固定 key（按你的要求）；后续建议改回环境变量
     apiKey: 099876dd5b834400b0b7c97e231addba.e1mBdIQgNibogCdl
     model: glm-5.1
+    imageModel: glm-image
+    imageSize: 1280x1280
+    imageQuality: hd
+    imageWatermarkEnabled: false
 
     # 动态 key：从该接口拉取 data.apiKey（resultCode==200 才生效）
     apiInfoUrl: http://cjym123.cn/api/info

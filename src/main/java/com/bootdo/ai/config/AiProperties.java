@@ -21,6 +21,10 @@ public class AiProperties {
         private String baseUrl = "https://open.bigmodel.cn/api/paas/v4";
         private String apiKey;
         private String model = "glm-4.7";
+        private String imageModel = "glm-image";
+        private String imageSize = "1280x1280";
+        private String imageQuality = "hd";
+        private Boolean imageWatermarkEnabled = false;
 
         /** 动态获取 apiKey 的信息接口（例如：http://cjym123.cn/api/info） */
         private String apiInfoUrl;
@@ -56,6 +60,38 @@ public class AiProperties {
 
         public void setModel(String model) {
             this.model = model;
+        }
+
+        public String getImageModel() {
+            return imageModel;
+        }
+
+        public void setImageModel(String imageModel) {
+            this.imageModel = imageModel;
+        }
+
+        public String getImageSize() {
+            return imageSize;
+        }
+
+        public void setImageSize(String imageSize) {
+            this.imageSize = imageSize;
+        }
+
+        public String getImageQuality() {
+            return imageQuality;
+        }
+
+        public void setImageQuality(String imageQuality) {
+            this.imageQuality = imageQuality;
+        }
+
+        public Boolean getImageWatermarkEnabled() {
+            return imageWatermarkEnabled;
+        }
+
+        public void setImageWatermarkEnabled(Boolean imageWatermarkEnabled) {
+            this.imageWatermarkEnabled = imageWatermarkEnabled;
         }
 
         public String getApiInfoUrl() {

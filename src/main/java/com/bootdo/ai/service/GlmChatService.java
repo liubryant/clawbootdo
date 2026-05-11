@@ -19,11 +19,16 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class GlmChatService {
 
     private static final Logger log = LoggerFactory.getLogger(GlmChatService.class);
+
+    private static final String OBJECT_CHAT_COMPLETION = "chat.completion";
+    private static final String OBJECT_CHAT_COMPLETION_CHUNK = "chat.completion.chunk";
 
     private final AiProperties aiProperties;
     private final GlmApiKeyProvider apiKeyProvider;
@@ -34,6 +39,11 @@ public class GlmChatService {
     }
 
     public void streamCompletion(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
+        if (isImageGenerationRequest(request)) {
+            streamImageCompletion(request, response);
+            return;
+        }
+
         HttpURLConnection conn = openConnection(buildUpstreamPayload(request, true), true);
         int code = conn.getResponseCode();
         InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
@@ -43,6 +53,7 @@ public class GlmChatService {
             response.setStatus(502);
             response.setContentType("application/json;charset=UTF-8");
             response.getWriter().write(errorJson("upstream_error", "GLM upstream error: HTTP " + code, err));
+            conn.disconnect();
             return;
         }
 
@@ -54,16 +65,13 @@ public class GlmChatService {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8));
              PrintWriter writer = response.getWriter()) {
-
             String line;
             while ((line = reader.readLine()) != null) {
                 String trimmed = line.trim();
-                if (trimmed.isEmpty()) {
+                if (trimmed.isEmpty() || !trimmed.startsWith("data:")) {
                     continue;
                 }
-                if (!trimmed.startsWith("data:")) {
-                    continue;
-                }
+
                 String data = trimmed.substring("data:".length()).trim();
                 if ("[DONE]".equals(data)) {
                     writer.write("data: [DONE]\n\n");
@@ -84,6 +92,11 @@ public class GlmChatService {
     }
 
     public void nonStreamCompletion(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
+        if (isImageGenerationRequest(request)) {
+            nonStreamImageCompletion(request, response);
+            return;
+        }
+
         HttpURLConnection conn = openConnection(buildUpstreamPayload(request, false), false);
         int code = conn.getResponseCode();
         InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
@@ -92,15 +105,20 @@ public class GlmChatService {
         response.setStatus(code >= 400 ? 502 : 200);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=UTF-8");
-        String compatBody = body;
-        if (code < 400) {
-            compatBody = convertToOpenAiResponse(body);
-        }
-        response.getWriter().write(compatBody == null ? "{}" : compatBody);
+        response.getWriter().write(code >= 400 ? errorJson("upstream_error", "GLM upstream error: HTTP " + code, body) : convertToOpenAiResponse(body));
         conn.disconnect();
     }
 
     public JSONObject buildTokenUsage(ChatCompletionRequest request) throws IOException {
+        if (isImageGenerationRequest(request)) {
+            JSONObject usage = new JSONObject();
+            long promptTokens = roughTokenCount(buildImagePrompt(request));
+            usage.put("prompt_tokens", promptTokens);
+            usage.put("completion_tokens", 1L);
+            usage.put("total_tokens", promptTokens + 1L);
+            return usage;
+        }
+
         HttpURLConnection conn = openConnection(buildUpstreamPayload(request, false), false);
         int code = conn.getResponseCode();
         InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
@@ -113,26 +131,87 @@ public class GlmChatService {
 
         JSONObject root = JSON.parseObject(body);
         JSONObject usage = extractUsage(root);
-        if (usage == null) {
-            usage = estimateUsage(request, root);
+        return usage == null ? estimateUsage(request, root) : usage;
+    }
+
+    private void streamImageCompletion(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
+        HttpURLConnection conn = openImageConnection(buildImagePayload(request));
+        int code = conn.getResponseCode();
+        InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
+        String body = readAll(stream);
+
+        if (code >= 400) {
+            response.setStatus(502);
+            response.setContentType("application/json;charset=UTF-8");
+            response.getWriter().write(errorJson("upstream_error", "GLM image upstream error: HTTP " + code, body));
+            conn.disconnect();
+            return;
         }
-        return usage;
+
+        response.setStatus(200);
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/event-stream;charset=UTF-8");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setHeader("Connection", "keep-alive");
+
+        JSONObject compat = convertImageResponseToOpenAiJson(body, request);
+        JSONObject message = firstChoiceMessage(compat);
+        String content = message == null ? "" : safe(message.getString("content"));
+        JSONArray images = message == null ? null : message.getJSONArray("images");
+        String id = safeTrim(compat.getString("id"), "chatcmpl-image-" + System.currentTimeMillis());
+        long created = compat.getLongValue("created") > 0 ? compat.getLongValue("created") : System.currentTimeMillis() / 1000L;
+        String model = safeTrim(compat.getString("model"), resolveImageModel(request == null ? null : request.getModel()));
+
+        try (PrintWriter writer = response.getWriter()) {
+            writer.write("data: " + buildChunk(id, created, model, roleDelta("assistant"), null) + "\n\n");
+            writer.flush();
+
+            if (!content.isEmpty()) {
+                writer.write("data: " + buildChunk(id, created, model, contentDelta(content, images), null) + "\n\n");
+                writer.flush();
+            }
+
+            writer.write("data: " + buildChunk(id, created, model, new JSONObject(), "stop") + "\n\n");
+            writer.write("data: [DONE]\n\n");
+            writer.flush();
+        } finally {
+            conn.disconnect();
+        }
+    }
+
+    private void nonStreamImageCompletion(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
+        HttpURLConnection conn = openImageConnection(buildImagePayload(request));
+        int code = conn.getResponseCode();
+        InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
+        String body = readAll(stream);
+
+        response.setStatus(code >= 400 ? 502 : 200);
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().write(code >= 400 ? errorJson("upstream_error", "GLM image upstream error: HTTP " + code, body) : convertImageResponseToOpenAiJson(body, request).toJSONString());
+        conn.disconnect();
     }
 
     private HttpURLConnection openConnection(String payload, boolean stream) throws IOException {
+        return openJsonConnection("/chat/completions", payload, stream ? "text/event-stream" : "application/json");
+    }
+
+    private HttpURLConnection openImageConnection(String payload) throws IOException {
+        return openJsonConnection("/images/generations", payload, "application/json");
+    }
+
+    private HttpURLConnection openJsonConnection(String path, String payload, String accept) throws IOException {
         String apiKey = apiKeyProvider.getApiKey();
         if (apiKey == null || apiKey.trim().isEmpty()) {
             throw new IOException("GLM apiKey is empty, please set ai.glm.apiKey or GLM_API_KEY");
         }
 
-        // 按你的要求：每次请求都打印当前实际使用的 apiKey（仅最后 6 位，避免泄露）
         if (log.isInfoEnabled()) {
-            String tail6 = lastN(apiKey.trim(), 6);
-            log.info("GLM upstream request using apiKey tail6={}", tail6);
+            log.info("GLM upstream request path={}, apiKey tail6={}", path, lastN(apiKey.trim(), 6));
         }
 
-        String base = aiProperties.getGlm().getBaseUrl();
-        String url = (base.endsWith("/") ? base.substring(0, base.length() - 1) : base) + "/chat/completions";
+        String base = safeTrim(aiProperties.getGlm().getBaseUrl(), "https://open.bigmodel.cn/api/paas/v4");
+        String url = (base.endsWith("/") ? base.substring(0, base.length() - 1) : base) + path;
 
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
         conn.setRequestMethod("POST");
@@ -140,7 +219,7 @@ public class GlmChatService {
         conn.setConnectTimeout(aiProperties.getConnectTimeoutMs());
         conn.setReadTimeout(aiProperties.getReadTimeoutMs());
         conn.setRequestProperty("Content-Type", "application/json");
-        conn.setRequestProperty("Accept", stream ? "text/event-stream" : "application/json");
+        conn.setRequestProperty("Accept", accept);
         conn.setRequestProperty("Authorization", "Bearer " + apiKey.trim());
 
         byte[] bytes = payload.getBytes(StandardCharsets.UTF_8);
@@ -150,39 +229,27 @@ public class GlmChatService {
         return conn;
     }
 
-    private String lastN(String v, int n) {
-        if (v == null) {
-            return "";
-        }
-        String s = v.trim();
-        if (s.isEmpty()) {
-            return "";
-        }
-        if (n <= 0) {
-            return "";
-        }
-        return s.length() <= n ? s : s.substring(s.length() - n);
-    }
-
     private String buildUpstreamPayload(ChatCompletionRequest request, boolean stream) {
         JSONObject root = new JSONObject();
-        String model = resolveModelForUpstream(request.getModel());
-        root.put("model", model);
+        root.put("model", resolveModelForUpstream(request == null ? null : request.getModel()));
         root.put("stream", stream);
-        if (request.getTemperature() != null) {
+        if (request != null && request.getTemperature() != null) {
             root.put("temperature", request.getTemperature());
         }
 
         JSONArray messages = new JSONArray();
-        if (request.getMessages() != null) {
+        if (request != null && request.getMessages() != null) {
             for (ChatCompletionRequest.Message msg : request.getMessages()) {
+                if (msg == null) {
+                    continue;
+                }
                 JSONObject m = new JSONObject();
                 m.put("role", msg.getRole());
                 m.put("content", msg.getContent());
-                if (msg.getName() != null && !msg.getName().trim().isEmpty()) {
+                if (!safe(msg.getName()).trim().isEmpty()) {
                     m.put("name", msg.getName().trim());
                 }
-                if (msg.getToolCallId() != null && !msg.getToolCallId().trim().isEmpty()) {
+                if (!safe(msg.getToolCallId()).trim().isEmpty()) {
                     m.put("tool_call_id", msg.getToolCallId().trim());
                 }
                 if (msg.getToolCalls() != null && !msg.getToolCalls().isEmpty()) {
@@ -192,12 +259,24 @@ public class GlmChatService {
             }
         }
         root.put("messages", messages);
-        if (request.getTools() != null && !request.getTools().isEmpty()) {
+
+        if (request != null && request.getTools() != null && !request.getTools().isEmpty()) {
             root.put("tools", request.getTools());
         }
-        if (request.getToolChoice() != null) {
+        if (request != null && request.getToolChoice() != null) {
             root.put("tool_choice", request.getToolChoice());
         }
+        return root.toJSONString();
+    }
+
+    private String buildImagePayload(ChatCompletionRequest request) {
+        JSONObject root = new JSONObject();
+        root.put("model", resolveImageModel(request == null ? null : request.getModel()));
+        root.put("prompt", buildImagePrompt(request));
+        root.put("size", safeTrim(aiProperties.getGlm().getImageSize(), "1280x1280"));
+        root.put("quality", safeTrim(aiProperties.getGlm().getImageQuality(), "hd"));
+        Boolean watermarkEnabled = aiProperties.getGlm().getImageWatermarkEnabled();
+        root.put("watermark_enabled", watermarkEnabled != null && watermarkEnabled);
         return root.toJSONString();
     }
 
@@ -205,71 +284,54 @@ public class GlmChatService {
         try {
             JSONObject obj = JSON.parseObject(data);
             JSONArray choices = obj.getJSONArray("choices");
-            if (choices != null && !choices.isEmpty()) {
-                JSONArray compatChoices = new JSONArray();
-                for (int i = 0; i < choices.size(); i++) {
-                    JSONObject upstreamChoice = choices.getJSONObject(i);
-                    if (upstreamChoice == null) {
-                        continue;
-                    }
+            if (choices == null || choices.isEmpty()) {
+                return null;
+            }
 
-                    JSONObject compatChoice = new JSONObject();
-                    if (upstreamChoice.containsKey("index")) {
-                        compatChoice.put("index", upstreamChoice.get("index"));
-                    }
-
-                    JSONObject compatDelta = sanitizeDelta(upstreamChoice.getJSONObject("delta"));
-                    if (!compatDelta.isEmpty()) {
-                        compatChoice.put("delta", compatDelta);
-                    }
-
-                    if (upstreamChoice.containsKey("finish_reason")) {
-                        compatChoice.put("finish_reason", upstreamChoice.get("finish_reason"));
-                    }
-
-                    if (!compatChoice.isEmpty()) {
-                        compatChoices.add(compatChoice);
-                        continue;
-                    }
-
-                    JSONObject compatMessage = sanitizeMessage(upstreamChoice.getJSONObject("message"));
-                    if (!compatMessage.isEmpty()) {
-                        JSONObject fallbackChoice = new JSONObject();
-                        fallbackChoice.put("delta", compatMessage);
-                        if (upstreamChoice.containsKey("finish_reason")) {
-                            fallbackChoice.put("finish_reason", upstreamChoice.get("finish_reason"));
-                        }
-                        compatChoices.add(fallbackChoice);
-                    }
+            JSONArray compatChoices = new JSONArray();
+            for (int i = 0; i < choices.size(); i++) {
+                JSONObject upstreamChoice = choices.getJSONObject(i);
+                if (upstreamChoice == null) {
+                    continue;
                 }
 
-                if (!compatChoices.isEmpty()) {
-                    JSONObject compatRoot = new JSONObject();
-                    compatRoot.put("choices", compatChoices);
-                    return compatRoot.toJSONString();
+                JSONObject compatChoice = new JSONObject();
+                compatChoice.put("index", upstreamChoice.containsKey("index") ? upstreamChoice.get("index") : i);
+
+                JSONObject compatDelta = sanitizeDelta(upstreamChoice.getJSONObject("delta"));
+                if (compatDelta.isEmpty()) {
+                    compatDelta = sanitizeMessage(upstreamChoice.getJSONObject("message"));
+                }
+                if (!compatDelta.isEmpty()) {
+                    compatChoice.put("delta", compatDelta);
+                }
+
+                if (upstreamChoice.containsKey("finish_reason")) {
+                    compatChoice.put("finish_reason", upstreamChoice.get("finish_reason"));
+                }
+                if (compatChoice.containsKey("delta") || compatChoice.containsKey("finish_reason")) {
+                    compatChoices.add(compatChoice);
                 }
             }
-        } catch (Exception ignore) {
-            // skip invalid upstream chunk
-        }
-        return null;
-    }
 
-    private String resolveModelForUpstream(String requestModel) {
-        String defaultModel = aiProperties.getGlm().getModel();
-        String model = requestModel == null ? "" : requestModel.trim();
-        if (model.isEmpty()) {
-            return defaultModel;
+            if (compatChoices.isEmpty()) {
+                return null;
+            }
+            JSONObject compatRoot = new JSONObject();
+            compatRoot.put("id", obj.getString("id"));
+            compatRoot.put("object", OBJECT_CHAT_COMPLETION_CHUNK);
+            compatRoot.put("created", obj.getLongValue("created"));
+            compatRoot.put("model", obj.getString("model"));
+            compatRoot.put("choices", compatChoices);
+            return compatRoot.toJSONString();
+        } catch (Exception ignore) {
+            return null;
         }
-        if ("openclaw".equalsIgnoreCase(model) || model.toLowerCase().startsWith("openclaw:")) {
-            return defaultModel;
-        }
-        return model;
     }
 
     private String convertToOpenAiResponse(String body) {
         if (body == null || body.trim().isEmpty()) {
-            return body;
+            return "{}";
         }
         try {
             JSONObject root = JSON.parseObject(body);
@@ -277,11 +339,8 @@ public class GlmChatService {
             if (choices != null) {
                 for (int i = 0; i < choices.size(); i++) {
                     JSONObject choice = choices.getJSONObject(i);
-                    if (choice == null) {
-                        continue;
-                    }
-                    JSONObject message = choice.getJSONObject("message");
-                    if (message != null && message.containsKey("reasoning_content")) {
+                    JSONObject message = choice == null ? null : choice.getJSONObject("message");
+                    if (message != null) {
                         message.remove("reasoning_content");
                     }
                 }
@@ -292,26 +351,132 @@ public class GlmChatService {
         }
     }
 
+    private JSONObject convertImageResponseToOpenAiJson(String body, ChatCompletionRequest request) {
+        JSONObject root = new JSONObject();
+        try {
+            JSONObject upstream = JSON.parseObject(body);
+            JSONArray images = extractImages(upstream);
+            String prompt = buildImagePrompt(request);
+            String content = buildImageMarkdownContent(prompt, images);
+
+            JSONObject message = new JSONObject();
+            message.put("role", "assistant");
+            message.put("content", content);
+            if (!images.isEmpty()) {
+                message.put("images", images);
+            }
+
+            JSONObject choice = new JSONObject();
+            choice.put("index", 0);
+            choice.put("message", message);
+            choice.put("finish_reason", "stop");
+
+            JSONArray choices = new JSONArray();
+            choices.add(choice);
+
+            long created = upstream.getLongValue("created") > 0 ? upstream.getLongValue("created") : System.currentTimeMillis() / 1000L;
+            root.put("id", safeTrim(upstream.getString("id"), "chatcmpl-image-" + System.currentTimeMillis()));
+            root.put("object", OBJECT_CHAT_COMPLETION);
+            root.put("created", created);
+            root.put("model", resolveImageModel(request == null ? null : request.getModel()));
+            root.put("choices", choices);
+            root.put("request_id", upstream.getString("request_id"));
+            root.put("usage", imageUsage(prompt, images.size()));
+            root.put("upstream", upstream);
+            return root;
+        } catch (Exception ex) {
+            log.warn("convert image response to openai response failed", ex);
+            JSONObject message = new JSONObject();
+            message.put("role", "assistant");
+            message.put("content", body == null ? "" : body);
+            JSONObject choice = new JSONObject();
+            choice.put("index", 0);
+            choice.put("message", message);
+            choice.put("finish_reason", "stop");
+            JSONArray choices = new JSONArray();
+            choices.add(choice);
+            root.put("id", "chatcmpl-image-" + System.currentTimeMillis());
+            root.put("object", OBJECT_CHAT_COMPLETION);
+            root.put("created", System.currentTimeMillis() / 1000L);
+            root.put("model", resolveImageModel(request == null ? null : request.getModel()));
+            root.put("choices", choices);
+            root.put("usage", imageUsage(buildImagePrompt(request), 0));
+            return root;
+        }
+    }
+
+    private JSONArray extractImages(JSONObject upstream) {
+        JSONArray images = new JSONArray();
+        JSONArray upstreamData = upstream == null ? null : upstream.getJSONArray("data");
+        if (upstreamData == null) {
+            return images;
+        }
+        for (int i = 0; i < upstreamData.size(); i++) {
+            JSONObject item = upstreamData.getJSONObject(i);
+            if (item == null) {
+                continue;
+            }
+            String url = safe(item.getString("url")).trim();
+            if (url.isEmpty()) {
+                continue;
+            }
+            JSONObject imageUrl = new JSONObject();
+            imageUrl.put("url", url);
+            JSONObject image = new JSONObject();
+            image.put("type", "image_url");
+            image.put("image_url", imageUrl);
+            images.add(image);
+        }
+        return images;
+    }
+
+    private JSONObject firstChoiceMessage(JSONObject root) {
+        JSONArray choices = root == null ? null : root.getJSONArray("choices");
+        JSONObject firstChoice = choices == null || choices.isEmpty() ? null : choices.getJSONObject(0);
+        return firstChoice == null ? null : firstChoice.getJSONObject("message");
+    }
+
+    private JSONObject buildChunk(String id, long created, String model, JSONObject delta, String finishReason) {
+        JSONObject choice = new JSONObject();
+        choice.put("index", 0);
+        choice.put("delta", delta == null ? new JSONObject() : delta);
+        choice.put("finish_reason", finishReason);
+        JSONArray choices = new JSONArray();
+        choices.add(choice);
+
+        JSONObject chunk = new JSONObject();
+        chunk.put("id", id);
+        chunk.put("object", OBJECT_CHAT_COMPLETION_CHUNK);
+        chunk.put("created", created);
+        chunk.put("model", model);
+        chunk.put("choices", choices);
+        return chunk;
+    }
+
+    private JSONObject roleDelta(String role) {
+        JSONObject delta = new JSONObject();
+        delta.put("role", role);
+        return delta;
+    }
+
+    private JSONObject contentDelta(String content, JSONArray images) {
+        JSONObject delta = new JSONObject();
+        delta.put("content", content);
+        if (images != null && !images.isEmpty()) {
+            delta.put("images", images);
+        }
+        return delta;
+    }
+
     private JSONObject sanitizeDelta(JSONObject delta) {
         JSONObject compatDelta = new JSONObject();
         if (delta == null) {
             return compatDelta;
         }
-        if (delta.containsKey("role")) {
-            compatDelta.put("role", delta.get("role"));
-        }
-        if (delta.containsKey("content")) {
-            Object content = delta.get("content");
-            if (content != null) {
-                compatDelta.put("content", content);
-            }
-        }
-        if (delta.containsKey("tool_calls")) {
-            Object toolCalls = delta.get("tool_calls");
-            if (toolCalls != null) {
-                compatDelta.put("tool_calls", toolCalls);
-            }
-        }
+        copyIfPresent(delta, compatDelta, "role");
+        copyIfPresent(delta, compatDelta, "content");
+        copyIfPresent(delta, compatDelta, "tool_calls");
+        copyIfPresent(delta, compatDelta, "images");
         return compatDelta;
     }
 
@@ -320,22 +485,214 @@ public class GlmChatService {
         if (message == null) {
             return compatMessage;
         }
-        if (message.containsKey("role")) {
-            compatMessage.put("role", message.get("role"));
-        }
-        if (message.containsKey("content")) {
-            Object content = message.get("content");
-            if (content != null) {
-                compatMessage.put("content", content);
-            }
-        }
-        if (message.containsKey("tool_calls")) {
-            Object toolCalls = message.get("tool_calls");
-            if (toolCalls != null) {
-                compatMessage.put("tool_calls", toolCalls);
-            }
-        }
+        copyIfPresent(message, compatMessage, "role");
+        copyIfPresent(message, compatMessage, "content");
+        copyIfPresent(message, compatMessage, "tool_calls");
+        copyIfPresent(message, compatMessage, "images");
         return compatMessage;
+    }
+
+    private void copyIfPresent(JSONObject from, JSONObject to, String key) {
+        if (from.containsKey(key) && from.get(key) != null) {
+            to.put(key, from.get(key));
+        }
+    }
+
+    private boolean isImageGenerationRequest(ChatCompletionRequest request) {
+        if (request == null) {
+            return false;
+        }
+        String model = safe(request.getModel()).trim();
+        if ("glm-image".equalsIgnoreCase(model)) {
+            return true;
+        }
+        String prompt = buildImagePrompt(request);
+        if (prompt.isEmpty()) {
+            return false;
+        }
+        String lower = prompt.toLowerCase();
+        boolean matched = containsAny(lower,
+                "\u751f\u6210\u56fe\u7247",
+                "\u751f\u6210\u4e00\u5f20\u56fe",
+                "\u751f\u6210\u4e00\u5f20\u56fe\u7247",
+                "\u751f\u6210\u56fe\u50cf",
+                "\u751f\u6210\u7167\u7247",
+                "\u56fe\u7247\u751f\u6210",
+                "\u56fe\u50cf\u751f\u6210",
+                "\u5e2e\u6211\u753b",
+                "\u7ed9\u6211\u753b",
+                "\u753b\u4e00\u5f20",
+                "\u753b\u4e00\u4e2a",
+                "\u753b\u4e00\u53ea",
+                "\u753b\u4e2a",
+                "\u753b\u5e45",
+                "\u753b\u4e00\u5e45",
+                "\u7ed8\u5236",
+                "\u753b\u51fa",
+                "\u8bbe\u8ba1\u4e00\u5f20",
+                "\u505a\u4e00\u5f20\u6d77\u62a5",
+                "\u751f\u6210\u6d77\u62a5",
+                "\u751f\u56fe",
+                "\u51fa\u56fe",
+                "\u4f5c\u56fe",
+                "\u505a\u56fe",
+                "\u505a\u5f20\u56fe",
+                "create an image",
+                "generate an image",
+                "generate a picture",
+                "draw an image",
+                "draw me",
+                "image of ");
+        if (!matched) {
+            matched = looksLikeChineseDrawRequest(prompt);
+        }
+        if (matched && log.isInfoEnabled()) {
+            log.info("GLM image generation route matched, promptPreview={}", prompt.length() > 120 ? prompt.substring(0, 120) : prompt);
+        }
+        return matched;
+    }
+
+    private boolean looksLikeChineseDrawRequest(String prompt) {
+        String text = prompt == null ? "" : prompt.trim();
+        if (text.isEmpty()) {
+            return false;
+        }
+        String lower = text.toLowerCase();
+        if (containsAny(lower,
+                "\u4e0d\u8981\u753b",
+                "\u522b\u753b",
+                "\u4e0d\u7528\u753b",
+                "\u4e0d\u9700\u8981\u753b",
+                "\u4e0d\u8981\u751f\u6210\u56fe",
+                "\u522b\u751f\u6210\u56fe")) {
+            return false;
+        }
+
+        String compact = text.replaceAll("\\s+", "");
+        return compact.matches(".*(\u8bf7|\u5e2e\u6211|\u7ed9\u6211|\u5e2e|\u60f3\u8981|\u6765|\u7528)?(\u753b|\u7ed8\u5236|\u753b\u51fa|\u751f\u6210|\u751f\u56fe|\u51fa\u56fe|\u505a\u56fe|\u4f5c\u56fe)[\u4e00-\u9fa5A-Za-z0-9_\\-]{1,80}.*")
+                || compact.matches(".*[\u4e00-\u9fa5A-Za-z0-9_\\-]{1,40}(\u7684)?(\u56fe|\u56fe\u7247|\u56fe\u50cf|\u7167\u7247|\u6d77\u62a5|\u63d2\u753b|\u5934\u50cf).*");
+    }
+
+    private boolean containsAny(String text, String... keywords) {
+        if (text == null || keywords == null) {
+            return false;
+        }
+        for (String keyword : keywords) {
+            if (keyword != null && text.contains(keyword.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private String buildImagePrompt(ChatCompletionRequest request) {
+        if (request == null || request.getMessages() == null || request.getMessages().isEmpty()) {
+            return "";
+        }
+
+        String lastUserText = "";
+        for (ChatCompletionRequest.Message message : request.getMessages()) {
+            if (message == null || !"user".equalsIgnoreCase(safe(message.getRole()).trim())) {
+                continue;
+            }
+            String text = extractTextContent(message.getContent());
+            if (!text.isEmpty()) {
+                lastUserText = text;
+            }
+        }
+        if (!lastUserText.isEmpty()) {
+            return lastUserText;
+        }
+
+        StringBuilder prompt = new StringBuilder();
+        for (ChatCompletionRequest.Message message : request.getMessages()) {
+            if (message == null) {
+                continue;
+            }
+            String text = extractTextContent(message.getContent());
+            if (text.isEmpty()) {
+                continue;
+            }
+            if (prompt.length() > 0) {
+                prompt.append('\n');
+            }
+            prompt.append(text);
+        }
+        return prompt.toString().trim();
+    }
+
+    private String extractTextContent(Object content) {
+        if (content == null) {
+            return "";
+        }
+        if (content instanceof String) {
+            return ((String) content).trim();
+        }
+        if (content instanceof List) {
+            StringBuilder sb = new StringBuilder();
+            List<?> list = (List<?>) content;
+            for (Object item : list) {
+                String part = extractContentPartText(item);
+                if (part.isEmpty()) {
+                    continue;
+                }
+                if (sb.length() > 0) {
+                    sb.append('\n');
+                }
+                sb.append(part);
+            }
+            return sb.toString().trim();
+        }
+        if (content instanceof Map) {
+            return extractContentPartText(content);
+        }
+        return String.valueOf(content).trim();
+    }
+
+    private String extractContentPartText(Object item) {
+        if (!(item instanceof Map)) {
+            return item == null ? "" : String.valueOf(item).trim();
+        }
+        Map<?, ?> map = (Map<?, ?>) item;
+        Object type = map.get("type");
+        if (type != null && !"text".equalsIgnoreCase(String.valueOf(type))) {
+            return "";
+        }
+        Object text = map.get("text");
+        return text == null ? "" : String.valueOf(text).trim();
+    }
+
+    private String buildImageMarkdownContent(String prompt, JSONArray images) {
+        if (images == null || images.isEmpty()) {
+            return "\u56fe\u7247\u751f\u6210\u5b8c\u6210\uff0c\u4f46\u672a\u62ff\u5230\u53ef\u5c55\u793a\u7684\u56fe\u7247\u5730\u5740\u3002";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("\u5df2\u4e3a\u4f60\u751f\u6210\u56fe\u7247\u3002");
+        if (prompt != null && !prompt.trim().isEmpty()) {
+            sb.append("\n\n").append("\u63d0\u793a\u8bcd\uff1a").append(prompt.trim());
+        }
+        sb.append("\n\n");
+        for (int i = 0; i < images.size(); i++) {
+            JSONObject image = images.getJSONObject(i);
+            JSONObject imageUrl = image == null ? null : image.getJSONObject("image_url");
+            String url = imageUrl == null ? "" : safe(imageUrl.getString("url")).trim();
+            if (url.isEmpty()) {
+                continue;
+            }
+            sb.append("![generated-image-").append(i + 1).append("](").append(url).append(")\n\n");
+            sb.append("\u56fe\u7247\u94fe\u63a5").append(i + 1).append(": ").append(url).append("\n\n");
+        }
+        return sb.toString().trim();
+    }
+
+    private JSONObject imageUsage(String prompt, int imageCount) {
+        long promptTokens = roughTokenCount(prompt);
+        long completionTokens = Math.max(1L, imageCount);
+        JSONObject usage = new JSONObject();
+        usage.put("prompt_tokens", promptTokens);
+        usage.put("completion_tokens", completionTokens);
+        usage.put("total_tokens", promptTokens + completionTokens);
+        return usage;
     }
 
     private JSONObject extractUsage(JSONObject root) {
@@ -343,15 +700,16 @@ public class GlmChatService {
             return null;
         }
         JSONObject usage = root.getJSONObject("usage");
-        if (usage != null) {
-            Long prompt = firstLong(usage, "prompt_tokens", "input_tokens", "promptTokens", "inputTokens");
-            Long completion = firstLong(usage, "completion_tokens", "output_tokens", "completionTokens", "outputTokens");
-            Long total = firstLong(usage, "total_tokens", "totalTokens");
-            if (prompt != null || completion != null || total != null) {
-                return normalizeUsage(prompt, completion, total);
-            }
+        if (usage == null) {
+            return null;
         }
-        return null;
+        Long prompt = firstLong(usage, "prompt_tokens", "input_tokens", "promptTokens", "inputTokens");
+        Long completion = firstLong(usage, "completion_tokens", "output_tokens", "completionTokens", "outputTokens");
+        Long total = firstLong(usage, "total_tokens", "totalTokens");
+        if (prompt == null && completion == null && total == null) {
+            return null;
+        }
+        return normalizeUsage(prompt, completion, total);
     }
 
     private JSONObject estimateUsage(ChatCompletionRequest request, JSONObject root) {
@@ -361,27 +719,17 @@ public class GlmChatService {
                 if (message == null) {
                     continue;
                 }
-                if (message.getRole() != null) {
-                    promptText.append(message.getRole()).append(':');
-                }
-                if (message.getContent() != null) {
-                    promptText.append(message.getContent());
-                }
-                promptText.append('\n');
+                promptText.append(safe(message.getRole())).append(':').append(message.getContent()).append('\n');
             }
         }
 
         String completionText = "";
         if (root != null) {
             JSONArray choices = root.getJSONArray("choices");
-            if (choices != null && !choices.isEmpty()) {
-                JSONObject first = choices.getJSONObject(0);
-                if (first != null) {
-                    JSONObject msg = first.getJSONObject("message");
-                    if (msg != null) {
-                        completionText = safe(msg.getString("content"));
-                    }
-                }
+            JSONObject first = choices == null || choices.isEmpty() ? null : choices.getJSONObject(0);
+            JSONObject msg = first == null ? null : first.getJSONObject("message");
+            if (msg != null) {
+                completionText = safe(msg.getString("content"));
             }
         }
 
@@ -391,28 +739,38 @@ public class GlmChatService {
     }
 
     private long roughTokenCount(String text) {
-        if (text == null || text.isEmpty()) {
+        if (text == null || text.trim().isEmpty()) {
             return 0L;
         }
-        int length = text.trim().length();
-        return Math.max(1, (long) Math.ceil(length / 4.0d));
+        return Math.max(1L, (long) Math.ceil(text.trim().length() / 4.0d));
     }
 
     private JSONObject normalizeUsage(Long promptTokens, Long completionTokens, Long totalTokens) {
         long prompt = promptTokens == null ? 0L : Math.max(promptTokens, 0L);
         long completion = completionTokens == null ? 0L : Math.max(completionTokens, 0L);
-        long total;
-        if (totalTokens == null || totalTokens < 0) {
-            total = prompt + completion;
-        } else {
-            total = totalTokens;
-        }
-
+        long total = totalTokens == null || totalTokens < 0 ? prompt + completion : totalTokens;
         JSONObject usage = new JSONObject();
         usage.put("prompt_tokens", prompt);
         usage.put("completion_tokens", completion);
         usage.put("total_tokens", total);
         return usage;
+    }
+
+    private String resolveModelForUpstream(String requestModel) {
+        String defaultModel = safeTrim(aiProperties.getGlm().getModel(), "glm-5.1");
+        String model = safe(requestModel).trim();
+        if (model.isEmpty() || "openclaw".equalsIgnoreCase(model) || model.toLowerCase().startsWith("openclaw:")) {
+            return defaultModel;
+        }
+        return model;
+    }
+
+    private String resolveImageModel(String requestModel) {
+        String model = safe(requestModel).trim();
+        if ("glm-image".equalsIgnoreCase(model)) {
+            return model;
+        }
+        return safeTrim(aiProperties.getGlm().getImageModel(), "glm-image");
     }
 
     private Long firstLong(JSONObject obj, String... keys) {
@@ -443,8 +801,21 @@ public class GlmChatService {
         }
     }
 
+    private String lastN(String value, int n) {
+        String s = safe(value).trim();
+        if (s.isEmpty() || n <= 0) {
+            return "";
+        }
+        return s.length() <= n ? s : s.substring(s.length() - n);
+    }
+
     private String safe(String value) {
         return value == null ? "" : value;
+    }
+
+    private String safeTrim(String value, String defaultValue) {
+        String trimmed = value == null ? "" : value.trim();
+        return trimmed.isEmpty() ? defaultValue : trimmed;
     }
 
     private String readAll(InputStream stream) throws IOException {
