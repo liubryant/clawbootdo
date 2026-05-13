@@ -61,6 +61,13 @@ ai:
     apiKey: 45cfef5dea844f3e88116d202dcdda07.h0CAEbeWmhVxF9FI
     model: glm-5.1
     imageModel: glm-image
+    videoModel: cogvideox-3
+    videoQuality: quality
+    videoWithAudio: true
+    videoSize: 1920x1080
+    videoFps: 30
+    videoPollIntervalMs: 5000
+    videoPollTimeoutMs: 600000
     imageSize: 1280x1280
     imageQuality: hd
     imageWatermarkEnabled: false

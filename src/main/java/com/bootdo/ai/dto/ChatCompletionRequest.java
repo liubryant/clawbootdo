@@ -10,10 +10,18 @@ public class ChatCompletionRequest {
     private String model;
     private Boolean stream;
     private Double temperature;
+    private String prompt;
+    private String quality;
+    @JsonProperty("with_audio")
+    private Boolean withAudio;
+    private String size;
+    private Integer fps;
     private List<Message> messages = new ArrayList<>();
     private List<Map<String, Object>> tools = new ArrayList<>();
     @JsonProperty("tool_choice")
     private Object toolChoice;
+    private String chatEntryMode;
+    private String responseMode;
 
     public String getModel() {
         return model;
@@ -39,6 +47,46 @@ public class ChatCompletionRequest {
         this.temperature = temperature;
     }
 
+    public String getPrompt() {
+        return prompt;
+    }
+
+    public void setPrompt(String prompt) {
+        this.prompt = prompt;
+    }
+
+    public String getQuality() {
+        return quality;
+    }
+
+    public void setQuality(String quality) {
+        this.quality = quality;
+    }
+
+    public Boolean getWithAudio() {
+        return withAudio;
+    }
+
+    public void setWithAudio(Boolean withAudio) {
+        this.withAudio = withAudio;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public Integer getFps() {
+        return fps;
+    }
+
+    public void setFps(Integer fps) {
+        this.fps = fps;
+    }
+
     public List<Message> getMessages() {
         return messages;
     }
@@ -61,6 +109,22 @@ public class ChatCompletionRequest {
 
     public void setToolChoice(Object toolChoice) {
         this.toolChoice = toolChoice;
+    }
+
+    public String getChatEntryMode() {
+        return chatEntryMode;
+    }
+
+    public void setChatEntryMode(String chatEntryMode) {
+        this.chatEntryMode = chatEntryMode;
+    }
+
+    public String getResponseMode() {
+        return responseMode;
+    }
+
+    public void setResponseMode(String responseMode) {
+        this.responseMode = responseMode;
     }
 
     public static class Message {

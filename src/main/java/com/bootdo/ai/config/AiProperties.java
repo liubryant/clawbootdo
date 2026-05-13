@@ -22,9 +22,16 @@ public class AiProperties {
         private String apiKey;
         private String model = "glm-4.7";
         private String imageModel = "glm-image";
+        private String videoModel = "cogvideox-3";
         private String imageSize = "1280x1280";
         private String imageQuality = "hd";
         private Boolean imageWatermarkEnabled = false;
+        private String videoQuality = "quality";
+        private Boolean videoWithAudio = true;
+        private String videoSize = "1920x1080";
+        private Integer videoFps = 30;
+        private Long videoPollIntervalMs = 5000L;
+        private Long videoPollTimeoutMs = 600000L;
 
         /** 动态获取 apiKey 的信息接口（例如：http://cjym123.cn/api/info） */
         private String apiInfoUrl;
@@ -70,6 +77,14 @@ public class AiProperties {
             this.imageModel = imageModel;
         }
 
+        public String getVideoModel() {
+            return videoModel;
+        }
+
+        public void setVideoModel(String videoModel) {
+            this.videoModel = videoModel;
+        }
+
         public String getImageSize() {
             return imageSize;
         }
@@ -92,6 +107,54 @@ public class AiProperties {
 
         public void setImageWatermarkEnabled(Boolean imageWatermarkEnabled) {
             this.imageWatermarkEnabled = imageWatermarkEnabled;
+        }
+
+        public String getVideoQuality() {
+            return videoQuality;
+        }
+
+        public void setVideoQuality(String videoQuality) {
+            this.videoQuality = videoQuality;
+        }
+
+        public Boolean getVideoWithAudio() {
+            return videoWithAudio;
+        }
+
+        public void setVideoWithAudio(Boolean videoWithAudio) {
+            this.videoWithAudio = videoWithAudio;
+        }
+
+        public String getVideoSize() {
+            return videoSize;
+        }
+
+        public void setVideoSize(String videoSize) {
+            this.videoSize = videoSize;
+        }
+
+        public Integer getVideoFps() {
+            return videoFps;
+        }
+
+        public void setVideoFps(Integer videoFps) {
+            this.videoFps = videoFps;
+        }
+
+        public Long getVideoPollIntervalMs() {
+            return videoPollIntervalMs;
+        }
+
+        public void setVideoPollIntervalMs(Long videoPollIntervalMs) {
+            this.videoPollIntervalMs = videoPollIntervalMs;
+        }
+
+        public Long getVideoPollTimeoutMs() {
+            return videoPollTimeoutMs;
+        }
+
+        public void setVideoPollTimeoutMs(Long videoPollTimeoutMs) {
+            this.videoPollTimeoutMs = videoPollTimeoutMs;
         }
 
         public String getApiInfoUrl() {

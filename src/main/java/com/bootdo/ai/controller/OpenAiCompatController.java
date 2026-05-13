@@ -6,6 +6,8 @@ import com.bootdo.ai.dto.ChatCompletionRequest;
 import com.bootdo.ai.service.GlmChatService;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,6 +62,66 @@ public class OpenAiCompatController {
         } else {
             glmChatService.nonStreamCompletion(request, response);
         }
+    }
+
+    @PostMapping("/v1/videos/generations")
+    public void videoGenerations(@RequestBody(required = false) ChatCompletionRequest request,
+                                 HttpServletRequest httpRequest,
+                                 HttpServletResponse response) throws IOException {
+        if (!aiProperties.isEnabled()) {
+            writeJson(response, 503, error("service_disabled", "AI compatibility API is disabled"));
+            return;
+        }
+
+        if (request == null) {
+            writeJson(response, 400, error("invalid_request", "request body is empty or not valid json"));
+            return;
+        }
+
+        if ((request.getMessages() == null || request.getMessages().isEmpty())
+            && safeTrim(request.getPrompt()).isEmpty()) {
+            writeJson(response, 400, error("invalid_request", "messages or prompt cannot be empty"));
+            return;
+        }
+
+        String expectedToken = safeTrim(aiProperties.getGatewayToken());
+        if (!expectedToken.isEmpty()) {
+            String auth = safeTrim(httpRequest.getHeader("Authorization"));
+            String prefix = "Bearer ";
+            if (!auth.startsWith(prefix) || !expectedToken.equals(auth.substring(prefix.length()).trim())) {
+                writeJson(response, 401, error("unauthorized", "invalid gateway token"));
+                return;
+            }
+        }
+
+        glmChatService.videoGenerations(request, response);
+    }
+
+    @GetMapping("/v1/videos/generations/{taskId}")
+    public void videoGenerationResult(@PathVariable("taskId") String taskId,
+                                      HttpServletRequest httpRequest,
+                                      HttpServletResponse response) throws IOException {
+        if (!aiProperties.isEnabled()) {
+            writeJson(response, 503, error("service_disabled", "AI compatibility API is disabled"));
+            return;
+        }
+
+        if (safeTrim(taskId).isEmpty()) {
+            writeJson(response, 400, error("invalid_request", "taskId cannot be empty"));
+            return;
+        }
+
+        String expectedToken = safeTrim(aiProperties.getGatewayToken());
+        if (!expectedToken.isEmpty()) {
+            String auth = safeTrim(httpRequest.getHeader("Authorization"));
+            String prefix = "Bearer ";
+            if (!auth.startsWith(prefix) || !expectedToken.equals(auth.substring(prefix.length()).trim())) {
+                writeJson(response, 401, error("unauthorized", "invalid gateway token"));
+                return;
+            }
+        }
+
+        glmChatService.videoGenerationResult(taskId, response);
     }
 
     @PostMapping("/v1/token/usage")
