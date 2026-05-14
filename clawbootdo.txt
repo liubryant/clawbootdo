@@ -962,8 +962,6 @@ Description:
 IDEA右侧Maven-bootdo-Lifecycle-clean- 再点package
 本机没有 Maven 命令。只要通过 IDEA 的 Maven 面板或安装 Maven 成功打包，`target/bootdo-1.7.0.jar` 的时间就会更新
 
-现在后台jar包已打包好，你把他部署到阿里云服务器上，服务器地址：39.108.144.196 端口：22 用户名：root 密码：Wyl123456   先cd /home/repo/bootdo/target到这个目录，bootdo-1.7.0.jar包就在这里，
-把他部署到阿里云上，特别注意这个服务器内存很小，只有2GB，主要部署的时候服务器不要卡住了。
 
 
 打包
