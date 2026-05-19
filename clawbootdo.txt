@@ -269,7 +269,6 @@ C:\ProgramData\MySQL\MySQL Server 9.6\
 root
 
 role	assistant多轮对话
-apikey	45cfef5dea844f3e88116d202dcdda07.h0CAEbeWmhVxF9FI
 
 POST
 /paas/v4/chat/completions
@@ -870,7 +869,7 @@ agentclaw TOOL_EVENT phase=start/result
         "total_tokens": 3203
     },
     "model": "glm-4.7",
-    "id": "20260430134708d8edb1baa4b0441f",
+    "id": "",
     "choices": [
         {
             "finish_reason": "stop",
@@ -881,14 +880,13 @@ agentclaw TOOL_EVENT phase=start/result
             }
         }
     ],
-    "request_id": "20260430134708d8edb1baa4b0441f",
+    "request_id": "",
     "object": "chat.completion"
 }
 
 接口改动后
 
 192.168.110.67
-39.108.144.196
 
 cd /home/repo/bootdo/target
 docker restart mynginx
@@ -928,7 +926,6 @@ Project: oppo
 Description:
 - 增加侧边栏文件入口
 
-apikey额度用完了，又得重新注册个账号
 部署到阿里云
 
 
@@ -951,7 +948,6 @@ Description:
 - 动态配置apikey接口并打印值
 
 
-39.108.144.196
 
 一个问题50000token没有生成文档
 问了几次一加一等于几又消耗了50000token
@@ -1005,8 +1001,8 @@ ad ota
 要求突出中间主体图案
 主题色是红色
 偏娱乐社交化
-市面这么多垃圾软件都有量要有信心
 支付参考山海短剧
+
 
 
 
