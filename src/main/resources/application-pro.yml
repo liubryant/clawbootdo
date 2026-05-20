@@ -71,7 +71,8 @@ ai:
     imageSize: 1280x1280
     imageQuality: hd
     imageWatermarkEnabled: false
-    # 动态 key：从该接口拉取 data.apiKey（resultCode==200 才生效）
+    # 动态聊天上游配置：兼容老字段 data.apiKey，也支持：
+    # data.aiProvider / data.aiBaseUrl / data.aiApiKey / data.aiModel
     apiInfoUrl: http://cjym123.cn/api/info
     # 每 2 分钟拉取一次；只有 key 变化时才会更新内存缓存
     apiKeyRefreshMs: 120000

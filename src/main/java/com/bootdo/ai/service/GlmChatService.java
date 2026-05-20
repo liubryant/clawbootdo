@@ -57,7 +57,7 @@ public class GlmChatService {
             return;
         }
 
-        HttpURLConnection conn = openConnection(buildUpstreamPayload(request, true), true);
+        HttpURLConnection conn = openChatConnection(buildUpstreamPayload(request, true), true);
         int code = conn.getResponseCode();
         InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
 
@@ -65,7 +65,7 @@ public class GlmChatService {
             String err = readAll(stream);
             response.setStatus(502);
             response.setContentType("application/json;charset=UTF-8");
-            response.getWriter().write(errorJson("upstream_error", "GLM upstream error: HTTP " + code, err));
+            response.getWriter().write(errorJson("upstream_error", "chat upstream error: HTTP " + code, err));
             conn.disconnect();
             return;
         }
@@ -114,7 +114,7 @@ public class GlmChatService {
             return;
         }
 
-        HttpURLConnection conn = openConnection(buildUpstreamPayload(request, false), false);
+        HttpURLConnection conn = openChatConnection(buildUpstreamPayload(request, false), false);
         int code = conn.getResponseCode();
         InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
         String body = readAll(stream);
@@ -122,7 +122,7 @@ public class GlmChatService {
         response.setStatus(code >= 400 ? 502 : 200);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(code >= 400 ? errorJson("upstream_error", "GLM upstream error: HTTP " + code, body) : convertToOpenAiResponse(body, request));
+        response.getWriter().write(code >= 400 ? errorJson("upstream_error", "chat upstream error: HTTP " + code, body) : convertToOpenAiResponse(body, request));
         conn.disconnect();
     }
 
@@ -152,14 +152,14 @@ public class GlmChatService {
             return usage;
         }
 
-        HttpURLConnection conn = openConnection(buildUpstreamPayload(request, false), false);
+        HttpURLConnection conn = openChatConnection(buildUpstreamPayload(request, false), false);
         int code = conn.getResponseCode();
         InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
         String body = readAll(stream);
         conn.disconnect();
 
         if (code >= 400) {
-            throw new IOException("GLM upstream error: HTTP " + code + ", body=" + body);
+            throw new IOException("chat upstream error: HTTP " + code + ", body=" + body);
         }
 
         JSONObject root = JSON.parseObject(body);
@@ -281,25 +281,25 @@ public class GlmChatService {
         response.getWriter().write(convertVideoResponseToOpenAiJson(upstream == null ? "{}" : upstream.toJSONString(), request).toJSONString());
     }
 
-    private HttpURLConnection openConnection(String payload, boolean stream) throws IOException {
-        return openJsonConnection("/chat/completions", payload, stream ? "text/event-stream" : "application/json");
+    private HttpURLConnection openChatConnection(String payload, boolean stream) throws IOException {
+        return openDynamicChatJsonConnection("/chat/completions", payload, stream ? "text/event-stream" : "application/json");
     }
 
     private HttpURLConnection openImageConnection(String payload) throws IOException {
-        return openJsonConnection("/images/generations", payload, "application/json");
+        return openGlmJsonConnection("/images/generations", payload, "application/json");
     }
 
     private HttpURLConnection openVideoConnection(String payload) throws IOException {
-        return openJsonConnection("/videos/generations", payload, "application/json");
+        return openGlmJsonConnection("/videos/generations", payload, "application/json");
     }
 
     private HttpURLConnection openAsyncResultConnection(String taskId) throws IOException {
-        String apiKey = apiKeyProvider.getApiKey();
+        String apiKey = apiKeyProvider.getGlmRouteApiKey();
         if (apiKey == null || apiKey.trim().isEmpty()) {
             throw new IOException("GLM apiKey is empty, please set ai.glm.apiKey or GLM_API_KEY");
         }
 
-        String base = safeTrim(aiProperties.getGlm().getBaseUrl(), "https://open.bigmodel.cn/api/paas/v4");
+        String base = safeTrim(apiKeyProvider.getGlmRouteBaseUrl(), "https://open.bigmodel.cn/api/paas/v4");
         String normalizedBase = base.endsWith("/") ? base.substring(0, base.length() - 1) : base;
         String url = normalizedBase + "/async-result/" + safe(taskId).trim();
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
@@ -312,8 +312,41 @@ public class GlmChatService {
         return conn;
     }
 
-    private HttpURLConnection openJsonConnection(String path, String payload, String accept) throws IOException {
-        String apiKey = apiKeyProvider.getApiKey();
+    private HttpURLConnection openDynamicChatJsonConnection(String path, String payload, String accept) throws IOException {
+        DynamicChatUpstreamConfig chatConfig = apiKeyProvider.getChatConfig();
+        String apiKey = safe(chatConfig.getApiKey()).trim();
+        if (apiKey.isEmpty()) {
+            throw new IOException("chat upstream apiKey is empty, please set ai.glm.apiKey or api/info data.aiApiKey");
+        }
+
+        String provider = safeTrim(chatConfig.getProvider(), "glm");
+        String base = safeTrim(chatConfig.getBaseUrl(), safeTrim(aiProperties.getGlm().getBaseUrl(), "https://open.bigmodel.cn/api/paas/v4"));
+
+        if (log.isInfoEnabled()) {
+            log.info("Chat upstream request provider={}, path={}, model={}, apiKey tail6={}",
+                    provider, path, safeTrim(chatConfig.getModel()), lastN(apiKey, 6));
+        }
+
+        String url = (base.endsWith("/") ? base.substring(0, base.length() - 1) : base) + path;
+
+        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+        conn.setRequestMethod("POST");
+        conn.setDoOutput(true);
+        conn.setConnectTimeout(aiProperties.getConnectTimeoutMs());
+        conn.setReadTimeout(aiProperties.getReadTimeoutMs());
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setRequestProperty("Accept", accept);
+        conn.setRequestProperty("Authorization", "Bearer " + apiKey);
+
+        byte[] bytes = payload.getBytes(StandardCharsets.UTF_8);
+        try (OutputStream os = conn.getOutputStream()) {
+            os.write(bytes);
+        }
+        return conn;
+    }
+
+    private HttpURLConnection openGlmJsonConnection(String path, String payload, String accept) throws IOException {
+        String apiKey = apiKeyProvider.getGlmRouteApiKey();
         if (apiKey == null || apiKey.trim().isEmpty()) {
             throw new IOException("GLM apiKey is empty, please set ai.glm.apiKey or GLM_API_KEY");
         }
@@ -322,7 +355,7 @@ public class GlmChatService {
             log.info("GLM upstream request path={}, apiKey tail6={}", path, lastN(apiKey.trim(), 6));
         }
 
-        String base = safeTrim(aiProperties.getGlm().getBaseUrl(), "https://open.bigmodel.cn/api/paas/v4");
+        String base = safeTrim(apiKeyProvider.getGlmRouteBaseUrl(), "https://open.bigmodel.cn/api/paas/v4");
         String url = (base.endsWith("/") ? base.substring(0, base.length() - 1) : base) + path;
 
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
@@ -1406,12 +1439,7 @@ public class GlmChatService {
     }
 
     private String resolveModelForUpstream(String requestModel) {
-        String defaultModel = safeTrim(aiProperties.getGlm().getModel(), "glm-5.1");
-        String model = safe(requestModel).trim();
-        if (model.isEmpty() || "openclaw".equalsIgnoreCase(model) || model.toLowerCase().startsWith("openclaw:")) {
-            return defaultModel;
-        }
-        return model;
+        return safeTrim(apiKeyProvider.getChatModel(), safeTrim(aiProperties.getGlm().getModel(), "glm-5.1"));
     }
 
     private String resolveImageModel(String requestModel) {
@@ -1456,6 +1484,10 @@ public class GlmChatService {
         } catch (Exception ignore) {
             return null;
         }
+    }
+
+    private String safeTrim(String value) {
+        return value == null ? "" : value.trim();
     }
 
     private String lastN(String value, int n) {

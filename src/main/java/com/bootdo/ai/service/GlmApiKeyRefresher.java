@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 /**
- * 定时从 /api/info 拉取最新 apiKey，并在 key 变化时更新。
+ * 定时从 /api/info 拉取最新聊天上游配置，并在配置变化时更新。
  */
 @Component
 public class GlmApiKeyRefresher {
@@ -54,15 +54,21 @@ public class GlmApiKeyRefresher {
         }
 
         try {
-            String newKey = apiInfoClient.fetchApiKey();
-            boolean changed = apiKeyProvider.updateRemoteKeyIfChanged(newKey);
+            DynamicChatUpstreamConfig newConfig = apiInfoClient.fetchChatUpstreamConfig();
+            boolean changed = apiKeyProvider.updateRemoteChatConfigIfChanged(newConfig);
             if (changed) {
-                log.info("GLM apiKey refreshed (reason={}, fromUrl={}), lastUpdateAt={}",
-                        reason, url, apiKeyProvider.getLastRemoteUpdateAt());
+                DynamicChatUpstreamConfig applied = apiKeyProvider.getChatConfig();
+                log.info("Chat upstream config refreshed (reason={}, fromUrl={}, provider={}, model={}, baseUrl={}), lastUpdateAt={}",
+                        reason,
+                        url,
+                        applied.getProvider(),
+                        applied.getModel(),
+                        applied.getBaseUrl(),
+                        apiKeyProvider.getLastRemoteUpdateAt());
             }
         } catch (Exception ex) {
             // 刷新失败不影响对话：继续使用上一次缓存 key 或本地默认 key
-            log.warn("GLM apiKey refresh failed (reason={}, fromUrl={}): {}",
+            log.warn("Chat upstream config refresh failed (reason={}, fromUrl={}): {}",
                     reason, url, ex.getMessage());
         }
     }
