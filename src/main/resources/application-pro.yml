@@ -73,7 +73,7 @@ ai:
     imageWatermarkEnabled: false
     # 动态聊天上游配置：兼容老字段 data.apiKey，也支持：
     # data.aiProvider / data.aiBaseUrl / data.aiApiKey / data.aiModel
-    apiInfoUrl: http://cjym123.cn/api/info
+    apiInfoUrl: https://www.cjym123.cn/api/info
     # 每 2 分钟拉取一次；只有 key 变化时才会更新内存缓存
     apiKeyRefreshMs: 120000
     # 拉取 /api/info 的超时建议设置短一些，避免卡住刷新线程

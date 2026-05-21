@@ -302,6 +302,11 @@ public class GlmChatService {
         String base = safeTrim(apiKeyProvider.getGlmRouteBaseUrl(), "https://open.bigmodel.cn/api/paas/v4");
         String normalizedBase = base.endsWith("/") ? base.substring(0, base.length() - 1) : base;
         String url = normalizedBase + "/async-result/" + safe(taskId).trim();
+
+        if (!url.toLowerCase().startsWith("https://")) {
+            throw new IOException("GLM async-result baseUrl must use HTTPS, got: " + url);
+        }
+
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
         conn.setRequestMethod("GET");
         conn.setDoInput(true);
@@ -328,6 +333,10 @@ public class GlmChatService {
         }
 
         String url = (base.endsWith("/") ? base.substring(0, base.length() - 1) : base) + path;
+
+        if (!url.toLowerCase().startsWith("https://")) {
+            throw new IOException("chat upstream baseUrl must use HTTPS, got: " + url);
+        }
 
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
         conn.setRequestMethod("POST");
@@ -357,6 +366,10 @@ public class GlmChatService {
 
         String base = safeTrim(apiKeyProvider.getGlmRouteBaseUrl(), "https://open.bigmodel.cn/api/paas/v4");
         String url = (base.endsWith("/") ? base.substring(0, base.length() - 1) : base) + path;
+
+        if (!url.toLowerCase().startsWith("https://")) {
+            throw new IOException("GLM upstream baseUrl must use HTTPS, got: " + url);
+        }
 
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
         conn.setRequestMethod("POST");
