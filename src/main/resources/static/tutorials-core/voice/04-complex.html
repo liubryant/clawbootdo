@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no,email=no,address=no" />
+  <title>语音交互-自动执行复杂指令</title>
+  <style>
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: local('MiSans'),
+           url('./fonts/MiSans-Regular.woff2') format('woff2'),
+           url('./fonts/MiSans-Regular.woff') format('woff'),
+           url('./fonts/MiSans-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: local('MiSans Medium'), local('MiSans-Medium'),
+           url('./fonts/MiSans-Medium.woff2') format('woff2'),
+           url('./fonts/MiSans-Medium.woff') format('woff'),
+           url('./fonts/MiSans-Medium.ttf') format('truetype');
+    }
+
+    :root {
+      --page-bg: #000;
+      --card-bg: #f6f6f6;
+      --card-radius: 56px;
+      --text-main: #000;
+      --text-sub: #666;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: var(--page-bg);
+      overflow: hidden;
+      font-family: MiSans, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    .page {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* 固定 1920×1080 画布，外面 JS 等比缩放 */
+    .canvas {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: center center;
+    }
+
+    /* f6f6f6 卡片容器：1840×1000，圆角 56，渐变描边 */
+    .panel {
+      position: absolute;
+      inset: 40px;
+      border-radius: var(--card-radius);
+      background: var(--card-bg);
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(180px);
+      -webkit-backdrop-filter: blur(180px);
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(
+        178deg,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0) 41%,
+        rgba(255, 255, 255, 0) 58%,
+        rgba(255, 255, 255, 0.1) 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    /* 标题：相对 panel 顶 40，居中 */
+    .title {
+      position: absolute;
+      left: 0;
+      top: 40px;
+      width: 1840px;
+      height: 52px;
+      font-size: 40px;
+      line-height: 52px;
+      font-weight: 500;
+      text-align: center;
+      color: var(--text-main);
+    }
+
+    .panel img {
+      -webkit-user-drag: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /*
+       Figma 大画框 (1920×1080) 中：
+       - 图片 Rectangle 46229790: left=136, top=266, w=902, h=508, radius=24
+       - 文案块 1: left=1098, top=266, w=771
+       - 文案块 2: left=1098, top=478, w=727
+       panel inset=40，所以 panel-relative = canvas - 40
+    */
+
+    /* —— 主插图 —— */
+    .hero {
+      position: absolute;
+      left: 96px;
+      top: 226px;
+      width: 902px;
+      height: 508px;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .hero img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /* 图上字幕：阿目同学… 锚点底部居中
+       Figma: left=587, top=676 (translate -50%, -100%)
+       panel-relative: left=547, top=636，元素以 (中下) 锚到这一点 */
+    .hero-caption {
+      position: absolute;
+      left: 547px;
+      top: 636px;
+      transform: translate(-50%, -100%);
+      font-family: 'MiSans', sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.3;
+      color: #fff;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    /* —— 右侧文案块 1：自动执行 —— */
+    .text-block-1 {
+      position: absolute;
+      left: 1058px;
+      top: 226px;
+      width: 771px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .text-block-1 .tb-title {
+      font-family: 'MiSans', sans-serif;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 1.3;
+      color: var(--text-main);
+      width: 707px;
+      margin: 0;
+    }
+    .text-block-1 .tb-desc {
+      font-family: 'MiSans', sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--text-sub);
+      margin: 0;
+    }
+    .text-block-1 .tb-desc p {
+      margin: 0;
+    }
+
+    /* —— 右侧文案块 2：对话查询 —— */
+    .text-block-2 {
+      position: absolute;
+      left: 1058px;
+      top: 438px;
+      width: 727px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .text-block-2 .tb-title {
+      font-family: 'MiSans', sans-serif;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 1.3;
+      color: var(--text-main);
+      margin: 0;
+    }
+    .text-block-2 .tb-desc {
+      font-family: 'MiSans', sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.4;
+      color: var(--text-sub);
+      margin: 0;
+    }
+
+    /* 底部导航指示器：panel-relative top 952，左右居中
+       4 个点，第 4 个为当前页（24×8 胶囊） */
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      top: 952px;
+      width: 1840px;
+      height: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(0, 0, 0, 0.32);
+      border-radius: 999px;
+    }
+    .nav-dot.active {
+      width: 24px;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page" id="viewport">
+    <div class="canvas" id="canvas" aria-label="语音交互-自动执行复杂指令">
+      <div class="panel">
+
+        <div class="title">语音交互-自动执行复杂指令</div>
+
+        <!-- 主插图 -->
+        <div class="hero">
+          <img src="./images/F4.1.1.png" alt="自动执行复杂指令">
+        </div>
+        <div class="hero-caption">阿目同学，帮我去美团点一杯摩卡星冰乐</div>
+
+        <!-- 右侧文案块 1 -->
+        <div class="text-block-1">
+          <p class="tb-title">美团点外卖/淘宝购物/播放腾讯视频/下载安装app</p>
+          <div class="tb-desc">
+            <p>语音输入“阿目同学，帮我去美团点一杯摩卡星冰乐”</p>
+            <p>在语音框回复“好的”，同时进行语音播报，随之进行相应操作。</p>
+          </div>
+        </div>
+
+        <!-- 右侧文案块 2 -->
+        <div class="text-block-2">
+          <p class="tb-title">对话查询功能</p>
+          <p class="tb-desc">本机功能查询、生活服务查询、事实查询</p>
+        </div>
+
+        <!-- 底部导航：4 点，第 4 为当前页 -->
+        <div class="bottom-nav">
+          <div class="nav-dot"></div>
+          <div class="nav-dot"></div>
+          <div class="nav-dot"></div>
+          <div class="nav-dot active"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const canvas = document.getElementById("canvas");
+      const BASE_W = 1920;
+      const BASE_H = 1080;
+      function updateScale() {
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        const scale = Math.min(vw / BASE_W, vh / BASE_H);
+        canvas.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+      }
+      window.addEventListener("resize", updateScale);
+      updateScale();
+    })();
+  </script>
+  <script src="../../shared/pages.js"></script>
+  <script src="../../shared/nav.js"></script>
+</body>
+</html>

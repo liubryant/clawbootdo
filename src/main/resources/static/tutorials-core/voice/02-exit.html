@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no,email=no,address=no" />
+  <title>语音交互-退出方式</title>
+  <style>
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: local('MiSans'),
+           url('./fonts/MiSans-Regular.woff2') format('woff2'),
+           url('./fonts/MiSans-Regular.woff') format('woff'),
+           url('./fonts/MiSans-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: local('MiSans Medium'), local('MiSans-Medium'),
+           url('./fonts/MiSans-Medium.woff2') format('woff2'),
+           url('./fonts/MiSans-Medium.woff') format('woff'),
+           url('./fonts/MiSans-Medium.ttf') format('truetype');
+    }
+
+    :root {
+      --page-bg: #000;
+      --card-bg: #f6f6f6;
+      --card-radius: 56px;
+      --text-main: #000;
+      --text-sub: #666;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: var(--page-bg);
+      overflow: hidden;
+      font-family: MiSans, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    .page {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .canvas {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: center center;
+    }
+
+    .panel {
+      position: absolute;
+      inset: 40px;
+      border-radius: var(--card-radius);
+      background: var(--card-bg);
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(180px);
+      -webkit-backdrop-filter: blur(180px);
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(
+        178deg,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0) 41%,
+        rgba(255, 255, 255, 0) 58%,
+        rgba(255, 255, 255, 0.1) 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .title {
+      position: absolute;
+      left: 0;
+      top: 40px;
+      width: 1840px;
+      height: 52px;
+      font-size: 40px;
+      line-height: 52px;
+      font-weight: 500;
+      text-align: center;
+      color: var(--text-main);
+    }
+
+    .cards-row {
+      position: absolute;
+      left: 80px;
+      top: 188px;
+      width: 1680px;
+      height: 580px;
+      display: flex;
+      gap: 24px;
+    }
+
+    .card {
+      width: 402px;
+      height: 580px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 48px;
+      box-shadow: 0 8px 40.9px -12px rgba(0, 0, 0, 0.02);
+      position: relative;
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+
+    .card-title {
+      position: absolute;
+      left: 40px;
+      top: 48px;
+      font-size: 36px;
+      line-height: 1.3;
+      font-weight: 500;
+      color: var(--text-main);
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    .card-desc {
+      position: absolute;
+      left: 40px;
+      top: 103px;
+      font-size: 24px;
+      line-height: 1.3;
+      font-weight: 400;
+      color: var(--text-sub);
+      margin: 0;
+    }
+    .card-desc.nowrap { white-space: nowrap; }
+    .card-desc.wrap   { width: 322px; white-space: normal; }
+
+    .card img,
+    .panel img {
+      -webkit-user-drag: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* —— 卡 1：触控板 —— 底部插图 348×127 */
+    .card-touchstrip .ts-img {
+      position: absolute;
+      left: 27px;
+      top: 271px;
+      width: 348px;
+      height: 127px;
+      object-fit: contain;
+      object-position: center top;
+    }
+
+    /* —— 卡 2：INMO Controller —— 插图 187×320 */
+    .card-controller .ctrl-img {
+      position: absolute;
+      left: 95px;
+      top: 179px;
+      width: 187px;
+      height: 320px;
+      object-fit: contain;
+      object-position: center bottom;
+    }
+
+    /* —— 卡 3：Touchpad 1.0 —— 插图 187×320 + 主页键圆圈（PNG 72×72） */
+    .card-tp .tp-img {
+      position: absolute;
+      left: 107px;
+      top: 189px;
+      width: 187px;
+      height: 320px;
+      object-fit: contain;
+      object-position: center bottom;
+    }
+    .card-tp .tp-circle {
+      position: absolute;
+      /* F1 中心 (233,462)，72×72 → (197,426) */
+      left: 127px;
+      top: 426px;
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+    }
+    .card-tp .tp-arrow {
+      position: absolute;
+      left: 196.03px;
+      top: 497.51px;
+      width: 71.94px;
+      height: 70.97px;
+      object-fit: contain;
+    }
+
+    /* —— 卡 4：戒指 —— 插图 209×267 + 圆圈 96×96 + 箭头（相对卡） */
+    .card-ring .ring-img {
+      position: absolute;
+      left: 94px;
+      top: 215px;
+      width: 209px;
+      height: 267px;
+      object-fit: cover;
+      object-position: center center;
+    }
+    .card-ring .ring-circle {
+      position: absolute;
+      /* F1 中心 (281,410)，96×96 → (233,362) */
+      left: 223px;
+      top: 302px;
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
+    }
+    .card-ring .ring-arrow {
+      position: absolute;
+      left: 320.99px;
+      top: 395.36px;
+      width: 71.94px;
+      height: 70.97px;
+      object-fit: contain;
+    }
+
+    /* ===== 跨卡浮动元素（panel-relative）===== */
+
+    /* F2.2.3 箭头：与 F1 同位置 */
+    .frame-arrow-2 {
+      position: absolute;
+      left: 689.99px;
+      top: 575.36px;
+      width: 71.94px;
+      height: 70.97px;
+      object-fit: contain;
+    }
+    /* F2.2.2 圆圈（PNG 72×72） */
+    .frame-circle-2 {
+      position: absolute;
+      left: 618px;
+      top: 505px;
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+    }
+
+    /* 底部导航指示器 */
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      top: 952px;
+      width: 1840px;
+      height: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-dot {
+      width: 84px;
+      height: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 999px;
+    }
+
+    /* 卡片下方注脚：距卡片下边缘 60px → panel-relative top = 188 + 580 + 60 = 828 */
+    .footnote {
+      position: absolute;
+      left: 0;
+      top: 828px;
+      width: 1840px;
+      font-size: 24px;
+      line-height: 1.3;
+      font-weight: 400;
+      color: var(--text-sub);
+      text-align: center;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page" id="viewport">
+    <div class="canvas" id="canvas" aria-label="语音交互-退出方式">
+      <div class="panel">
+
+        <div class="title">语音交互-退出方式</div>
+
+        <div class="cards-row">
+
+          <!-- 卡 1：触控板 -->
+          <div class="card card-touchstrip">
+            <p class="card-title">触控板</p>
+            <p class="card-desc wrap">长按右边镜腿触控板来退出</p>
+            <img class="ts-img" src="./images/F2.1.1.png" alt="触控板">
+          </div>
+
+          <!-- 卡 2：INMO Controller -->
+          <div class="card card-controller">
+            <p class="card-title">INMO Controller</p>
+            <p class="card-desc nowrap">双击返回键退出</p>
+            <img class="ctrl-img" src="./images/F2.2.1INMO.png" alt="INMO Controller">
+          </div>
+
+          <!-- 卡 3：Touchpad 1.0（无箭头） -->
+          <div class="card card-tp">
+            <p class="card-title">Touchpad 1.0</p>
+            <p class="card-desc nowrap">长按返回键</p>
+            <img class="tp-img" src="./images/F2.3.1.png" alt="Touchpad 1.0">
+            <img class="tp-circle" src="./images/F2.3.2圆圈.png" alt="">
+            <img class="tp-arrow" src="./images/F2.2.3箭头.png" alt="">
+          </div>
+
+          <!-- 卡 4：戒指 -->
+          <div class="card card-ring">
+            <p class="card-title">戒指</p>
+            <p class="card-desc nowrap">双击戒指返回键退出</p>
+            <img class="ring-img" src="./images/F2.4.1NMO.png" alt="戒指">
+            <img class="ring-circle" src="./images/F2.4.2圆圈.png" alt="">
+            <img class="ring-arrow" src="./images/F2.4.3箭头.png" alt="">
+          </div>
+
+        </div>
+
+        <!-- 跨卡浮动元素：INMO Controller 的圆圈+箭头 -->
+        <img class="frame-arrow-2" src="./images/F2.2.3箭头.png" alt="">
+        <img class="frame-circle-2" src="./images/F2.2.2圆圈.png" alt="">
+
+        <!-- 卡片下方注脚 -->
+        <p class="footnote">点击非语音助理部分或者熄屏后也会退出语音助理</p>
+
+        <!-- 底部导航 -->
+        <div class="bottom-nav"><div class="nav-dot"></div></div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const canvas = document.getElementById("canvas");
+      const BASE_W = 1920;
+      const BASE_H = 1080;
+      function updateScale() {
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        const scale = Math.min(vw / BASE_W, vh / BASE_H);
+        canvas.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+      }
+      window.addEventListener("resize", updateScale);
+      updateScale();
+    })();
+  </script>
+  <script src="../../shared/pages.js"></script>
+  <script src="../../shared/nav.js"></script>
+</body>
+</html>

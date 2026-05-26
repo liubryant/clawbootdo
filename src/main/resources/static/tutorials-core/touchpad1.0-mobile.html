@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no,email=no,address=no">
+  <title>Touchpad 1.0 教程</title>
+  <style>
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: local('MiSans'),
+           url('./fonts/MiSans-Regular.woff2') format('woff2'),
+           url('./fonts/MiSans-Regular.woff') format('woff'),
+           url('./fonts/MiSans-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: local('MiSans Medium'), local('MiSans-Medium'),
+           url('./fonts/MiSans-Medium.woff2') format('woff2'),
+           url('./fonts/MiSans-Medium.woff') format('woff'),
+           url('./fonts/MiSans-Medium.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 600;
+      font-display: optional;
+      src: local('MiSans Semibold'), local('MiSans-Semibold'),
+           url('./fonts/MiSans-Semibold.woff2') format('woff2'),
+           url('./fonts/MiSans-Semibold.woff') format('woff'),
+           url('./fonts/MiSans-Semibold.ttf') format('truetype');
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html, body {
+      min-height: 100%;
+      background: #f6f6f6;
+      font-family: 'MiSans', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+      color: #000;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    /* 顶部固定栏 */
+    .m-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(246, 246, 246, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .m-back {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6.5625px;
+      height: 13.125px;
+      cursor: pointer;
+    }
+    .m-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    /* 内容容器：顶 56 留位 */
+    .container {
+      padding: 72px 16px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* stage 大白卡 */
+    .stage {
+      background: #fff;
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .stage-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .stage-subtitle {
+      font-size: 11px;
+      font-weight: 400;
+      color: #8c8c8c;
+      line-height: 1.4;
+      margin: -8px 0 12px;
+    }
+
+    /* 占位文案 */
+    .placeholder {
+      font-size: 11px;
+      color: #b0b0b0;
+      line-height: 1.5;
+    }
+
+    /* 分步说明 */
+    .step + .step {
+      margin-top: 16px;
+    }
+    .step-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.5;
+      margin: 0 0 10px;
+    }
+    .step-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    .step-img + .step-img {
+      margin-top: 10px;
+    }
+    .step-img.tall {
+      width: 45%;
+      margin: 16px auto 0;
+    }
+
+    /* 产品图带蓝灯叠加 */
+    .device-wrap {
+      position: relative;
+      width: 45%;
+      margin: 16px auto 0;
+    }
+    .device-wrap .step-img {
+      width: 100%;
+      margin: 0;
+    }
+    .device-wrap .led {
+      position: absolute;
+      left: 44.7%;
+      top: 10.6%;
+      width: 8.3%;
+      aspect-ratio: 22 / 5;
+      background: #3672e7;
+      border-radius: 39px;
+      animation: ledBlink 1.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes ledBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.25; }
+    }
+
+    /* 设备下方标注：箭头(右) → 竖线 → 开关气泡(下方) */
+    .device-label {
+      width: 60%;
+      margin: 0 18% 16px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0;
+      padding-right: 10%;
+    }
+    .device-label .dl-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .device-label .dl-line {
+      width: 1px;
+      height: 24px;
+      background: #000;
+      flex-shrink: 0;
+      margin-right: 3%;
+      margin-top: -8px;
+    }
+    .device-label .dl-pill {
+      box-sizing: border-box;
+      padding: 6px 18px;
+      border: 1.5px solid #fff;
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.72) 100%);
+      box-shadow: 0 6px 20px 0 rgba(86, 93, 188, 0.14);
+      font-size: 16px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.3;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-right: 3%;
+      margin-top: -8px;
+    }
+    .device-label .dl-arrow {
+      width: 36px;
+      height: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+      margin-left: 5.7%;
+    }
+
+    /* 按键说明列表 */
+    .feat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .feat-item .ft-name {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.4;
+      margin: 0 0 2px;
+    }
+    .feat-item .ft-desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: #666;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .feat-item .ft-desc p { margin: 0; }
+    .feat-item .ft-desc p + p { margin-top: 2px; }
+
+    /* 手势卡（方图 + 文字） */
+    .gesture-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .gesture-grid.one-col {
+      grid-template-columns: 1fr;
+    }
+    .gesture-grid.one-col .gc-img {
+      aspect-ratio: auto;
+      height: auto;
+    }
+    .gesture-card {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 12px;
+      padding: 10px;
+      overflow: hidden;
+    }
+    .gesture-card:has(.full-bleed) {
+      border: none;
+    }
+    .gesture-card .gc-img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+    .gesture-card .gc-img.full-bleed {
+      width: calc(90% + 20px);
+      margin: -10px auto 8px;
+      border-radius: 11px 11px 0 0;
+      aspect-ratio: auto;
+      height: auto;
+      display: block;
+    }
+    .gesture-card .gc-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.3;
+      margin: 0 0 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .gesture-card .gc-desc {
+      font-size: 13px;
+      font-weight: 400;
+      color: #666;
+      line-height: 1.4;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="m-header">
+    <img class="m-back" loading="lazy" decoding="async" src="./images/Vector.png" alt="返回" draggable="false" onclick="location.href='./main-page.html'">
+    <h1 class="m-title">Touchpad 1.0</h1>
+  </header>
+
+  <main class="container">
+
+    <!-- stage 1：Touchpad1.0与眼镜连接（一） -->
+    <section class="stage">
+      <h2 class="stage-title">01.Touchpad1.0与眼镜连接</h2>
+
+      <div class="step">
+        <p class="step-title">左推开关后蓝灯闪烁，设备自动进入配对模式</p>
+        <div class="device-wrap">
+          <img class="step-img" loading="lazy" decoding="async" src="./touchpad1.0/images/G1.1.1.png" alt="Touchpad 1.0 开关">
+          <div class="led" aria-hidden="true"></div>
+        </div>
+        <div class="device-label">
+          <div class="dl-row">
+            <div class="dl-line"></div>
+            <img class="dl-arrow" loading="lazy" decoding="async" src="./touchpad1.0/images/G1.1.2箭头.png" alt="">
+          </div>
+          <p class="dl-pill">开关</p>
+        </div>
+      </div>
+
+      <div class="step" style="margin-top:24px;">
+        <p class="step-title">打开【桌面】【外设管理】点击并搜索，即可发现"INMO Touchpad1.0"设备，点击连接即可。连接完成后显示"INMO Touchpad1.0"已连接</p>
+        <img class="step-img wide" loading="lazy" decoding="async" src="./touchpad1.0/images/P1.png" alt="应用库">
+        <img class="step-img wide" loading="lazy" decoding="async" src="./touchpad1.0/images/P3.png" alt="外设管理">
+      </div>
+    </section>
+
+    <!-- stage 2：Touchpad1.0功能介绍（一） -->
+    <section class="stage">
+      <h2 class="stage-title">02.Touchpad1.0功能介绍</h2>
+
+      <div class="feat-list">
+        <div class="feat-item">
+          <p class="ft-name">音量调节</p>
+          <p class="ft-desc">侧边音量调节键调节音量</p>
+        </div>
+        <div class="feat-item">
+          <p class="ft-name">返回键</p>
+          <p class="ft-desc">短按：返回上一层，或退出相机模式</p>
+        </div>
+        <div class="feat-item">
+          <p class="ft-name">Home键</p>
+          <p class="ft-desc">短按：返回主界面</p>
+        </div>
+        <div class="feat-item">
+          <p class="ft-name">拍照键</p>
+          <div class="ft-desc">
+            <p>单击：拍照</p>
+            <p>双击：在其他界面下，唤起相机；在相机界面下，切换拍照/录像功能。</p>
+          </div>
+        </div>
+      </div>
+
+      <img class="step-img wide" loading="lazy" decoding="async" src="./touchpad1.0/images/G3.3.3.png" alt="Touchpad 1.0 按键示意">
+    </section>
+
+    <!-- stage 3：Touchpad1.0功能介绍（手势） -->
+    <section class="stage">
+      <h2 class="stage-title">03.Touchpad1.0功能介绍</h2>
+
+      <div class="gesture-grid">
+        <div class="gesture-card">
+          <img class="gc-img" loading="lazy" decoding="async" src="./touchpad1.0/images/G4.1.1.png" alt="">
+          <p class="gc-title">中心范围内移动</p>
+          <p class="gc-desc">移动光标</p>
+        </div>
+        <div class="gesture-card">
+          <img class="gc-img" loading="lazy" decoding="async" src="./touchpad1.0/images/G4.2.png" alt="">
+          <p class="gc-title">中心范围内单击</p>
+          <p class="gc-desc">点击屏幕</p>
+        </div>
+        <div class="gesture-card">
+          <img class="gc-img" loading="lazy" decoding="async" src="./touchpad1.0/images/G4.3.png" alt="">
+          <p class="gc-title">侧边缘滑动</p>
+          <p class="gc-desc">上下滑动页面/短视频上下切换</p>
+        </div>
+        <div class="gesture-card">
+          <img class="gc-img" loading="lazy" decoding="async" src="./touchpad1.0/images/G4.4.png" alt="">
+          <p class="gc-title">上边缘滑动</p>
+          <p class="gc-desc">左右滑动页面/栏目左右切换</p>
+        </div>
+      </div>
+
+      <div class="gesture-grid" style="margin-top:12px;">
+        <div class="gesture-card">
+          <img class="gc-img" loading="lazy" decoding="async" src="./touchpad1.0/images/G5.3.png" alt="">
+          <p class="gc-title">Fn+音量调节：</p>
+          <p class="gc-desc">上一曲/下一曲</p>
+        </div>
+        <div class="gesture-card">
+          <img class="gc-img" loading="lazy" decoding="async" src="./touchpad1.0/images/G5.4.png" alt="">
+          <p class="gc-title">Fn+右侧边缘滑动：</p>
+          <p class="gc-desc">调节亮度</p>
+        </div>
+        <div class="gesture-card">
+          <img class="gc-img full-bleed" loading="lazy" decoding="async" src="./touchpad1.0/images/6.1.png" alt="">
+          <p class="gc-title">单击Fn键：</p>
+          <p class="gc-desc">熄屏/亮屏</p>
+        </div>
+        <div class="gesture-card">
+          <img class="gc-img full-bleed" loading="lazy" decoding="async" src="./touchpad1.0/images/6.2.png" alt="">
+          <p class="gc-title">Fn+拍照键：</p>
+          <p class="gc-desc">播放/暂停音乐</p>
+        </div>
+      </div>
+
+      <div class="gesture-grid one-col" style="margin-top:10px;">
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./image-loader.js"></script>
+  <script src="./lightbox.js"></script>
+</body>
+</html>

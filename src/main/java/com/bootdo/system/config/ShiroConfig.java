@@ -82,6 +82,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/druid/**", "anon");
         filterChainDefinitionMap.put("/upload/**", "anon");
         filterChainDefinitionMap.put("/files/**", "anon");
+        filterChainDefinitionMap.put("/tutorials-core/**", "anon");
         filterChainDefinitionMap.put("/v1/chat/completions", "anon");
         filterChainDefinitionMap.put("/v1/images/generations", "anon");
         filterChainDefinitionMap.put("/v1/videos/generations", "anon");

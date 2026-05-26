@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no,email=no,address=no">
+  <title>手机APP</title>
+  <style>
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: local('MiSans'),
+           url('./fonts/MiSans-Regular.woff2') format('woff2'),
+           url('./fonts/MiSans-Regular.woff') format('woff'),
+           url('./fonts/MiSans-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: local('MiSans Medium'), local('MiSans-Medium'),
+           url('./fonts/MiSans-Medium.woff2') format('woff2'),
+           url('./fonts/MiSans-Medium.woff') format('woff'),
+           url('./fonts/MiSans-Medium.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 600;
+      font-display: optional;
+      src: local('MiSans Semibold'), local('MiSans-Semibold'),
+           url('./fonts/MiSans-Semibold.woff2') format('woff2'),
+           url('./fonts/MiSans-Semibold.woff') format('woff'),
+           url('./fonts/MiSans-Semibold.ttf') format('truetype');
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html, body {
+      min-height: 100%;
+      background: #f6f6f6;
+      font-family: 'MiSans', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+      color: #000;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    .m-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(246, 246, 246, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .m-back {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6.5625px;
+      height: 13.125px;
+      cursor: pointer;
+    }
+    .m-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .container {
+      padding: 72px 16px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .stage {
+      background: #fff;
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .stage-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    /* 步骤列表（圆点） */
+    .step-list {
+      list-style: disc;
+      padding-left: 18px;
+      margin: 0 0 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.6;
+    }
+    .step-list li {
+      margin-bottom: 4px;
+    }
+    .step-list li:last-child { margin-bottom: 0; }
+
+    /* 并排手机截图 */
+    .phone-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .phone-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    /* 子段标题（卡内分块） */
+    .sub-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.4;
+      margin: 28px 0 6px;
+    }
+    .sub-title:first-child { margin-top: 0; }
+    .sub-desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: #000;
+      line-height: 1.6;
+      margin: 0 0 10px;
+    }
+
+    /* 射线模式：上下纵列，每段一行 */
+    .ray-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .ray-card .ray-name {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.4;
+      margin: 0 0 6px;
+    }
+    .ray-card .ray-desc {
+      list-style: disc;
+      padding-left: 14px;
+      font-size: 14px;
+      font-weight: 400;
+      color: #000;
+      line-height: 1.6;
+      margin: 0 0 10px;
+    }
+    .ray-card .ray-desc li {
+      margin-bottom: 4px;
+    }
+    .ray-card .ray-desc li:last-child { margin-bottom: 0; }
+    .ray-card .ray-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="m-header">
+    <img class="m-back" loading="lazy" decoding="async" src="./images/Vector.png" alt="返回" draggable="false" onclick="location.href='./main-page.html'">
+    <h1 class="m-title">手机APP</h1>
+  </header>
+
+  <main class="container">
+
+    <!-- stage 1：手机APP与眼镜连接（搜索 + 配对） -->
+    <section class="stage">
+      <h2 class="stage-title">01.手机APP与眼镜连接</h2>
+
+      <ul class="step-list">
+        <li>打开手机APP，保证AIR3处于开机状态</li>
+        <li>首页点击右上方的【连接】按钮，开始搜索眼镜</li>
+        <li>搜索到附近未配对的AIR3设备</li>
+        <li>确认眼镜的蓝牙地址后4位点击【连接】</li>
+      </ul>
+
+      <img class="phone-img" loading="lazy" decoding="async" src="./phone-app/images/M1.png" alt="APP 连接眼镜">
+
+      <ul class="step-list" style="margin-top:36px;">
+        <li>点击连接后，手机和眼镜会弹出蓝牙配对请求</li>
+        <li>眼镜和手机都需要点击【配对】</li>
+        <li>连接成功后即可使用</li>
+      </ul>
+
+      <img class="phone-img" loading="lazy" decoding="async" src="./phone-app/images/M2.png" alt="APP 蓝牙配对">
+    </section>
+
+    <!-- stage 2：手机APP触控板功能介绍 -->
+    <section class="stage">
+      <h2 class="stage-title">02.手机APP触控板功能介绍</h2>
+
+      <h3 class="sub-title">使用虚拟键盘输入</h3>
+      <p class="sub-desc">点击"虚拟键盘"按钮，手机App将弹出输入法键盘。此时，在眼镜端有输入框的界面，您可直接用手机键盘输入文字，内容将实时同步至眼镜</p>
+
+      <img class="phone-img" loading="lazy" decoding="async" src="./phone-app/images/M4.png" alt="虚拟键盘">
+
+      <h3 class="sub-title">切换与控制射线模式</h3>
+
+      <div class="ray-grid">
+        <div class="ray-card">
+          <p class="ray-name"></p>
+          <ul class="ray-desc">
+            <li>戒指：长按功能键，校准画面和射线终点到视野中心；</li>
+            <li>点击Fn键，校准画面和射线终点到视野中心；</li>
+            <li>面前80%为空白区域时，支持点击触摸板确认，一键将射线、桌面/应用浮窗校准到面前；</li>
+            <li>单击返回键，此时焦点在哪个应用上，就返回哪个应用的上一级</li>
+          </ul>
+          <img class="ray-img" loading="lazy" decoding="async" src="./phone-app/images/M5.png" alt="">
+        </div>
+        <div class="ray-card">
+          <p class="ray-name">触控板</p>
+          <ul class="ray-desc">
+            <li>侧边滑动、顶部滑动，此时焦点在哪个应用上，就哪个应用响应，逻辑和2D模式下的Touchpad相同；</li>
+            <li>单击返回键，此时焦点在哪个应用上，就返回哪个应用的上一级</li>
+          </ul>
+          <img class="ray-img" loading="lazy" decoding="async" src="./phone-app/images/M6.png" alt="">
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./image-loader.js"></script>
+  <script src="./lightbox.js"></script>
+</body>
+</html>
