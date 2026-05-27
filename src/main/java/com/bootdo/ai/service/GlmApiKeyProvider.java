@@ -18,6 +18,9 @@ public class GlmApiKeyProvider {
     /** 远端动态聊天配置（只存内存，不写回配置文件） */
     private final AtomicReference<DynamicChatUpstreamConfig> remoteChatConfig = new AtomicReference<DynamicChatUpstreamConfig>();
 
+    /** 远端动态图片生成 apiKey（来自 api/info 的 imgApiKey 字段，为空则回退本地 GLM key） */
+    private final AtomicReference<String> remoteImgApiKey = new AtomicReference<>("");
+
     /** 最后一次成功更新远端 key 的时间戳（ms），仅用于排查/监控 */
     private volatile long lastRemoteUpdateAt = 0L;
 
@@ -42,6 +45,10 @@ public class GlmApiKeyProvider {
     }
 
     public String getGlmRouteApiKey() {
+        String imgKey = remoteImgApiKey.get();
+        if (imgKey != null && !imgKey.isEmpty()) {
+            return imgKey;
+        }
         if (isGlmCompatibleProvider(getChatProvider())) {
             return safeTrim(getChatConfig().getApiKey());
         }
@@ -74,10 +81,13 @@ public class GlmApiKeyProvider {
         }
         DynamicChatUpstreamConfig normalized = mergeWithLocalDefaults(newConfig);
         DynamicChatUpstreamConfig old = remoteChatConfig.get();
-        if (isSameConfig(old, normalized)) {
+        String newImgKey = safeTrim(newConfig.getImgApiKey());
+        boolean imgKeyChanged = !newImgKey.equals(safeTrim(remoteImgApiKey.get()));
+        if (isSameConfig(old, normalized) && !imgKeyChanged) {
             return false;
         }
         remoteChatConfig.set(normalized);
+        remoteImgApiKey.set(newImgKey);
         lastRemoteUpdateAt = System.currentTimeMillis();
         return true;
     }

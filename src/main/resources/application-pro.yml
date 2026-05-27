@@ -58,7 +58,7 @@ ai:
   glm:
     baseUrl: https://open.bigmodel.cn/api/paas/v4
     # 临时固定 key（按你的要求）；后续建议改回环境变量
-    apiKey: 45cfef5dea844f3e88116d202dcdda07.h0CAEbeWmhVxF9FI
+    apiKey: 099876dd5b834400b0b7c97e231addba.e1mBdIQgNibogCdl
     model: glm-5.1
     imageModel: glm-image
     videoModel: cogvideox-3

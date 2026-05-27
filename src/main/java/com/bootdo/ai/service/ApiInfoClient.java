@@ -67,16 +67,18 @@ public class ApiInfoClient {
         String baseUrl = firstNonBlank(data, "aiBaseUrl", "baseUrl");
         String apiKey = firstNonBlank(data, "aiApiKey", "apiKey");
         String model = firstNonBlank(data, "aiModel", "model");
+        String imgApiKey = firstNonBlank(data, "imgApiKey", "imageApiKey");
 
         provider = safeTrim(provider);
         baseUrl = resolveBaseUrl(provider, baseUrl);
         apiKey = safeTrim(apiKey);
         model = resolveModel(provider, model);
+        imgApiKey = safeTrim(imgApiKey);
 
         if (apiKey.isEmpty()) {
             throw new IOException("apiInfo apiKey is empty");
         }
-        return new DynamicChatUpstreamConfig(provider, baseUrl, apiKey, model);
+        return new DynamicChatUpstreamConfig(provider, baseUrl, apiKey, model, imgApiKey);
     }
 
     private String safeTrim(String v) {
