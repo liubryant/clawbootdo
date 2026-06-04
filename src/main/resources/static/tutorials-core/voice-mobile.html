@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no,email=no,address=no">
+  <title>语音交互</title>
+  <style>
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: local('MiSans'),
+           url('./fonts/MiSans-Regular.woff2') format('woff2'),
+           url('./fonts/MiSans-Regular.woff') format('woff'),
+           url('./fonts/MiSans-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: local('MiSans Medium'), local('MiSans-Medium'),
+           url('./fonts/MiSans-Medium.woff2') format('woff2'),
+           url('./fonts/MiSans-Medium.woff') format('woff'),
+           url('./fonts/MiSans-Medium.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 600;
+      font-display: optional;
+      src: local('MiSans Semibold'), local('MiSans-Semibold'),
+           url('./fonts/MiSans-Semibold.woff2') format('woff2'),
+           url('./fonts/MiSans-Semibold.woff') format('woff'),
+           url('./fonts/MiSans-Semibold.ttf') format('truetype');
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html, body {
+      min-height: 100%;
+      background: #f6f6f6;
+      font-family: 'MiSans', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+      color: #000;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    /* 顶部固定栏 */
+    .m-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(246, 246, 246, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .m-back {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6.5625px;
+      height: 13.125px;
+      cursor: pointer;
+    }
+    .m-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    /* 内容容器：顶 56 留位 */
+    .container {
+      padding: 72px 16px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* stage 大白卡 */
+    .stage {
+      background: #fff;
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .stage-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .stage-subtitle {
+      font-size: 11px;
+      font-weight: 400;
+      color: #8c8c8c;
+      line-height: 1.4;
+      margin: -8px 0 12px;
+    }
+
+    /* 4 张小卡 2×2 网格 */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .mini-card {
+      position: relative;
+      aspect-ratio: 300 / 440;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 12px;
+      padding: 12px;
+      overflow: hidden;
+    }
+    .mini-card .mc-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.3;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .mini-card .mc-desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: #666;
+      line-height: 1.3;
+      margin: 4px 0 0;
+      position: relative;
+      z-index: 2;
+    }
+    .mini-card .mc-img {
+      position: absolute !important;
+      left: 50% !important;
+      top: auto !important;
+      bottom: 6% !important;
+      transform: translateX(-50%) !important;
+      max-width: 88%;
+      max-height: 58%;
+      object-fit: contain;
+      object-position: center bottom;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .mini-card .mc-img.mc-img--up {
+      bottom: 22% !important;
+    }
+    .mini-card .mc-img.mc-img--mid {
+      bottom: 4% !important;
+    }
+    /* 高亮圆圈 + 箭头（覆盖在产品图上，尺寸随卡片宽度等比缩放） */
+    .mini-card .mc-circle {
+      position: absolute;
+      width: 9.6%;
+      aspect-ratio: 1;
+      border: 1.5px solid #3978f3;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .mini-card .mc-arrow {
+      position: absolute;
+      width: 10.8%;
+      height: auto;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* 单列长说明卡（用于第 3 段任务型对话） */
+    .row-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .row-card {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .row-card .rc-img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 540 / 304;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 0 0 10px;
+    }
+    .row-card .rc-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 540 / 304;
+      margin: 0 0 10px;
+    }
+    .row-card .rc-img-wrap .rc-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+    .row-card .rc-img-wrap .rc-caption {
+      position: absolute;
+      left: 50%;
+      bottom: 22%;
+      transform: translateX(-50%);
+      font-size: 9px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.3;
+      white-space: nowrap;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
+    .row-card .rc-img-wrap .recog-card {
+      position: absolute;
+      left: 50%;
+      bottom: 8%;
+      transform: translateX(-50%);
+      width: 64%;
+      max-height: 35%;
+      overflow: hidden;
+      background: #fff;
+      border-radius: 4px 4px 4px 0;
+      padding: 6px 7px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .row-card .rc-img-wrap .recog-icon {
+      position: absolute;
+      right: 12.3%;
+      bottom: 5%;
+      width: 5%;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .row-card .rc-img-wrap .recog-thumb {
+      position: absolute;
+      right: 18%;
+      bottom: 55%;
+      width: 18%;
+      border-radius: 3px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .row-card .rc-img-wrap .recog-title {
+      font-family: "PingFang SC", "MiSans", system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 7px;
+      line-height: 1.3;
+      color: #000;
+      margin: 0 0 3px;
+    }
+    .row-card .rc-img-wrap .recog-body {
+      font-family: "PingFang SC", "MiSans", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 5.5px;
+      line-height: 1.4;
+      color: #000;
+      margin: 0;
+      text-align: justify;
+    }
+    .row-card .rc-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.3;
+      margin: 0 0 6px;
+    }
+    .row-card .rc-desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: #666;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Hero 图卡（用于第 4 段） */
+    .hero-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 622 / 350;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .hero-card .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-card .hero-caption {
+      position: absolute;
+      left: 50%;
+      bottom: 22%;
+      transform: translateX(-50%);
+      font-size: 9px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.3;
+      white-space: nowrap;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
+
+    /* 文本块（标题 + 描述），字号复用 row-card */
+    .text-block + .text-block {
+      margin-top: 12px;
+    }
+    .text-block .tb-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.3;
+      margin: 0 0 6px;
+    }
+    .text-block .tb-desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: #666;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .text-block .tb-desc p {
+      margin: 0;
+    }
+    .text-block .tb-desc p + p {
+      margin-top: 4px;
+    }
+
+    /* 注意事项块（灰色，列表） */
+    .notes-block {
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 400;
+      color: #8e8e8e;
+      line-height: 1.5;
+    }
+    .notes-block .notes-head {
+      margin: 0 0 4px;
+    }
+    .notes-block ul {
+      list-style: disc;
+      padding: 0;
+      margin: 0;
+    }
+    .notes-block li {
+      margin: 0 0 6px 18px;
+    }
+    .notes-block li:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="m-header">
+    <img class="m-back" loading="lazy" decoding="async" src="./images/Vector.png" alt="返回" draggable="false" onclick="location.href='./main-page.html'">
+    <h1 class="m-title">语音交互</h1>
+  </header>
+
+  <main class="container">
+
+    <!-- stage 1：唤醒方式 -->
+    <section class="stage">
+      <h2 class="stage-title">01.语音交互-4种唤醒式</h2>
+      <div class="cards-grid">
+        <div class="mini-card">
+          <p class="mc-title">语音唤醒</p>
+          <p class="mc-desc">连接网络后说"阿目同学"</p>
+          <img class="mc-img mc-img--up" loading="lazy" decoding="async" src="./voice/images/F1.1.1-语音唤醒.png" alt="">
+        </div>
+        <div class="mini-card">
+          <p class="mc-title">INMO Controller</p>
+          <p class="mc-desc">长按OK键</p>
+          <img class="mc-img" loading="lazy" decoding="async" src="./voice/images/G1.1.png" alt="" style="top:60%; bottom:auto; transform:translate(-50%,-50%);">
+        </div>
+        <div class="mini-card">
+          <p class="mc-title">Touchpad 1.0</p>
+          <p class="mc-desc">长按主页键</p>
+          <img class="mc-img" loading="lazy" decoding="async" src="./voice/images/G1.2.png" alt="" style="top:60%; bottom:auto; transform:translate(-50%,-50%);">
+        </div>
+        <div class="mini-card">
+          <p class="mc-title">戒指</p>
+          <p class="mc-desc">连续点击两次功能键</p>
+          <img class="mc-img mc-img--mid" loading="lazy" decoding="async" src="./voice/images/G1.3.png" alt="" style="left:55%;">
+        </div>
+      </div>
+    </section>
+
+    <!-- stage 2：退出方式 -->
+    <section class="stage">
+      <h2 class="stage-title">02.语音交互-4种退出方式</h2>
+      <p class="stage-subtitle">点击非语音助理部分或者熄屏后也会退出语音助理</p>
+      <div class="cards-grid">
+        <div class="mini-card">
+          <p class="mc-title">触控板</p>
+          <p class="mc-desc">长按右边镜腿触控板来退出</p>
+          <img class="mc-img mc-img--up" loading="lazy" decoding="async" src="./voice/images/F2.1.1.png" alt="">
+        </div>
+        <div class="mini-card">
+          <p class="mc-title">INMO Controller</p>
+          <p class="mc-desc">双击返回键退出</p>
+          <img class="mc-img" loading="lazy" decoding="async" src="./voice/images/G2.2.png" alt="" style="top:60%; bottom:auto; transform:translate(-50%,-50%);">
+        </div>
+        <div class="mini-card">
+          <p class="mc-title">Touchpad 1.0</p>
+          <p class="mc-desc">长按返回键</p>
+          <img class="mc-img" loading="lazy" decoding="async" src="./voice/images/G2.1.png" alt="" style="top:60%; bottom:auto; transform:translate(-50%,-50%);">
+        </div>
+        <div class="mini-card">
+          <p class="mc-title">戒指</p>
+          <p class="mc-desc">双击戒指返回键退出</p>
+          <img class="mc-img mc-img--mid" loading="lazy" decoding="async" src="./voice/images/G2.3.png" alt="" style="left:55%;">
+        </div>
+      </div>
+    </section>
+
+    <!-- stage 3：任务型对话 -->
+    <section class="stage">
+      <h2 class="stage-title">03.语音交互-任务型对话</h2>
+      <div class="row-cards">
+        <div class="row-card">
+          <div class="rc-img-wrap">
+            <img class="rc-img" loading="lazy" decoding="async" src="./voice/images/F3.1.png" alt="打开应用">
+            <p class="rc-caption">阿目同学，打开应用宝</p>
+          </div>
+          <p class="rc-title">触控板</p>
+          <p class="rc-desc">如，语音输入"阿目同学，打开应用宝"</p>
+        </div>
+        <div class="row-card">
+          <div class="rc-img-wrap">
+            <img class="rc-img" loading="lazy" decoding="async" src="./voice/images/F3.2.png" alt="系统媒体控制和模式语言切换">
+            <p class="rc-caption">阿目同学，调大音量</p>
+          </div>
+          <p class="rc-title">系统媒体控制和模式语言切换</p>
+          <p class="rc-desc">如，语音输入"阿目同学，调大（小）音量/亮度"、返回主界面、播放/暂停、拍照/录像、返回上一级界面</p>
+        </div>
+        <div class="row-card">
+          <div class="rc-img-wrap">
+            <img class="rc-img" loading="lazy" decoding="async" src="./voice/images/F3.3.1.png" alt="拍照识别">
+            <img class="recog-thumb" loading="lazy" decoding="async" src="./voice/images/F3.3.2.png" alt="">
+            <div class="recog-card">
+              <p class="recog-title">你都前面是一个妙蛙种子：萌宠小精灵</p>
+              <p class="recog-body">草系/毒系种子宝可梦 • 关都地区No.001 日文名 フシギダネ Fushigidane（意为「神秘种子」） 作为宝可梦初代御三家之首，妙蛙种子以生态共生体的科幻设定与攻防兼备的战术纵深，成为跨越25年经久不衰的文化符号。其背后蕴含的「光合作用×生化毒素」能量系统，至今仍是宝可梦生物设计的巅峰范例。</p>
+            </div>
+            <img class="recog-icon" loading="lazy" decoding="async" src="./voice/images/F3.3.5.png" alt="">
+          </div>
+          <p class="rc-title">拍照识别</p>
+          <p class="rc-desc">语音输入"我眼前是什么"/"面前有什么东西"等意图时，语音助理会拍下眼前图片并进行识别</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- stage 4：自动执行复杂指令 -->
+    <section class="stage">
+      <h2 class="stage-title">04.语音交互-自动执行复杂指令</h2>
+      <div class="hero-card">
+        <img class="hero-img" loading="lazy" decoding="async" src="./voice/images/F4.1.1.png" alt="自动执行复杂指令">
+        <p class="hero-caption">阿目同学，帮我去美团点一杯摩卡星冰乐</p>
+      </div>
+      <div class="text-block">
+        <p class="tb-title">美团点外卖/淘宝购物/播放腾讯视频/下载安装app</p>
+        <div class="tb-desc">
+          <p>语音输入"阿目同学，帮我去美团点一杯摩卡星冰乐"</p>
+          <p>在语音框回复"好的"，同时进行语音播报，随之进行相应操作。</p>
+        </div>
+      </div>
+      <div class="text-block">
+        <p class="tb-title">对话查询功能</p>
+        <p class="tb-desc">本机功能查询、生活服务查询、事实查询</p>
+      </div>
+    </section>
+
+    <!-- stage 5：可见即可说 -->
+    <section class="stage">
+      <h2 class="stage-title">05.语音交互-可见即可说</h2>
+      <div class="hero-card">
+        <video class="hero-img" src="./voice/images/redpandacompress.mp4" autoplay muted loop playsinline preload="metadata" aria-label="可见即可说"></video>
+      </div>
+      <div class="text-block">
+        <p class="tb-title">滑动操作</p>
+        <p class="tb-desc">"上滑""下滑""左滑""右滑"对页面进行对应的操作，观看抖音时，唤起阿目同学，说出"上滑"可触发</p>
+      </div>
+      <div class="text-block">
+        <p class="tb-title">可以通过指令，进行"点击选择xx、点击xx"</p>
+        <p class="tb-desc">如：在淘宝页面，唤起阿目同学，说出"点击搜索"</p>
+      </div>
+      <div class="notes-block">
+        <p class="notes-head">注意：</p>
+        <ul>
+          <li>能够识别当前页面内容中的可交互元素，用户可通过语音直接操作屏幕上显示的任何可交互元素。</li>
+          <li>仅支持APP的可交互元素，涉及网页或小程序的暂不支持。</li>
+          <li>对于图片元素：用户说"点击图片"，才会点击图片，如果说的是点击图片里的某个内容，也只会回复没有识别到该操作。如果一个屏幕里有多张图片，则默认点击第一张图片。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./image-loader.js"></script>
+  <script src="./lightbox.js"></script>
+</body>
+</html>

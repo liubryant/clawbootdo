@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no,email=no,address=no">
+  <title>眼镜触控板使用</title>
+  <style>
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: local('MiSans'),
+           url('./fonts/MiSans-Regular.woff2') format('woff2'),
+           url('./fonts/MiSans-Regular.woff') format('woff'),
+           url('./fonts/MiSans-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: local('MiSans Medium'), local('MiSans-Medium'),
+           url('./fonts/MiSans-Medium.woff2') format('woff2'),
+           url('./fonts/MiSans-Medium.woff') format('woff'),
+           url('./fonts/MiSans-Medium.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 600;
+      font-display: optional;
+      src: local('MiSans Semibold'), local('MiSans-Semibold'),
+           url('./fonts/MiSans-Semibold.woff2') format('woff2'),
+           url('./fonts/MiSans-Semibold.woff') format('woff'),
+           url('./fonts/MiSans-Semibold.ttf') format('truetype');
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html, body {
+      min-height: 100%;
+      background: #f6f6f6;
+      font-family: 'MiSans', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+      color: #000;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    .m-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(246, 246, 246, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .m-back {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6.5625px;
+      height: 13.125px;
+      cursor: pointer;
+    }
+    .m-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .container {
+      padding: 72px 16px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .stage {
+      background: #fff;
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .stage-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    /* 操作说明（图标 + 文字） */
+    .op-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .op-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .op-item .op-icon {
+      width: 24px;
+      height: 24px;
+      flex: 0 0 auto;
+      object-fit: contain;
+    }
+    .op-item .op-text {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    /* 设备图 */
+    .device-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="m-header">
+    <img class="m-back" loading="lazy" decoding="async" src="./images/Vector.png" alt="返回" draggable="false" onclick="location.href='./main-page.html'">
+    <h1 class="m-title">眼镜触控板</h1>
+  </header>
+
+  <main class="container">
+
+    <section class="stage">
+      <h2 class="stage-title">01.眼镜触控板使用</h2>
+
+      <div class="op-list">
+        <div class="op-item">
+          <img class="op-icon" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H1.1.1.png" alt="">
+          <p class="op-text">单击确认</p>
+        </div>
+        <div class="op-item">
+          <img class="op-icon" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H1.1.2.png" alt="">
+          <p class="op-text">双击返回</p>
+        </div>
+        <div class="op-item">
+          <img class="op-icon" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H1.1.3.png" alt="">
+          <p class="op-text">长按返回桌面</p>
+        </div>
+        <div class="op-item">
+          <img class="op-icon" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H1.1.4.png" alt="">
+          <p class="op-text">左右滑动切换焦点</p>
+        </div>
+        <div class="op-item">
+          <img class="op-icon" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H1.1.5.png" alt="">
+          <p class="op-text">上下滑动切换焦点</p>
+        </div>
+      </div>
+
+      <img class="device-img" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H2.2.png" alt="眼镜触控板">
+    </section>
+
+  </main>
+
+  <script src="./image-loader.js"></script>
+  <script src="./lightbox.js"></script>
+</body>
+</html>

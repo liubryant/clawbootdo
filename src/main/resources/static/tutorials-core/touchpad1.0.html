@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no,email=no,address=no" />
+  <title>Touchpad 1.0 教程</title>
+  <script>
+    // 手机端跳转到独立的手机版页面
+    if (matchMedia('(max-width: 480px)').matches) {
+      location.replace('./touchpad1.0-mobile.html' + location.search + location.hash);
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: local('MiSans'),
+           url('./fonts/MiSans-Regular.woff2') format('woff2'),
+           url('./fonts/MiSans-Regular.woff') format('woff'),
+           url('./fonts/MiSans-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: local('MiSans Medium'), local('MiSans-Medium'),
+           url('./fonts/MiSans-Medium.woff2') format('woff2'),
+           url('./fonts/MiSans-Medium.woff') format('woff'),
+           url('./fonts/MiSans-Medium.ttf') format('truetype');
+    }
+
+    :root {
+      --page-bg: #000;
+      --card-bg: #f6f6f6;
+      --card-radius: 56px;
+      --text-main: #000;
+      --text-sub: #666;
+      --led-blue: #3672e7;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: var(--page-bg);
+      overflow: hidden;
+      font-family: MiSans, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+      overscroll-behavior-x: contain;
+    }
+
+    .page {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .canvas {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: center center;
+    }
+
+    .panel {
+      position: absolute;
+      inset: 40px;
+      border-radius: var(--card-radius);
+      background: var(--card-bg);
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(180px);
+      -webkit-backdrop-filter: blur(180px);
+    }
+
+    .panel-icon {
+      position: absolute;
+      top: 80px;
+      left: 104px;
+      width: 18px;
+      height: 36px;
+      cursor: pointer;
+      z-index: 10;
+      -webkit-user-drag: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .panel-icon:hover { opacity: 0.7; }
+    .panel-icon:active { transform: scale(0.92); }
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(
+        178deg,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0) 41%,
+        rgba(255, 255, 255, 0) 58%,
+        rgba(255, 255, 255, 0.1) 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .stage {
+      position: absolute;
+      inset: 0;
+    }
+    .stage[hidden] { display: none; }
+
+    .title {
+      position: absolute;
+      left: 0;
+      top: 40px;
+      width: 1840px;
+      height: 52px;
+      font-size: 40px;
+      line-height: 52px;
+      font-weight: 500;
+      text-align: center;
+      color: var(--text-main);
+      pointer-events: none;
+    }
+
+    .panel img {
+      -webkit-user-drag: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* ========= 第 1 页：Touchpad1.0 与眼镜连接 ========= */
+
+    /* 设备插图（266×481）panel-relative left=766, top=157 */
+    .stage-1 .device-img {
+      position: absolute;
+      left: 766px;
+      top: 157px;
+      width: 266px;
+      height: 481px;
+      object-fit: contain;
+      object-position: center bottom;
+    }
+
+    /* 蓝灯指示（22×5 圆角 39）panel-relative left=885, top=208 */
+    .stage-1 .led {
+      position: absolute;
+      left: 885px;
+      top: 208px;
+      width: 22px;
+      height: 5px;
+      background: var(--led-blue);
+      border-radius: 39px;
+      animation: ledBlink 1.2s ease-in-out infinite;
+    }
+    @keyframes ledBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.25; }
+    }
+
+    /* 底部说明：left=60, top=772, w=1720, 28px medium 居中 */
+    .stage-1 .caption {
+      position: absolute;
+      left: 60px;
+      top: 772px;
+      width: 1720px;
+      font-size: 28px;
+      line-height: 1.4;
+      font-weight: 500;
+      color: var(--text-main);
+      text-align: center;
+      margin: 0;
+    }
+
+    /* 「开关」标签气泡 panel-rel left=1077.54, top=611, w=136, h=53 */
+    .stage-1 .switch-pill {
+      position: absolute;
+      left: 1077.54px;
+      top: 611px;
+      width: 136px;
+      height: 53px;
+      box-sizing: border-box;
+      border: 2px solid #fff;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.72) 100%);
+      box-shadow: 0 20px 56px 0 rgba(86, 93, 188, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+
+    /* 横线：panel-rel from x=965.54 to x=1077.54, y=639 (100px 长，1px 黑) */
+    .stage-1 .switch-line {
+      position: absolute;
+      left: 965.54px;
+      top: 638.5px;
+      width: 112px;
+      height: 1px;
+      background: #000;
+    }
+
+    /* 箭头 PNG（已带旋转）panel-rel 原 left=933 top=664.47；右移 13、上移 21 → left=946 top=643.47 */
+    .stage-1 .switch-arrow {
+      position: absolute;
+      left: 946px;
+      top: 643.47px;
+      width: 95.916px;
+      height: 94.625px;
+      object-fit: contain;
+    }
+
+    /* ========= 第 2 页：连接到眼镜（外设管理） ========= */
+
+    /*
+       Figma 节点（panel-rel = canvas - 40, TutorialContent 内坐标即 panel-rel）：
+       - img 容器在 (0, 132)，下面所有 panel-rel = img-rel + 132
+       - 应用库图：img(97, 104) 831.6×371   → panel-rel (97, 236)
+       - 外设管理图："33" img(920, 60) 754.4×460  → panel-rel (920, 192)
+       - 高亮框：img(1157, 165) 486×73       → panel-rel (1157, 297)
+       - 箭头 Vector 439（指向已连接条目）canvas(1292, 442.47) → panel-rel (1252, 402.47)
+       - 箭头 Vector 440（指向"外设管理"应用图标）canvas(769, 668.47) → panel-rel (729, 628.47)
+       - 底部说明：TutorialContent (60, 772, 1720)
+    */
+
+    /* 左：应用库桌面 PNG —— 1640×580，画面居中，距标题下边缘 40px
+       title: top=40 + height=52 → 底边 y=92；故 top = 92 + 40 = 132；left = (1840-1640)/2 = 100 */
+    .stage-2 .apps-img {
+      position: absolute;
+      left: 100px;
+      top: 132px;
+      width: 1640px;
+      height: 580px;
+      object-fit: contain;
+      object-position: center top;
+    }
+
+    /* 右：外设管理 PNG */
+    .stage-2 .settings-img {
+      position: absolute;
+      left: 920px;
+      top: 192px;
+      width: 754.4px;
+      height: 460px;
+      object-fit: contain;
+      object-position: left top;
+    }
+
+    /* 高亮蓝框：盖在已连接条目上 */
+    .stage-2 .hl-frame {
+      position: absolute;
+      left: 1157px;
+      top: 297px;
+      width: 486px;
+      height: 73px;
+      box-sizing: border-box;
+      border: 3px solid var(--led-blue);
+      border-radius: 14px;
+      pointer-events: none;
+    }
+
+    /* 引导箭头：指向"外设管理"应用图标（朝左上） */
+    .stage-2 .arrow-apps {
+      position: absolute;
+      left: 754px;
+      top: 588.47px;
+      width: 57.49px;
+      height: 77.38px;
+      object-fit: contain;
+    }
+    /* 引导箭头：指向"已连接"条目（右上） */
+    .stage-2 .arrow-conn {
+      position: absolute;
+      left: 1252px;
+      top: 369.47px;
+      width: 57.49px;
+      height: 77.38px;
+      object-fit: contain;
+    }
+
+    /* 底部说明：left=60, top=772, w=1720, 28px medium 居中 */
+    .stage-2 .caption {
+      position: absolute;
+      left: 60px;
+      top: 772px;
+      width: 1720px;
+      font-size: 28px;
+      line-height: 1.4;
+      font-weight: 500;
+      color: var(--text-main);
+      text-align: center;
+      margin: 0;
+    }
+    .stage-2 .caption p { margin: 0; }
+
+    /* ========= 第 3 页：Touchpad1.0 功能介绍（按键说明） =========
+
+       Figma 节点 3870:7443（panel-rel = root - 40）：
+       - 设备插图（左）：root(109, 215, 920.155×680) → panel-rel (69, 175)
+       - 文字块（右）：  root(1214, 247, 508×616)    → panel-rel (1174, 207)
+    */
+
+    .stage-3 .device {
+      position: absolute;
+      left: 69px;
+      top: 175px;
+      width: 920.155px;
+      height: 680px;
+      object-fit: contain;
+      object-position: center top;
+    }
+
+    .stage-3 .specs {
+      position: absolute;
+      left: 1174px;
+      top: 207px;
+      width: 508px;
+    }
+    .stage-3 .spec-group {
+      margin-bottom: 48px;
+    }
+    .stage-3 .spec-group:last-child { margin-bottom: 0; }
+    .stage-3 .specs h3 {
+      margin: 0;
+      color: var(--text-main);
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 48px;
+    }
+    .stage-3 .specs p {
+      margin: 0;
+      color: #404040;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 48px;
+    }
+
+    /* ========= 第 4 页：Touchpad1.0 功能介绍（手势） ========= */
+
+    /*
+       Figma 节点（root canvas → panel-rel = root - 40）：
+       - 卡片容器：root(176, (1080-488)/2=296, 1584×488) → panel-rel (136, 256)
+         （Figma 中容器 top 由垂直居中得到，对应 panel-rel ≈ 256）
+       - 4 张卡片：360×360，间距 48px（408 - 360 = 48），从 x=0 起
+       - 卡片下方文字：top=392，主 32px/40 Medium 黑，副 28px/40 Regular #4e4e4e
+    */
+
+    .stage-4 .cards {
+      position: absolute;
+      left: 136px;
+      top: 256px;
+      width: 1584px;
+      height: 488px;
+    }
+    .stage-4 .card {
+      position: absolute;
+      top: 0;
+      width: 360px;
+      height: 360px;
+      box-sizing: border-box;
+      background: #191919;
+      border: 2.571px solid #313131;
+      border-radius: 34.286px;
+      overflow: hidden;
+    }
+    .stage-4 .card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .stage-4 .card-1 { left: 0; }
+    .stage-4 .card-2 { left: 408px; }
+    .stage-4 .card-3 { left: 816px; }
+    .stage-4 .card-4 { left: 1224px; }
+
+    .stage-4 .label {
+      position: absolute;
+      top: 392px;
+      height: 96px;
+      color: var(--text-main);
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 40px;
+    }
+    .stage-4 .label .sub {
+      display: block;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 40px;
+      color: #4e4e4e;
+    }
+    .stage-4 .label-1 { left: 0;     width: 360px; }
+    .stage-4 .label-2 { left: 408px; width: 360px; }
+    .stage-4 .label-3 { left: 816px; width: 360px; }
+    .stage-4 .label-4 { left: 1224px; width: 360px; }
+
+    /* ========= 第 5 页：Touchpad1.0 功能介绍（Fn 组合键） =========
+
+       Figma 节点 3870:7782（panel-rel = root - 40）：
+       - 容器 Frame 1321317042: root(259, 266, 1402×548) → panel-rel (219, 226)
+
+       容器内坐标：
+       - G5.1（左上设备图）：(0, 0, 369×111)
+       - G5.2（左下设备图）：(0, 320.74, 369×111)
+       - G5.3（中部大图）：(467, 0, 420×420)
+       - G5.4（右部大图）：(983, 0, 420×420)
+       - 文字：
+         · 单击Fn键: 熄屏/亮屏          (5, 139, 443×96)
+         · Fn+拍照键: 播放/暂停音乐     (5, 452, 443×96)
+         · Fn+音量调节: 上一曲/下一曲   (467, 452, 443×96)
+         · Fn+右侧边缘滑动: 调节亮度    (984, 452, 443×96)
+    */
+
+    .stage-5 .fn-grid {
+      position: absolute;
+      left: 219px;
+      top: 226px;
+      width: 1402px;
+      height: 548px;
+    }
+
+    .stage-5 .fn-img {
+      position: absolute;
+      object-fit: contain;
+    }
+    .stage-5 .fn-img-1 { left: 0;    top: 0;       width: 369px; height: 111px; }
+    .stage-5 .fn-img-2 { left: 0;    top: 320.74px;width: 369px; height: 111px; }
+    .stage-5 .fn-img-3 { left: 467px;top: 0;       width: 420px; height: 420px; }
+    .stage-5 .fn-img-4 { left: 983px;top: 0;       width: 420px; height: 420px; }
+
+    .stage-5 .fn-text {
+      position: absolute;
+      width: 443px;
+      height: 96px;
+      color: var(--text-main);
+    }
+    .stage-5 .fn-text p { margin: 0; }
+    .stage-5 .fn-key {
+      font-size: 28px;
+      line-height: 42px;
+      font-weight: 500;
+    }
+    .stage-5 .fn-desc {
+      font-size: 28px;
+      line-height: 42px;
+      font-weight: 400;
+      color: #4e4e4e;
+    }
+    .stage-5 .fn-text-1 { left: 5px;   top: 139px; }
+    .stage-5 .fn-text-2 { left: 5px;   top: 452px; }
+    .stage-5 .fn-text-3 { left: 467px; top: 452px; }
+    .stage-5 .fn-text-4 { left: 984px; top: 452px; }
+
+    /* ========= 共享底部多点指示器 ========= */
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      top: 952px;
+      width: 1840px;
+      height: 8px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(0, 0, 0, 0.32);
+      border-radius: 999px;
+      transition: width .25s ease, background-color .2s;
+      cursor: pointer;
+    }
+    .nav-dot.active {
+      width: 24px;
+      background: #3978f3;
+    }
+
+    .page-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(42px, 4.2vmin, 59px);
+      height: clamp(42px, 4.2vmin, 59px);
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.42);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #fff;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .2s ease, background-color .2s ease, transform .2s ease;
+      z-index: 10;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .page-arrow:hover {
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+      transform: translateY(-50%) scale(1.06);
+    }
+    .page-arrow.prev:hover svg { transform: translateX(-2px); }
+    .page-arrow.next:hover svg { transform: translateX(2px); }
+    .page-arrow:active { transform: translateY(-50%) scale(0.92); }
+    .page-arrow:disabled {
+      opacity: 0.35;
+      cursor: default;
+      pointer-events: none;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.08);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-50%) scale(0.88);
+    }
+    .page-arrow svg {
+      width: 38%;
+      height: 38%;
+      display: block;
+      transition: transform .2s ease;
+    }
+    .page-arrow.prev { left: clamp(40px, 6vmin, 96px); }
+    .page-arrow.next { right: clamp(40px, 6vmin, 96px); }
+  </style>
+</head>
+<body>
+
+  <div class="page" id="viewport">
+    <button type="button" class="page-arrow prev" id="arrowPrev" aria-label="上一页">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5L8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button type="button" class="page-arrow next" id="arrowNext" aria-label="下一页">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="canvas" id="canvas" aria-label="Touchpad 1.0 教程">
+      <div class="panel">
+
+        <!-- ===== 第 1 页：Touchpad1.0 与眼镜连接 ===== -->
+        <section class="stage stage-1" data-page="1">
+          <div class="title">Touchpad1.0与眼镜连接</div>
+
+          <img class="device-img" loading="lazy" decoding="async" src="./touchpad1.0/images/G1.1.1.png" alt="Touchpad 1.0 设备">
+          <div class="led" aria-hidden="true"></div>
+
+          <p class="caption">左推开关后蓝灯闪烁，设备自动进入配对模式</p>
+
+          <!-- 「开关」标签 + 引导线 + 箭头 -->
+          <div class="switch-pill">开关</div>
+          <div class="switch-line"></div>
+          <img class="switch-arrow" loading="lazy" decoding="async" src="./touchpad1.0/images/G1.1.2箭头.png" alt="">
+        </section>
+
+        <!-- ===== 第 2 页：连接到眼镜（外设管理） ===== -->
+        <section class="stage stage-2" data-page="2" hidden>
+          <div class="title">Touchpad1.0与眼镜连接</div>
+
+          <!-- 左：应用库桌面 -->
+          <img class="apps-img" loading="lazy" decoding="async" src="./touchpad1.0/images/G2.1.png" alt="应用库">
+          <!-- 右：外设管理 -->
+          <img class="settings-img" loading="lazy" decoding="async" src="./touchpad1.0/images/G2.2.png" alt="外设管理">
+
+          <!-- 高亮"已连接"条目 -->
+          <div class="hl-frame"></div>
+
+          <!-- 引导箭头（占位用 G1.1.2 箭头） -->
+          <img class="arrow-apps" loading="lazy" decoding="async" src="./touchpad1.0/images/G1.1.2箭头.png" alt="">
+          <img class="arrow-conn" loading="lazy" decoding="async" src="./touchpad1.0/images/G1.1.2箭头.png" alt="">
+
+          <!-- 底部说明 -->
+          <div class="caption">
+            <p>打开【桌面】【外设管理】点击并搜索，即可发现"INMO Touchpad1.0"设备，点击连接即可</p>
+            <p>连接完成后显示"INMO Touchpad1.0"已连接</p>
+          </div>
+        </section>
+
+        <!-- ===== 第 3 页：Touchpad1.0 功能介绍（按键说明） ===== -->
+        <section class="stage stage-3" data-page="3" hidden>
+          <div class="title">Touchpad1.0功能介绍</div>
+
+          <img class="device" loading="lazy" decoding="async" src="./touchpad1.0/images/G3.3.3.png" alt="Touchpad 1.0 按键标注图">
+
+          <div class="specs">
+            <div class="spec-group">
+              <h3>音量调节</h3>
+              <p>侧边音量调节键调节音量</p>
+            </div>
+            <div class="spec-group">
+              <h3>返回键</h3>
+              <p>短按：返回上一层，或退出相机模式</p>
+            </div>
+            <div class="spec-group">
+              <h3>Home键</h3>
+              <p>短按：返回主界面</p>
+            </div>
+            <div class="spec-group">
+              <h3>拍照键</h3>
+              <p>单击：拍照</p>
+              <p>双击：在其他界面下，唤起相机；</p>
+              <p>在相机界面下，切换拍照/录像功能。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 第 4 页：Touchpad1.0 功能介绍（手势） ===== -->
+        <section class="stage stage-4" data-page="4" hidden>
+          <div class="title">Touchpad1.0功能介绍</div>
+
+          <div class="cards">
+            <div class="card card-1"><img src="./touchpad1.0/images/G4.1.png" alt=""></div>
+            <div class="card card-2"><img src="./touchpad1.0/images/G4.2.png" alt=""></div>
+            <div class="card card-3"><img src="./touchpad1.0/images/G4.3.png" alt=""></div>
+            <div class="card card-4"><img src="./touchpad1.0/images/G4.4.png" alt=""></div>
+
+            <div class="label label-1">中心范围内移动<span class="sub">移动光标</span></div>
+            <div class="label label-2">中心范围内单击<span class="sub">点击屏幕</span></div>
+            <div class="label label-3">侧边缘滑动<span class="sub">上下滑动页面/短视频上下切换</span></div>
+            <div class="label label-4">上边缘滑动<span class="sub">左右滑动页面/栏目左右切换</span></div>
+          </div>
+        </section>
+
+        <!-- ===== 第 5 页：Touchpad1.0 功能介绍（Fn 组合键） ===== -->
+        <section class="stage stage-5" data-page="5" hidden>
+          <div class="title">Touchpad1.0功能介绍</div>
+
+          <div class="fn-grid">
+            <!-- 4 张设备图 -->
+            <img class="fn-img fn-img-1" loading="lazy" decoding="async" src="./touchpad1.0/images/G5.1.png" alt="">
+            <img class="fn-img fn-img-2" loading="lazy" decoding="async" src="./touchpad1.0/images/G5.2.png" alt="">
+            <img class="fn-img fn-img-3" loading="lazy" decoding="async" src="./touchpad1.0/images/G5.3.png" alt="">
+            <img class="fn-img fn-img-4" loading="lazy" decoding="async" src="./touchpad1.0/images/G5.4.png" alt="">
+
+            <!-- 4 段功能说明 -->
+            <div class="fn-text fn-text-1">
+              <p class="fn-key">单击Fn键：</p>
+              <p class="fn-desc">熄屏/亮屏</p>
+            </div>
+            <div class="fn-text fn-text-2">
+              <p class="fn-key">Fn+拍照键：</p>
+              <p class="fn-desc">播放/暂停音乐</p>
+            </div>
+            <div class="fn-text fn-text-3">
+              <p class="fn-key">Fn+音量调节：</p>
+              <p class="fn-desc">上一曲/下一曲</p>
+            </div>
+            <div class="fn-text fn-text-4">
+              <p class="fn-key">Fn+右侧边缘滑动：</p>
+              <p class="fn-desc">调节亮度</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 共享底部指示器 -->
+        <div class="bottom-nav" id="navDots"></div>
+
+      </div>
+      <img class="panel-icon" loading="lazy" decoding="async" src="./images/Vector.png" alt="返回首页" draggable="false" onclick="location.href='./main-page.html'">
+    </div>
+  </div>
+
+  <script>
+    /* === 1920×1080 等比缩放 === */
+    (function () {
+      const canvas = document.getElementById("canvas");
+      const BASE_W = 1920, BASE_H = 1080;
+      function updateScale() {
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        const scale = Math.min(vw / BASE_W, vh / BASE_H);
+        canvas.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+      }
+      window.addEventListener("resize", updateScale);
+      updateScale();
+    })();
+
+    /* === 翻页：左右拖拽 / 键盘 ←→ / 圆点点击 === */
+    (function () {
+      const stages = Array.from(document.querySelectorAll('.stage'));
+      const dotsBox = document.getElementById('navDots');
+      const viewport = document.getElementById('viewport');
+      const arrowPrev = document.getElementById('arrowPrev');
+      const arrowNext = document.getElementById('arrowNext');
+      const total = stages.length;
+      const SWIPE_THRESHOLD = 80;
+
+      stages.forEach(function (_, i) {
+        const dot = document.createElement('div');
+        dot.className = 'nav-dot';
+        dot.addEventListener('click', function () { go(i + 1); });
+        dotsBox.appendChild(dot);
+      });
+      const dots = Array.from(dotsBox.children);
+
+      function clamp(n) { return Math.max(1, Math.min(total, n)); }
+
+      function go(n) {
+        n = clamp(n);
+        stages.forEach(function (s, i) {
+          if (i + 1 === n) s.removeAttribute('hidden');
+          else s.setAttribute('hidden', '');
+        });
+        dots.forEach(function (d, i) { d.classList.toggle('active', i + 1 === n); });
+        if (arrowPrev) arrowPrev.disabled = (n <= 1);
+        if (arrowNext) arrowNext.disabled = (n >= total);
+        if (location.hash !== '#' + n) {
+          history.replaceState(null, '', '#' + n);
+        }
+      }
+
+      if (arrowPrev) arrowPrev.addEventListener('click', function () { go(currentPage() - 1); });
+      if (arrowNext) arrowNext.addEventListener('click', function () { go(currentPage() + 1); });
+
+      function parsePage() {
+        const m = (location.hash || '').match(/^#(\d+)$/);
+        if (!m) return 1;
+        const n = parseInt(m[1], 10);
+        if (!Number.isFinite(n) || n < 1 || n > total) return 1;
+        return n;
+      }
+      function currentPage() {
+        for (let i = 0; i < dots.length; i++) {
+          if (dots[i].classList.contains('active')) return i + 1;
+        }
+        return 1;
+      }
+
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') go(currentPage() - 1);
+        if (e.key === 'ArrowRight') go(currentPage() + 1);
+      });
+      window.addEventListener('hashchange', function () { go(parsePage()); });
+
+      const ANGLE_RATIO = 1.5;
+      const EDGE_DAMP = 0.3;
+      const EDGE_MAX = 80;
+      let dragging = false, startX = 0, startY = 0, deltaX = 0, deltaY = 0;
+      let activeStage = null;
+      function resetStageTransform(stage, animate) {
+        if (!stage) return;
+        stage.style.transition = animate ? 'transform .25s cubic-bezier(.2,.8,.2,1)' : 'none';
+        stage.style.transform = '';
+      }
+      function setStageDrag(stage, dx) {
+        if (!stage) return;
+        stage.style.transition = 'none';
+        stage.style.transform = 'translateX(' + dx + 'px)';
+      }
+      function pointerX(ev) {
+        if (ev.touches && ev.touches.length) return ev.touches[0].clientX;
+        if (ev.changedTouches && ev.changedTouches.length) return ev.changedTouches[0].clientX;
+        return ev.clientX;
+      }
+      function pointerY(ev) {
+        if (ev.touches && ev.touches.length) return ev.touches[0].clientY;
+        if (ev.changedTouches && ev.changedTouches.length) return ev.changedTouches[0].clientY;
+        return ev.clientY;
+      }
+      function dragStart(ev) {
+        if (total <= 1) return;
+        dragging = true;
+        startX = pointerX(ev);
+        startY = pointerY(ev);
+        deltaX = 0;
+        deltaY = 0;
+        activeStage = stages[currentPage() - 1] || null;
+      }
+      function dragMove(ev) {
+        if (!dragging) return;
+        deltaX = pointerX(ev) - startX;
+        deltaY = pointerY(ev) - startY;
+        if (!activeStage) return;
+        const absX = Math.abs(deltaX), absY = Math.abs(deltaY);
+        if (absX < absY * ANGLE_RATIO) { setStageDrag(activeStage, 0); return; }
+        const page = currentPage();
+        let visual = deltaX;
+        if ((page <= 1 && deltaX > 0) || (page >= total && deltaX < 0)) {
+          visual = deltaX * EDGE_DAMP;
+          if (visual > EDGE_MAX) visual = EDGE_MAX;
+          if (visual < -EDGE_MAX) visual = -EDGE_MAX;
+        }
+        setStageDrag(activeStage, visual);
+      }
+      function dragCancel() {
+        dragging = false;
+        deltaX = 0;
+        deltaY = 0;
+        resetStageTransform(activeStage, true);
+        activeStage = null;
+      }
+      function dragEnd() {
+        if (!dragging) return;
+        dragging = false;
+        const stage = activeStage;
+        activeStage = null;
+        const absX = Math.abs(deltaX), absY = Math.abs(deltaY);
+        const page = currentPage();
+        const goNext = deltaX < 0 && page < total;
+        const goPrev = deltaX > 0 && page > 1;
+        if (absX < SWIPE_THRESHOLD || absX < absY * ANGLE_RATIO || (!goNext && !goPrev)) {
+          resetStageTransform(stage, true);
+          deltaX = 0; deltaY = 0;
+          return;
+        }
+        resetStageTransform(stage, false);
+        if (deltaX < 0) go(page + 1);
+        else            go(page - 1);
+        deltaX = 0; deltaY = 0;
+      }
+      viewport.addEventListener('mousedown', dragStart);
+      viewport.addEventListener('mousemove', dragMove);
+      viewport.addEventListener('mouseup', dragEnd);
+      viewport.addEventListener('mouseleave', dragCancel);
+      viewport.addEventListener('touchstart', dragStart, { passive: true });
+      viewport.addEventListener('touchmove', dragMove, { passive: true });
+      viewport.addEventListener('touchend', dragEnd);
+      viewport.addEventListener('touchcancel', dragCancel);
+      viewport.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+      const WHEEL_THRESHOLD = 30;
+      const WHEEL_COOLDOWN = 500;
+      let wheelLockUntil = 0;
+      viewport.addEventListener('wheel', function (e) {
+        if (total <= 1) return;
+        const now = Date.now();
+        if (now < wheelLockUntil) { e.preventDefault(); return; }
+        const dx = e.deltaX, dy = e.deltaY;
+        const delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
+        if (Math.abs(delta) < WHEEL_THRESHOLD) return;
+        e.preventDefault();
+        wheelLockUntil = now + WHEEL_COOLDOWN;
+        if (delta > 0) go(currentPage() + 1);
+        else            go(currentPage() - 1);
+      }, { passive: false });
+
+      go(parsePage());
+    })();
+  </script>
+  <script src="./image-loader.js"></script>
+  <script src="./lightbox.js"></script>
+</body>
+</html>

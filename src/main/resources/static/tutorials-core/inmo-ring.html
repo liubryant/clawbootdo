@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no,email=no,address=no" />
+  <title>戒指与眼镜连接</title>
+  <script>
+    if (matchMedia('(max-width: 480px)').matches) {
+      location.replace('./inmo-ring-mobile.html' + location.search + location.hash);
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: local('MiSans'),
+           url('./fonts/MiSans-Regular.woff2') format('woff2'),
+           url('./fonts/MiSans-Regular.woff') format('woff'),
+           url('./fonts/MiSans-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: local('MiSans Medium'), local('MiSans-Medium'),
+           url('./fonts/MiSans-Medium.woff2') format('woff2'),
+           url('./fonts/MiSans-Medium.woff') format('woff'),
+           url('./fonts/MiSans-Medium.ttf') format('truetype');
+    }
+
+    :root {
+      --page-bg: #000;
+      --card-bg: #f6f6f6;
+      --card-radius: 56px;
+      --text-main: #000;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: var(--page-bg);
+      overflow: hidden;
+      font-family: MiSans, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+      overscroll-behavior-x: contain;
+    }
+
+    .page {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .canvas {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: center center;
+    }
+
+    .panel {
+      position: absolute;
+      inset: 40px;
+      border-radius: var(--card-radius);
+      background: var(--card-bg);
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(180px);
+      -webkit-backdrop-filter: blur(180px);
+    }
+
+    .panel-icon {
+      position: absolute;
+      top: 80px;
+      left: 104px;
+      width: 18px;
+      height: 36px;
+      cursor: pointer;
+      z-index: 10;
+      -webkit-user-drag: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .panel-icon:hover { opacity: 0.7; }
+    .panel-icon:active { transform: scale(0.92); }
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(
+        178deg,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0) 41%,
+        rgba(255, 255, 255, 0) 58%,
+        rgba(255, 255, 255, 0.1) 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .stage {
+      position: absolute;
+      inset: 0;
+    }
+    .stage[hidden] { display: none; }
+
+    .title {
+      position: absolute;
+      left: 0;
+      top: 40px;
+      width: 1840px;
+      height: 52px;
+      font-size: 40px;
+      line-height: 52px;
+      font-weight: 500;
+      text-align: center;
+      color: var(--text-main);
+      pointer-events: none;
+    }
+
+    .panel img {
+      -webkit-user-drag: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* ========= 第 1 页：戒指与眼镜连接 =========
+
+       Figma 节点 3870:5921（panel-rel = root - 40）：
+       - 中央设备图：root(736, 65, 368×471) → panel-rel (696, 25)（在 img 框内 top=132+33=165 是 image 959 的位置；这里 image=图层 0 1，相对 img 框 top=65 → panel-rel 132+65 = 197）
+         实际：img 框 panel-rel(0, 132)；图层 0 1 root(736, 65, 368×471) 是 img 框内坐标 → panel-rel (736-40, 132+65) = (696, 197)
+       - 蓝灯小圆 J1.1.3（替 Ellipse 418）：root(1017, 278.8, 42×43.9) → panel-rel (977, 238.8)
+         注：278.8 也是 img 框内坐标 → panel-rel 132 + 278.8 = 410.8；left = 1017-40 = 977
+         => (977, 410.8, 42×43.9)
+       - "开关"组 Group 1312319337：
+           气泡 root(687.9996, 386.9999, 136×53)  → panel-rel (647.9996, 346.9999)
+           横线 root(826, 415, 126×0)             → panel-rel (786, 415)
+           箭头 J1.1.2 箭头 root(889.9164, 464.4734, 95.9×94.6) → panel-rel (849.9, 424.5)
+       - "蓝灯"组 Group 1312319338：
+           气泡 root(1236.916, 430, 136×53) → panel-rel (1196.916, 390)
+           横线 root(1098.916, 458, 126×0) → panel-rel (1058.916, 418)
+           箭头 J1.2.3 箭头 root(1091.5416, 421.99, 83.5×93.9) → panel-rel (1051.5416, 381.99)
+       - 底部说明 root(60, 772, 1720×39) → panel-rel (60, 772)
+    */
+
+    .stage-1 .device-img {
+      position: absolute;
+      left: 696px;
+      top: 197px;
+      width: 368px;
+      height: 471px;
+      object-fit: contain;
+      object-position: center top;
+    }
+
+    /* 蓝灯指示（小圆图） */
+    .stage-1 .led {
+      position: absolute;
+      left: 981px;
+      top: 399.8px;
+      width: 42px;
+      height: 43.9px;
+      object-fit: contain;
+    }
+
+    /* 共用 pill 标签 */
+    .stage-1 .pill {
+      position: absolute;
+      width: 136px;
+      height: 53px;
+      box-sizing: border-box;
+      border: 2px solid #fff;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.72) 100%);
+      box-shadow: 0 20px 56px 0 rgba(86, 93, 188, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+    .stage-1 .line {
+      position: absolute;
+      height: 1px;
+      background: #000;
+    }
+    .stage-1 .arrow {
+      position: absolute;
+      object-fit: contain;
+    }
+
+    /* 开关组（朝右下方的箭头）：再向右 10 → left = 909.9 + 10 = 919.9 */
+    .stage-1 .pill-switch  { left: 457.9996px; top: 346.9999px; }
+    .stage-1 .line-switch  { left: 786px; top: 414.5px; width: 126px; }
+    /* 开关气泡前的横线：距气泡右侧 12px，长 126px */
+    .stage-1 .line-switch-front {
+      left: 605.9996px; /* 457.9996 + 136 (pill width) + 12 */
+      top: 373.4999px;
+      width: 126px;
+    }
+    .stage-1 .arrow-switch { left: 919.9px; top: 298.2px; width: 95.9px; height: 94.6px; }
+
+    /* 蓝灯组（朝右上方的箭头）：再向右 25 → left = 686.5416 + 25 = 711.5416 */
+    .stage-1 .pill-led     { left: 1196.916px; top: 390px; }
+    .stage-1 .line-led     { left: 1023.916px; top: 417.5px; width: 161px; }
+    .stage-1 .arrow-led    { left: 711.5416px; top: 391.99px; width: 83.5px; height: 93.9px; }
+
+    /* 底部说明 */
+    .stage-1 .caption {
+      position: absolute;
+      left: 60px;
+      top: 772px;
+      width: 1720px;
+      font-size: 28px;
+      line-height: 39px;
+      font-weight: 500;
+      text-align: center;
+      color: var(--text-main);
+      margin: 0;
+    }
+
+    /* ========= 第 2 页：戒指与眼镜连接（外设管理） =========
+
+       Figma 节点 3870:6409（panel-rel = root - 40）：
+       - 应用库 桌面图（J2.1.2）：root(100, 132+0=132?) 实际 img 框 panel-rel(0,132)，
+         Group 1312319318 root-rel(100, 0, 1640×580) → panel-rel(60, 132)（与 glasses-touchpad 第 2 页一致）
+         调整为左右两边均匀 → panel-rel(100, 132)，1640×580
+       - 外设管理图：root(920, 60+132=192) ? 实际 frame "33" img-rel(920, 60, 754.4×460)
+         → panel-rel(920-40, 132+60) = (880, 192)
+       - 高亮蓝框：root(1157, 165, 486×73)，但 165 也是 img-rel → panel-rel(1117, 132+165) = (1117, 297)
+       - 箭头 Vector 439（指向已连接条目）：root(1292, 442.47, 95.9×94.6) → panel-rel(1252, 402.47)
+       - 箭头 Vector 440（指向"外设管理"应用图标）：root(769, 668.47, 95.9×94.6) → panel-rel(729, 628.47)
+       - 底部 2 行说明：(60, 772, 1720×78)
+    */
+
+    .stage-2 .apps-img {
+      position: absolute;
+      left: 100px;
+      top: 132px;
+      width: 1640px;
+      height: 580px;
+      object-fit: contain;
+      object-position: center top;
+    }
+    .stage-2 .settings-img {
+      position: absolute;
+      left: 880px;
+      top: 192px;
+      width: 754.4px;
+      height: 460px;
+      object-fit: contain;
+      object-position: left top;
+    }
+    .stage-2 .hl-frame {
+      position: absolute;
+      left: 1117px;
+      top: 297px;
+      width: 486px;
+      height: 73px;
+      box-sizing: border-box;
+      border: 3px solid #3672e7;
+      border-radius: 14px;
+      pointer-events: none;
+    }
+    .stage-2 .arrow-apps {
+      position: absolute;
+      left: 749px;
+      top: 598.47px;
+      width: 57.49px;
+      height: 77.385px;
+      object-fit: contain;
+      transform: scaleX(-1);
+    }
+    .stage-2 .arrow-conn {
+      position: absolute;
+      left: 1252px;
+      top: 372.47px;
+      width: 57.49px;
+      height: 77.385px;
+      object-fit: contain;
+      transform: scaleX(-1);
+    }
+    .stage-2 .caption2 {
+      position: absolute;
+      left: 60px;
+      top: 772px;
+      width: 1720px;
+      font-size: 28px;
+      line-height: 39px;
+      font-weight: 500;
+      text-align: center;
+      color: var(--text-main);
+    }
+    .stage-2 .caption2 p { margin: 0; }
+
+    /* ========= 第 3 页：戒指使用 =========
+
+       Figma 节点 3870:6506（panel-rel = root - 40）：
+       - 容器 Frame 1321317043: root(241, 324, 1438×488) → panel-rel (201, 284)
+       - 文字（容器内坐标）：
+         · 触控板：(839.65, 0.47, 726.5×58.9)
+         · 返回键：(839.65, 106.95, 588×59)
+         · 功能键：(851.42, 224.02, 803×176.5)
+       - 「电源键」标签：(0.17, 78.75, 84×39)
+       - J3.3.1 / J3.3.2 / J3.3.3 三张引导插图（设备示意），按容器内位置分布
+    */
+    .stage-3 .ring3 {
+      position: absolute;
+      left: 201px;
+      top: 284px;
+      width: 1438px;
+      height: 488px;
+    }
+
+    /* 主图（戒指线稿，含三处部位的指示线 —— 文字由 HTML 叠加） */
+    .stage-3 .ring3-img {
+      position: absolute;
+      object-fit: contain;
+    }
+    .stage-3 .ring3-img-main {
+      left: 267.9px;
+      top: 4px;
+      width: 376.5px;
+      height: 479px;
+      object-position: center top;
+    }
+
+    .stage-3 .ring3-power {
+      position: absolute;
+      left: 0.17px;
+      top: 78.75px;
+      width: 84px;
+      height: 39px;
+      font-size: 28px;
+      line-height: 39px;
+      font-weight: 500;
+      color: #000;
+    }
+
+    /* 【电源键】右侧引导横线：左端距文字 10px，长 193px，3px 厚，垂直居中于文字 */
+    .stage-3 .ring3-line-power {
+      position: absolute;
+      left: 94.17px;  /* 0.17 + 84 + 10 */
+      top: 96.75px;   /* 78.75 + 39/2 - 3/2 */
+      width: 193px;
+      height: 3px;
+      background: #000;
+    }
+
+    .stage-3 .ring3-desc {
+      position: absolute;
+      margin: 0;
+      font-size: 28px;
+      line-height: 39px;
+      font-weight: 400;
+      color: #000;
+    }
+    .stage-3 .ring3-desc-1 {
+      left: 839.65px;
+      top: 0.47px;
+      width: 726.5px;
+    }
+
+    /* 【触控板】左侧引导横线：右端距文字 10px，长 316px，垂直居中于文字 */
+    .stage-3 .ring3-line-1 {
+      position: absolute;
+      left: 513.65px; /* 839.65 - 10 - 316 */
+      top: 33.47px;   /* 18.47 + 15（向下 15px） */
+      width: 316px;
+      height: 3px;
+      background: #000;
+    }
+    .stage-3 .ring3-desc-2 {
+      left: 839.65px;
+      top: 106.95px;
+      width: 588px;
+    }
+
+    /* 【返回键】左侧引导横线：右端距文字 10px，长 205px，3px 厚，垂直居中于文字 */
+    .stage-3 .ring3-line-2 {
+      position: absolute;
+      left: 624.65px; /* 839.65 - 10 - 205 */
+      top: 124.95px;  /* 106.95 + 39/2 - 3/2 */
+      width: 205px;
+      height: 3px;
+      background: #000;
+    }
+    .stage-3 .ring3-desc-3 {
+      left: 851.42px;
+      top: 224.02px;
+      width: 803px;
+      line-height: 56px;
+    }
+
+    /* 【功能键】左侧引导横线：右端距文字 10px，长 190px，3px 厚，垂直居中于文字首行 */
+    .stage-3 .ring3-line-3 {
+      position: absolute;
+      left: 641.42px; /* 右端不动，向左延长 2px：643.42 - 2 */
+      top: 242.02px;  /* 224.02 + 39/2 - 3/2 */
+      width: 190px;   /* 188 + 2 */
+      height: 3px;
+      background: #000;
+    }
+
+    /* ========= 共享底部多点指示器 ========= */
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      top: 952px;
+      width: 1840px;
+      height: 8px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(0, 0, 0, 0.32);
+      border-radius: 999px;
+      transition: width .25s ease, background-color .2s;
+      cursor: pointer;
+    }
+    .nav-dot.active {
+      width: 24px;
+      background: #3978f3;
+    }
+
+    .page-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(42px, 4.2vmin, 59px);
+      height: clamp(42px, 4.2vmin, 59px);
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.42);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #fff;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .2s ease, background-color .2s ease, transform .2s ease;
+      z-index: 10;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .page-arrow:hover {
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+      transform: translateY(-50%) scale(1.06);
+    }
+    .page-arrow.prev:hover svg { transform: translateX(-2px); }
+    .page-arrow.next:hover svg { transform: translateX(2px); }
+    .page-arrow:active { transform: translateY(-50%) scale(0.92); }
+    .page-arrow:disabled {
+      opacity: 0.35;
+      cursor: default;
+      pointer-events: none;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.08);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-50%) scale(0.88);
+    }
+    .page-arrow svg {
+      width: 38%;
+      height: 38%;
+      display: block;
+      transition: transform .2s ease;
+    }
+    .page-arrow.prev { left: clamp(40px, 6vmin, 96px); }
+    .page-arrow.next { right: clamp(40px, 6vmin, 96px); }
+  </style>
+</head>
+<body>
+
+  <div class="page" id="viewport">
+    <button type="button" class="page-arrow prev" id="arrowPrev" aria-label="上一页">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5L8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button type="button" class="page-arrow next" id="arrowNext" aria-label="下一页">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="canvas" id="canvas" aria-label="戒指与眼镜连接 教程">
+      <div class="panel">
+
+        <!-- ===== 第 1 页：戒指与眼镜连接 ===== -->
+        <section class="stage stage-1" data-page="1">
+          <div class="title">戒指与眼镜连接</div>
+
+          <!-- 中央设备插图 -->
+          <img class="device-img" loading="lazy" decoding="async" src="./inmo-ring/images/J1.1.1.png" alt="INMO Ring">
+
+          <!-- 蓝灯指示圆点 -->
+          <img class="led" loading="lazy" decoding="async" src="./inmo-ring/images/J1.1.3.png" alt="">
+
+          <!-- 开关组：气泡 + 横线 + 箭头 -->
+          <div class="pill pill-switch">开关</div>
+          <div class="line line-switch-front"></div>
+          <img class="arrow arrow-switch" loading="lazy" decoding="async" src="./inmo-ring/images/J1.1.2箭头.png" alt="">
+
+          <!-- 蓝灯组：气泡 + 横线 + 箭头 -->
+          <div class="pill pill-led">蓝灯</div>
+          <div class="line line-led"></div>
+          <img class="arrow arrow-led" loading="lazy" decoding="async" src="./inmo-ring/images/J1.2.3箭头.png" alt="">
+
+          <p class="caption">单击【电源键】开机，并确保戒指处于未配对状态（蓝灯1s闪烁一次）</p>
+        </section>
+
+        <!-- ===== 第 2 页：戒指与眼镜连接（外设管理） ===== -->
+        <section class="stage stage-2" data-page="2" hidden>
+          <div class="title">戒指与眼镜连接</div>
+
+          <!-- 左：应用库桌面 -->
+          <img class="apps-img" loading="lazy" decoding="async" src="./inmo-ring/images/J2.1.2.png" alt="应用库">
+          <!-- 右：外设管理 -->
+          <img class="settings-img" loading="lazy" decoding="async" src="./inmo-ring/images/J2.1.3png.png" alt="外设管理">
+
+          <!-- 高亮"已连接"条目 -->
+          <div class="hl-frame"></div>
+
+          <!-- 引导箭头 -->
+          <img class="arrow-apps" loading="lazy" decoding="async" src="./inmo-ring/images/J1.2.3箭头.png" alt="">
+          <img class="arrow-conn" loading="lazy" decoding="async" src="./inmo-ring/images/J1.2.3箭头.png" alt="">
+
+          <!-- 底部说明 -->
+          <div class="caption2">
+            <p>打开【桌面】【外设管理】点击并搜索，即可发现"INMO Ring 3"设备，点击连接即可</p>
+            <p>戒指白灯亮起3s，同时外设管理页面中显示"INMO Ring 3"已连接——即戒指连接成功</p>
+          </div>
+        </section>
+
+        <!-- ===== 第 3 页：戒指使用 ===== -->
+        <section class="stage stage-3" data-page="3" hidden>
+          <div class="title">戒指使用</div>
+
+          <div class="ring3">
+            <!-- 主图：戒指线稿 + 标注 -->
+            <img class="ring3-img ring3-img-main" loading="lazy" decoding="async" src="./inmo-ring/images/J3.3.1 (2).png" alt="">
+
+            <!-- 「电源键」标签（左侧） -->
+            <div class="ring3-power">电源键</div>
+            <div class="ring3-line-power"></div>
+
+            <!-- 三段功能说明 -->
+            <div class="ring3-line-1"></div>
+            <p class="ring3-desc ring3-desc-1">【触控板】：单击确认、按住后可拖拽控件</p>
+            <div class="ring3-line-2"></div>
+            <p class="ring3-desc ring3-desc-2">【返回键】：点击可返回上一页，长按返回桌面</p>
+            <div class="ring3-line-3"></div>
+            <p class="ring3-desc ring3-desc-3">【功能键】：长按可校准飞鼠至画面中间，双击<br>可呼出语音助手</p>
+          </div>
+        </section>
+
+        <!-- 共享底部指示器 -->
+        <div class="bottom-nav" id="navDots"></div>
+
+      </div>
+      <img class="panel-icon" loading="lazy" decoding="async" src="./images/Vector.png" alt="返回首页" draggable="false" onclick="location.href='./main-page.html'">
+    </div>
+  </div>
+
+  <script>
+    /* === 1920×1080 等比缩放 === */
+    (function () {
+      const canvas = document.getElementById("canvas");
+      const BASE_W = 1920, BASE_H = 1080;
+      function updateScale() {
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        const scale = Math.min(vw / BASE_W, vh / BASE_H);
+        canvas.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+      }
+      window.addEventListener("resize", updateScale);
+      updateScale();
+    })();
+
+    /* === 翻页：左右拖拽 / 键盘 ←→ / 圆点点击 === */
+    (function () {
+      const stages = Array.from(document.querySelectorAll('.stage'));
+      const dotsBox = document.getElementById('navDots');
+      const viewport = document.getElementById('viewport');
+      const arrowPrev = document.getElementById('arrowPrev');
+      const arrowNext = document.getElementById('arrowNext');
+      const total = stages.length;
+      const SWIPE_THRESHOLD = 80;
+
+      stages.forEach(function (_, i) {
+        const dot = document.createElement('div');
+        dot.className = 'nav-dot';
+        dot.addEventListener('click', function () { go(i + 1); });
+        dotsBox.appendChild(dot);
+      });
+      const dots = Array.from(dotsBox.children);
+
+      function clamp(n) { return Math.max(1, Math.min(total, n)); }
+
+      function go(n) {
+        n = clamp(n);
+        stages.forEach(function (s, i) {
+          if (i + 1 === n) s.removeAttribute('hidden');
+          else s.setAttribute('hidden', '');
+        });
+        dots.forEach(function (d, i) { d.classList.toggle('active', i + 1 === n); });
+        if (arrowPrev) arrowPrev.disabled = (n <= 1);
+        if (arrowNext) arrowNext.disabled = (n >= total);
+        if (location.hash !== '#' + n) {
+          history.replaceState(null, '', '#' + n);
+        }
+      }
+
+      if (arrowPrev) arrowPrev.addEventListener('click', function () { go(currentPage() - 1); });
+      if (arrowNext) arrowNext.addEventListener('click', function () { go(currentPage() + 1); });
+
+      function parsePage() {
+        const m = (location.hash || '').match(/^#(\d+)$/);
+        if (!m) return 1;
+        const n = parseInt(m[1], 10);
+        if (!Number.isFinite(n) || n < 1 || n > total) return 1;
+        return n;
+      }
+      function currentPage() {
+        for (let i = 0; i < dots.length; i++) {
+          if (dots[i].classList.contains('active')) return i + 1;
+        }
+        return 1;
+      }
+
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') go(currentPage() - 1);
+        if (e.key === 'ArrowRight') go(currentPage() + 1);
+      });
+      window.addEventListener('hashchange', function () { go(parsePage()); });
+
+      const ANGLE_RATIO = 1.5;
+      const EDGE_DAMP = 0.3;
+      const EDGE_MAX = 80;
+      let dragging = false, startX = 0, startY = 0, deltaX = 0, deltaY = 0;
+      let activeStage = null;
+      function resetStageTransform(stage, animate) {
+        if (!stage) return;
+        stage.style.transition = animate ? 'transform .25s cubic-bezier(.2,.8,.2,1)' : 'none';
+        stage.style.transform = '';
+      }
+      function setStageDrag(stage, dx) {
+        if (!stage) return;
+        stage.style.transition = 'none';
+        stage.style.transform = 'translateX(' + dx + 'px)';
+      }
+      function pointerX(ev) {
+        if (ev.touches && ev.touches.length) return ev.touches[0].clientX;
+        if (ev.changedTouches && ev.changedTouches.length) return ev.changedTouches[0].clientX;
+        return ev.clientX;
+      }
+      function pointerY(ev) {
+        if (ev.touches && ev.touches.length) return ev.touches[0].clientY;
+        if (ev.changedTouches && ev.changedTouches.length) return ev.changedTouches[0].clientY;
+        return ev.clientY;
+      }
+      function dragStart(ev) {
+        if (total <= 1) return;
+        dragging = true;
+        startX = pointerX(ev);
+        startY = pointerY(ev);
+        deltaX = 0;
+        deltaY = 0;
+        activeStage = stages[currentPage() - 1] || null;
+      }
+      function dragMove(ev) {
+        if (!dragging) return;
+        deltaX = pointerX(ev) - startX;
+        deltaY = pointerY(ev) - startY;
+        if (!activeStage) return;
+        const absX = Math.abs(deltaX), absY = Math.abs(deltaY);
+        if (absX < absY * ANGLE_RATIO) { setStageDrag(activeStage, 0); return; }
+        const page = currentPage();
+        let visual = deltaX;
+        if ((page <= 1 && deltaX > 0) || (page >= total && deltaX < 0)) {
+          visual = deltaX * EDGE_DAMP;
+          if (visual > EDGE_MAX) visual = EDGE_MAX;
+          if (visual < -EDGE_MAX) visual = -EDGE_MAX;
+        }
+        setStageDrag(activeStage, visual);
+      }
+      function dragCancel() {
+        dragging = false;
+        deltaX = 0;
+        deltaY = 0;
+        resetStageTransform(activeStage, true);
+        activeStage = null;
+      }
+      function dragEnd() {
+        if (!dragging) return;
+        dragging = false;
+        const stage = activeStage;
+        activeStage = null;
+        const absX = Math.abs(deltaX), absY = Math.abs(deltaY);
+        const page = currentPage();
+        const goNext = deltaX < 0 && page < total;
+        const goPrev = deltaX > 0 && page > 1;
+        if (absX < SWIPE_THRESHOLD || absX < absY * ANGLE_RATIO || (!goNext && !goPrev)) {
+          resetStageTransform(stage, true);
+          deltaX = 0; deltaY = 0;
+          return;
+        }
+        resetStageTransform(stage, false);
+        if (deltaX < 0) go(page + 1);
+        else            go(page - 1);
+        deltaX = 0; deltaY = 0;
+      }
+      viewport.addEventListener('mousedown', dragStart);
+      viewport.addEventListener('mousemove', dragMove);
+      viewport.addEventListener('mouseup', dragEnd);
+      viewport.addEventListener('mouseleave', dragCancel);
+      viewport.addEventListener('touchstart', dragStart, { passive: true });
+      viewport.addEventListener('touchmove', dragMove, { passive: true });
+      viewport.addEventListener('touchend', dragEnd);
+      viewport.addEventListener('touchcancel', dragCancel);
+      viewport.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+      const WHEEL_THRESHOLD = 30;
+      const WHEEL_COOLDOWN = 500;
+      let wheelLockUntil = 0;
+      viewport.addEventListener('wheel', function (e) {
+        if (total <= 1) return;
+        const now = Date.now();
+        if (now < wheelLockUntil) { e.preventDefault(); return; }
+        const dx = e.deltaX, dy = e.deltaY;
+        const delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
+        if (Math.abs(delta) < WHEEL_THRESHOLD) return;
+        e.preventDefault();
+        wheelLockUntil = now + WHEEL_COOLDOWN;
+        if (delta > 0) go(currentPage() + 1);
+        else            go(currentPage() - 1);
+      }, { passive: false });
+
+      go(parsePage());
+    })();
+  </script>
+  <script src="./image-loader.js"></script>
+  <script src="./lightbox.js"></script>
+</body>
+</html>

@@ -1,0 +1,1172 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no,email=no,address=no" />
+  <title>语音交互</title>
+  <script>
+    // 手机端跳转到独立的手机版页面
+    if (matchMedia('(max-width: 480px)').matches) {
+      location.replace('./voice-mobile.html' + location.search + location.hash);
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: local('MiSans'),
+           url('./fonts/MiSans-Regular.woff2') format('woff2'),
+           url('./fonts/MiSans-Regular.woff') format('woff'),
+           url('./fonts/MiSans-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: local('MiSans Medium'), local('MiSans-Medium'),
+           url('./fonts/MiSans-Medium.woff2') format('woff2'),
+           url('./fonts/MiSans-Medium.woff') format('woff'),
+           url('./fonts/MiSans-Medium.ttf') format('truetype');
+    }
+
+    :root {
+      --page-bg: #000;
+      --card-bg: #f6f6f6;
+      --card-radius: 56px;
+      --text-main: #000;
+      --text-sub: #666;
+      --circle: #3978f3;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: var(--page-bg);
+      overflow: hidden;
+      font-family: MiSans, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+      overscroll-behavior-x: contain;
+    }
+
+    .page {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .canvas {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: center center;
+    }
+
+    .panel {
+      position: absolute;
+      inset: 40px;
+      border-radius: var(--card-radius);
+      background: var(--card-bg);
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(180px);
+      -webkit-backdrop-filter: blur(180px);
+    }
+
+    .panel-icon {
+      position: absolute;
+      top: 80px;
+      left: 104px;
+      width: 18px;
+      height: 36px;
+      cursor: pointer;
+      z-index: 10;
+      -webkit-user-drag: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .panel-icon:hover { opacity: 0.7; }
+    .panel-icon:active { transform: scale(0.92); }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(
+        178deg,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0) 41%,
+        rgba(255, 255, 255, 0) 58%,
+        rgba(255, 255, 255, 0.1) 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    /* 每一页的内容容器，绝对定位铺满 panel；不展示的隐藏 */
+    .stage {
+      position: absolute;
+      inset: 0;
+    }
+    .stage[hidden] { display: none; }
+
+    .title {
+      position: absolute;
+      left: 0;
+      top: 40px;
+      width: 1840px;
+      height: 52px;
+      font-size: 40px;
+      line-height: 52px;
+      font-weight: 500;
+      pointer-events: none;
+      text-align: center;
+      color: var(--text-main);
+    }
+
+    .cards-row {
+      position: absolute;
+      left: 80px;
+      top: 188px;
+      width: 1680px;
+      height: 580px;
+      display: flex;
+      gap: 24px;
+    }
+
+    .card {
+      width: 402px;
+      height: 580px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 48px;
+      box-shadow: 0 8px 40.9px -12px rgba(0, 0, 0, 0.02);
+      position: relative;
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+
+    .card-title {
+      position: absolute;
+      left: 40px;
+      top: 48px;
+      font-size: 36px;
+      line-height: 1.3;
+      font-weight: 500;
+      color: var(--text-main);
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    .card-desc {
+      position: absolute;
+      left: 40px;
+      top: 103px;
+      font-size: 24px;
+      line-height: 1.3;
+      font-weight: 400;
+      color: var(--text-sub);
+      margin: 0;
+    }
+    .card-desc.nowrap { white-space: nowrap; }
+    .card-desc.wrap   { width: 322px; white-space: normal; }
+
+    .card img,
+    .panel img {
+      -webkit-user-drag: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* ========= 第 1 页：唤醒方式 ========= */
+
+    .stage-1 .card-voice .voice-img {
+      position: absolute;
+      left: 27px; top: 271px;
+      width: 348px; height: 127px;
+      object-fit: contain; object-position: center top;
+    }
+    .stage-1 .card-controller .ctrl-img {
+      position: absolute;
+      left: 95px; top: 179px;
+      width: 187px; height: 320px;
+      object-fit: contain; object-position: center bottom;
+    }
+    .stage-1 .card-tp .tp-img {
+      position: absolute;
+      left: 107px; top: 189px;
+      width: 187px; height: 320px;
+      object-fit: contain; object-position: center bottom;
+    }
+    .stage-1 .card-tp .tp-circle {
+      position: absolute;
+      left: 200px; top: 429px;
+      width: 66px; height: 66px;
+      border: 3px solid var(--circle);
+      border-radius: 50%;
+      box-sizing: border-box;
+    }
+    .stage-1 .card-ring .ring-img {
+      position: absolute;
+      left: 94px; top: 215px;
+      width: 209px; height: 267px;
+      object-fit: cover; object-position: center center;
+    }
+    .stage-1 .card-ring .ring-circle {
+      position: absolute;
+      left: 248px; top: 377px;
+      width: 66px; height: 66px;
+      border: 3px solid var(--circle);
+      border-radius: 50%;
+      box-sizing: border-box;
+    }
+    .stage-1 .card-ring .ring-arrow {
+      position: absolute;
+      left: 319px; top: 443.53px;
+      width: 71.937px; height: 70.969px;
+      object-fit: contain;
+    }
+    .stage-1 .frame-arrow-2 {
+      position: absolute;
+      left: 721px; top: 639.53px;
+      width: 71.937px; height: 70.969px;
+      object-fit: contain;
+    }
+    .stage-1 .frame-circle-2 {
+      position: absolute;
+      left: 664px; top: 584px;
+      width: 66px; height: 66px;
+      border: 3px solid var(--circle);
+      border-radius: 50%;
+      box-sizing: border-box;
+    }
+    .stage-1 .frame-arrow-3 {
+      position: absolute;
+      left: 1214px; top: 642.53px;
+      width: 71.937px; height: 70.969px;
+      object-fit: contain;
+    }
+
+    /* ========= 第 2 页：退出方式 ========= */
+
+    .stage-2 .card-touchstrip .ts-img {
+      position: absolute;
+      left: 27px; top: 271px;
+      width: 348px; height: 127px;
+      object-fit: contain; object-position: center top;
+    }
+    .stage-2 .card-controller .ctrl-img {
+      position: absolute;
+      left: 95px; top: 179px;
+      width: 187px; height: 320px;
+      object-fit: contain; object-position: center bottom;
+    }
+    .stage-2 .card-tp .tp-img {
+      position: absolute;
+      left: 107px; top: 189px;
+      width: 187px; height: 320px;
+      object-fit: contain; object-position: center bottom;
+    }
+    .stage-2 .card-tp .tp-circle {
+      position: absolute;
+      left: 127px; top: 426px;
+      width: 72px; height: 72px;
+      object-fit: contain;
+    }
+    .stage-2 .card-tp .tp-arrow {
+      position: absolute;
+      left: 196.03px; top: 497.51px;
+      width: 71.94px; height: 70.97px;
+      object-fit: contain;
+    }
+    .stage-2 .card-ring .ring-img {
+      position: absolute;
+      left: 94px; top: 215px;
+      width: 209px; height: 267px;
+      object-fit: cover; object-position: center center;
+    }
+    .stage-2 .card-ring .ring-circle {
+      position: absolute;
+      left: 223px; top: 302px;
+      width: 96px; height: 96px;
+      object-fit: contain;
+    }
+    .stage-2 .card-ring .ring-arrow {
+      position: absolute;
+      left: 320.99px; top: 395.36px;
+      width: 71.94px; height: 70.97px;
+      object-fit: contain;
+    }
+    .stage-2 .frame-arrow-2 {
+      position: absolute;
+      left: 689.99px; top: 575.36px;
+      width: 71.94px; height: 70.97px;
+      object-fit: contain;
+    }
+    .stage-2 .frame-circle-2 {
+      position: absolute;
+      left: 618px; top: 505px;
+      width: 72px; height: 72px;
+      object-fit: contain;
+    }
+    .stage-2 .footnote {
+      position: absolute;
+      left: 0;
+      top: 828px;
+      width: 1840px;
+      font-size: 24px;
+      line-height: 1.3;
+      font-weight: 400;
+      color: var(--text-sub);
+      text-align: center;
+      margin: 0;
+    }
+
+    /* ========= 第 3 页：任务型对话 ========= */
+
+    .stage-3 .task-grid {
+      position: absolute;
+      left: 110px;
+      top: 282px;
+      width: 1700px;
+      height: 380px;
+    }
+
+    .stage-3 .task-col {
+      position: absolute;
+      top: 0;
+    }
+    .stage-3 .task-col.col-1 { left: 0; width: 540px; }
+    .stage-3 .task-col.col-2 { left: 580px; width: 540px; }
+    .stage-3 .task-col.col-3 { left: 1160px; width: 540px; }
+
+    .stage-3 .task-img {
+      display: block;
+      width: 540px;
+      height: 304px;
+      border-radius: 24px;
+      object-fit: cover;
+    }
+
+    .stage-3 .img-wrap {
+      position: relative;
+      width: 540px;
+      height: 304px;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .stage-3 .img-caption {
+      position: absolute;
+      left: 0;
+      bottom: 59px;
+      width: 100%;
+      font-size: 12px;
+      line-height: 1.3;
+      color: #fff;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    /* 第三张图片上的识别结果卡片 */
+    .stage-3 .recog-card {
+      position: absolute;
+      left: 108px;
+      top: 152px;
+      width: 293.625px;
+      height: 95.063px;
+      background: #fff;
+      border-radius: 5.625px 5.625px 5.625px 0;
+      color: #000;
+      pointer-events: none;
+    }
+    .stage-3 .recog-card .recog-title {
+      position: absolute;
+      left: 11.25px;
+      top: 11.25px;
+      margin: 0;
+      font-family: "PingFang SC", "MiSans", system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 9px;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+    .stage-3 .recog-card .recog-body {
+      position: absolute;
+      left: 11.25px;
+      top: 27px;
+      width: 271.125px;
+      font-family: "PingFang SC", "MiSans", system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 7.875px;
+      line-height: 1.4;
+      text-align: justify;
+      color: #000;
+    }
+    .stage-3 .recog-card .recog-body p {
+      margin: 0;
+    }
+
+    /* 第三张图片底部的语音助手组件 */
+    .stage-3 .voice-assistant {
+      position: absolute;
+      left: 0;
+      top: 191.25px;
+      width: 540px;
+      height: 112.5px;
+      pointer-events: none;
+    }
+    .stage-3 .voice-assistant .va-grad {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 0.5%, #000 71.5%);
+      opacity: 0.8;
+    }
+    .stage-3 .voice-assistant .va-wave-big {
+      position: absolute;
+      left: 106.31px;
+      top: 53.44px;
+      width: 327.375px;
+      height: 59.063px;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .stage-3 .voice-assistant .va-capsule {
+      position: absolute;
+      left: 50%;
+      top: 67.5px;
+      transform: translateX(-50%);
+      width: 135px;
+      height: 22.5px;
+      border-radius: 20.089px;
+      background: linear-gradient(170deg, rgba(255,255,255,0.3) 1%, rgba(255,255,255,0.15) 100%);
+      backdrop-filter: blur(8.036px);
+      -webkit-backdrop-filter: blur(8.036px);
+    }
+    .stage-3 .voice-assistant .va-wave-small {
+      position: absolute;
+      left: 225.56px;
+      top: 77.63px;
+      width: 88.875px;
+      height: 2.25px;
+      object-fit: contain;
+    }
+
+    /* 第三张图片右上的小图 F3.3.2 */
+    .stage-3 .recog-thumb {
+      position: absolute;
+      left: 313.88px;
+      top: 68.06px;
+      right: 108px;
+      height: 73.125px;
+      border-radius: 6.75px;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    /* 第三张图片底部叠加图 F3.3.4 */
+    .stage-3 .bottom-overlay {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 540px;
+      height: auto;
+      pointer-events: none;
+    }
+
+    /* 第三张图片识别卡片右侧的图标 F3.3.5 */
+    .stage-3 .recog-icon {
+      position: absolute;
+      left: 409.505px;
+      top: 224.56px;
+      width: 22.5px;
+      height: 22.5px;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    .stage-3 .task-title {
+      margin: 40px 0 8px;
+      font-size: 36px;
+      line-height: 1.3;
+      font-weight: 500;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+
+    .stage-3 .task-desc {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.4;
+      font-weight: 400;
+      color: var(--text-sub);
+    }
+    .stage-3 .task-col.col-2 .task-desc,
+    .stage-3 .task-col.col-3 .task-desc {
+      width: 520px;
+    }
+
+    /* ========= 第 4 页：自动执行复杂指令 ========= */
+
+    /* 主插图：Figma left=136, top=266 → panel-relative 96, 226 */
+    .stage-4 .hero {
+      position: absolute;
+      left: 96px;
+      top: 226px;
+      width: 902px;
+      height: 508px;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .stage-4 .hero img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /* 图上字幕：Figma left=587, top=676（中下锚） → panel-relative 547, 636 */
+    .stage-4 .hero-caption {
+      position: absolute;
+      left: 547px;
+      top: 636px;
+      transform: translate(-50%, -100%);
+      font-family: 'MiSans', sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.3;
+      color: #fff;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    /* 右侧文案块 1：Figma left=1098, top=266 → panel-relative 1058, 226 */
+    .stage-4 .text-block-1 {
+      position: absolute;
+      left: 1058px;
+      top: 226px;
+      width: 771px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .stage-4 .text-block-1 .tb-title {
+      font-family: 'MiSans', sans-serif;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 1.3;
+      color: var(--text-main);
+      width: 707px;
+      margin: 0;
+    }
+    .stage-4 .text-block-1 .tb-desc {
+      font-family: 'MiSans', sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--text-sub);
+      margin: 0;
+    }
+    .stage-4 .text-block-1 .tb-desc p { margin: 0; }
+
+    /* 右侧文案块 2：Figma left=1098, top=478 → panel-relative 1058, 438 */
+    .stage-4 .text-block-2 {
+      position: absolute;
+      left: 1058px;
+      top: 438px;
+      width: 727px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .stage-4 .text-block-2 .tb-title {
+      font-family: 'MiSans', sans-serif;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 1.3;
+      color: var(--text-main);
+      margin: 0;
+    }
+    .stage-4 .text-block-2 .tb-desc {
+      font-family: 'MiSans', sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.4;
+      color: var(--text-sub);
+      margin: 0;
+    }
+
+    /* ========= 第 5 页：可见即可说 ========= */
+
+    /* 主插图：Figma left=136, top=266 → panel-relative 96, 226 */
+    .stage-5 .hero {
+      position: absolute;
+      left: 96px;
+      top: 226px;
+      width: 902px;
+      height: 508px;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .stage-5 .hero img,
+    .stage-5 .hero video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /* 右侧文案块 1：Figma left=1098, top=266 → panel-relative 1058, 226 */
+    .stage-5 .text-block-1 {
+      position: absolute;
+      left: 1058px;
+      top: 226px;
+      width: 771px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .stage-5 .text-block-1 .tb-title {
+      font-family: 'MiSans', sans-serif;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 1.3;
+      color: var(--text-main);
+      width: 707px;
+      margin: 0;
+    }
+    .stage-5 .text-block-1 .tb-desc {
+      font-family: 'MiSans', sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--text-sub);
+      width: 719px;
+      text-align: justify;
+      margin: 0;
+    }
+
+    /* 右侧文案块 2：Figma left=1098, top=423 → panel-relative 1058, 383 */
+    .stage-5 .text-block-2 {
+      position: absolute;
+      left: 1058px;
+      top: 383px;
+      width: 771px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .stage-5 .text-block-2 .tb-title {
+      font-family: 'MiSans', sans-serif;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 1.3;
+      color: var(--text-main);
+      width: 707px;
+      margin: 0;
+    }
+    .stage-5 .text-block-2 .tb-desc {
+      font-family: 'MiSans', sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--text-sub);
+      width: 719px;
+      text-align: justify;
+      margin: 0;
+    }
+
+    /* 注意事项块：Figma left=1098, top=549 → panel-relative 1058, 509 */
+    .stage-5 .notes {
+      position: absolute;
+      left: 1058px;
+      top: 509px;
+      width: 727px;
+      font-family: 'MiSans', sans-serif;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 1.4;
+      color: #8e8e8e;
+    }
+    .stage-5 .notes .notes-head {
+      margin: 0 0 4px;
+    }
+    .stage-5 .notes ul {
+      list-style: disc;
+      padding: 0;
+      margin: 0;
+    }
+    .stage-5 .notes li {
+      margin: 0 0 20px 33px;
+    }
+    .stage-5 .notes li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ========= 共享底部多点指示器 ========= */
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      top: 952px;
+      width: 1840px;
+      height: 8px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(0, 0, 0, 0.32);
+      border-radius: 999px;
+      transition: width .25s ease, background-color .2s;
+      cursor: pointer;
+    }
+    .nav-dot.active {
+      width: 24px;
+      background: #3978f3;
+    }
+
+    /* 上一页 / 下一页 箭头：放在 .page 层，不被 canvas 缩放影响 */
+    .page-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(42px, 4.2vmin, 59px);
+      height: clamp(42px, 4.2vmin, 59px);
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.42);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #fff;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .2s ease, background-color .2s ease, transform .2s ease;
+      z-index: 10;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .page-arrow:hover {
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+      transform: translateY(-50%) scale(1.06);
+    }
+    .page-arrow.prev:hover svg { transform: translateX(-2px); }
+    .page-arrow.next:hover svg { transform: translateX(2px); }
+    .page-arrow:active { transform: translateY(-50%) scale(0.92); }
+    .page-arrow:disabled {
+      opacity: 0.35;
+      cursor: default;
+      pointer-events: none;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.08);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-50%) scale(0.88);
+    }
+    .page-arrow svg {
+      width: 38%;
+      height: 38%;
+      display: block;
+      transition: transform .2s ease;
+    }
+    .page-arrow.prev { left: clamp(40px, 6vmin, 96px); }
+    .page-arrow.next { right: clamp(40px, 6vmin, 96px); }
+  </style>
+</head>
+<body>
+
+  <div class="page" id="viewport">
+    <button type="button" class="page-arrow prev" id="arrowPrev" aria-label="上一页">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5L8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button type="button" class="page-arrow next" id="arrowNext" aria-label="下一页">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="canvas" id="canvas" aria-label="语音交互">
+      <div class="panel">
+
+        <!-- ===== 第 1 页：唤醒方式 ===== -->
+        <section class="stage stage-1" data-page="1">
+          <div class="title">语音交互-唤醒方式</div>
+
+          <div class="cards-row">
+            <div class="card card-voice">
+              <p class="card-title">语音唤醒</p>
+              <p class="card-desc wrap">连接网络后，语音说出"阿目同学"唤醒</p>
+              <img class="voice-img" loading="lazy" decoding="async" src="./voice/images/F1.1.1-语音唤醒.png" alt="语音唤醒">
+            </div>
+
+            <div class="card card-controller">
+              <p class="card-title">INMO Controller</p>
+              <p class="card-desc nowrap">长按OK键</p>
+              <img class="ctrl-img" loading="lazy" decoding="async" src="./voice/images/F1.2.1-Touchpad 1.0.png" alt="INMO Controller">
+            </div>
+
+            <div class="card card-tp">
+              <p class="card-title">Touchpad 1.0</p>
+              <p class="card-desc nowrap">长按主页键</p>
+              <img class="tp-img" loading="lazy" decoding="async" src="./voice/images/F1.3.1-Touchpad 1.0.png" alt="Touchpad 1.0">
+              <div class="tp-circle"></div>
+            </div>
+
+            <div class="card card-ring">
+              <p class="card-title">戒指</p>
+              <p class="card-desc nowrap">连续点击两次功能键</p>
+              <img class="ring-img" loading="lazy" decoding="async" src="./voice/images/F1.4.1-戒指.png" alt="戒指">
+              <div class="ring-circle"></div>
+              <img class="ring-arrow" loading="lazy" decoding="async" src="./voice/images/F1.4.3戒指箭头.png" alt="">
+            </div>
+          </div>
+
+          <img class="frame-arrow-2" loading="lazy" decoding="async" src="./voice/images/F1.2.2-箭头.png" alt="">
+          <div class="frame-circle-2"></div>
+          <img class="frame-arrow-3" loading="lazy" decoding="async" src="./voice/images/F1.3.3-Touchpad 1.0箭头.png" alt="">
+        </section>
+
+        <!-- ===== 第 2 页：退出方式 ===== -->
+        <section class="stage stage-2" data-page="2" hidden>
+          <div class="title">语音交互-退出方式</div>
+
+          <div class="cards-row">
+            <div class="card card-touchstrip">
+              <p class="card-title">触控板</p>
+              <p class="card-desc wrap">长按右边镜腿触控板来退出</p>
+              <img class="ts-img" loading="lazy" decoding="async" src="./voice/images/F2.1.1.png" alt="触控板">
+            </div>
+
+            <div class="card card-controller">
+              <p class="card-title">INMO Controller</p>
+              <p class="card-desc nowrap">双击返回键退出</p>
+              <img class="ctrl-img" loading="lazy" decoding="async" src="./voice/images/F2.2.1INMO.png" alt="INMO Controller">
+            </div>
+
+            <div class="card card-tp">
+              <p class="card-title">Touchpad 1.0</p>
+              <p class="card-desc nowrap">长按返回键</p>
+              <img class="tp-img" loading="lazy" decoding="async" src="./voice/images/F2.3.1.png" alt="Touchpad 1.0">
+              <img class="tp-circle" loading="lazy" decoding="async" src="./voice/images/F2.3.2圆圈.png" alt="">
+              <img class="tp-arrow" loading="lazy" decoding="async" src="./voice/images/F2.2.3箭头.png" alt="">
+            </div>
+
+            <div class="card card-ring">
+              <p class="card-title">戒指</p>
+              <p class="card-desc nowrap">双击戒指返回键退出</p>
+              <img class="ring-img" loading="lazy" decoding="async" src="./voice/images/F2.4.1NMO.png" alt="戒指">
+              <img class="ring-circle" loading="lazy" decoding="async" src="./voice/images/F2.4.2圆圈.png" alt="">
+              <img class="ring-arrow" loading="lazy" decoding="async" src="./voice/images/F2.4.3箭头.png" alt="">
+            </div>
+          </div>
+
+          <img class="frame-arrow-2" loading="lazy" decoding="async" src="./voice/images/F2.2.3箭头.png" alt="">
+          <img class="frame-circle-2" loading="lazy" decoding="async" src="./voice/images/F2.2.2圆圈.png" alt="">
+          <p class="footnote">点击非语音助理部分或者熄屏后也会退出语音助理</p>
+        </section>
+
+        <!-- ===== 第 3 页：任务型对话 ===== -->
+        <section class="stage stage-3" data-page="3" hidden>
+          <div class="title">语音交互-任务型对话</div>
+
+          <div class="task-grid">
+            <div class="task-col col-1">
+              <div class="img-wrap">
+                <img class="task-img" loading="lazy" decoding="async" src="./voice/images/F3.1.png" alt="打开应用">
+                <div class="img-caption">阿目同学，打开应用宝</div>
+              </div>
+              <p class="task-title">打开应用</p>
+              <p class="task-desc">如，语音输入"阿目同学，打开应用宝"</p>
+            </div>
+
+            <div class="task-col col-2">
+              <div class="img-wrap">
+                <img class="task-img" loading="lazy" decoding="async" src="./voice/images/F3.2.png" alt="系统媒体控制和模式语言切换">
+                <div class="img-caption">阿目同学，调大音量</div>
+              </div>
+              <p class="task-title">系统媒体控制和模式语言切换</p>
+              <p class="task-desc">如，语音输入"阿目同学，调大（小）音量/亮度"、返回主界面、播放/暂停、拍照/录像、返回上一级界面</p>
+            </div>
+
+            <div class="task-col col-3">
+              <div class="img-wrap">
+                <img class="task-img" loading="lazy" decoding="async" src="./voice/images/F3.3.1.png" alt="拍照识别">
+                <img class="bottom-overlay" loading="lazy" decoding="async" src="./voice/images/F3.3.4.png" alt="">
+                <img class="recog-thumb" loading="lazy" decoding="async" src="./voice/images/F3.3.2.png" alt="">
+                <div class="recog-card">
+                  <p class="recog-title">你都前面是一个妙蛙种子：萌宠小精灵</p>
+                  <div class="recog-body">
+                    <p>草系/毒系种子宝可梦 • 关都地区No.001</p>
+                    <p>日文名 フシギダネ Fushigidane（意为「神秘种子」）</p>
+                    <p>作为宝可梦初代御三家之首，妙蛙种子以生态共生体的科幻设定与攻防兼备的战术纵深，成为跨越25年经久不衰的文化符号。其背后蕴含的「光合作用×生化毒素」能量系统，至今仍是宝可梦生物设计的巅峰范例。</p>
+                  </div>
+                </div>
+                <img class="recog-icon" loading="lazy" decoding="async" src="./voice/images/F3.3.5.png" alt="">
+              </div>
+              <p class="task-title">拍照识别</p>
+              <p class="task-desc">语音输入"我眼前是什么"/"面前有什么东西"等意图时，语音助理会拍下眼前图片并进行识别</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== 第 4 页：自动执行复杂指令 ===== -->
+        <section class="stage stage-4" data-page="4" hidden>
+          <div class="title">语音交互-自动执行复杂指令</div>
+
+          <div class="hero">
+            <img src="./voice/images/F4.1.1.png" alt="自动执行复杂指令">
+          </div>
+          <div class="hero-caption">阿目同学，帮我去美团点一杯摩卡星冰乐</div>
+
+          <div class="text-block-1">
+            <p class="tb-title">美团点外卖/淘宝购物/播放腾讯视频/下载安装app</p>
+            <div class="tb-desc">
+              <p>语音输入"阿目同学，帮我去美团点一杯摩卡星冰乐"</p>
+              <p>在语音框回复"好的"，同时进行语音播报，随之进行相应操作。</p>
+            </div>
+          </div>
+
+          <div class="text-block-2">
+            <p class="tb-title">对话查询功能</p>
+            <p class="tb-desc">本机功能查询、生活服务查询、事实查询</p>
+          </div>
+        </section>
+
+        <!-- ===== 第 5 页：可见即可说 ===== -->
+        <section class="stage stage-5" data-page="5" hidden>
+          <div class="title">语音交互-可见即可说</div>
+
+          <div class="hero">
+            <video src="./voice/images/redpandacompress.mp4" autoplay muted loop playsinline preload="metadata" aria-label="可见即可说"></video>
+          </div>
+
+          <div class="text-block-1">
+            <p class="tb-title">滑动操作</p>
+            <p class="tb-desc">"上滑""下滑""左滑""右滑"对页面进行对应的操作，观看抖音时，唤起阿目同学，说出"上滑"可触发</p>
+          </div>
+
+          <div class="text-block-2">
+            <p class="tb-title">可以通过指令，进行"点击选择xx、点击xx"</p>
+            <p class="tb-desc">如：在淘宝页面，唤起阿目同学，说出"点击搜索"</p>
+          </div>
+
+          <div class="notes">
+            <p class="notes-head">注意：</p>
+            <ul>
+              <li>能够识别当前页面内容中的可交互元素，用户可通过语音直接操作屏幕上显示的任何可交互元素。</li>
+              <li>仅支持APP的可交互元素，涉及网页或小程序的暂不支持。</li>
+              <li>对于图片元素：用户说"点击图片"，才会点击图片，如果说的是点击图片里的某个内容，也只会回复没有识别到该操作。如果一个屏幕里有多张图片，则默认点击第一张图片。</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 共享底部指示器 -->
+        <div class="bottom-nav" id="navDots"></div>
+
+      </div>
+      <img class="panel-icon" loading="lazy" decoding="async" src="./images/Vector.png" alt="返回首页" draggable="false" onclick="location.href='./main-page.html'">
+    </div>
+  </div>
+
+  <script>
+    /* === 1920×1080 等比缩放 === */
+    (function () {
+      const canvas = document.getElementById("canvas");
+      const BASE_W = 1920, BASE_H = 1080;
+      function updateScale() {
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        const scale = Math.min(vw / BASE_W, vh / BASE_H);
+        canvas.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+      }
+      window.addEventListener("resize", updateScale);
+      updateScale();
+    })();
+
+    /* === 翻页：左右拖拽 / 键盘 ←→ / 圆点点击 === */
+    (function () {
+      const stages = Array.from(document.querySelectorAll('.stage'));
+      const dotsBox = document.getElementById('navDots');
+      const viewport = document.getElementById('viewport');
+      const arrowPrev = document.getElementById('arrowPrev');
+      const arrowNext = document.getElementById('arrowNext');
+      const total = stages.length;
+      const SWIPE_THRESHOLD = 80;
+
+      // 渲染指示点
+      stages.forEach(function (_, i) {
+        const dot = document.createElement('div');
+        dot.className = 'nav-dot';
+        dot.addEventListener('click', function () { go(i + 1); });
+        dotsBox.appendChild(dot);
+      });
+      const dots = Array.from(dotsBox.children);
+
+      function clamp(n) { return Math.max(1, Math.min(total, n)); }
+
+      function go(n) {
+        n = clamp(n);
+        stages.forEach(function (s, i) {
+          if (i + 1 === n) s.removeAttribute('hidden');
+          else s.setAttribute('hidden', '');
+        });
+        dots.forEach(function (d, i) { d.classList.toggle('active', i + 1 === n); });
+        if (arrowPrev) arrowPrev.disabled = (n <= 1);
+        if (arrowNext) arrowNext.disabled = (n >= total);
+        if (location.hash !== '#' + n) {
+          history.replaceState(null, '', '#' + n);
+        }
+      }
+
+      if (arrowPrev) arrowPrev.addEventListener('click', function () { go(currentPage() - 1); });
+      if (arrowNext) arrowNext.addEventListener('click', function () { go(currentPage() + 1); });
+
+      function parsePage() {
+        const m = (location.hash || '').match(/^#(\d+)$/);
+        if (!m) return 1;
+        const n = parseInt(m[1], 10);
+        if (!Number.isFinite(n) || n < 1 || n > total) return 1;
+        return n;
+      }
+      function currentPage() {
+        for (let i = 0; i < dots.length; i++) {
+          if (dots[i].classList.contains('active')) return i + 1;
+        }
+        return 1;
+      }
+
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') go(currentPage() - 1);
+        if (e.key === 'ArrowRight') go(currentPage() + 1);
+      });
+      window.addEventListener('hashchange', function () { go(parsePage()); });
+
+      /* —— 拖拽（鼠标 + 触屏）—— */
+      const ANGLE_RATIO = 1.5; // 水平位移须 > 垂直位移 × 1.5 才算翻页手势
+      const EDGE_DAMP = 0.3;   // 边界橡皮筋阻尼
+      const EDGE_MAX = 80;     // 边界最大可拖位移
+      let dragging = false, startX = 0, startY = 0, deltaX = 0, deltaY = 0;
+      let activeStage = null;
+      function resetStageTransform(stage, animate) {
+        if (!stage) return;
+        stage.style.transition = animate ? 'transform .25s cubic-bezier(.2,.8,.2,1)' : 'none';
+        stage.style.transform = '';
+      }
+      function setStageDrag(stage, dx) {
+        if (!stage) return;
+        stage.style.transition = 'none';
+        stage.style.transform = 'translateX(' + dx + 'px)';
+      }
+      function pointerX(ev) {
+        if (ev.touches && ev.touches.length) return ev.touches[0].clientX;
+        if (ev.changedTouches && ev.changedTouches.length) return ev.changedTouches[0].clientX;
+        return ev.clientX;
+      }
+      function pointerY(ev) {
+        if (ev.touches && ev.touches.length) return ev.touches[0].clientY;
+        if (ev.changedTouches && ev.changedTouches.length) return ev.changedTouches[0].clientY;
+        return ev.clientY;
+      }
+      function dragStart(ev) {
+        if (total <= 1) return;
+        dragging = true;
+        startX = pointerX(ev);
+        startY = pointerY(ev);
+        deltaX = 0;
+        deltaY = 0;
+        activeStage = stages[currentPage() - 1] || null;
+      }
+      function dragMove(ev) {
+        if (!dragging) return;
+        deltaX = pointerX(ev) - startX;
+        deltaY = pointerY(ev) - startY;
+        if (!activeStage) return;
+        const absX = Math.abs(deltaX), absY = Math.abs(deltaY);
+        if (absX < absY * ANGLE_RATIO) { setStageDrag(activeStage, 0); return; }
+        const page = currentPage();
+        let visual = deltaX;
+        if ((page <= 1 && deltaX > 0) || (page >= total && deltaX < 0)) {
+          visual = deltaX * EDGE_DAMP;
+          if (visual > EDGE_MAX) visual = EDGE_MAX;
+          if (visual < -EDGE_MAX) visual = -EDGE_MAX;
+        }
+        setStageDrag(activeStage, visual);
+      }
+      function dragCancel() {
+        dragging = false;
+        deltaX = 0;
+        deltaY = 0;
+        resetStageTransform(activeStage, true);
+        activeStage = null;
+      }
+      function dragEnd() {
+        if (!dragging) return;
+        dragging = false;
+        const stage = activeStage;
+        activeStage = null;
+        const absX = Math.abs(deltaX), absY = Math.abs(deltaY);
+        const page = currentPage();
+        const goNext = deltaX < 0 && page < total;
+        const goPrev = deltaX > 0 && page > 1;
+        if (absX < SWIPE_THRESHOLD || absX < absY * ANGLE_RATIO || (!goNext && !goPrev)) {
+          resetStageTransform(stage, true);
+          deltaX = 0; deltaY = 0;
+          return;
+        }
+        resetStageTransform(stage, false);
+        if (deltaX < 0) go(page + 1);
+        else            go(page - 1);
+        deltaX = 0; deltaY = 0;
+      }
+      viewport.addEventListener('mousedown', dragStart);
+      viewport.addEventListener('mousemove', dragMove);
+      viewport.addEventListener('mouseup', dragEnd);
+      viewport.addEventListener('mouseleave', dragCancel);
+      viewport.addEventListener('touchstart', dragStart, { passive: true });
+      viewport.addEventListener('touchmove', dragMove, { passive: true });
+      viewport.addEventListener('touchend', dragEnd);
+      viewport.addEventListener('touchcancel', dragCancel);
+      viewport.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+      /* —— 鼠标滚轮 / 触控板横滑翻页 —— */
+      const WHEEL_THRESHOLD = 30;
+      const WHEEL_COOLDOWN = 500;
+      let wheelLockUntil = 0;
+      viewport.addEventListener('wheel', function (e) {
+        if (total <= 1) return;
+        const now = Date.now();
+        if (now < wheelLockUntil) { e.preventDefault(); return; }
+        const dx = e.deltaX, dy = e.deltaY;
+        const delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
+        if (Math.abs(delta) < WHEEL_THRESHOLD) return;
+        e.preventDefault();
+        wheelLockUntil = now + WHEEL_COOLDOWN;
+        if (delta > 0) go(currentPage() + 1);
+        else            go(currentPage() - 1);
+      }, { passive: false });
+
+      go(parsePage());
+    })();
+  </script>
+  <script src="./image-loader.js"></script>
+  <script src="./lightbox.js"></script>
+</body>
+</html>

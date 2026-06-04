@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no,email=no,address=no" />
+  <title>眼镜触控板使用</title>
+  <script>
+    if (matchMedia('(max-width: 480px)').matches) {
+      location.replace('./glasses-touchpad-mobile.html' + location.search + location.hash);
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: local('MiSans'),
+           url('./fonts/MiSans-Regular.woff2') format('woff2'),
+           url('./fonts/MiSans-Regular.woff') format('woff'),
+           url('./fonts/MiSans-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: local('MiSans Medium'), local('MiSans-Medium'),
+           url('./fonts/MiSans-Medium.woff2') format('woff2'),
+           url('./fonts/MiSans-Medium.woff') format('woff'),
+           url('./fonts/MiSans-Medium.ttf') format('truetype');
+    }
+
+    :root {
+      --page-bg: #000;
+      --card-bg: #f6f6f6;
+      --card-radius: 56px;
+      --text-main: #000;
+      --text-sub: #393939;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: var(--page-bg);
+      overflow: hidden;
+      font-family: MiSans, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+      overscroll-behavior-x: contain;
+    }
+
+    .page {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .canvas {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: center center;
+    }
+
+    .panel {
+      position: absolute;
+      inset: 40px;
+      border-radius: var(--card-radius);
+      background: var(--card-bg);
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(180px);
+      -webkit-backdrop-filter: blur(180px);
+    }
+
+    .panel-icon {
+      position: absolute;
+      top: 80px;
+      left: 104px;
+      width: 18px;
+      height: 36px;
+      cursor: pointer;
+      z-index: 10;
+      -webkit-user-drag: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .panel-icon:hover { opacity: 0.7; }
+    .panel-icon:active { transform: scale(0.92); }
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(
+        178deg,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0) 41%,
+        rgba(255, 255, 255, 0) 58%,
+        rgba(255, 255, 255, 0.1) 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .stage {
+      position: absolute;
+      inset: 0;
+    }
+    .stage[hidden] { display: none; }
+
+    .title {
+      position: absolute;
+      left: 0;
+      top: 40px;
+      width: 1840px;
+      height: 52px;
+      font-size: 40px;
+      line-height: 52px;
+      font-weight: 500;
+      text-align: center;
+      color: var(--text-main);
+      pointer-events: none;
+    }
+
+    .panel img {
+      -webkit-user-drag: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* ========= 第 1 页：眼镜触控板使用 =========
+
+       Figma 节点 3870:6572（root canvas 1920×1080，panel = root - 40）：
+       - title: root(0~1840, 40, 52) → panel-rel (0, 40)
+       - 中间主插图：root(0, 172, 1840×580) → panel-rel (0, 132)
+       - 底部 5 组指引（root y=836, 高 50）→ panel-rel y=796
+         · 单击确认       icon@130.65       text@189.15
+         · 双击返回       icon@409.14       text@467.64
+         · 长按返回桌面   icon@682.7        text@736.28
+         · 左右滑动切换焦点 icon@1015.41(旋转) text@1072.69
+         · 上下滑动切换焦点 icon@1412.2       text@1469.48
+    */
+
+    .stage-1 .hero {
+      position: absolute;
+      left: 0;
+      top: -113.35px;
+      width: 1902px;
+      height: 863px;
+      object-fit: contain;
+      object-position: center center;
+    }
+
+    /* H1.1：左边缘距 panel 左边缘 775.85px（累计右移 15），下边缘距底部操作文字上边缘(796) 339.8px → bottom = 543.8px；再向上 5px */
+    .stage-1 .hero-overlay {
+      position: absolute;
+      left: 775.85px;
+      bottom: 548.8px;
+      width: 123.922px;
+      height: 137.759px;
+      object-fit: contain;
+    }
+
+    /* H1.2 箭头：原始位置（不再跟随 H1.1） */
+    .stage-1 .hero-arrow {
+      position: absolute;
+      left: calc(760.85px + 123.922px / 2 - 5px);
+      transform: translateX(-50%);
+      bottom: calc(548.8px + 137.759px);
+      object-fit: contain;
+    }
+
+    .stage-1 .ops {
+      position: absolute;
+      left: 0;
+      top: 796px;
+      width: 1840px;
+      height: 50px;
+    }
+    .stage-1 .op {
+      position: absolute;
+      top: 0;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      gap: 10.5px;
+    }
+    .stage-1 .op .icon {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .stage-1 .op .icon.rot {
+      transform: none;
+    }
+    .stage-1 .op .lbl {
+      font-size: 28px;
+      line-height: 49.291px;
+      font-weight: 400;
+      color: var(--text-sub);
+      opacity: 0.6;
+      letter-spacing: 0.56px;
+      white-space: nowrap;
+    }
+
+    .stage-1 .op-1 { left: 130.65px; }
+    .stage-1 .op-2 { left: 409.14px; }
+    .stage-1 .op-3 { left: 682.7px; }
+    .stage-1 .op-4 { left: 1015.41px; }
+    .stage-1 .op-5 { left: 1412.2px; }
+
+    /* ========= 共享底部多点指示器 ========= */
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      top: 952px;
+      width: 1840px;
+      height: 8px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(0, 0, 0, 0.32);
+      border-radius: 999px;
+      transition: width .25s ease, background-color .2s;
+      cursor: pointer;
+    }
+    .nav-dot.active {
+      width: 24px;
+      background: #3978f3;
+    }
+
+    .page-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(42px, 4.2vmin, 59px);
+      height: clamp(42px, 4.2vmin, 59px);
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.42);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #fff;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .2s ease, background-color .2s ease, transform .2s ease;
+      z-index: 10;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .page-arrow:hover {
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+      transform: translateY(-50%) scale(1.06);
+    }
+    .page-arrow.prev:hover svg { transform: translateX(-2px); }
+    .page-arrow.next:hover svg { transform: translateX(2px); }
+    .page-arrow:active { transform: translateY(-50%) scale(0.92); }
+    .page-arrow:disabled {
+      opacity: 0.35;
+      cursor: default;
+      pointer-events: none;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.08);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-50%) scale(0.88);
+    }
+    .page-arrow svg {
+      width: 38%;
+      height: 38%;
+      display: block;
+      transition: transform .2s ease;
+    }
+    .page-arrow.prev { left: clamp(40px, 6vmin, 96px); }
+    .page-arrow.next { right: clamp(40px, 6vmin, 96px); }
+  </style>
+</head>
+<body>
+
+  <div class="page" id="viewport">
+    <button type="button" class="page-arrow prev" id="arrowPrev" aria-label="上一页">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5L8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button type="button" class="page-arrow next" id="arrowNext" aria-label="下一页">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="canvas" id="canvas" aria-label="眼镜触控板使用 教程">
+      <div class="panel">
+
+        <!-- ===== 第 1 页：眼镜触控板使用 ===== -->
+        <section class="stage stage-1" data-page="1">
+          <div class="title">眼镜触控板使用</div>
+
+          <img class="hero" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H1.png" alt="眼镜触控板使用示意">
+          <img class="hero-overlay" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H1.1.png" alt="">
+          <img class="hero-arrow" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H1.2.png" alt="">
+
+          <div class="ops">
+            <div class="op op-1">
+              <img class="icon" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H1.1.1.png" alt="">
+              <span class="lbl">单击确认</span>
+            </div>
+            <div class="op op-2">
+              <img class="icon" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H1.1.2.png" alt="">
+              <span class="lbl">双击返回</span>
+            </div>
+            <div class="op op-3">
+              <img class="icon" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H1.1.3.png" alt="">
+              <span class="lbl">长按返回桌面</span>
+            </div>
+            <div class="op op-4">
+              <img class="icon rot" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H1.1.4.png" alt="">
+              <span class="lbl">左右滑动切换焦点</span>
+            </div>
+            <div class="op op-5">
+              <img class="icon" loading="lazy" decoding="async" src="./glasses-touchpad/imges/H1.1.5.png" alt="">
+              <span class="lbl">上下滑动切换焦点</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 共享底部指示器 -->
+        <div class="bottom-nav" id="navDots"></div>
+
+      </div>
+      <img class="panel-icon" loading="lazy" decoding="async" src="./images/Vector.png" alt="返回首页" draggable="false" onclick="location.href='./main-page.html'">
+    </div>
+  </div>
+
+  <script>
+    /* === 1920×1080 等比缩放 === */
+    (function () {
+      const canvas = document.getElementById("canvas");
+      const BASE_W = 1920, BASE_H = 1080;
+      function updateScale() {
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        const scale = Math.min(vw / BASE_W, vh / BASE_H);
+        canvas.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+      }
+      window.addEventListener("resize", updateScale);
+      updateScale();
+    })();
+
+    /* === 翻页：左右拖拽 / 键盘 ←→ / 圆点点击 === */
+    (function () {
+      const stages = Array.from(document.querySelectorAll('.stage'));
+      const dotsBox = document.getElementById('navDots');
+      const viewport = document.getElementById('viewport');
+      const arrowPrev = document.getElementById('arrowPrev');
+      const arrowNext = document.getElementById('arrowNext');
+      const total = stages.length;
+      const SWIPE_THRESHOLD = 80;
+
+      // 单页时隐藏底部圆点
+      if (total <= 1) dotsBox.style.display = 'none';
+
+      stages.forEach(function (_, i) {
+        const dot = document.createElement('div');
+        dot.className = 'nav-dot';
+        dot.addEventListener('click', function () { go(i + 1); });
+        dotsBox.appendChild(dot);
+      });
+      const dots = Array.from(dotsBox.children);
+
+      function clamp(n) { return Math.max(1, Math.min(total, n)); }
+
+      function go(n) {
+        n = clamp(n);
+        stages.forEach(function (s, i) {
+          if (i + 1 === n) s.removeAttribute('hidden');
+          else s.setAttribute('hidden', '');
+        });
+        dots.forEach(function (d, i) { d.classList.toggle('active', i + 1 === n); });
+        if (arrowPrev) arrowPrev.disabled = (n <= 1);
+        if (arrowNext) arrowNext.disabled = (n >= total);
+        if (location.hash !== '#' + n) {
+          history.replaceState(null, '', '#' + n);
+        }
+      }
+
+      if (arrowPrev) arrowPrev.addEventListener('click', function () { go(currentPage() - 1); });
+      if (arrowNext) arrowNext.addEventListener('click', function () { go(currentPage() + 1); });
+
+      function parsePage() {
+        const m = (location.hash || '').match(/^#(\d+)$/);
+        if (!m) return 1;
+        const n = parseInt(m[1], 10);
+        if (!Number.isFinite(n) || n < 1 || n > total) return 1;
+        return n;
+      }
+      function currentPage() {
+        for (let i = 0; i < dots.length; i++) {
+          if (dots[i].classList.contains('active')) return i + 1;
+        }
+        return 1;
+      }
+
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') go(currentPage() - 1);
+        if (e.key === 'ArrowRight') go(currentPage() + 1);
+      });
+      window.addEventListener('hashchange', function () { go(parsePage()); });
+
+      const ANGLE_RATIO = 1.5;
+      const EDGE_DAMP = 0.3;
+      const EDGE_MAX = 80;
+      let dragging = false, startX = 0, startY = 0, deltaX = 0, deltaY = 0;
+      let activeStage = null;
+      function resetStageTransform(stage, animate) {
+        if (!stage) return;
+        stage.style.transition = animate ? 'transform .25s cubic-bezier(.2,.8,.2,1)' : 'none';
+        stage.style.transform = '';
+      }
+      function setStageDrag(stage, dx) {
+        if (!stage) return;
+        stage.style.transition = 'none';
+        stage.style.transform = 'translateX(' + dx + 'px)';
+      }
+      function pointerX(ev) {
+        if (ev.touches && ev.touches.length) return ev.touches[0].clientX;
+        if (ev.changedTouches && ev.changedTouches.length) return ev.changedTouches[0].clientX;
+        return ev.clientX;
+      }
+      function pointerY(ev) {
+        if (ev.touches && ev.touches.length) return ev.touches[0].clientY;
+        if (ev.changedTouches && ev.changedTouches.length) return ev.changedTouches[0].clientY;
+        return ev.clientY;
+      }
+      function dragStart(ev) {
+        if (total <= 1) return;
+        dragging = true;
+        startX = pointerX(ev);
+        startY = pointerY(ev);
+        deltaX = 0;
+        deltaY = 0;
+        activeStage = stages[currentPage() - 1] || null;
+      }
+      function dragMove(ev) {
+        if (!dragging) return;
+        deltaX = pointerX(ev) - startX;
+        deltaY = pointerY(ev) - startY;
+        if (!activeStage) return;
+        const absX = Math.abs(deltaX), absY = Math.abs(deltaY);
+        if (absX < absY * ANGLE_RATIO) { setStageDrag(activeStage, 0); return; }
+        const page = currentPage();
+        let visual = deltaX;
+        if ((page <= 1 && deltaX > 0) || (page >= total && deltaX < 0)) {
+          visual = deltaX * EDGE_DAMP;
+          if (visual > EDGE_MAX) visual = EDGE_MAX;
+          if (visual < -EDGE_MAX) visual = -EDGE_MAX;
+        }
+        setStageDrag(activeStage, visual);
+      }
+      function dragCancel() {
+        dragging = false;
+        deltaX = 0;
+        deltaY = 0;
+        resetStageTransform(activeStage, true);
+        activeStage = null;
+      }
+      function dragEnd() {
+        if (!dragging) return;
+        dragging = false;
+        const stage = activeStage;
+        activeStage = null;
+        const absX = Math.abs(deltaX), absY = Math.abs(deltaY);
+        const page = currentPage();
+        const goNext = deltaX < 0 && page < total;
+        const goPrev = deltaX > 0 && page > 1;
+        if (absX < SWIPE_THRESHOLD || absX < absY * ANGLE_RATIO || (!goNext && !goPrev)) {
+          resetStageTransform(stage, true);
+          deltaX = 0; deltaY = 0;
+          return;
+        }
+        resetStageTransform(stage, false);
+        if (deltaX < 0) go(page + 1);
+        else            go(page - 1);
+        deltaX = 0; deltaY = 0;
+      }
+      viewport.addEventListener('mousedown', dragStart);
+      viewport.addEventListener('mousemove', dragMove);
+      viewport.addEventListener('mouseup', dragEnd);
+      viewport.addEventListener('mouseleave', dragCancel);
+      viewport.addEventListener('touchstart', dragStart, { passive: true });
+      viewport.addEventListener('touchmove', dragMove, { passive: true });
+      viewport.addEventListener('touchend', dragEnd);
+      viewport.addEventListener('touchcancel', dragCancel);
+      viewport.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+      const WHEEL_THRESHOLD = 30;
+      const WHEEL_COOLDOWN = 500;
+      let wheelLockUntil = 0;
+      viewport.addEventListener('wheel', function (e) {
+        if (total <= 1) return;
+        const now = Date.now();
+        if (now < wheelLockUntil) { e.preventDefault(); return; }
+        const dx = e.deltaX, dy = e.deltaY;
+        const delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
+        if (Math.abs(delta) < WHEEL_THRESHOLD) return;
+        e.preventDefault();
+        wheelLockUntil = now + WHEEL_COOLDOWN;
+        if (delta > 0) go(currentPage() + 1);
+        else            go(currentPage() - 1);
+      }, { passive: false });
+
+      go(parsePage());
+    })();
+  </script>
+  <script src="./image-loader.js"></script>
+  <script src="./lightbox.js"></script>
+</body>
+</html>

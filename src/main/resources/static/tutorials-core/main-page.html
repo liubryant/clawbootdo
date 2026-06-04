@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no,email=no,address=no" />
+  <title>INMO Air3 核心交互教程</title>
+  <style>
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: local('MiSans'),
+           url('./fonts/MiSans-Regular.woff2') format('woff2'),
+           url('./fonts/MiSans-Regular.woff') format('woff'),
+           url('./fonts/MiSans-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: local('MiSans Medium'), local('MiSans-Medium'),
+           url('./fonts/MiSans-Medium.woff2') format('woff2'),
+           url('./fonts/MiSans-Medium.woff') format('woff'),
+           url('./fonts/MiSans-Medium.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 600;
+      font-display: optional;
+      src: local('MiSans Semibold'), local('MiSans-Semibold'),
+           url('./fonts/MiSans-Semibold.woff2') format('woff2'),
+           url('./fonts/MiSans-Semibold.woff') format('woff'),
+           url('./fonts/MiSans-Semibold.ttf') format('truetype');
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html, body {
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+      font-family: 'MiSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      color: #000;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .page {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* 1920×1080 画布，居中等比缩放 */
+    .canvas {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: center center;
+    }
+
+    /* 画布内容：内层 panel 1840×1000，居中（top/left = 40px），56 圆角 + 2px 边框 */
+    .panel {
+      position: absolute;
+      left: 40px;
+      top: 40px;
+      width: 1840px;
+      height: 1000px;
+      border-radius: 56px;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      box-sizing: border-box;
+      overflow: hidden;
+      background: #f6f6f6 url('./images/Tutorial Content.png') center / cover no-repeat;
+    }
+
+    .overview {
+      position: absolute;
+      inset: 0;
+      padding: 70px 113px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .overview-title {
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 130%;
+      color: #000;
+      text-align: center;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 562px);
+      grid-template-rows: repeat(2, 318px);
+      gap: 20px;
+    }
+
+    .interaction-card {
+      position: relative;
+      width: 562px;
+      height: 318px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 28px;
+      box-shadow: 0 8px 30px -12px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+      text-align: left;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 62% 1fr;
+      grid-template-rows: 1fr;
+      transition: box-shadow 0.35s cubic-bezier(.4, 0, .2, 1),
+                  border-color 0.35s cubic-bezier(.4, 0, .2, 1);
+    }
+    .interaction-card:hover,
+    .interaction-card:focus,
+    .interaction-card:focus-visible,
+    .interaction-card.is-hover {
+      border-color: #D7E7FB;
+      box-shadow: 0 0 0 4px #D7E7FB,
+                  0 0 24px 6px rgba(215, 231, 251, 0.85);
+      outline: none;
+    }
+    .interaction-card:active {
+      box-shadow: 0 0 0 3px #D7E7FB,
+                  0 0 16px 4px rgba(215, 231, 251, 0.7);
+    }
+
+    .card-text {
+      min-width: 0;
+      overflow: hidden;
+      padding: 35px 13px 30px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 17px;
+    }
+    .card-title {
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 130%;
+      color: #000;
+      white-space: nowrap;
+    }
+    .card-desc {
+      font-weight: 400;
+      font-size: 19px;
+      line-height: 140%;
+      color: #000;
+      text-align: justify;
+      text-justify: inter-ideograph;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .card-illust {
+      position: relative;
+      min-width: 0;
+      align-self: stretch;
+      justify-self: stretch;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 8px 8px 0 4px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .illust-img {
+      position: relative;
+      z-index: 2;
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      object-position: bottom center;
+      filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.08));
+      -webkit-user-drag: none;
+    }
+    .illust-reflection {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 140px;
+      height: auto;
+      object-fit: contain;
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+
+    /* 产品 + 阴影 列布局 */
+    .card-tp2 .card-illust,
+    .card-tp1 .card-illust,
+    .card-voice .card-illust,
+    .card-app .card-illust,
+    .card-glasses .card-illust,
+    .card-ring .card-illust {
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0;
+    }
+
+    .card-tp2 .card-illust,
+    .card-tp1 .card-illust {
+      padding-top: 60px;
+    }
+    .card-tp2 .illust-img,
+    .card-tp1 .illust-img {
+      width: 160px;
+      max-height: 90%;
+    }
+    .card-tp2 .illust-reflection,
+    .card-tp1 .illust-reflection {
+      width: 160px;
+      margin-top: 0;
+    }
+
+    /* voice：底对齐 */
+    .card-voice .card-illust {
+      padding-top: 0;
+      justify-content: flex-end;
+    }
+    .card-voice .illust-img { width: 143px; max-height: 86%; }
+    .card-voice .illust-reflection { width: 143px; }
+
+    /* app（手机APP遥控）：竖向手机 */
+    .card-app .card-illust { padding-top: 30px; }
+    .card-app .illust-img {
+      width: 140px;
+      aspect-ratio: 5 / 9;
+      max-height: 82%;
+      filter: none;
+    }
+    .card-app .illust-reflection { width: 130px; }
+
+    /* glasses：图大、靠右上溢出 */
+    .card-glasses .card-illust {
+      position: static;
+      overflow: visible;
+    }
+    .card-glasses .illust-img {
+      position: absolute;
+      right: 0;
+      top: 7px;
+      width: 318px;
+      height: 311px;
+      max-width: none;
+      max-height: none;
+      object-position: center center;
+    }
+    .card-glasses .illust-reflection {
+      position: absolute;
+      right: 212px;
+      bottom: 10px;
+      width: auto;
+      height: 40px;
+    }
+    .card-glasses .card-desc { max-width: 12em; }
+
+    /* ring：竖向戒指、靠右下 */
+    .card-ring .card-illust {
+      position: static;
+      overflow: visible;
+    }
+    .card-ring .illust-img {
+      position: absolute;
+      right: 25.28px;
+      top: -4.51px;
+      width: 224.95px;
+      height: 313.05px;
+      max-width: none;
+      max-height: none;
+    }
+    .card-ring .illust-reflection {
+      position: absolute;
+      right: 90.46px;
+      top: 251.41px;     /* 241.41 + 10 */
+      width: 183.465px;  /* 135.9 × 1.35 */
+      height: 64.125px;  /* 47.5 × 1.35 */
+      max-width: none;
+      max-height: none;
+    }
+    .card-ring .card-desc { max-width: 12em; }
+
+    /* 返回按钮（与详情页一致） */
+    .panel-icon {
+      position: absolute;
+      top: 80px;
+      left: 104px;
+      width: 18px;
+      height: 36px;
+      cursor: pointer;
+      z-index: 10;
+      -webkit-user-drag: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .panel-icon:hover { opacity: 0.7; }
+    .panel-icon:active { transform: scale(0.92); }
+
+    /* ============================================================
+       手机端适配 (≤480px)：单列堆叠 + 关闭 1920 画布缩放
+       桌面端 / 平板 / 眼镜端 (>480px) 完全不受影响
+       ============================================================ */
+    @media (max-width: 480px) {
+      html, body { overflow: auto; height: auto; }
+      .page { height: auto; min-height: 100vh; overflow: visible; }
+
+      .canvas {
+        position: static;
+        width: 100%;
+        height: auto;
+        transform: none !important;
+      }
+      .panel {
+        position: static;
+        width: 100%;
+        height: auto;
+        border: none;
+        border-radius: 0;
+        background-image: none;
+        background-color: #f6f6f6;
+      }
+
+      .overview {
+        position: static;
+        padding: 24px 16px 32px;
+        gap: 20px;
+      }
+      .overview-title { font-size: 18px; }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        gap: 12px;
+        width: 100%;
+      }
+
+      .interaction-card {
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+        grid-template-columns: 60% 1fr;
+        cursor: default;
+        background-repeat: no-repeat;
+        background-position: right bottom;
+        background-size: 50% 50%;
+      }
+      .card-voice   { background-image: url('./images/4.2.png'); }
+      .card-tp1     { background-image: url('./images/4.3.png'); }
+      .card-glasses { background-image: url('./images/4.4.png'); }
+      .card-app     { background-image: url('./images/4.5.png'); }
+      .card-ring    { background-image: url('./images/4.6.png'); }
+      .card-glasses, .card-ring { min-height: 140px; }
+      .card-tp1 { min-height: 160px; }
+      .card-app { min-height: 160px; }
+      .interaction-card:hover {
+        border-color: rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 16px -8px rgba(0, 0, 0, 0.12);
+      }
+      .interaction-card:active { transform: scale(0.98); }
+
+      .card-text { padding: 18px 10px 16px 18px; gap: 8px; }
+      .card-title { font-size: 18px; }
+      .card-desc  { font-size: 14px; line-height: 1.5; max-width: 16em; }
+
+      .card-tp2 .illust-img,
+      .card-tp1 .illust-img,
+      .card-voice .illust-img        { width: 70px; }
+      .card-tp2 .illust-reflection,
+      .card-tp1 .illust-reflection,
+      .card-voice .illust-reflection { width: 70px; }
+      .card-voice .illust-img,
+      .card-voice .illust-reflection { width: 75px; }
+      .card-voice .illust-reflection { content: url('./images/main page.png'); }
+
+      /* 手机端：所有插图列在卡片中垂直居中 */
+      .card-tp2 .card-illust,
+      .card-app .card-illust,
+      .card-glasses .card-illust,
+      .card-ring .card-illust {
+        justify-content: center;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      /* 手机端：voice / tp1 插图贴底（向下偏） */
+      .card-voice .card-illust,
+      .card-tp1 .card-illust {
+        justify-content: flex-end;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .card-app .card-illust       { padding-top: 0; }
+      .card-app .illust-img        { width: 64px; }
+      .card-app .illust-reflection { width: 60px; }
+      .card-app .card-desc         { max-width: 15em; }
+
+      .card-glasses .illust-img        { width: 145px; height: 142px; top: auto; right: auto; }
+      .card-glasses .illust-reflection { position: absolute; right: auto; left: calc(50% + 40px); bottom: 8px; height: 18px; }
+      .card-glasses .card-desc         { max-width: 15em; }
+
+      .card-ring .illust-img        { width: 102px; height: 142px; right: auto; top: auto; }
+      .card-ring .illust-reflection { width: 84px; height: 30px; right: auto; top: auto; }
+      .card-ring .card-desc         { max-width: 15em; }
+
+      .panel-icon {
+        top: 25px;
+        left: 16px;
+        width: 6.5625px;
+        height: 13.125px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <div class="canvas" id="canvas">
+      <div class="panel">
+        <img class="panel-icon" loading="lazy" decoding="async" src="./images/Vector.png" alt="返回" draggable="false" onclick="location.href='./index.html'">
+        <div class="overview">
+        <h1 class="overview-title">核心五种交互方式</h1>
+
+        <div class="cards-grid">
+
+          <!-- 1. 语音交互 -->
+          <button type="button" class="interaction-card card-voice" data-tutorial="voice" aria-label="查看 语音交互 教程">
+            <div class="card-text">
+              <h2 class="card-title">语音交互</h2>
+              <p class="card-desc">"阿目同学"是一个沉浸式的智能伴侣。可通过语音直接控制系统、操作应用，一句指令自动完成购物、发信息等跨应用任务，实现"可见即可说，所说即所得"。</p>
+            </div>
+            <div class="card-illust">
+              <img class="illust-img" loading="lazy" decoding="async" src="./illust/1-2.png" alt="语音交互" draggable="false">
+              <img class="illust-reflection" loading="lazy" decoding="async" src="./images/5.1.png" alt="" draggable="false">
+            </div>
+          </button>
+
+          <!-- 3. Touchpad 1.0 -->
+          <button type="button" class="interaction-card card-tp1" data-tutorial="tp1" aria-label="查看 Touchpad 1.0 教程">
+            <div class="card-text">
+              <h2 class="card-title">Touchpad 1.0</h2>
+              <p class="card-desc">支持高精度触控板模式，配备快捷功能按键。</p>
+            </div>
+            <div class="card-illust">
+              <img class="illust-img" loading="lazy" decoding="async" src="./illust/1-3.png" alt="Touchpad 1.0" draggable="false">
+              <img class="illust-reflection" loading="lazy" decoding="async" src="./illust/1-1阴影.png" alt="" draggable="false">
+            </div>
+          </button>
+
+          <!-- 4. 眼镜触控板 -->
+          <button type="button" class="interaction-card card-glasses" data-tutorial="glasses" aria-label="查看 眼镜触控板 教程">
+            <div class="card-text">
+              <h2 class="card-title">眼镜触控板</h2>
+              <p class="card-desc">支持焦点触控，提供基础交互，覆盖多场景。</p>
+            </div>
+            <div class="card-illust">
+              <img class="illust-img" loading="lazy" decoding="async" src="./illust/1-4.png" alt="眼镜触控板" draggable="false">
+              <img class="illust-reflection" loading="lazy" decoding="async" src="./images/5.2.png" alt="" draggable="false">
+            </div>
+          </button>
+
+          <!-- 5. 手机APP遥控 -->
+          <button type="button" class="interaction-card card-app" data-tutorial="app" aria-label="查看 手机APP遥控 教程">
+            <div class="card-text">
+              <h2 class="card-title">手机APP遥控</h2>
+              <p class="card-desc">支持一键唤出虚拟键盘用于输入，并可在触控板、飞鼠模式间切换。</p>
+            </div>
+            <div class="card-illust">
+              <img class="illust-img" loading="lazy" decoding="async" src="./illust/1-5.png" alt="手机APP遥控" draggable="false">
+              <img class="illust-reflection" loading="lazy" decoding="async" src="./illust/1-4阴影.png" alt="" draggable="false">
+            </div>
+          </button>
+
+          <!-- 6. INMO Ring 3 -->
+          <button type="button" class="interaction-card card-ring" data-tutorial="ring" aria-label="查看 INMO Ring 3 教程">
+            <div class="card-text">
+              <h2 class="card-title">INMO Ring 3</h2>
+              <p class="card-desc">创新飞鼠射线交互，无感操控。</p>
+            </div>
+            <div class="card-illust">
+              <img class="illust-img" loading="lazy" decoding="async" src="./inmo-ring/images/INMO Ring 3.png" alt="INMO Ring 3" draggable="false">
+              <img class="illust-reflection" loading="lazy" decoding="async" src="./inmo-ring/images/INMO Ring阴影.png" alt="" draggable="false">
+            </div>
+          </button>
+
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* === 1920×1080 等比缩放 === */
+    (function () {
+      const canvas = document.getElementById('canvas');
+      const BASE_W = 1920, BASE_H = 1080;
+      function updateScale() {
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        const scale = Math.min(vw / BASE_W, vh / BASE_H);
+        canvas.style.transform = 'translate(-50%, -50%) scale(' + scale + ')';
+      }
+      window.addEventListener('resize', updateScale);
+      updateScale();
+    })();
+
+    /* === 卡片点击跳转 === */
+    (function () {
+      const targets = {
+        tp1:     './touchpad1.0.html',
+        voice:   './voice.html',
+        app:     './phone-app.html',
+        ring:    './inmo-ring.html',
+        glasses: './glasses-touchpad.html'
+        // tp2 (INMO Controller) 暂未独立成页，留空走"按下回弹"
+      };
+      document.querySelectorAll('.interaction-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+          const key = card.dataset.tutorial;
+          const href = targets[key];
+          if (href) {
+            window.location.href = href;
+          } else {
+            card.style.transform = 'scale(0.97)';
+            setTimeout(function () { card.style.transform = ''; }, 200);
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

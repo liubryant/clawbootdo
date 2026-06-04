@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no,email=no,address=no">
+  <title>INMO Ring 3</title>
+  <style>
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: local('MiSans'),
+           url('./fonts/MiSans-Regular.woff2') format('woff2'),
+           url('./fonts/MiSans-Regular.woff') format('woff'),
+           url('./fonts/MiSans-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: local('MiSans Medium'), local('MiSans-Medium'),
+           url('./fonts/MiSans-Medium.woff2') format('woff2'),
+           url('./fonts/MiSans-Medium.woff') format('woff'),
+           url('./fonts/MiSans-Medium.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 600;
+      font-display: optional;
+      src: local('MiSans Semibold'), local('MiSans-Semibold'),
+           url('./fonts/MiSans-Semibold.woff2') format('woff2'),
+           url('./fonts/MiSans-Semibold.woff') format('woff'),
+           url('./fonts/MiSans-Semibold.ttf') format('truetype');
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html, body {
+      min-height: 100%;
+      background: #f6f6f6;
+      font-family: 'MiSans', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+      color: #000;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    .m-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(246, 246, 246, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .m-back {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6.5625px;
+      height: 13.125px;
+      cursor: pointer;
+    }
+    .m-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .container {
+      padding: 72px 16px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .stage {
+      background: #fff;
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .stage-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    /* 分步说明（参考 tp1.0） */
+    .step + .step {
+      margin-top: 16px;
+    }
+    .step-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.5;
+      margin: 0 0 10px;
+    }
+    .step-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    .step-img + .step-img {
+      margin-top: 10px;
+    }
+    .step-img.tall {
+      width: 62.5%;
+      margin: 0 auto;
+    }
+
+    /* 戒指开机标注：气泡叠在产品图上 */
+    .ring-marks {
+      position: relative;
+      width: 100%;
+      margin: 20px auto 24px;
+    }
+    .ring-marks .rm-img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .ring-marks .rm-pill {
+      position: absolute;
+      box-sizing: border-box;
+      padding: 4px 12px;
+      border: 1.5px solid #fff;
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.72) 100%);
+      box-shadow: 0 6px 20px 0 rgba(86, 93, 188, 0.14);
+      font-size: 11px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.3;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .ring-marks .rm-pill.left {
+      left: 6%;
+      top: 38%;
+    }
+    .ring-marks .rm-pill.right {
+      right: 6%;
+      top: 41%;
+    }
+
+    /* 按键说明列表 */
+    .feat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .feat-item .ft-name {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.4;
+      margin: 0 0 2px;
+    }
+    .feat-item .ft-desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: #666;
+      line-height: 1.5;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="m-header">
+    <img class="m-back" loading="lazy" decoding="async" src="./images/Vector.png" alt="返回" draggable="false" onclick="location.href='./main-page.html'">
+    <h1 class="m-title">INMO Ring 3</h1>
+  </header>
+
+  <main class="container">
+
+    <!-- stage 1：戒指与眼镜连接 -->
+    <section class="stage">
+      <h2 class="stage-title">01.戒指与眼镜连接</h2>
+
+      <div class="step">
+        <p class="step-title">单击【电源键】开机，并确保戒指处于未配对状态（蓝灯1s闪烁一次）</p>
+        <div class="ring-marks" data-lb-group>
+          <img class="rm-img" loading="lazy" decoding="async" src="./inmo-ring/images/P4.png" alt="INMO Ring 开机">
+          <p class="rm-pill left">开关</p>
+          <p class="rm-pill right">蓝灯</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <p class="step-title">打开【桌面】【外设管理】点击并搜索，即可发现"INMO Ring 3"设备，点击连接即可。戒指白灯亮起3s，同时外设管理页面中显示"INMO Ring 3"已连接——即戒指连接成功</p>
+        <img class="step-img" loading="lazy" decoding="async" src="./inmo-ring/images/P1.png" alt="应用库">
+        <img class="step-img" loading="lazy" decoding="async" src="./inmo-ring/images/P2.png" alt="外设管理">
+      </div>
+    </section>
+
+    <!-- stage 2：戒指使用 -->
+    <section class="stage">
+      <h2 class="stage-title">02.戒指使用</h2>
+
+      <div class="feat-list">
+        <div class="feat-item">
+          <p class="ft-name">1.电源键</p>
+          <p class="ft-desc">开关戒指</p>
+        </div>
+        <div class="feat-item">
+          <p class="ft-name">2.触控板</p>
+          <p class="ft-desc">单击确认、按住后可拖拽控件</p>
+        </div>
+        <div class="feat-item">
+          <p class="ft-name">3.返回键</p>
+          <p class="ft-desc">点击返回上一页，长按返回桌面</p>
+        </div>
+        <div class="feat-item">
+          <p class="ft-name">4.功能键</p>
+          <p class="ft-desc">长按可校准飞鼠至画面中间，双击可呼出语音助手</p>
+        </div>
+      </div>
+
+      <img class="step-img" loading="lazy" decoding="async" src="./inmo-ring/images/P3.png" alt="INMO Ring 3 按键示意" style="width:100%;margin:15px auto 0;">
+    </section>
+
+  </main>
+
+  <script src="./image-loader.js"></script>
+  <script src="./lightbox.js"></script>
+</body>
+</html>

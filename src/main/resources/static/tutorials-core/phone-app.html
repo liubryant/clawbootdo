@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no,email=no,address=no" />
+  <title>手机APP与眼镜连接</title>
+  <script>
+    if (matchMedia('(max-width: 480px)').matches) {
+      location.replace('./phone-app-mobile.html' + location.search + location.hash);
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: local('MiSans'),
+           url('./fonts/MiSans-Regular.woff2') format('woff2'),
+           url('./fonts/MiSans-Regular.woff') format('woff'),
+           url('./fonts/MiSans-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MiSans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: local('MiSans Medium'), local('MiSans-Medium'),
+           url('./fonts/MiSans-Medium.woff2') format('woff2'),
+           url('./fonts/MiSans-Medium.woff') format('woff'),
+           url('./fonts/MiSans-Medium.ttf') format('truetype');
+    }
+
+    :root {
+      --page-bg: #000;
+      --card-bg: #f6f6f6;
+      --card-radius: 56px;
+      --text-main: #000;
+      --hl-blue: #41f9ff;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: var(--page-bg);
+      overflow: hidden;
+      font-family: MiSans, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+      overscroll-behavior-x: contain;
+    }
+
+    .page {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .canvas {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: center center;
+    }
+
+    .panel {
+      position: absolute;
+      inset: 40px;
+      border-radius: var(--card-radius);
+      background: var(--card-bg);
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(180px);
+      -webkit-backdrop-filter: blur(180px);
+    }
+
+    .panel-icon {
+      position: absolute;
+      top: 80px;
+      left: 104px;
+      width: 18px;
+      height: 36px;
+      cursor: pointer;
+      z-index: 10;
+      -webkit-user-drag: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .panel-icon:hover { opacity: 0.7; }
+    .panel-icon:active { transform: scale(0.92); }
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(
+        178deg,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0) 41%,
+        rgba(255, 255, 255, 0) 58%,
+        rgba(255, 255, 255, 0.1) 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .stage {
+      position: absolute;
+      inset: 0;
+    }
+    .stage[hidden] { display: none; }
+
+    .title {
+      position: absolute;
+      left: 0;
+      top: 40px;
+      width: 1840px;
+      height: 52px;
+      font-size: 40px;
+      line-height: 52px;
+      font-weight: 500;
+      text-align: center;
+      color: var(--text-main);
+      pointer-events: none;
+    }
+
+    .panel img {
+      -webkit-user-drag: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* ========= 第 1 页：手机APP与眼镜连接 =========
+
+       Figma 节点 3870:5949（root canvas → panel-rel = root - 40）：
+       - title: panel-rel(0, 40, 1840×52)
+       - 左 手机 1：root(120, 190, 324×700) → panel-rel (80, 150)
+       - 左 手机 2（弹窗）：root(468, 190, 324×700) → panel-rel (428, 150)
+       - 高亮框 1：root(334, 322, 100×73) → panel-rel (294, 282)
+       - 高亮框 1 上方箭头：root(352, 255, 64×63.6) → panel-rel (312, 215)
+       - 高亮框 2：root(620, 782, 166×73) → panel-rel (580, 742)
+       - 高亮框 2 上方箭头：root(671, 712, 64×63.6) → panel-rel (631, 672)
+       - 右侧文字列表：img 容器 panel-rel(0, 132)，list root-rel(812, 18, 948×292)
+         → panel-rel (812, 150)
+    */
+
+    /* 两张手机截图 */
+    .stage-1 .phone-1 {
+      position: absolute;
+      left: 80px;
+      top: 150px;
+      width: 324px;
+      height: 700px;
+      object-fit: contain;
+      object-position: left top;
+      border-radius: 24px;
+    }
+    .stage-1 .phone-2 {
+      position: absolute;
+      left: 428px;
+      top: 150px;
+      width: 324px;
+      height: 700px;
+      object-fit: contain;
+      object-position: left top;
+      border-radius: 24px;
+    }
+
+    /* 两个高亮框（蓝色发光描边） */
+    .stage-1 .hl {
+      position: absolute;
+      box-sizing: border-box;
+      object-fit: contain;
+    }
+    .stage-1 .hl-1 {
+      left: 294px;
+      top: 282px;
+      width: 100px;
+      height: 73px;
+    }
+    .stage-1 .hl-2 {
+      left: 580px;
+      top: 742px;
+      width: 166px;
+      height: 73px;
+    }
+
+    /* 两个引导箭头 */
+    .stage-1 .arrow {
+      position: absolute;
+      object-fit: contain;
+    }
+    .stage-1 .arrow-1 {
+      left: 312px;
+      top: 215px;
+      width: 64px;
+      height: 63.6px;
+    }
+    .stage-1 .arrow-2 {
+      left: 631px;
+      top: 672px;
+      width: 64px;
+      height: 63.6px;
+    }
+
+    /* 右侧文字说明列表 */
+    .stage-1 .info {
+      position: absolute;
+      left: 812px;
+      top: 150px;
+      width: 948px;
+      color: #000;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 72.8px; /* 28 * 2.6 */
+    }
+    .stage-1 .info ul {
+      margin: 0;
+      padding-left: 42px;
+      list-style-type: disc;
+    }
+    .stage-1 .info li {
+      margin: 0;
+    }
+
+    /* ========= 第 2 页：手机APP与眼镜连接（蓝牙配对） =========
+
+       Figma 节点 4756:7808（panel-rel = root - 40）：
+       - 左 手机 1：root(120, 190, 324×700) → panel-rel (80, 150)   I2.1.1
+       - 左 手机 2：root(468, 190, 324×700) → panel-rel (428, 150)  I2.1.2
+       - 高亮框：root(270, 614, 166×73) → panel-rel (230, 574)
+       - 箭头：root(329, 611.4, 47.6×60.4) → panel-rel (289, 571.4)
+       - 右侧文字：(812, 150, 948×219)
+    */
+    .stage-2 .phone-1 {
+      position: absolute;
+      left: 80px;
+      top: 150px;
+      width: 324px;
+      height: 700px;
+      object-fit: contain;
+      object-position: left top;
+      border-radius: 24px;
+    }
+    .stage-2 .phone-2 {
+      position: absolute;
+      left: 428px;
+      top: 150px;
+      width: 324px;
+      height: 700px;
+      object-fit: contain;
+      object-position: left top;
+      border-radius: 24px;
+    }
+    .stage-2 .hl {
+      position: absolute;
+      left: 230px;
+      top: 574px;
+      width: 166px;
+      height: 73px;
+      box-sizing: border-box;
+      object-fit: contain;
+    }
+    .stage-2 .arrow {
+      position: absolute;
+      left: 289px;
+      top: 516.4px;
+      width: 47.6px;
+      height: 60.4px;
+      object-fit: contain;
+    }
+    .stage-2 .info {
+      position: absolute;
+      left: 812px;
+      top: 150px;
+      width: 948px;
+      color: #000;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 72.8px;
+    }
+    .stage-2 .info ul {
+      margin: 0;
+      padding-left: 42px;
+      list-style-type: disc;
+    }
+    .stage-2 .info li {
+      margin: 0;
+    }
+
+    /* ========= 第 3 页：手机APP触控板功能介绍 =========
+
+       Figma 节点 3870:6002（panel-rel = root - 40）：
+       - 左 手机 1：root(120, 190, 324×700) → panel-rel (80, 150)   I3.1.1
+       - 左 手机 2：root(468, 190, 324×700) → panel-rel (428, 150)  I3.1.2
+       - 高亮框 a：root(329, 453, 107×73) → panel-rel (289, 413)
+       - 箭头 a：  root(359, 448.4, 47.6×60.4) → panel-rel (319, 408.4)
+       - 高亮框 b：root(681, 453, 107×73) → panel-rel (641, 413)
+       - 箭头 b：  root(711, 448.4, 47.6×60.4) → panel-rel (671, 408.4)
+
+       右栏：
+       - 使用虚拟键盘输入 subtitle: root(812, 150)    → panel-rel (772, 110)
+       - 描述           : root(812, 205, 948×66) → panel-rel (772, 165)
+       - 切换与控制射线模式 subtitle: root(812, 319) → panel-rel (772, 279)
+       - 左 preview I3.3.1: root(812, 385, 313×208) → panel-rel (772, 345)
+       - 右 preview I3.3.2: root(1330, 385, 313×208) → panel-rel (1290, 345)
+       - 射线/飞鼠模式 sub: root(812, 616)  → panel-rel (772, 576)
+       - 触控板 sub      : root(1330, 616) → panel-rel (1290, 576)
+       - 戒指 desc       : root(803, 659, 454×237) → panel-rel (763, 619)
+       - 触控板 desc     : root(1320, 659, 440×124) → panel-rel (1280, 619)
+    */
+    .stage-3 .phone-1,
+    .stage-3 .phone-2 {
+      position: absolute;
+      top: 150px;
+      width: 324px;
+      height: 700px;
+      object-fit: contain;
+      object-position: left top;
+      border-radius: 24px;
+    }
+    .stage-3 .phone-1 { left: 80px; }
+    .stage-3 .phone-2 { left: 428px; }
+
+    .stage-3 .hl3 {
+      position: absolute;
+      top: 413px;
+      width: 107px;
+      height: 73px;
+      box-sizing: border-box;
+      object-fit: contain;
+    }
+    .stage-3 .hl3-a { left: 289px; }
+    .stage-3 .hl3-b { left: 641px; }
+
+    .stage-3 .arrow3 {
+      position: absolute;
+      top: 358.4px;
+      width: 47.6px;
+      height: 60.4px;
+      object-fit: contain;
+    }
+    .stage-3 .arrow3-a { left: 319px; }
+    .stage-3 .arrow3-b { left: 671px; }
+
+    /* 使用虚拟键盘输入 区块 */
+    .stage-3 .kb {
+      position: absolute;
+      left: 802px;
+      top: 144px;
+      width: 948px;
+      color: #000;
+    }
+    .stage-3 .kb h3 {
+      margin: 0 0 13px 0;
+      font-size: 32px;
+      line-height: 42px;
+      font-weight: 500;
+    }
+    .stage-3 .kb p {
+      margin: 0;
+      font-size: 28px;
+      line-height: 38px;
+      font-weight: 400;
+      color: #404040;
+    }
+
+    .stage-3 .ray-title {
+      position: absolute;
+      left: 802px;
+      top: 313px;
+      width: 948px;
+      margin: 0;
+      font-size: 32px;
+      line-height: 42px;
+      font-weight: 500;
+      color: #000;
+    }
+
+    .stage-3 .ray-prev {
+      position: absolute;
+      top: 379px;
+      width: 313px;
+      height: 208px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .stage-3 .ray-prev-1 { left: 802px; }
+    .stage-3 .ray-prev-2 { left: 1290px; }
+
+    .stage-3 .ray-sub {
+      position: absolute;
+      top: 610px;
+      margin: 0;
+      font-size: 26px;
+      line-height: 33px;
+      font-weight: 500;
+      color: #000;
+    }
+    .stage-3 .ray-sub-1 { left: 802px; width: 500px; }
+    .stage-3 .ray-sub-2 { left: 1290px; width: 300px; }
+
+    .stage-3 .ray-desc {
+      position: absolute;
+      top: 653px;
+      color: #404040;
+      font-size: 18px;
+      line-height: 28px;
+      font-weight: 400;
+    }
+    .stage-3 .ray-desc p {
+      margin: 0 0 6px 0;
+      padding-left: 14px;
+      text-indent: -14px;
+    }
+    .stage-3 .ray-desc p::before {
+      content: "·\00a0";
+      display: inline-block;
+      width: 14px;
+      text-indent: 0;
+    }
+    .stage-3 .ray-desc-1 { left: 802px; width: 454px; }
+    .stage-3 .ray-desc-2 { left: 1290px; width: 440px; }
+
+    /* ========= 共享底部多点指示器 ========= */
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      top: 952px;
+      width: 1840px;
+      height: 8px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(0, 0, 0, 0.32);
+      border-radius: 999px;
+      transition: width .25s ease, background-color .2s;
+      cursor: pointer;
+    }
+    .nav-dot.active {
+      width: 24px;
+      background: #3978f3;
+    }
+
+    .page-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(42px, 4.2vmin, 59px);
+      height: clamp(42px, 4.2vmin, 59px);
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.42);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #fff;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .2s ease, background-color .2s ease, transform .2s ease;
+      z-index: 10;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .page-arrow:hover {
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+      transform: translateY(-50%) scale(1.06);
+    }
+    .page-arrow.prev:hover svg { transform: translateX(-2px); }
+    .page-arrow.next:hover svg { transform: translateX(2px); }
+    .page-arrow:active { transform: translateY(-50%) scale(0.92); }
+    .page-arrow:disabled {
+      opacity: 0.35;
+      cursor: default;
+      pointer-events: none;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.08);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-50%) scale(0.88);
+    }
+    .page-arrow svg {
+      width: 38%;
+      height: 38%;
+      display: block;
+      transition: transform .2s ease;
+    }
+    .page-arrow.prev { left: clamp(40px, 6vmin, 96px); }
+    .page-arrow.next { right: clamp(40px, 6vmin, 96px); }
+  </style>
+</head>
+<body>
+
+  <div class="page" id="viewport">
+    <button type="button" class="page-arrow prev" id="arrowPrev" aria-label="上一页">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5L8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button type="button" class="page-arrow next" id="arrowNext" aria-label="下一页">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="canvas" id="canvas" aria-label="手机APP与眼镜连接 教程">
+      <div class="panel">
+
+        <!-- ===== 第 1 页：手机APP与眼镜连接 ===== -->
+        <section class="stage stage-1" data-page="1">
+          <div class="title">手机APP与眼镜连接</div>
+
+          <!-- 两张手机界面截图 -->
+          <img class="phone-1" loading="lazy" decoding="async" src="./phone-app/images/I1.1.1.png" alt="APP 首页">
+          <img class="phone-2" loading="lazy" decoding="async" src="./phone-app/images/I1.1.2.png" alt="发现新眼镜弹窗">
+
+          <!-- 高亮框 -->
+          <img class="hl hl-1" loading="lazy" decoding="async" src="./phone-app/images/I1.1.4框.png" alt="">
+          <img class="hl hl-2" loading="lazy" decoding="async" src="./phone-app/images/I1.1.5框.png" alt="">
+
+          <!-- 引导箭头 -->
+          <img class="arrow arrow-1" loading="lazy" decoding="async" src="./phone-app/images/1.1.3箭头.png" alt="">
+          <img class="arrow arrow-2" loading="lazy" decoding="async" src="./phone-app/images/1.1.3箭头.png" alt="">
+
+          <!-- 右侧文字 -->
+          <div class="info">
+            <ul>
+              <li>打开手机APP，保证AIR3处于开机状态</li>
+              <li>首页点击右上方的【连接】按钮，开始搜索眼镜</li>
+              <li>搜索到附近未配对的AIR3设备</li>
+              <li>确认眼镜的蓝牙地址后4位点击【连接】</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ===== 第 2 页：手机APP与眼镜连接（蓝牙配对） ===== -->
+        <section class="stage stage-2" data-page="2" hidden>
+          <div class="title">手机APP与眼镜连接</div>
+
+          <img class="phone-1" loading="lazy" decoding="async" src="./phone-app/images/I2.1.1.png" alt="蓝牙配对请求">
+          <img class="phone-2" loading="lazy" decoding="async" src="./phone-app/images/I2.1.2.png" alt="连接成功">
+
+          <img class="hl" loading="lazy" decoding="async" src="./phone-app/images/I1.1.5框.png" alt="">
+          <img class="arrow" loading="lazy" decoding="async" src="./phone-app/images/1.1.3箭头.png" alt="">
+
+          <div class="info">
+            <ul>
+              <li>点击连接后，手机和眼镜会弹出蓝牙配对请求</li>
+              <li>眼镜和手机都需要点击【配对】</li>
+              <li>连接成功后即可使用</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ===== 第 3 页：手机APP触控板功能介绍 ===== -->
+        <section class="stage stage-3" data-page="3" hidden>
+          <div class="title">手机APP触控板功能介绍</div>
+
+          <!-- 左：两台手机 -->
+          <img class="phone-1" loading="lazy" decoding="async" src="./phone-app/images/I3.1.1.png" alt="虚拟键盘 1">
+          <img class="phone-2" loading="lazy" decoding="async" src="./phone-app/images/I3.2.1.png" alt="虚拟键盘 2">
+
+          <!-- 高亮框（指向虚拟键盘按钮） -->
+          <img class="hl3 hl3-a" loading="lazy" decoding="async" src="./phone-app/images/I3.1.3k框.png" alt="">
+          <img class="hl3 hl3-b" loading="lazy" decoding="async" src="./phone-app/images/I3.1.3k框.png" alt="">
+
+          <!-- 引导箭头 -->
+          <img class="arrow3 arrow3-a" loading="lazy" decoding="async" src="./phone-app/images/1.1.3箭头.png" alt="">
+          <img class="arrow3 arrow3-b" loading="lazy" decoding="async" src="./phone-app/images/1.1.3箭头.png" alt="">
+
+          <!-- 右：上半 使用虚拟键盘输入 -->
+          <div class="kb">
+            <h3>使用虚拟键盘输入</h3>
+            <p>点击"虚拟键盘"按钮，手机App将弹出输入法键盘。此时，在眼镜端有输入框的界面，您可直接用手机键盘输入文字，内容将实时同步至眼镜</p>
+          </div>
+
+          <!-- 右：下半 切换与控制射线模式 -->
+          <h3 class="ray-title">切换与控制射线模式</h3>
+
+          <img class="ray-prev ray-prev-1" loading="lazy" decoding="async" src="./phone-app/images/I3.3.1.png" alt="">
+          <img class="ray-prev ray-prev-2" loading="lazy" decoding="async" src="./phone-app/images/I3.3.2.png" alt="">
+
+          <h4 class="ray-sub ray-sub-1">射线/飞鼠模式</h4>
+          <h4 class="ray-sub ray-sub-2">触控板</h4>
+
+          <div class="ray-desc ray-desc-1">
+            <p>戒指：长按功能键，校准画面和射线终点到视野中心；</p>
+            <p>点击Fn键，校准画面和射线终点到视野中心；</p>
+            <p>面前80%为空白区域时，支持点击触摸板确认，一键将射线、桌面/应用浮窗校准到面前，即如果没打开任何应用，桌面会到用户面前中心；</p>
+            <p>单击返回键，此时焦点在哪个应用上，就返回哪个应用的上一级</p>
+          </div>
+          <div class="ray-desc ray-desc-2">
+            <p>侧边滑动、顶部滑动，此时焦点在哪个应用上，就哪个应用响应，逻辑和2D模式下的Touchpad相同；</p>
+            <p>单击返回键，此时焦点在哪个应用上，就返回哪个应用的上一级</p>
+          </div>
+        </section>
+
+        <!-- 共享底部指示器 -->
+        <div class="bottom-nav" id="navDots"></div>
+
+      </div>
+      <img class="panel-icon" loading="lazy" decoding="async" src="./images/Vector.png" alt="返回首页" draggable="false" onclick="location.href='./main-page.html'">
+    </div>
+  </div>
+
+  <script>
+    /* === 1920×1080 等比缩放 === */
+    (function () {
+      const canvas = document.getElementById("canvas");
+      const BASE_W = 1920, BASE_H = 1080;
+      function updateScale() {
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        const scale = Math.min(vw / BASE_W, vh / BASE_H);
+        canvas.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+      }
+      window.addEventListener("resize", updateScale);
+      updateScale();
+    })();
+
+    /* === 翻页：左右拖拽 / 键盘 ←→ / 圆点点击 === */
+    (function () {
+      const stages = Array.from(document.querySelectorAll('.stage'));
+      const dotsBox = document.getElementById('navDots');
+      const viewport = document.getElementById('viewport');
+      const arrowPrev = document.getElementById('arrowPrev');
+      const arrowNext = document.getElementById('arrowNext');
+      const total = stages.length;
+      const SWIPE_THRESHOLD = 80;
+
+      stages.forEach(function (_, i) {
+        const dot = document.createElement('div');
+        dot.className = 'nav-dot';
+        dot.addEventListener('click', function () { go(i + 1); });
+        dotsBox.appendChild(dot);
+      });
+      const dots = Array.from(dotsBox.children);
+
+      function clamp(n) { return Math.max(1, Math.min(total, n)); }
+
+      function go(n) {
+        n = clamp(n);
+        stages.forEach(function (s, i) {
+          if (i + 1 === n) s.removeAttribute('hidden');
+          else s.setAttribute('hidden', '');
+        });
+        dots.forEach(function (d, i) { d.classList.toggle('active', i + 1 === n); });
+        if (arrowPrev) arrowPrev.disabled = (n <= 1);
+        if (arrowNext) arrowNext.disabled = (n >= total);
+        if (location.hash !== '#' + n) {
+          history.replaceState(null, '', '#' + n);
+        }
+      }
+
+      if (arrowPrev) arrowPrev.addEventListener('click', function () { go(currentPage() - 1); });
+      if (arrowNext) arrowNext.addEventListener('click', function () { go(currentPage() + 1); });
+
+      function parsePage() {
+        const m = (location.hash || '').match(/^#(\d+)$/);
+        if (!m) return 1;
+        const n = parseInt(m[1], 10);
+        if (!Number.isFinite(n) || n < 1 || n > total) return 1;
+        return n;
+      }
+      function currentPage() {
+        for (let i = 0; i < dots.length; i++) {
+          if (dots[i].classList.contains('active')) return i + 1;
+        }
+        return 1;
+      }
+
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') go(currentPage() - 1);
+        if (e.key === 'ArrowRight') go(currentPage() + 1);
+      });
+      window.addEventListener('hashchange', function () { go(parsePage()); });
+
+      const ANGLE_RATIO = 1.5;
+      const EDGE_DAMP = 0.3;
+      const EDGE_MAX = 80;
+      let dragging = false, startX = 0, startY = 0, deltaX = 0, deltaY = 0;
+      let activeStage = null;
+      function resetStageTransform(stage, animate) {
+        if (!stage) return;
+        stage.style.transition = animate ? 'transform .25s cubic-bezier(.2,.8,.2,1)' : 'none';
+        stage.style.transform = '';
+      }
+      function setStageDrag(stage, dx) {
+        if (!stage) return;
+        stage.style.transition = 'none';
+        stage.style.transform = 'translateX(' + dx + 'px)';
+      }
+      function pointerX(ev) {
+        if (ev.touches && ev.touches.length) return ev.touches[0].clientX;
+        if (ev.changedTouches && ev.changedTouches.length) return ev.changedTouches[0].clientX;
+        return ev.clientX;
+      }
+      function pointerY(ev) {
+        if (ev.touches && ev.touches.length) return ev.touches[0].clientY;
+        if (ev.changedTouches && ev.changedTouches.length) return ev.changedTouches[0].clientY;
+        return ev.clientY;
+      }
+      function dragStart(ev) {
+        if (total <= 1) return;
+        dragging = true;
+        startX = pointerX(ev);
+        startY = pointerY(ev);
+        deltaX = 0;
+        deltaY = 0;
+        activeStage = stages[currentPage() - 1] || null;
+      }
+      function dragMove(ev) {
+        if (!dragging) return;
+        deltaX = pointerX(ev) - startX;
+        deltaY = pointerY(ev) - startY;
+        if (!activeStage) return;
+        const absX = Math.abs(deltaX), absY = Math.abs(deltaY);
+        if (absX < absY * ANGLE_RATIO) { setStageDrag(activeStage, 0); return; }
+        const page = currentPage();
+        let visual = deltaX;
+        if ((page <= 1 && deltaX > 0) || (page >= total && deltaX < 0)) {
+          visual = deltaX * EDGE_DAMP;
+          if (visual > EDGE_MAX) visual = EDGE_MAX;
+          if (visual < -EDGE_MAX) visual = -EDGE_MAX;
+        }
+        setStageDrag(activeStage, visual);
+      }
+      function dragCancel() {
+        dragging = false;
+        deltaX = 0;
+        deltaY = 0;
+        resetStageTransform(activeStage, true);
+        activeStage = null;
+      }
+      function dragEnd() {
+        if (!dragging) return;
+        dragging = false;
+        const stage = activeStage;
+        activeStage = null;
+        const absX = Math.abs(deltaX), absY = Math.abs(deltaY);
+        const page = currentPage();
+        const goNext = deltaX < 0 && page < total;
+        const goPrev = deltaX > 0 && page > 1;
+        if (absX < SWIPE_THRESHOLD || absX < absY * ANGLE_RATIO || (!goNext && !goPrev)) {
+          resetStageTransform(stage, true);
+          deltaX = 0; deltaY = 0;
+          return;
+        }
+        resetStageTransform(stage, false);
+        if (deltaX < 0) go(page + 1);
+        else            go(page - 1);
+        deltaX = 0; deltaY = 0;
+      }
+      viewport.addEventListener('mousedown', dragStart);
+      viewport.addEventListener('mousemove', dragMove);
+      viewport.addEventListener('mouseup', dragEnd);
+      viewport.addEventListener('mouseleave', dragCancel);
+      viewport.addEventListener('touchstart', dragStart, { passive: true });
+      viewport.addEventListener('touchmove', dragMove, { passive: true });
+      viewport.addEventListener('touchend', dragEnd);
+      viewport.addEventListener('touchcancel', dragCancel);
+      viewport.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+      const WHEEL_THRESHOLD = 30;
+      const WHEEL_COOLDOWN = 500;
+      let wheelLockUntil = 0;
+      viewport.addEventListener('wheel', function (e) {
+        if (total <= 1) return;
+        const now = Date.now();
+        if (now < wheelLockUntil) { e.preventDefault(); return; }
+        const dx = e.deltaX, dy = e.deltaY;
+        const delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
+        if (Math.abs(delta) < WHEEL_THRESHOLD) return;
+        e.preventDefault();
+        wheelLockUntil = now + WHEEL_COOLDOWN;
+        if (delta > 0) go(currentPage() + 1);
+        else            go(currentPage() - 1);
+      }, { passive: false });
+
+      go(parsePage());
+    })();
+  </script>
+  <script src="./image-loader.js"></script>
+  <script src="./lightbox.js"></script>
+</body>
+</html>
