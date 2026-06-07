@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.ai.dao.ConversationLogDao">
+
+    <select id="get" resultType="com.bootdo.ai.domain.ConversationLogDO">
+        select
+            `id`,
+            `device_name` as deviceName,
+            `request_ip` as requestIp,
+            `conversation_type` as conversationType,
+            `conversation_content` as conversationContent,
+            `conversation_result` as conversationResult,
+            `model`,
+            `stream`,
+            `success`,
+            `elapsed_ms` as elapsedMs,
+            `gmt_create` as gmtCreate
+        from ai_conversation_log
+        where id = #{value}
+    </select>
+
+    <select id="list" resultType="com.bootdo.ai.domain.ConversationLogDO">
+        select
+            l.`id`,
+            l.`device_name` as deviceName,
+            l.`request_ip` as requestIp,
+            l.`conversation_type` as conversationType,
+            latest.`conversation_content` as conversationContent,
+            l.`conversation_result` as conversationResult,
+            l.`model`,
+            l.`stream`,
+            l.`success`,
+            l.`elapsed_ms` as elapsedMs,
+            l.`gmt_create` as gmtCreate
+        from ai_conversation_log l
+        inner join (
+            select
+                max(id) as id,
+                group_concat(conversation_content order by id separator '\n') as conversation_content
+            from ai_conversation_log
+            <where>
+                <if test="deviceName != null and deviceName != ''">
+                    and device_name like concat('%', #{deviceName}, '%')
+                </if>
+                <if test="conversationType != null and conversationType != ''">
+                    and conversation_type = #{conversationType}
+                </if>
+                <if test="conversationContent != null and conversationContent != ''">
+                    and conversation_content like concat('%', #{conversationContent}, '%')
+                </if>
+                <if test="success != null and success != ''">
+                    and success = #{success}
+                </if>
+            </where>
+            group by ifnull(nullif(device_name, ''), concat('UNKNOWN-', request_ip))
+        ) latest on l.id = latest.id
+        <where>
+            <if test="deviceName != null and deviceName != ''">
+                and l.device_name like concat('%', #{deviceName}, '%')
+            </if>
+            <if test="conversationType != null and conversationType != ''">
+                and l.conversation_type = #{conversationType}
+            </if>
+            <if test="conversationContent != null and conversationContent != ''">
+                and l.conversation_content like concat('%', #{conversationContent}, '%')
+            </if>
+            <if test="success != null and success != ''">
+                and l.success = #{success}
+            </if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by l.${sort} ${order}
+            </when>
+            <otherwise>
+                order by l.id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from (
+            select ifnull(nullif(device_name, ''), concat('UNKNOWN-', request_ip)) as device_key
+            from ai_conversation_log
+            <where>
+                <if test="deviceName != null and deviceName != ''">
+                    and device_name like concat('%', #{deviceName}, '%')
+                </if>
+                <if test="conversationType != null and conversationType != ''">
+                    and conversation_type = #{conversationType}
+                </if>
+                <if test="conversationContent != null and conversationContent != ''">
+                    and conversation_content like concat('%', #{conversationContent}, '%')
+                </if>
+                <if test="success != null and success != ''">
+                    and success = #{success}
+                </if>
+            </where>
+            group by ifnull(nullif(device_name, ''), concat('UNKNOWN-', request_ip))
+        ) t
+    </select>
+
+    <insert id="save" parameterType="com.bootdo.ai.domain.ConversationLogDO" useGeneratedKeys="true" keyProperty="id">
+        insert into ai_conversation_log
+        (
+            `device_name`,
+            `request_ip`,
+            `conversation_type`,
+            `conversation_content`,
+            `conversation_result`,
+            `model`,
+            `stream`,
+            `success`,
+            `elapsed_ms`,
+            `gmt_create`
+        )
+        values
+        (
+            #{deviceName},
+            #{requestIp},
+            #{conversationType},
+            #{conversationContent},
+            #{conversationResult},
+            #{model},
+            #{stream},
+            #{success},
+            #{elapsedMs},
+            #{gmtCreate}
+        )
+    </insert>
+
+    <delete id="remove">
+        delete from ai_conversation_log where id = #{value}
+    </delete>
+
+    <delete id="batchRemove">
+        delete from ai_conversation_log where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

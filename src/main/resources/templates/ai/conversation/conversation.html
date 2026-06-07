@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<style>
+    .conversation-cell {
+        max-height: 180px;
+        overflow: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+        line-height: 1.6;
+        padding: 4px 0;
+    }
+</style>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-body">
+                    <div class="fixed-table-toolbar">
+                        <div class="columns pull-left">
+                            <button type="button" class="btn btn-danger" onclick="batchRemove()">
+                                <i class="fa fa-trash" aria-hidden="true"></i>删除
+                            </button>
+                        </div>
+                        <div class="columns pull-right" role="group">
+                            <button class="btn btn-success" onclick="reLoad()">
+                                <i class="fa fa-search" aria-hidden="true"></i>查询
+                            </button>
+                        </div>
+                        <div class="pull-right search col-md-2">
+                            <input id="searchContent" type="text" class="form-control" placeholder="对话内容">
+                        </div>
+                        <div class="pull-right search col-md-2">
+                            <select id="searchType" class="form-control">
+                                <option value="">全部类型</option>
+                                <option value="TEXT">文本</option>
+                                <option value="IMAGE">图片</option>
+                                <option value="VIDEO">视频</option>
+                            </select>
+                        </div>
+                        <div class="pull-right search col-md-2 nopadding">
+                            <input id="searchDeviceName" type="text" class="form-control" placeholder="设备名称">
+                        </div>
+                    </div>
+                    <table id="exampleTable" data-mobile-responsive="true"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:include="include :: footer"></div>
+    <script type="text/javascript" src="/js/appjs/ai/conversation/conversation.js"></script>
+</body>
+</html>

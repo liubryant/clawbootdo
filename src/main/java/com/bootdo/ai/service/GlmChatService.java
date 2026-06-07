@@ -104,14 +104,12 @@ public class GlmChatService {
         }
     }
 
-    public void nonStreamCompletion(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
+    public String nonStreamCompletion(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
         if (shouldUseVideoGenerationRoute(request)) {
-            nonStreamVideoCompletion(request, response);
-            return;
+            return nonStreamVideoCompletion(request, response);
         }
         if (shouldUseImageGenerationRoute(request)) {
-            nonStreamImageCompletion(request, response);
-            return;
+            return nonStreamImageCompletion(request, response);
         }
 
         HttpURLConnection conn = openChatConnection(buildUpstreamPayload(request, false), false);
@@ -122,8 +120,10 @@ public class GlmChatService {
         response.setStatus(code >= 400 ? 502 : 200);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(code >= 400 ? errorJson("upstream_error", "chat upstream error: HTTP " + code, body) : convertToOpenAiResponse(body, request));
+        String result = code >= 400 ? errorJson("upstream_error", "chat upstream error: HTTP " + code, body) : convertToOpenAiResponse(body, request);
+        response.getWriter().write(result);
         conn.disconnect();
+        return result;
     }
 
     public JSONObject buildTokenUsage(ChatCompletionRequest request) throws IOException {
@@ -212,7 +212,7 @@ public class GlmChatService {
         }
     }
 
-    private void nonStreamImageCompletion(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
+    private String nonStreamImageCompletion(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
         HttpURLConnection conn = openImageConnection(buildImagePayload(request));
         int code = conn.getResponseCode();
         InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
@@ -221,24 +221,30 @@ public class GlmChatService {
         response.setStatus(code >= 400 ? 502 : 200);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(code >= 400 ? errorJson("upstream_error", "GLM image upstream error: HTTP " + code, body) : convertImageResponseToOpenAiJson(body, request).toJSONString());
+        String result = code >= 400 ? errorJson("upstream_error", "GLM image upstream error: HTTP " + code, body) : convertImageResponseToOpenAiJson(body, request).toJSONString();
+        response.getWriter().write(result);
         conn.disconnect();
+        return result;
     }
 
-    public void videoGenerations(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
+    public String videoGenerations(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
         JSONObject submitted = submitVideoGeneration(request);
+        String result = submitted.toJSONString();
         response.setStatus(200);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(submitted.toJSONString());
+        response.getWriter().write(result);
+        return result;
     }
 
-    public void videoGenerationResult(String taskId, HttpServletResponse response) throws IOException {
+    public String videoGenerationResult(String taskId, HttpServletResponse response) throws IOException {
         JSONObject result = fetchVideoGenerationResult(taskId);
+        String body = result.toJSONString();
         response.setStatus(200);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(result.toJSONString());
+        response.getWriter().write(body);
+        return body;
     }
 
     private void streamVideoCompletion(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
@@ -273,12 +279,14 @@ public class GlmChatService {
         }
     }
 
-    private void nonStreamVideoCompletion(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
+    private String nonStreamVideoCompletion(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
         JSONObject upstream = awaitVideoGenerationResult(request);
+        String result = convertVideoResponseToOpenAiJson(upstream == null ? "{}" : upstream.toJSONString(), request).toJSONString();
         response.setStatus(200);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(convertVideoResponseToOpenAiJson(upstream == null ? "{}" : upstream.toJSONString(), request).toJSONString());
+        response.getWriter().write(result);
+        return result;
     }
 
     private HttpURLConnection openChatConnection(String payload, boolean stream) throws IOException {

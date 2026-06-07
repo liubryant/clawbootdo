@@ -1,8 +1,11 @@
 package com.bootdo.ai.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bootdo.ai.config.AiProperties;
+import com.bootdo.ai.domain.ConversationLogDO;
 import com.bootdo.ai.dto.ChatCompletionRequest;
+import com.bootdo.ai.service.ConversationLogService;
 import com.bootdo.ai.service.GlmChatService;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,16 +18,23 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 public class OpenAiCompatController {
 
     private final GlmChatService glmChatService;
     private final AiProperties aiProperties;
+    private final ConversationLogService conversationLogService;
 
-    public OpenAiCompatController(GlmChatService glmChatService, AiProperties aiProperties) {
+    public OpenAiCompatController(GlmChatService glmChatService,
+                                  AiProperties aiProperties,
+                                  ConversationLogService conversationLogService) {
         this.glmChatService = glmChatService;
         this.aiProperties = aiProperties;
+        this.conversationLogService = conversationLogService;
     }
 
     @PostMapping("/v1/chat/completions")
@@ -57,10 +67,25 @@ public class OpenAiCompatController {
         }
 
         boolean stream = request.getStream() == null || request.getStream();
-        if (stream) {
-            glmChatService.streamCompletion(request, response);
-        } else {
-            glmChatService.nonStreamCompletion(request, response);
+        long start = System.currentTimeMillis();
+        String result = "";
+        boolean success = false;
+        try {
+            if (stream) {
+                glmChatService.streamCompletion(request, response);
+                result = "流式响应已完成";
+            } else {
+                result = glmChatService.nonStreamCompletion(request, response);
+            }
+            success = true;
+        } catch (IOException ex) {
+            result = "异常：" + ex.getMessage();
+            throw ex;
+        } catch (RuntimeException ex) {
+            result = "异常：" + ex.getMessage();
+            throw ex;
+        } finally {
+            saveConversationLog(httpRequest, request, detectConversationType(request), stream, success, result, start);
         }
     }
 
@@ -94,7 +119,21 @@ public class OpenAiCompatController {
             }
         }
 
-        glmChatService.videoGenerations(request, response);
+        long start = System.currentTimeMillis();
+        String result = "";
+        boolean success = false;
+        try {
+            result = glmChatService.videoGenerations(request, response);
+            success = true;
+        } catch (IOException ex) {
+            result = "异常：" + ex.getMessage();
+            throw ex;
+        } catch (RuntimeException ex) {
+            result = "异常：" + ex.getMessage();
+            throw ex;
+        } finally {
+            saveConversationLog(httpRequest, request, "VIDEO", false, success, result, start);
+        }
     }
 
     @GetMapping("/v1/videos/generations/{taskId}")
@@ -121,7 +160,23 @@ public class OpenAiCompatController {
             }
         }
 
-        glmChatService.videoGenerationResult(taskId, response);
+        long start = System.currentTimeMillis();
+        String result = "";
+        boolean success = false;
+        try {
+            result = glmChatService.videoGenerationResult(taskId, response);
+            success = true;
+        } catch (IOException ex) {
+            result = "异常：" + ex.getMessage();
+            throw ex;
+        } catch (RuntimeException ex) {
+            result = "异常：" + ex.getMessage();
+            throw ex;
+        } finally {
+            ChatCompletionRequest logRequest = new ChatCompletionRequest();
+            logRequest.setPrompt("查询视频任务：" + taskId);
+            saveConversationLog(httpRequest, logRequest, "VIDEO", false, success, result, start);
+        }
     }
 
     @PostMapping("/v1/token/usage")
@@ -174,6 +229,170 @@ public class OpenAiCompatController {
 
     private String safeTrim(String value) {
         return value == null ? "" : value.trim();
+    }
+
+    private void saveConversationLog(HttpServletRequest httpRequest,
+                                     ChatCompletionRequest request,
+                                     String conversationType,
+                                     boolean stream,
+                                     boolean success,
+                                     String result,
+                                     long start) {
+        ConversationLogDO log = new ConversationLogDO();
+        log.setDeviceName(resolveDeviceName(httpRequest));
+        log.setRequestIp(resolveRequestIp(httpRequest));
+        log.setConversationType(conversationType);
+        log.setConversationContent(clip(resolveConversationContent(request), 8000));
+        log.setConversationResult(clip(result, 8000));
+        log.setModel(request == null ? null : request.getModel());
+        log.setStream(stream ? 1 : 0);
+        log.setSuccess(success ? 1 : 0);
+        log.setElapsedMs((int) Math.min(Integer.MAX_VALUE, Math.max(0, System.currentTimeMillis() - start)));
+        log.setGmtCreate(new Date());
+        conversationLogService.save(log);
+    }
+
+    private String detectConversationType(ChatCompletionRequest request) {
+        if (request == null) {
+            return "TEXT";
+        }
+        String responseMode = safeTrim(request.getResponseMode()).toLowerCase();
+        if ("video_only".equals(responseMode)) {
+            return "VIDEO";
+        }
+        if ("image_only".equals(responseMode)) {
+            return "IMAGE";
+        }
+        String model = safeTrim(request.getModel());
+        if ("glm-image".equalsIgnoreCase(model)) {
+            return "IMAGE";
+        }
+        return "TEXT";
+    }
+
+    private String resolveConversationContent(ChatCompletionRequest request) {
+        if (request == null) {
+            return "";
+        }
+        String prompt = safeTrim(request.getPrompt());
+        if (!prompt.isEmpty()) {
+            return "1. " + prompt;
+        }
+        if (request.getMessages() == null || request.getMessages().isEmpty()) {
+            return "";
+        }
+        StringBuilder builder = new StringBuilder();
+        int index = appendMessages(builder, request.getMessages(), true);
+        if (index == 0) {
+            appendMessages(builder, request.getMessages(), false);
+        }
+        return builder.toString();
+    }
+
+    private int appendMessages(StringBuilder builder, List<ChatCompletionRequest.Message> messages, boolean userOnly) {
+        int index = 0;
+        for (ChatCompletionRequest.Message message : messages) {
+            if (message == null) {
+                continue;
+            }
+            String role = safeTrim(message.getRole());
+            if (userOnly && !"user".equalsIgnoreCase(role)) {
+                continue;
+            }
+            Object content = message.getContent();
+            if (content == null) {
+                continue;
+            }
+            if (builder.length() > 0) {
+                builder.append('\n');
+            }
+            index++;
+            builder.append(index).append(". ");
+            if (!role.isEmpty()) {
+                builder.append(role).append(": ");
+            }
+            builder.append(contentToText(content));
+        }
+        return index;
+    }
+
+    private String contentToText(Object content) {
+        if (content instanceof String) {
+            return safeTrim((String) content);
+        }
+        if (content instanceof List) {
+            StringBuilder builder = new StringBuilder();
+            List<?> blocks = (List<?>) content;
+            for (Object block : blocks) {
+                if (block == null) {
+                    continue;
+                }
+                if (builder.length() > 0) {
+                    builder.append(" | ");
+                }
+                builder.append(blockToText(block));
+            }
+            return builder.toString();
+        }
+        return JSON.toJSONString(content);
+    }
+
+    private String blockToText(Object block) {
+        if (!(block instanceof Map)) {
+            return JSON.toJSONString(block);
+        }
+        Map<?, ?> map = (Map<?, ?>) block;
+        Object type = map.get("type");
+        Object text = map.get("text");
+        if (text != null) {
+            return safeTrim(String.valueOf(type)) + ": " + text;
+        }
+        Object imageUrl = map.get("image_url");
+        if (imageUrl != null) {
+            return safeTrim(String.valueOf(type)) + ": " + JSON.toJSONString(imageUrl);
+        }
+        return JSON.toJSONString(block);
+    }
+
+    private String resolveDeviceName(HttpServletRequest request) {
+        String value = firstNotEmpty(
+                request.getHeader("X-Device-Name"),
+                request.getHeader("Device-Name"),
+                request.getHeader("X-Device-Model"),
+                request.getHeader("X-Client-Device"),
+                request.getHeader("User-Agent"));
+        return clip(safeTrim(value), 128);
+    }
+
+    private String resolveRequestIp(HttpServletRequest request) {
+        String ip = firstNotEmpty(
+                request.getHeader("X-Forwarded-For"),
+                request.getHeader("X-Real-IP"),
+                request.getRemoteAddr());
+        if (ip != null && ip.contains(",")) {
+            ip = ip.substring(0, ip.indexOf(","));
+        }
+        return clip(safeTrim(ip), 64);
+    }
+
+    private String firstNotEmpty(String... values) {
+        if (values == null) {
+            return "";
+        }
+        for (String value : values) {
+            if (!safeTrim(value).isEmpty()) {
+                return value;
+            }
+        }
+        return "";
+    }
+
+    private String clip(String value, int maxLength) {
+        String safe = value == null ? "" : value;
+        if (maxLength <= 0 || safe.length() <= maxLength) {
+            return safe;
+        }
+        return safe.substring(0, maxLength);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
