@@ -1,8 +1,10 @@
 package com.bootdo.ai.dto;
 
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +18,11 @@ public class ChatCompletionRequest {
     private Boolean withAudio;
     private String size;
     private Integer fps;
+    private String deviceName;
+    private String deviceId;
+    private String clientId;
+    private String sessionId;
+    private Map<String, Object> extras = new HashMap<>();
     private List<Message> messages = new ArrayList<>();
     private List<Map<String, Object>> tools = new ArrayList<>();
     @JsonProperty("tool_choice")
@@ -85,6 +92,48 @@ public class ChatCompletionRequest {
 
     public void setFps(Integer fps) {
         this.fps = fps;
+    }
+
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
+
+    public String getExtraString(String key) {
+        Object value = extras.get(key);
+        return value == null ? null : String.valueOf(value);
+    }
+
+    @JsonAnySetter
+    public void setExtra(String key, Object value) {
+        extras.put(key, value);
     }
 
     public List<Message> getMessages() {

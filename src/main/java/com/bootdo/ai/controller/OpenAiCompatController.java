@@ -239,8 +239,9 @@ public class OpenAiCompatController {
                                      String result,
                                      long start) {
         ConversationLogDO log = new ConversationLogDO();
-        log.setDeviceName(resolveDeviceName(httpRequest));
-        log.setRequestIp(resolveRequestIp(httpRequest));
+        String requestIp = resolveRequestIp(httpRequest);
+        log.setDeviceName(resolveDeviceName(httpRequest, request, requestIp));
+        log.setRequestIp(requestIp);
         log.setConversationType(conversationType);
         log.setConversationContent(clip(resolveConversationContent(request), 8000));
         log.setConversationResult(clip(result, 8000));
@@ -354,14 +355,114 @@ public class OpenAiCompatController {
         return JSON.toJSONString(block);
     }
 
-    private String resolveDeviceName(HttpServletRequest request) {
+    private String resolveDeviceName(HttpServletRequest httpRequest,
+                                     ChatCompletionRequest request,
+                                     String requestIp) {
         String value = firstNotEmpty(
-                request.getHeader("X-Device-Name"),
-                request.getHeader("Device-Name"),
-                request.getHeader("X-Device-Model"),
-                request.getHeader("X-Client-Device"),
-                request.getHeader("User-Agent"));
+                httpRequest.getHeader("X-Device-Name"),
+                httpRequest.getHeader("Device-Name"),
+                httpRequest.getHeader("X-Device-ID"),
+                httpRequest.getHeader("X-Device-Model"),
+                httpRequest.getHeader("X-Client-Device"),
+                httpRequest.getHeader("X-Client-ID"),
+                httpRequest.getHeader("X-Session-ID"),
+                resolveRequestDeviceName(request),
+                resolveSenderDeviceName(request),
+                requestIp);
         return clip(safeTrim(value), 128);
+    }
+
+    private String resolveRequestDeviceName(ChatCompletionRequest request) {
+        if (request == null) {
+            return "";
+        }
+        return firstNotEmpty(
+                request.getDeviceName(),
+                request.getDeviceId(),
+                request.getClientId(),
+                request.getSessionId(),
+                request.getExtraString("device_name"),
+                request.getExtraString("device"),
+                request.getExtraString("device_id"),
+                request.getExtraString("client_id"),
+                request.getExtraString("session_id"),
+                request.getExtraString("sessionKey"),
+                request.getExtraString("session_key"));
+    }
+
+    private String resolveSenderDeviceName(ChatCompletionRequest request) {
+        if (request == null || request.getMessages() == null || request.getMessages().isEmpty()) {
+            return "";
+        }
+        for (int i = request.getMessages().size() - 1; i >= 0; i--) {
+            ChatCompletionRequest.Message message = request.getMessages().get(i);
+            if (message == null || !"user".equalsIgnoreCase(safeTrim(message.getRole()))) {
+                continue;
+            }
+            String metadata = extractSenderMetadata(contentToText(message.getContent()));
+            if (!metadata.isEmpty()) {
+                return metadata;
+            }
+        }
+        return "";
+    }
+
+    private String extractSenderMetadata(String text) {
+        String safe = safeTrim(text);
+        int marker = safe.indexOf("Sender (untrusted metadata):");
+        if (marker < 0) {
+            return "";
+        }
+        int jsonStart = safe.indexOf('{', marker);
+        if (jsonStart < 0) {
+            return "";
+        }
+        int depth = 0;
+        boolean inString = false;
+        boolean escaped = false;
+        for (int i = jsonStart; i < safe.length(); i++) {
+            char ch = safe.charAt(i);
+            if (inString) {
+                if (escaped) {
+                    escaped = false;
+                } else if (ch == '\\') {
+                    escaped = true;
+                } else if (ch == '"') {
+                    inString = false;
+                }
+                continue;
+            }
+            if (ch == '"') {
+                inString = true;
+            } else if (ch == '{') {
+                depth++;
+            } else if (ch == '}') {
+                depth--;
+                if (depth == 0) {
+                    return senderMetadataName(safe.substring(jsonStart, i + 1));
+                }
+            }
+        }
+        return "";
+    }
+
+    private String senderMetadataName(String json) {
+        try {
+            JSONObject metadata = JSON.parseObject(json);
+            return firstNotEmpty(
+                    metadata.getString("deviceName"),
+                    metadata.getString("device_name"),
+                    metadata.getString("deviceId"),
+                    metadata.getString("device_id"),
+                    metadata.getString("sessionKey"),
+                    metadata.getString("session_key"),
+                    metadata.getString("sessionId"),
+                    metadata.getString("session_id"),
+                    metadata.getString("clientId"),
+                    metadata.getString("client_id"));
+        } catch (Exception ignored) {
+            return "";
+        }
     }
 
     private String resolveRequestIp(HttpServletRequest request) {
