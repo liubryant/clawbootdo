@@ -86,3 +86,12 @@ ai:
     # 拉取 /api/info 的超时建议设置短一些，避免卡住刷新线程
     apiInfoConnectTimeoutMs: 2000
     apiInfoReadTimeoutMs: 3000
+
+sms:
+  aliyun:
+    enabled: true
+    endpoint: dysmsapi.aliyuncs.com
+    signName: 深圳市春江月明科技
+    templateCode: SMS_507785034
+    codeExpireSeconds: 300
+    sendIntervalSeconds: 60
