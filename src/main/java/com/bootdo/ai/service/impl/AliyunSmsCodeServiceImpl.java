@@ -66,6 +66,41 @@ public class AliyunSmsCodeServiceImpl implements SmsCodeService {
         return expireSeconds;
     }
 
+    @Override
+    public boolean verifyLoginCode(String phone, String code) {
+        if (StringUtils.isBlank(code)) {
+            return false;
+        }
+        String normalizedPhone = normalizePhone(phone);
+        String codeKey = CODE_PREFIX + normalizedPhone;
+        String savedCode = getCode(codeKey);
+        if (savedCode == null || !savedCode.equals(code.trim())) {
+            return false;
+        }
+        deleteCode(codeKey);
+        return true;
+    }
+
+    private String getCode(String codeKey) {
+        try {
+            return redisTemplate.opsForValue().get(codeKey);
+        } catch (RuntimeException ex) {
+            ExpiringValue value = localCodeCache.get(codeKey);
+            if (value == null || value.isExpired()) {
+                return null;
+            }
+            return value.value;
+        }
+    }
+
+    private void deleteCode(String codeKey) {
+        try {
+            redisTemplate.delete(codeKey);
+        } catch (RuntimeException ex) {
+            localCodeCache.remove(codeKey);
+        }
+    }
+
     private boolean isSendLimited(String limitKey) {
         try {
             return Boolean.TRUE.equals(redisTemplate.hasKey(limitKey));

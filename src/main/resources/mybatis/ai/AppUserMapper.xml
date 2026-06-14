@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.ai.dao.AppUserDao">
+
+    <select id="getByPhone" resultType="com.bootdo.ai.domain.AppUserDO">
+        select
+            `id`,
+            `phone`,
+            `password`,
+            `device_model` as deviceModel,
+            `os_version` as osVersion,
+            `app_name` as appName,
+            `gmt_create` as gmtCreate,
+            `gmt_modified` as gmtModified
+        from ai_app_user
+        where phone = #{value}
+        limit 1
+    </select>
+
+    <insert id="save" parameterType="com.bootdo.ai.domain.AppUserDO" useGeneratedKeys="true" keyProperty="id">
+        insert into ai_app_user
+        (`phone`, `password`, `device_model`, `os_version`, `app_name`, `gmt_create`, `gmt_modified`)
+        values
+        (#{phone}, #{password}, #{deviceModel}, #{osVersion}, #{appName}, #{gmtCreate}, #{gmtModified})
+    </insert>
+
+    <update id="updatePassword">
+        update ai_app_user
+        set `password` = #{password}, `gmt_modified` = #{gmtModified}
+        where id = #{id}
+    </update>
+
+    <update id="updateLoginInfo">
+        update ai_app_user
+        set `device_model` = #{deviceModel},
+            `os_version` = #{osVersion},
+            `app_name` = #{appName},
+            `gmt_modified` = #{gmtModified}
+        where id = #{id}
+    </update>
+
+    <select id="list" resultType="com.bootdo.ai.domain.AppUserDO">
+        select
+            `id`,
+            `phone`,
+            `password`,
+            `device_model` as deviceModel,
+            `os_version` as osVersion,
+            `app_name` as appName,
+            `gmt_create` as gmtCreate,
+            `gmt_modified` as gmtModified
+        from ai_app_user
+        <where>
+            <if test="phone != null and phone != ''">
+                and phone like concat('%', #{phone}, '%')
+            </if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from ai_app_user
+        <where>
+            <if test="phone != null and phone != ''">
+                and phone like concat('%', #{phone}, '%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="remove">
+        delete from ai_app_user where id = #{value}
+    </delete>
+
+    <delete id="batchRemove">
+        delete from ai_app_user where id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
