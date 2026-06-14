@@ -88,6 +88,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/v1/videos/generations", "anon");
         filterChainDefinitionMap.put("/v1/videos/generations/**", "anon");
         filterChainDefinitionMap.put("/v1/token/usage", "anon");
+        filterChainDefinitionMap.put("/api/sounds/**", "anon");
         filterChainDefinitionMap.put("/im/bot/login-code", "anon");
         filterChainDefinitionMap.put("/im/bot/login-by-code", "anon");
         filterChainDefinitionMap.put("/im/bot/login-by-password", "anon");

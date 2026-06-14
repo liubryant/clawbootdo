@@ -1,5 +1,7 @@
 bootdo:
   uploadPath: /var/uploaded_files/
+iossleep:
+  soundRoot: file:/home/repo/bootdo/target/sleep_sounds/
 logging:
   level:
     root: error
