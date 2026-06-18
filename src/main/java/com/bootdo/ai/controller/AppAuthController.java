@@ -2,6 +2,7 @@ package com.bootdo.ai.controller;
 
 import com.bootdo.ai.dto.LoginByCodeRequest;
 import com.bootdo.ai.dto.LoginByPasswordRequest;
+import com.bootdo.ai.dto.RemoveAccountRequest;
 import com.bootdo.ai.dto.SetPasswordRequest;
 import com.bootdo.ai.service.AppUserService;
 import com.bootdo.ai.vo.AppDeviceInfo;
@@ -55,6 +56,21 @@ public class AppAuthController {
         }
         try {
             return R.ok("密码设置成功").put("data", appUserService.setPassword(request.getPhone(), request.getCode(), request.getPassword()));
+        } catch (IllegalArgumentException ex) {
+            return R.error(400, ex.getMessage());
+        } catch (RuntimeException ex) {
+            return R.error(500, ex.getMessage());
+        }
+    }
+
+    @PostMapping("/im/bot/remove_account")
+    public R removeAccount(@RequestBody(required = false) RemoveAccountRequest request) {
+        if (request == null) {
+            return R.error(400, "Request body is required");
+        }
+        try {
+            appUserService.removeAccount(request.getPhone(), request.getCode());
+            return R.ok("账号已注销");
         } catch (IllegalArgumentException ex) {
             return R.error(400, ex.getMessage());
         } catch (RuntimeException ex) {

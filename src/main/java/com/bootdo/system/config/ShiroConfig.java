@@ -93,6 +93,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/im/bot/login-by-code", "anon");
         filterChainDefinitionMap.put("/im/bot/login-by-password", "anon");
         filterChainDefinitionMap.put("/im/bot/set-password", "anon");
+        filterChainDefinitionMap.put("/im/bot/remove_account", "anon");
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/blog", "anon");

@@ -116,6 +116,21 @@ public class AppUserServiceImpl implements AppUserService {
     }
 
     @Override
+    public void removeAccount(String phone, String code) {
+        String normalizedPhone = normalizePhone(phone);
+        if (!MAINLAND_PHONE.matcher(normalizedPhone).matches()) {
+            throw new IllegalArgumentException("Invalid phone number");
+        }
+        if (!smsCodeService.verifyLoginCode(normalizedPhone, code)) {
+            throw new IllegalArgumentException("验证码错误或已过期");
+        }
+        if (appUserDao.getByPhone(normalizedPhone) == null) {
+            throw new IllegalArgumentException("账号不存在");
+        }
+        appUserDao.removeByPhone(normalizedPhone);
+    }
+
+    @Override
     public PageDO<AppUserDO> queryList(Query query) {
         int total = appUserDao.count(query);
         List<AppUserDO> rows = appUserDao.list(query);

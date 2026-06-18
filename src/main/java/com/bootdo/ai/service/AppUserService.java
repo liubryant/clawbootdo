@@ -23,6 +23,11 @@ public interface AppUserService {
     AppUserLoginResult setPassword(String phone, String code, String password);
 
     /**
+     * App 端用户注销账号。需通过短信验证码确认身份，删除后账号及登录态永久失效。
+     */
+    void removeAccount(String phone, String code);
+
+    /**
      * 后台管理：分页查询 App 注册用户列表。
      */
     PageDO<AppUserDO> queryList(Query query);

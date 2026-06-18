@@ -89,4 +89,8 @@
         </foreach>
     </delete>
 
+    <delete id="removeByPhone">
+        delete from ai_app_user where phone = #{value}
+    </delete>
+
 </mapper>
