@@ -43,6 +43,10 @@ public class SoundResourceController {
         if (!manifest.exists()) {
             manifest = resourceLoader.getResource(soundRootPath() + "sounds_server_manifest.json");
         }
+        if (!manifest.exists()) {
+            soundIndex = Collections.emptyMap();
+            return;
+        }
 
         try (InputStream inputStream = manifest.getInputStream()) {
             String json = readUtf8(inputStream);

@@ -37,7 +37,7 @@ public class WebLogAspect {
 //        CLASS_METHOD : com.bootdo.system.controller.UserController.save
         logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "."
                 + joinPoint.getSignature().getName());
-        logger.info("参数 : " + Arrays.toString(joinPoint.getArgs()));
+        logger.info("参数 : " + Arrays.toString(sanitizeArgs(joinPoint.getArgs())));
 //        loggger.info("参数 : " + joinPoint.getArgs());
 
     }
@@ -54,5 +54,16 @@ public class WebLogAspect {
         Object ob = pjp.proceed();// ob 为方法的返回值
         logger.info("耗时 : " + (System.currentTimeMillis() - startTime));
         return ob;
+    }
+
+    private Object[] sanitizeArgs(Object[] args) {
+        Object[] sanitized = Arrays.copyOf(args, args.length);
+        for (int i = 0; i < sanitized.length; i++) {
+            if (sanitized[i] instanceof String
+                    && ((String) sanitized[i]).regionMatches(true, 0, "Bearer ", 0, 7)) {
+                sanitized[i] = "Bearer ***";
+            }
+        }
+        return sanitized;
     }
 }

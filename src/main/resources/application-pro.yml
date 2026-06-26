@@ -1,7 +1,5 @@
 bootdo:
   uploadPath: /var/uploaded_files/
-iossleep:
-  soundRoot: file:/home/repo/bootdo/target/sleep_sounds/
 logging:
   level:
     root: error
@@ -81,3 +79,23 @@ ai:
     # 拉取 /api/info 的超时建议设置短一些，避免卡住刷新线程
     apiInfoConnectTimeoutMs: 2000
     apiInfoReadTimeoutMs: 3000
+
+navi:
+  auth:
+    tokenSecret: ${NAVI_AUTH_TOKEN_SECRET:}
+    tokenTtlSeconds: 2592000
+  vip:
+    # wechat 表示启用真实支付模式；微信和支付宝按客户端 payChannel 分流
+    mode: wechat
+  wechat:
+    appId: wx4ac470d6bef3de2f
+    merchantId: 1645114257
+    apiV3Key: ${NAVI_WECHAT_API_V3_KEY:}
+    merchantSerialNo: ${NAVI_WECHAT_SERIAL_NO:}
+    privateKeyPath: ${NAVI_WECHAT_PRIVATE_KEY_PATH:config/wechat/apiclient_key.pem}
+    notifyUrl: ${NAVI_WECHAT_NOTIFY_URL:https://www.cjym123.cn/im/bot/navi/vip/notify}
+  alipay:
+    appId: "2021006167677042"
+    privateKeyPath: ${NAVI_ALIPAY_PRIVATE_KEY_PATH:config/alipay/app_private_key.pem}
+    publicKeyPath: ${NAVI_ALIPAY_PUBLIC_KEY_PATH:config/alipay/alipay_public_key.pem}
+    notifyUrl: ${NAVI_ALIPAY_NOTIFY_URL:https://www.cjym123.cn/im/bot/navi/vip/alipay/notify}

@@ -3,6 +3,7 @@ package com.bootdo.ai.vo;
 public class AppUserLoginResult {
     private String phone;
     private boolean newUser;
+    private String accessToken;
 
     public AppUserLoginResult(String phone, boolean newUser) {
         this.phone = phone;
@@ -23,5 +24,13 @@ public class AppUserLoginResult {
 
     public void setNewUser(boolean newUser) {
         this.newUser = newUser;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 }

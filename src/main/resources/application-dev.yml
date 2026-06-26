@@ -87,6 +87,34 @@ ai:
     apiInfoConnectTimeoutMs: 2000
     apiInfoReadTimeoutMs: 3000
 
+navi:
+  auth:
+    tokenSecret: local-navi-payment-token-secret-change-before-production
+    tokenTtlSeconds: 2592000
+  vip:
+    # mock: 本地不调用微信、直接置为已支付（旧行为）；wechat: 真实调用微信支付APIv3下单
+    mode: wechat
+  wechat:
+    appId: wx4ac470d6bef3de2f
+    merchantId: 1645114257
+    # 商户APIv3密钥（32位），通过环境变量注入，不要写进配置文件提交到仓库
+    apiV3Key: ${NAVI_WECHAT_API_V3_KEY:}
+    # 商户API证书序列号
+    merchantSerialNo: ${NAVI_WECHAT_SERIAL_NO:}
+    # 商户私钥文件(apiclient_key.pem)路径，相对路径相对于进程启动时的工作目录
+    privateKeyPath: ${NAVI_WECHAT_PRIVATE_KEY_PATH:config/wechat/apiclient_key.pem}
+    # 必须是 https；本机内网IP微信服务器无法回调，先用真实可解析的域名占位，
+    # 本地验证走主动查单(NaviVipService#activelyQueryAndSync)，不依赖此回调真正被触达
+    notifyUrl: ${NAVI_WECHAT_NOTIFY_URL:https://www.cjym123.cn/im/bot/navi/vip/notify}
+  alipay:
+    appId: "2021006167677042"
+    # 商户应用私钥文件路径
+    privateKeyPath: ${NAVI_ALIPAY_PRIVATE_KEY_PATH:config/alipay/app_private_key.pem}
+    # 支付宝公钥文件路径，用于验证支付宝返回/回调的签名
+    publicKeyPath: ${NAVI_ALIPAY_PUBLIC_KEY_PATH:config/alipay/alipay_public_key.pem}
+    # 同样要求 https，本地验证走主动查单，不依赖此回调真正被触达
+    notifyUrl: ${NAVI_ALIPAY_NOTIFY_URL:https://www.cjym123.cn/im/bot/navi/vip/alipay/notify}
+
 sms:
   aliyun:
     enabled: true

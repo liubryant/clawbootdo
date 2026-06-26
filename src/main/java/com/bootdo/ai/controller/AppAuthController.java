@@ -5,7 +5,9 @@ import com.bootdo.ai.dto.LoginByPasswordRequest;
 import com.bootdo.ai.dto.RemoveAccountRequest;
 import com.bootdo.ai.dto.SetPasswordRequest;
 import com.bootdo.ai.service.AppUserService;
+import com.bootdo.ai.service.AppAccessTokenService;
 import com.bootdo.ai.vo.AppDeviceInfo;
+import com.bootdo.ai.vo.AppUserLoginResult;
 import com.bootdo.common.utils.R;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,9 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AppAuthController {
     private final AppUserService appUserService;
+    private final AppAccessTokenService accessTokenService;
 
-    public AppAuthController(AppUserService appUserService) {
+    public AppAuthController(AppUserService appUserService, AppAccessTokenService accessTokenService) {
         this.appUserService = appUserService;
+        this.accessTokenService = accessTokenService;
     }
 
     @PostMapping("/im/bot/login-by-code")
@@ -26,7 +30,9 @@ public class AppAuthController {
         }
         try {
             AppDeviceInfo deviceInfo = new AppDeviceInfo(request.getDeviceModel(), request.getOsVersion(), request.getAppName());
-            return R.ok("登录成功").put("data", appUserService.loginByCode(request.getPhone(), request.getCode(), deviceInfo));
+            AppUserLoginResult result = appUserService.loginByCode(request.getPhone(), request.getCode(), deviceInfo);
+            result.setAccessToken(accessTokenService.issue(result.getPhone()));
+            return R.ok("登录成功").put("data", result);
         } catch (IllegalArgumentException ex) {
             return R.error(400, ex.getMessage());
         } catch (RuntimeException ex) {
@@ -41,7 +47,9 @@ public class AppAuthController {
         }
         try {
             AppDeviceInfo deviceInfo = new AppDeviceInfo(request.getDeviceModel(), request.getOsVersion(), request.getAppName());
-            return R.ok("登录成功").put("data", appUserService.loginByPassword(request.getPhone(), request.getPassword(), deviceInfo));
+            AppUserLoginResult result = appUserService.loginByPassword(request.getPhone(), request.getPassword(), deviceInfo);
+            result.setAccessToken(accessTokenService.issue(result.getPhone()));
+            return R.ok("登录成功").put("data", result);
         } catch (IllegalArgumentException ex) {
             return R.error(400, ex.getMessage());
         } catch (RuntimeException ex) {
@@ -55,7 +63,9 @@ public class AppAuthController {
             return R.error(400, "Request body is required");
         }
         try {
-            return R.ok("密码设置成功").put("data", appUserService.setPassword(request.getPhone(), request.getCode(), request.getPassword()));
+            AppUserLoginResult result = appUserService.setPassword(request.getPhone(), request.getCode(), request.getPassword());
+            result.setAccessToken(accessTokenService.issue(result.getPhone()));
+            return R.ok("密码设置成功").put("data", result);
         } catch (IllegalArgumentException ex) {
             return R.error(400, ex.getMessage());
         } catch (RuntimeException ex) {

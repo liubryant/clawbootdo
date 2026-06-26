@@ -1696,3 +1696,47 @@ WHERE NOT EXISTS (SELECT 1 FROM `sys_role_menu` WHERE `role_id` = 1 AND `menu_id
 INSERT INTO `sys_role_menu` (`role_id`, `menu_id`)
 SELECT 1, 204 FROM DUAL
 WHERE NOT EXISTS (SELECT 1 FROM `sys_role_menu` WHERE `role_id` = 1 AND `menu_id` = 204);
+
+-- ----------------------------
+-- Navi APP VIP products
+-- ----------------------------
+CREATE TABLE IF NOT EXISTS `navi_vip_product` (
+  `id` varchar(32) NOT NULL COMMENT '套餐ID',
+  `name` varchar(64) NOT NULL COMMENT '套餐名称',
+  `price` decimal(10,2) NOT NULL COMMENT '售价，单位元',
+  `duration_days` int NOT NULL COMMENT '会员有效天数',
+  `description` varchar(255) DEFAULT NULL COMMENT '套餐说明',
+  `enabled` tinyint NOT NULL DEFAULT 1 COMMENT '1上架，0下架',
+  `sort_order` int NOT NULL DEFAULT 0 COMMENT '排序值',
+  `gmt_create` datetime NOT NULL,
+  `gmt_modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Navi会员套餐';
+
+-- ----------------------------
+-- Navi APP VIP orders
+-- ----------------------------
+CREATE TABLE IF NOT EXISTS `navi_vip_order` (
+  `id` varchar(32) NOT NULL COMMENT '商户订单号',
+  `user_id` bigint NOT NULL COMMENT 'ai_app_user.id',
+  `product_id` varchar(32) NOT NULL COMMENT '会员套餐ID',
+  `amount` decimal(10,2) NOT NULL COMMENT '订单金额，单位元',
+  `status` varchar(20) NOT NULL COMMENT 'CREATED/PAYING/PAID/CLOSED/FAILED',
+  `mock_order` tinyint NOT NULL DEFAULT 0 COMMENT '是否本地模拟订单',
+  `wx_transaction_id` varchar(64) DEFAULT NULL COMMENT '微信支付订单号',
+  `gmt_create` datetime NOT NULL,
+  `gmt_modified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_navi_vip_order_user` (`user_id`),
+  KEY `idx_navi_vip_order_status` (`status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Navi会员订单';
+
+-- ----------------------------
+-- Navi APP VIP memberships
+-- ----------------------------
+CREATE TABLE IF NOT EXISTS `navi_vip_membership` (
+  `user_id` bigint NOT NULL COMMENT 'ai_app_user.id',
+  `expires_at` datetime NOT NULL COMMENT '会员到期时间',
+  `gmt_modified` datetime NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Navi会员状态';
