@@ -227,6 +227,30 @@ public class GlmChatService {
         return result;
     }
 
+    public String imageEdits(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
+        HttpURLConnection conn = openSiliconflowImageEditConnection(buildImageEditPayload(request));
+        int code = conn.getResponseCode();
+        InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
+        String body = readAll(stream);
+
+        response.setStatus(code >= 400 ? 502 : 200);
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
+        JSONObject fullResult = code >= 400 ? null : convertImageEditResponseToOpenAiJson(body, request);
+        // 完整结构（含 upstream）写入日志；发给客户端只发精简版，去掉冗余的 upstream 字段
+        String result = code >= 400
+                ? errorJson("upstream_error", "SiliconFlow image edit upstream error: HTTP " + code, body)
+                : fullResult.toJSONString();
+        JSONObject clientPayload = fullResult != null ? new JSONObject(fullResult) : null;
+        if (clientPayload != null) {
+            clientPayload.remove("upstream");
+        }
+        String clientResult = clientPayload != null ? clientPayload.toJSONString() : result;
+        response.getWriter().write(clientResult);
+        conn.disconnect();
+        return result;
+    }
+
     public String videoGenerations(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
         JSONObject submitted = submitVideoGeneration(request);
         String result = submitted.toJSONString();
@@ -294,20 +318,90 @@ public class GlmChatService {
     }
 
     private HttpURLConnection openImageConnection(String payload) throws IOException {
-        return openGlmJsonConnection("/images/generations", payload, "application/json");
+        return openUpstreamJsonConnection("/images/generations", payload, "application/json",
+                apiKeyProvider.getImageRouteConfig());
+    }
+
+    private HttpURLConnection openSiliconflowImageEditConnection(String payload) throws IOException {
+        DynamicChatUpstreamConfig cfg = apiKeyProvider.getImageEditRouteConfig();
+        String apiKey = cfg.getApiKey();
+        if (apiKey == null || apiKey.trim().isEmpty()) {
+            throw new IOException("image edit apiKey is empty, please configure IMAGE_EDIT in model management or set ai.siliconflow.apiKey");
+        }
+        String trimmedKey = apiKey.trim();
+        log.info("imageEdit apiKey suffix: ...{}", trimmedKey.substring(Math.max(0, trimmedKey.length() - 6)));
+
+        String base = safeTrim(cfg.getBaseUrl(), "https://api.siliconflow.cn/v1");
+        String normalizedBase = base.endsWith("/") ? base.substring(0, base.length() - 1) : base;
+        String url = normalizedBase + "/images/generations";
+
+        if (!url.toLowerCase().startsWith("https://")) {
+            throw new IOException("image edit baseUrl must use HTTPS, got: " + url);
+        }
+
+        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+        conn.setRequestMethod("POST");
+        conn.setDoOutput(true);
+        conn.setConnectTimeout(aiProperties.getConnectTimeoutMs());
+        conn.setReadTimeout(aiProperties.getReadTimeoutMs());
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setRequestProperty("Accept", "application/json");
+        conn.setRequestProperty("Authorization", "Bearer " + trimmedKey);
+
+        byte[] bytes = payload.getBytes(StandardCharsets.UTF_8);
+        try (OutputStream os = conn.getOutputStream()) {
+            os.write(bytes);
+        }
+        return conn;
     }
 
     private HttpURLConnection openVideoConnection(String payload) throws IOException {
-        return openGlmJsonConnection("/videos/generations", payload, "application/json");
+        return openUpstreamJsonConnection("/videos/generations", payload, "application/json",
+                apiKeyProvider.getVideoRouteConfig());
+    }
+
+    /** POST 请求，使用指定的上游配置（支持图片/视频等非文本路由）。 */
+    private HttpURLConnection openUpstreamJsonConnection(String path, String payload, String accept,
+                                                          DynamicChatUpstreamConfig config) throws IOException {
+        String apiKey = config.getApiKey();
+        if (apiKey == null || apiKey.trim().isEmpty()) {
+            throw new IOException("upstream apiKey is empty for path " + path + ", please configure in model management");
+        }
+        String base = safeTrim(config.getBaseUrl(), "https://open.bigmodel.cn/api/paas/v4");
+        String url = (base.endsWith("/") ? base.substring(0, base.length() - 1) : base) + path;
+
+        if (!url.toLowerCase().startsWith("https://")) {
+            throw new IOException("upstream baseUrl must use HTTPS, got: " + url);
+        }
+
+        if (log.isInfoEnabled()) {
+            log.info("Upstream request path={}, provider={}, apiKey tail6={}", path, config.getProvider(), lastN(apiKey.trim(), 6));
+        }
+
+        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+        conn.setRequestMethod("POST");
+        conn.setDoOutput(true);
+        conn.setConnectTimeout(aiProperties.getConnectTimeoutMs());
+        conn.setReadTimeout(aiProperties.getReadTimeoutMs());
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setRequestProperty("Accept", accept);
+        conn.setRequestProperty("Authorization", "Bearer " + apiKey.trim());
+
+        byte[] bytes = payload.getBytes(StandardCharsets.UTF_8);
+        try (OutputStream os = conn.getOutputStream()) {
+            os.write(bytes);
+        }
+        return conn;
     }
 
     private HttpURLConnection openAsyncResultConnection(String taskId) throws IOException {
-        String apiKey = apiKeyProvider.getGlmRouteApiKey();
+        DynamicChatUpstreamConfig videoCfg = apiKeyProvider.getVideoRouteConfig();
+        String apiKey = videoCfg.getApiKey();
         if (apiKey == null || apiKey.trim().isEmpty()) {
-            throw new IOException("GLM apiKey is empty, please set ai.glm.apiKey or GLM_API_KEY");
+            throw new IOException("video apiKey is empty, please configure VIDEO in model management");
         }
 
-        String base = safeTrim(apiKeyProvider.getGlmRouteBaseUrl(), "https://open.bigmodel.cn/api/paas/v4");
+        String base = safeTrim(videoCfg.getBaseUrl(), "https://open.bigmodel.cn/api/paas/v4");
         String normalizedBase = base.endsWith("/") ? base.substring(0, base.length() - 1) : base;
         String url = normalizedBase + "/async-result/" + safe(taskId).trim();
 
@@ -439,10 +533,47 @@ public class GlmChatService {
         JSONObject root = new JSONObject();
         root.put("model", resolveImageModel(request == null ? null : request.getModel()));
         root.put("prompt", buildImagePrompt(request));
-        root.put("size", safeTrim(aiProperties.getGlm().getImageSize(), "1280x1280"));
-        root.put("quality", safeTrim(aiProperties.getGlm().getImageQuality(), "hd"));
-        Boolean watermarkEnabled = aiProperties.getGlm().getImageWatermarkEnabled();
-        root.put("watermark_enabled", watermarkEnabled != null && watermarkEnabled);
+
+        String provider = safeTrim(apiKeyProvider.getImageRouteConfig().getProvider()).toLowerCase();
+        if ("siliconflow".equals(provider) || "qwen".equals(provider)) {
+            // SiliconFlow: image_size 格式为 "1024x1024"，不支持 quality/watermark
+            String rawSize = safeTrim(request == null ? null : request.getSize());
+            if (!rawSize.isEmpty()) root.put("image_size", rawSize);
+        } else {
+            // GLM BigModel 专有字段
+            root.put("size", safeTrim(aiProperties.getGlm().getImageSize(), "1280x1280"));
+            root.put("quality", safeTrim(aiProperties.getGlm().getImageQuality(), "hd"));
+            Boolean watermarkEnabled = aiProperties.getGlm().getImageWatermarkEnabled();
+            root.put("watermark_enabled", watermarkEnabled != null && watermarkEnabled);
+        }
+        return root.toJSONString();
+    }
+
+    private String buildImageEditPayload(ChatCompletionRequest request) {
+        JSONObject root = new JSONObject();
+        AiProperties.Siliconflow siliconflow = aiProperties.getSiliconflow();
+        String dbModel = safeTrim(apiKeyProvider.getImageEditRouteConfig().getModel());
+        String fallbackModel = dbModel.isEmpty()
+                ? safeTrim(siliconflow == null ? null : siliconflow.getImageEditModel(), "Qwen/Qwen-Image-Edit-2509")
+                : dbModel;
+        root.put("model", safeTrim(request == null ? null : request.getModel(), fallbackModel));
+        root.put("prompt", buildImagePrompt(request));
+        Integer steps = siliconflow == null ? null : siliconflow.getImageEditSteps();
+        root.put("num_inference_steps", steps == null || steps <= 0 ? 20 : steps);
+        Double cfg = siliconflow == null ? null : siliconflow.getImageEditCfg();
+        root.put("cfg", cfg == null || cfg <= 0 ? 4.0 : cfg);
+
+        List<String> images = extractImageEditInputs(request);
+        if (images.isEmpty()) {
+            throw new IllegalArgumentException("image is required for image edit");
+        }
+        root.put("image", normalizeImageEditInput(images.get(0)));
+        if (images.size() > 1) {
+            root.put("image2", normalizeImageEditInput(images.get(1)));
+        }
+        if (images.size() > 2) {
+            root.put("image3", normalizeImageEditInput(images.get(2)));
+        }
         return root.toJSONString();
     }
 
@@ -648,6 +779,63 @@ public class GlmChatService {
         }
     }
 
+    private JSONObject convertImageEditResponseToOpenAiJson(String body, ChatCompletionRequest request) {
+        JSONObject root = new JSONObject();
+        try {
+            JSONObject upstream = JSON.parseObject(body);
+            JSONArray images = extractImages(upstream);
+            String prompt = buildImagePrompt(request);
+            String content = buildImageMarkdownContent(prompt, images);
+
+            JSONObject message = new JSONObject();
+            message.put("role", "assistant");
+            message.put("content", content);
+            if (!images.isEmpty()) {
+                message.put("images", images);
+            }
+
+            JSONObject choice = new JSONObject();
+            choice.put("index", 0);
+            choice.put("message", message);
+            choice.put("finish_reason", "stop");
+
+            JSONArray choices = new JSONArray();
+            choices.add(choice);
+
+            long created = upstream.getLongValue("created") > 0 ? upstream.getLongValue("created") : System.currentTimeMillis() / 1000L;
+            root.put("id", safeTrim(upstream.getString("id"), "chatcmpl-image-edit-" + System.currentTimeMillis()));
+            root.put("object", OBJECT_CHAT_COMPLETION);
+            root.put("created", created);
+            root.put("model", safeTrim(request == null ? null : request.getModel(), safeTrim(
+                    aiProperties.getSiliconflow() == null ? null : aiProperties.getSiliconflow().getImageEditModel(),
+                    "Qwen/Qwen-Image-Edit-2509"
+            )));
+            root.put("choices", choices);
+            root.put("request_id", upstream.getString("request_id"));
+            root.put("usage", imageUsage(prompt, images.size()));
+            root.put("upstream", upstream);
+            return root;
+        } catch (Exception ex) {
+            log.warn("convert image edit response to openai response failed", ex);
+            JSONObject message = new JSONObject();
+            message.put("role", "assistant");
+            message.put("content", body == null ? "" : body);
+            JSONObject choice = new JSONObject();
+            choice.put("index", 0);
+            choice.put("message", message);
+            choice.put("finish_reason", "stop");
+            JSONArray choices = new JSONArray();
+            choices.add(choice);
+            root.put("id", "chatcmpl-image-edit-" + System.currentTimeMillis());
+            root.put("object", OBJECT_CHAT_COMPLETION);
+            root.put("created", System.currentTimeMillis() / 1000L);
+            root.put("model", "Qwen/Qwen-Image-Edit-2509");
+            root.put("choices", choices);
+            root.put("usage", imageUsage(buildImagePrompt(request), 0));
+            return root;
+        }
+    }
+
     private JSONObject convertVideoResponseToOpenAiJson(String body, ChatCompletionRequest request) {
         JSONObject root = new JSONObject();
         try {
@@ -709,16 +897,32 @@ public class GlmChatService {
     private JSONArray extractImages(JSONObject upstream) {
         JSONArray images = new JSONArray();
         JSONArray upstreamData = upstream == null ? null : upstream.getJSONArray("data");
-        if (upstreamData == null) {
-            return images;
+        appendImageUrls(images, upstreamData);
+        JSONArray upstreamImages = upstream == null ? null : upstream.getJSONArray("images");
+        appendImageUrls(images, upstreamImages);
+        return images;
+    }
+
+    private void appendImageUrls(JSONArray images, JSONArray upstreamItems) {
+        if (images == null || upstreamItems == null) {
+            return;
         }
-        for (int i = 0; i < upstreamData.size(); i++) {
-            JSONObject item = upstreamData.getJSONObject(i);
+        Set<String> existing = new LinkedHashSet<String>();
+        for (int i = 0; i < images.size(); i++) {
+            JSONObject image = images.getJSONObject(i);
+            JSONObject imageUrl = image == null ? null : image.getJSONObject("image_url");
+            String url = imageUrl == null ? "" : safe(imageUrl.getString("url")).trim();
+            if (!url.isEmpty()) {
+                existing.add(url);
+            }
+        }
+        for (int i = 0; i < upstreamItems.size(); i++) {
+            JSONObject item = upstreamItems.getJSONObject(i);
             if (item == null) {
                 continue;
             }
             String url = safe(item.getString("url")).trim();
-            if (url.isEmpty()) {
+            if (url.isEmpty() || existing.contains(url)) {
                 continue;
             }
             JSONObject imageUrl = new JSONObject();
@@ -727,8 +931,8 @@ public class GlmChatService {
             image.put("type", "image_url");
             image.put("image_url", imageUrl);
             images.add(image);
+            existing.add(url);
         }
-        return images;
     }
 
     private JSONArray extractVideos(JSONObject upstream) {
@@ -1252,6 +1456,55 @@ public class GlmChatService {
         return prompt.toString().trim();
     }
 
+    private List<String> extractImageEditInputs(ChatCompletionRequest request) {
+        List<String> images = new ArrayList<String>();
+        if (request == null) {
+            return images;
+        }
+        appendImageEditInput(images, request.getExtraString("image"));
+        appendImageEditInput(images, request.getExtraString("image2"));
+        appendImageEditInput(images, request.getExtraString("image3"));
+        if (!images.isEmpty()) {
+            return images;
+        }
+        if (request.getMessages() == null) {
+            return images;
+        }
+        Set<String> urls = new LinkedHashSet<String>();
+        for (ChatCompletionRequest.Message message : request.getMessages()) {
+            if (message == null || !"user".equalsIgnoreCase(safe(message.getRole()).trim())) {
+                continue;
+            }
+            collectImageUrls(message.getContent(), urls);
+        }
+        for (String url : urls) {
+            appendImageEditInput(images, url);
+            if (images.size() >= 3) {
+                break;
+            }
+        }
+        return images;
+    }
+
+    private void appendImageEditInput(List<String> images, String value) {
+        if (images == null) {
+            return;
+        }
+        String normalized = safe(value).trim();
+        if (normalized.isEmpty()) {
+            return;
+        }
+        images.add(normalized);
+    }
+
+    private String normalizeImageEditInput(String image) {
+        String trimmed = safe(image).trim();
+        if (trimmed.startsWith("data:image/") || trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
+            return trimmed;
+        }
+        return "data:image/jpeg;base64," + trimmed;
+    }
+
     private String extractTextContent(Object content) {
         if (content == null) {
             return "";
@@ -1464,14 +1717,16 @@ public class GlmChatService {
     }
 
     private String resolveImageModel(String requestModel) {
+        String dbModel = safeTrim(apiKeyProvider.getImageRouteConfig().getModel());
+        if (!dbModel.isEmpty()) return dbModel;
         String model = safe(requestModel).trim();
-        if ("glm-image".equalsIgnoreCase(model)) {
-            return model;
-        }
+        if ("glm-image".equalsIgnoreCase(model)) return model;
         return safeTrim(aiProperties.getGlm().getImageModel(), "glm-image");
     }
 
     private String resolveVideoModel(String requestModel) {
+        String dbModel = safeTrim(apiKeyProvider.getVideoRouteConfig().getModel());
+        if (!dbModel.isEmpty()) return dbModel;
         String model = safe(requestModel).trim();
         if (!model.isEmpty() && !"openclaw".equalsIgnoreCase(model) && !model.toLowerCase().startsWith("openclaw:")) {
             return model;

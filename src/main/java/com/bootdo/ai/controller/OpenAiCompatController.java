@@ -136,6 +136,60 @@ public class OpenAiCompatController {
         }
     }
 
+    @PostMapping("/v1/images/edits")
+    public void imageEdits(@RequestBody(required = false) ChatCompletionRequest request,
+                           HttpServletRequest httpRequest,
+                           HttpServletResponse response) throws IOException {
+        if (!aiProperties.isEnabled()) {
+            writeJson(response, 503, error("service_disabled", "AI compatibility API is disabled"));
+            return;
+        }
+
+        if (request == null) {
+            writeJson(response, 400, error("invalid_request", "request body is empty or not valid json"));
+            return;
+        }
+
+        if ((request.getMessages() == null || request.getMessages().isEmpty())
+            && safeTrim(request.getPrompt()).isEmpty()) {
+            writeJson(response, 400, error("invalid_request", "messages or prompt cannot be empty"));
+            return;
+        }
+
+        String expectedToken = safeTrim(aiProperties.getGatewayToken());
+        if (!expectedToken.isEmpty()) {
+            String auth = safeTrim(httpRequest.getHeader("Authorization"));
+            String prefix = "Bearer ";
+            if (!auth.startsWith(prefix) || !expectedToken.equals(auth.substring(prefix.length()).trim())) {
+                writeJson(response, 401, error("unauthorized", "invalid gateway token"));
+                return;
+            }
+        }
+
+        long start = System.currentTimeMillis();
+        String result = "";
+        boolean success = false;
+        try {
+            result = glmChatService.imageEdits(request, response);
+            success = true;
+        } catch (IllegalArgumentException ex) {
+            result = "异常：" + ex.getMessage();
+            writeJson(response, 400, error("invalid_request", ex.getMessage()));
+        } catch (IOException ex) {
+            result = "异常：" + ex.getMessage();
+            if (!response.isCommitted()) {
+                writeJson(response, 502, error("upstream_error", ex.getMessage()));
+            }
+        } catch (RuntimeException ex) {
+            result = "异常：" + ex.getMessage();
+            if (!response.isCommitted()) {
+                writeJson(response, 500, error("internal_error", ex.getMessage()));
+            }
+        } finally {
+            saveConversationLog(httpRequest, request, "IMAGE_EDIT", false, success, result, start);
+        }
+    }
+
     @GetMapping("/v1/videos/generations/{taskId}")
     public void videoGenerationResult(@PathVariable("taskId") String taskId,
                                       HttpServletRequest httpRequest,

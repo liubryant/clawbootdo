@@ -1698,6 +1698,26 @@ SELECT 1, 204 FROM DUAL
 WHERE NOT EXISTS (SELECT 1 FROM `sys_role_menu` WHERE `role_id` = 1 AND `menu_id` = 204);
 
 -- ----------------------------
+-- AI 模型管理菜单（挂在「对话管理」下，menu_id=213）
+-- ----------------------------
+INSERT INTO `sys_menu`
+(`menu_id`, `parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`, `gmt_create`, `gmt_modified`)
+VALUES
+(213, 200, '模型管理', 'ai/model-config', 'ai:model-config:view', 1, 'fa fa-cogs', 1, NOW(), NULL)
+ON DUPLICATE KEY UPDATE
+  `parent_id` = VALUES(`parent_id`),
+  `name` = VALUES(`name`),
+  `url` = VALUES(`url`),
+  `perms` = VALUES(`perms`),
+  `type` = VALUES(`type`),
+  `icon` = VALUES(`icon`),
+  `order_num` = VALUES(`order_num`);
+
+INSERT INTO `sys_role_menu` (`role_id`, `menu_id`)
+SELECT 1, 213 FROM DUAL
+WHERE NOT EXISTS (SELECT 1 FROM `sys_role_menu` WHERE `role_id` = 1 AND `menu_id` = 213);
+
+-- ----------------------------
 -- Navi APP VIP products
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `navi_vip_product` (

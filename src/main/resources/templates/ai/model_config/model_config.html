@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<style>
+    .model-card .ibox-title { padding: 10px 15px; }
+    .model-card .ibox-title h5 { font-size: 15px; font-weight: 600; }
+    .model-card .form-group { margin-bottom: 10px; }
+    .model-card label { font-weight: 500; color: #555; }
+    .model-card .form-control { height: 34px; font-size: 13px; }
+    .model-card .apikey-input { font-family: monospace; }
+    .badge-type { font-size: 11px; margin-left: 8px; vertical-align: middle; }
+    .save-bar { margin-top: 12px; }
+</style>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>AI 模型管理</h5>
+                    <div class="ibox-tools">
+                        <button class="btn btn-primary btn-sm" onclick="saveAll()">
+                            <i class="fa fa-save"></i> 保存全部
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="configCards">
+        <!-- 动态渲染 -->
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script type="text/javascript" src="/js/appjs/ai/model_config/model_config.js"></script>
+</body>
+</html>

@@ -16,6 +16,63 @@ public class AiProperties {
     private int readTimeoutMs = 600000;
 
     private Glm glm = new Glm();
+    private Siliconflow siliconflow = new Siliconflow();
+
+    public Siliconflow getSiliconflow() {
+        return siliconflow;
+    }
+
+    public void setSiliconflow(Siliconflow siliconflow) {
+        this.siliconflow = siliconflow;
+    }
+
+    public static class Siliconflow {
+        private String baseUrl = "https://api.siliconflow.cn/v1";
+        private String apiKey;
+        private String imageEditModel = "Qwen/Qwen-Image-Edit-2509";
+        private Integer imageEditSteps = 20;
+        private Double imageEditCfg = 4.0;
+
+        public String getBaseUrl() {
+            return baseUrl;
+        }
+
+        public void setBaseUrl(String baseUrl) {
+            this.baseUrl = baseUrl;
+        }
+
+        public String getApiKey() {
+            return apiKey;
+        }
+
+        public void setApiKey(String apiKey) {
+            this.apiKey = apiKey;
+        }
+
+        public String getImageEditModel() {
+            return imageEditModel;
+        }
+
+        public void setImageEditModel(String imageEditModel) {
+            this.imageEditModel = imageEditModel;
+        }
+
+        public Integer getImageEditSteps() {
+            return imageEditSteps;
+        }
+
+        public void setImageEditSteps(Integer imageEditSteps) {
+            this.imageEditSteps = imageEditSteps;
+        }
+
+        public Double getImageEditCfg() {
+            return imageEditCfg;
+        }
+
+        public void setImageEditCfg(Double imageEditCfg) {
+            this.imageEditCfg = imageEditCfg;
+        }
+    }
 
     public static class Glm {
         private String baseUrl = "https://open.bigmodel.cn/api/paas/v4";

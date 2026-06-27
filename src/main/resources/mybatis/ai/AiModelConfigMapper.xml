@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.ai.dao.AiModelConfigDao">
+
+    <resultMap id="BaseResultMap" type="com.bootdo.ai.domain.AiModelConfigDO">
+        <id     column="id"           property="id" />
+        <result column="config_type"  property="configType" />
+        <result column="ai_provider"  property="aiProvider" />
+        <result column="ai_base_url"  property="aiBaseUrl" />
+        <result column="ai_api_key"   property="aiApiKey" />
+        <result column="ai_model"     property="aiModel" />
+        <result column="enabled"      property="enabled" />
+        <result column="note"         property="note" />
+        <result column="gmt_create"   property="gmtCreate" />
+        <result column="gmt_modified" property="gmtModified" />
+    </resultMap>
+
+    <select id="listAll" resultMap="BaseResultMap">
+        SELECT id, config_type, ai_provider, ai_base_url, ai_api_key, ai_model, enabled, note, gmt_create, gmt_modified
+        FROM ai_model_config
+        ORDER BY FIELD(config_type, 'TEXT', 'IMAGE', 'VIDEO', 'IMAGE_EDIT')
+    </select>
+
+    <select id="getByType" resultMap="BaseResultMap">
+        SELECT id, config_type, ai_provider, ai_base_url, ai_api_key, ai_model, enabled, note, gmt_create, gmt_modified
+        FROM ai_model_config
+        WHERE config_type = #{configType}
+        LIMIT 1
+    </select>
+
+    <update id="update">
+        UPDATE ai_model_config
+        SET ai_provider  = #{aiProvider},
+            ai_base_url  = #{aiBaseUrl},
+            ai_api_key   = #{aiApiKey},
+            ai_model     = #{aiModel},
+            enabled      = #{enabled},
+            note         = #{note},
+            gmt_modified = NOW()
+        WHERE config_type = #{configType}
+    </update>
+
+</mapper>

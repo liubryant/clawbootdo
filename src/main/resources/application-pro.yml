@@ -79,6 +79,12 @@ ai:
     # 拉取 /api/info 的超时建议设置短一些，避免卡住刷新线程
     apiInfoConnectTimeoutMs: 2000
     apiInfoReadTimeoutMs: 3000
+  siliconflow:
+    baseUrl: https://api.siliconflow.cn/v1
+    apiKey:
+    imageEditModel: Qwen/Qwen-Image-Edit-2509
+    imageEditSteps: 20
+    imageEditCfg: 4
 
 navi:
   auth:
