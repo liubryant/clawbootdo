@@ -38,6 +38,7 @@ import java.util.TreeMap;
 public class AlipayClient {
     private static final String GATEWAY_URL = "https://openapi.alipay.com/gateway.do";
 
+    // ── navi 支付宝配置 ──────────────────────────────────────────────────────
     @Value("${navi.alipay.appId:}")
     private String appId;
     @Value("${navi.alipay.privateKeyPath:config/alipay/app_private_key.pem}")
@@ -47,12 +48,28 @@ public class AlipayClient {
     @Value("${navi.alipay.notifyUrl:}")
     private String notifyUrl;
 
+    // ── agentclaw 支付宝配置 ─────────────────────────────────────────────────
+    @Value("${agentclaw.alipay.appId:}")
+    private String acAppId;
+    @Value("${agentclaw.alipay.privateKeyPath:config/agentclaw/alipay/app_private_key.pem}")
+    private String acPrivateKeyPath;
+    @Value("${agentclaw.alipay.publicKeyPath:config/agentclaw/alipay/alipay_public_key.pem}")
+    private String acPublicKeyPath;
+    @Value("${agentclaw.alipay.notifyUrl:}")
+    private String acNotifyUrl;
+
     private volatile PrivateKey appPrivateKey;
     private volatile PublicKey alipayPublicKey;
+    private volatile PrivateKey acAppPrivateKey;
+    private volatile PublicKey acAlipayPublicKey;
     private final Object keyLock = new Object();
 
     public boolean isConfigured() {
         return !StringUtils.isBlank(appId) && !StringUtils.isBlank(notifyUrl) && tryLoadKeys();
+    }
+
+    public boolean isAgentClawConfigured() {
+        return !StringUtils.isBlank(acAppId) && !StringUtils.isBlank(acNotifyUrl) && tryLoadAcKeys();
     }
 
     private boolean tryLoadKeys() {
@@ -63,19 +80,39 @@ public class AlipayClient {
         }
     }
 
+    private boolean tryLoadAcKeys() {
+        try {
+            return acPrivateKey() != null && acPublicKey() != null;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     /**
-     * 构建APP支付完整请求字符串，直接交给客户端 PayTask.payV2() 使用。
+     * 构建 navi APP支付完整请求字符串，直接交给客户端 PayTask.payV2() 使用。
      */
     public String buildAppPayOrderString(String outTradeNo, String subject, String totalAmountYuan) {
+        return doBuildAppPayOrderString(appId, notifyUrl, outTradeNo, subject, totalAmountYuan, false);
+    }
+
+    /**
+     * 构建 agentclaw APP支付完整请求字符串。
+     */
+    public String buildAgentClawAppPayOrderString(String outTradeNo, String subject, String totalAmountYuan) {
+        return doBuildAppPayOrderString(acAppId, acNotifyUrl, outTradeNo, subject, totalAmountYuan, true);
+    }
+
+    private String doBuildAppPayOrderString(String aid, String nUrl, String outTradeNo,
+                                             String subject, String totalAmountYuan, boolean useAc) {
         TreeMap<String, String> params = new TreeMap<>();
-        params.put("app_id", appId);
+        params.put("app_id", aid);
         params.put("method", "alipay.trade.app.pay");
         params.put("format", "JSON");
         params.put("charset", "UTF-8");
         params.put("sign_type", "RSA2");
         params.put("timestamp", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         params.put("version", "1.0");
-        params.put("notify_url", notifyUrl);
+        params.put("notify_url", nUrl);
 
         JSONObject bizContent = new JSONObject(true);
         bizContent.put("subject", subject);
@@ -85,7 +122,7 @@ public class AlipayClient {
         bizContent.put("timeout_express", "30m");
         params.put("biz_content", bizContent.toJSONString());
 
-        String sign = sign(buildSignSource(params));
+        String sign = signWith(buildSignSource(params), useAc ? acPrivateKey() : privateKey());
         return buildQueryString(params, sign);
     }
 
@@ -100,8 +137,16 @@ public class AlipayClient {
     }
 
     public TradeQueryResult queryTrade(String outTradeNo) throws IOException {
+        return doQueryTrade(outTradeNo, appId, false);
+    }
+
+    public TradeQueryResult queryTradeForAgentClaw(String outTradeNo) throws IOException {
+        return doQueryTrade(outTradeNo, acAppId, true);
+    }
+
+    private TradeQueryResult doQueryTrade(String outTradeNo, String aid, boolean useAc) throws IOException {
         TreeMap<String, String> params = new TreeMap<>();
-        params.put("app_id", appId);
+        params.put("app_id", aid);
         params.put("method", "alipay.trade.query");
         params.put("format", "JSON");
         params.put("charset", "UTF-8");
@@ -112,7 +157,7 @@ public class AlipayClient {
         bizContent.put("out_trade_no", outTradeNo);
         params.put("biz_content", bizContent.toJSONString());
 
-        String sign = sign(buildSignSource(params));
+        String sign = signWith(buildSignSource(params), useAc ? acPrivateKey() : privateKey());
         String body = buildQueryString(params, sign);
 
         String responseBody = post(body);
@@ -131,11 +176,17 @@ public class AlipayClient {
         return new TradeQueryResult(response.getString("trade_status"), response.getString("trade_no"));
     }
 
-    /**
-     * 验证异步通知签名：对除 sign/sign_type 外的所有参数按key排序后拼接，
-     * 用支付宝公钥校验。
-     */
+    /** 验证 navi 支付宝异步通知签名。 */
     public boolean verifyNotifySign(Map<String, String> params) {
+        return doVerifyNotifySign(params, publicKey());
+    }
+
+    /** 验证 agentclaw 支付宝异步通知签名。 */
+    public boolean verifyAgentClawNotifySign(Map<String, String> params) {
+        return doVerifyNotifySign(params, acPublicKey());
+    }
+
+    private boolean doVerifyNotifySign(Map<String, String> params, PublicKey pubKey) {
         try {
             String sign = params.get("sign");
             if (StringUtils.isBlank(sign)) {
@@ -146,7 +197,7 @@ public class AlipayClient {
             toVerify.remove("sign_type");
             String source = buildSignSource(toVerify);
             Signature verifier = Signature.getInstance("SHA256withRSA");
-            verifier.initVerify(publicKey());
+            verifier.initVerify(pubKey);
             verifier.update(source.getBytes(StandardCharsets.UTF_8));
             return verifier.verify(Base64.getDecoder().decode(sign));
         } catch (Exception e) {
@@ -191,10 +242,10 @@ public class AlipayClient {
         }
     }
 
-    private String sign(String source) {
+    private String signWith(String source, PrivateKey key) {
         try {
             Signature signature = Signature.getInstance("SHA256withRSA");
-            signature.initSign(privateKey());
+            signature.initSign(key);
             signature.update(source.getBytes(StandardCharsets.UTF_8));
             return Base64.getEncoder().encodeToString(signature.sign());
         } catch (Exception e) {
@@ -222,6 +273,28 @@ public class AlipayClient {
             }
         }
         return alipayPublicKey;
+    }
+
+    private PrivateKey acPrivateKey() {
+        if (acAppPrivateKey == null) {
+            synchronized (keyLock) {
+                if (acAppPrivateKey == null) {
+                    acAppPrivateKey = loadPrivateKey(acPrivateKeyPath);
+                }
+            }
+        }
+        return acAppPrivateKey;
+    }
+
+    private PublicKey acPublicKey() {
+        if (acAlipayPublicKey == null) {
+            synchronized (keyLock) {
+                if (acAlipayPublicKey == null) {
+                    acAlipayPublicKey = loadPublicKey(acPublicKeyPath);
+                }
+            }
+        }
+        return acAlipayPublicKey;
     }
 
     private PrivateKey loadPrivateKey(String path) {

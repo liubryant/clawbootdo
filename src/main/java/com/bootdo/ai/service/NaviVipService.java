@@ -36,6 +36,9 @@ public class NaviVipService {
     @Value("${navi.wechat.appId:wx4ac470d6bef3de2f}")
     private String appId;
 
+    @Value("${agentclaw.alipay.appId:2021006169619056}")
+    private String agentClawAlipayAppId;
+
     public NaviVipService(JdbcTemplate jdbcTemplate, AppUserDao appUserDao, WeChatPayClient weChatPayClient,
                            AlipayClient alipayClient) {
         this.jdbcTemplate = jdbcTemplate;
@@ -81,7 +84,14 @@ public class NaviVipService {
     @Transactional
     public Map<String, Object> createOrder(String phone, String productId, String requestedAppId, String payChannel) {
         requireEnabled();
-        if (!appId.equals(requestedAppId)) {
+        boolean isAgentClaw = agentClawAlipayAppId.equals(requestedAppId);
+        boolean isNavi = appId.equals(requestedAppId);
+        log.info("createOrder appid check: received={}, naviWx={}, acAlipay={}, isNavi={}, isAgentClaw={}",
+                requestedAppId == null ? "null" : "***" + requestedAppId.substring(Math.max(0, requestedAppId.length() - 6)),
+                "***" + appId.substring(Math.max(0, appId.length() - 6)),
+                "***" + agentClawAlipayAppId.substring(Math.max(0, agentClawAlipayAppId.length() - 6)),
+                isNavi, isAgentClaw);
+        if (!isNavi && !isAgentClaw) {
             throw new IllegalArgumentException("AppID不匹配");
         }
         if (StringUtils.isBlank(productId)) {
@@ -97,7 +107,7 @@ public class NaviVipService {
             throw new IllegalArgumentException("会员套餐不存在或已下架");
         }
         Map<String, Object> product = products.get(0);
-        String orderId = createOrderId();
+        String orderId = isAgentClaw ? createAgentClawOrderId() : createOrderId();
         Date now = new Date();
 
         if ("mock".equalsIgnoreCase(mode)) {
@@ -118,14 +128,22 @@ public class NaviVipService {
         }
 
         if ("alipay".equalsIgnoreCase(payChannel)) {
-            if (!alipayClient.isConfigured()) {
-                throw new IllegalStateException("支付宝商户密钥未配置完整，请检查 navi.alipay.* 配置");
-            }
             BigDecimal price = (BigDecimal) product.get("price");
-            String subject = "卫星导航地图-" + product.get("name");
+            String subject = "Agent智能助手-" + product.get("name");
             String orderString;
             try {
-                orderString = alipayClient.buildAppPayOrderString(orderId, subject, price.toPlainString());
+                if (isAgentClaw) {
+                    if (!alipayClient.isAgentClawConfigured()) {
+                        throw new IllegalStateException("AgentClaw支付宝密钥未配置，请检查 agentclaw.alipay.* 配置");
+                    }
+                    orderString = alipayClient.buildAgentClawAppPayOrderString(orderId, subject, price.toPlainString());
+                } else {
+                    if (!alipayClient.isConfigured()) {
+                        throw new IllegalStateException("支付宝商户密钥未配置完整，请检查 navi.alipay.* 配置");
+                    }
+                    subject = "卫星导航地图-" + product.get("name");
+                    orderString = alipayClient.buildAppPayOrderString(orderId, subject, price.toPlainString());
+                }
             } catch (RuntimeException e) {
                 log.warn("创建支付宝订单失败 orderId={}: {}", orderId, e.getMessage());
                 throw new IllegalStateException("创建支付宝订单失败，请稍后重试");
@@ -202,7 +220,9 @@ public class NaviVipService {
     private String activelyQueryAndSync(String orderId, String payChannel, String fallbackStatus) {
         try {
             if ("alipay".equalsIgnoreCase(payChannel)) {
-                AlipayClient.TradeQueryResult queried = alipayClient.queryTrade(orderId);
+                AlipayClient.TradeQueryResult queried = orderId.startsWith("AC")
+                        ? alipayClient.queryTradeForAgentClaw(orderId)
+                        : alipayClient.queryTrade(orderId);
                 if ("TRADE_SUCCESS".equals(queried.tradeStatus) || "TRADE_FINISHED".equals(queried.tradeStatus)) {
                     confirmPaid(orderId, queried.tradeNo);
                     return "PAID";
@@ -267,6 +287,11 @@ public class NaviVipService {
 
     private String createOrderId() {
         return "NV" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())
+                + UUID.randomUUID().toString().replace("-", "").substring(0, 10);
+    }
+
+    private String createAgentClawOrderId() {
+        return "AC" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())
                 + UUID.randomUUID().toString().replace("-", "").substring(0, 10);
     }
 }

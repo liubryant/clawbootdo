@@ -86,6 +86,13 @@ ai:
     imageEditSteps: 20
     imageEditCfg: 4
 
+agentclaw:
+  alipay:
+    appId: "2021006169619056"
+    privateKeyPath: config/agentclaw/alipay/app_private_key.pem
+    publicKeyPath: config/agentclaw/alipay/alipay_public_key.pem
+    notifyUrl: https://www.cjym123.cn/im/bot/navi/vip/agentclaw/alipay/notify
+
 navi:
   auth:
     tokenSecret: ${NAVI_AUTH_TOKEN_SECRET:}

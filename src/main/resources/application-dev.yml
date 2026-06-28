@@ -121,6 +121,13 @@ navi:
     # 同样要求 https，本地验证走主动查单，不依赖此回调真正被触达
     notifyUrl: ${NAVI_ALIPAY_NOTIFY_URL:https://www.cjym123.cn/im/bot/navi/vip/alipay/notify}
 
+agentclaw:
+  alipay:
+    appId: "2021006169619056"
+    privateKeyPath: config/agentclaw/alipay/app_private_key.pem
+    publicKeyPath: config/agentclaw/alipay/alipay_public_key.pem
+    notifyUrl: https://www.cjym123.cn/im/bot/navi/vip/agentclaw/alipay/notify
+
 sms:
   aliyun:
     enabled: true

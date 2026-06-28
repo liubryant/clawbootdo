@@ -138,13 +138,28 @@ public class NaviVipController {
     }
 
     /**
-     * 支付宝异步回调，表单方式提交，用支付宝公钥校验全部参数的签名后再处理。
+     * navi 支付宝异步回调。
      */
     @PostMapping("/alipay/notify")
     public ResponseEntity<String> alipayNotify(@RequestParam Map<String, String> params) {
+        return doAlipayNotify(params, false);
+    }
+
+    /**
+     * agentclaw 支付宝异步回调，用 agentclaw 支付宝公钥验签。
+     */
+    @PostMapping("/agentclaw/alipay/notify")
+    public ResponseEntity<String> agentClawAlipayNotify(@RequestParam Map<String, String> params) {
+        return doAlipayNotify(params, true);
+    }
+
+    private ResponseEntity<String> doAlipayNotify(Map<String, String> params, boolean isAgentClaw) {
         try {
-            if (!alipayClient.verifyNotifySign(params)) {
-                log.warn("支付宝回调签名校验失败");
+            boolean valid = isAgentClaw
+                    ? alipayClient.verifyAgentClawNotifySign(params)
+                    : alipayClient.verifyNotifySign(params);
+            if (!valid) {
+                log.warn("支付宝回调签名校验失败 isAgentClaw={}", isAgentClaw);
                 return ResponseEntity.ok("failure");
             }
             String tradeStatus = params.get("trade_status");
