@@ -87,6 +87,10 @@ public class GlmApiKeyProvider {
     }
 
     public DynamicChatUpstreamConfig getChatConfig() {
+        // DB 管理台配置优先级最高
+        DynamicChatUpstreamConfig db = loadDbConfig("TEXT");
+        if (db != null) return db;
+        // 其次是远端动态配置（apiInfoUrl 拉取）
         DynamicChatUpstreamConfig remote = remoteChatConfig.get();
         if (remote != null && !safeTrim(remote.getApiKey()).isEmpty()) {
             return mergeWithLocalDefaults(remote);

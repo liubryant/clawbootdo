@@ -42,18 +42,21 @@
 
     <select id="list" resultType="com.bootdo.ai.domain.AppUserDO">
         select
-            `id`,
-            `phone`,
-            `password`,
-            `device_model` as deviceModel,
-            `os_version` as osVersion,
-            `app_name` as appName,
-            `gmt_create` as gmtCreate,
-            `gmt_modified` as gmtModified
-        from ai_app_user
+            u.`id`,
+            u.`phone`,
+            u.`password`,
+            u.`device_model` as deviceModel,
+            u.`os_version` as osVersion,
+            u.`app_name` as appName,
+            u.`gmt_create` as gmtCreate,
+            u.`gmt_modified` as gmtModified,
+            CASE WHEN m.expires_at IS NOT NULL AND m.expires_at > NOW() THEN true ELSE false END as vipActive,
+            DATE_FORMAT(m.expires_at, '%Y-%m-%d') as vipExpiresAt
+        from ai_app_user u
+        LEFT JOIN navi_vip_membership m ON m.user_id = u.id
         <where>
             <if test="phone != null and phone != ''">
-                and phone like concat('%', #{phone}, '%')
+                and u.phone like concat('%', #{phone}, '%')
             </if>
         </where>
         <choose>
@@ -61,7 +64,7 @@
                 order by ${sort} ${order}
             </when>
             <otherwise>
-                order by id desc
+                order by (CASE WHEN m.expires_at IS NOT NULL AND m.expires_at > NOW() THEN 1 ELSE 0 END) desc, u.id desc
             </otherwise>
         </choose>
         <if test="offset != null and limit != null">
@@ -70,10 +73,10 @@
     </select>
 
     <select id="count" resultType="int">
-        select count(*) from ai_app_user
+        select count(*) from ai_app_user u
         <where>
             <if test="phone != null and phone != ''">
-                and phone like concat('%', #{phone}, '%')
+                and u.phone like concat('%', #{phone}, '%')
             </if>
         </where>
     </select>

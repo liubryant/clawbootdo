@@ -37,12 +37,32 @@ public class NaviVipSchemaInitializer {
                 "user_id bigint NOT NULL, expires_at datetime NOT NULL, gmt_modified datetime NOT NULL," +
                 "PRIMARY KEY (user_id)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
         addPayChannelColumnIfMissing();
+        initQuotaConfig();
         if ("mock".equalsIgnoreCase(mode)) {
             jdbcTemplate.update("INSERT IGNORE INTO navi_vip_product " +
                             "(id,name,price,duration_days,description,enabled,sort_order,gmt_create,gmt_modified) " +
                             "VALUES (?,?,?,?,?,1,0,NOW(),NOW())",
                     "local_month", "本地测试月卡", new java.math.BigDecimal("0.01"), 30, "仅用于局域网联调，不调用微信");
         }
+    }
+
+    private void initQuotaConfig() {
+        jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS ai_quota_config (" +
+                "id int NOT NULL AUTO_INCREMENT," +
+                "app_name varchar(50) NOT NULL DEFAULT 'agentclaw'," +
+                "free_video_daily int NOT NULL DEFAULT 1," +
+                "free_image_daily int NOT NULL DEFAULT 10," +
+                "vip_video_daily int NOT NULL DEFAULT 5," +
+                "vip_image_daily int NOT NULL DEFAULT 50," +
+                "vip_remind_days int NOT NULL DEFAULT 3," +
+                "gmt_create datetime NOT NULL," +
+                "gmt_modified datetime NOT NULL," +
+                "PRIMARY KEY (id)," +
+                "UNIQUE KEY uk_quota_app_name (app_name)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+        jdbcTemplate.update("INSERT IGNORE INTO ai_quota_config " +
+                "(app_name,free_video_daily,free_image_daily,vip_video_daily,vip_image_daily,vip_remind_days,gmt_create,gmt_modified) " +
+                "VALUES (?,?,?,?,?,?,NOW(),NOW())",
+                "agentclaw", 1, 10, 5, 50, 3);
     }
 
     /**

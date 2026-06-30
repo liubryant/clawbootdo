@@ -61,7 +61,40 @@ public class NaviVipService {
         boolean active = expiresAt != null && expiresAt.isAfter(java.time.LocalDateTime.now());
         result.put("active", active);
         result.put("expiresAt", expiresAt == null ? null : expiresAt.format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        result.put("quota", getQuotaConfig("agentclaw"));
         return result;
+    }
+
+    public Map<String, Object> getQuotaConfig(String appName) {
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(
+                "SELECT free_video_daily,free_image_daily,vip_video_daily,vip_image_daily,vip_remind_days FROM ai_quota_config WHERE app_name=?", appName);
+        Map<String, Object> quota = new LinkedHashMap<>();
+        if (!rows.isEmpty()) {
+            Map<String, Object> row = rows.get(0);
+            quota.put("freeVideoDaily",  ((Number) row.get("free_video_daily")).intValue());
+            quota.put("freeImageDaily",  ((Number) row.get("free_image_daily")).intValue());
+            quota.put("vipVideoDaily",   ((Number) row.get("vip_video_daily")).intValue());
+            quota.put("vipImageDaily",   ((Number) row.get("vip_image_daily")).intValue());
+            quota.put("vipRemindDays",   ((Number) row.get("vip_remind_days")).intValue());
+        } else {
+            quota.put("freeVideoDaily",  1);
+            quota.put("freeImageDaily",  10);
+            quota.put("vipVideoDaily",   5);
+            quota.put("vipImageDaily",   50);
+            quota.put("vipRemindDays",   3);
+        }
+        return quota;
+    }
+
+    public void updateQuotaConfig(String appName, int freeVideo, int freeImage, int vipVideo, int vipImage, int remindDays) {
+        int updated = jdbcTemplate.update(
+                "UPDATE ai_quota_config SET free_video_daily=?,free_image_daily=?,vip_video_daily=?,vip_image_daily=?,vip_remind_days=?,gmt_modified=NOW() WHERE app_name=?",
+                freeVideo, freeImage, vipVideo, vipImage, remindDays, appName);
+        if (updated == 0) {
+            jdbcTemplate.update(
+                    "INSERT INTO ai_quota_config (app_name,free_video_daily,free_image_daily,vip_video_daily,vip_image_daily,vip_remind_days,gmt_create,gmt_modified) VALUES (?,?,?,?,?,?,NOW(),NOW())",
+                    appName, freeVideo, freeImage, vipVideo, vipImage, remindDays);
+        }
     }
 
     public List<Map<String, Object>> listProducts() {
@@ -79,6 +112,47 @@ public class NaviVipService {
             result.add(item);
         }
         return result;
+    }
+
+    /** 后台管理用：返回全部套餐（含禁用） */
+    public List<Map<String, Object>> listAllProducts() {
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(
+                "SELECT id,name,price,duration_days,description,enabled,sort_order," +
+                "DATE_FORMAT(gmt_create,'%Y-%m-%d %H:%i') as gmt_create_str " +
+                "FROM navi_vip_product ORDER BY sort_order,id");
+        List<Map<String, Object>> result = new ArrayList<>();
+        for (Map<String, Object> row : rows) {
+            Map<String, Object> item = new LinkedHashMap<>();
+            item.put("id",          row.get("id"));
+            item.put("name",        row.get("name"));
+            item.put("price",       ((BigDecimal) row.get("price")).toPlainString());
+            item.put("durationDays", row.get("duration_days"));
+            item.put("description", row.get("description"));
+            item.put("enabled",     row.get("enabled"));
+            item.put("sortOrder",   row.get("sort_order"));
+            item.put("gmtCreate",   row.get("gmt_create_str"));
+            result.add(item);
+        }
+        return result;
+    }
+
+    public void saveProduct(String id, String name, BigDecimal price, int durationDays, String description, int sortOrder) {
+        int updated = jdbcTemplate.update(
+                "UPDATE navi_vip_product SET name=?,price=?,duration_days=?,description=?,sort_order=?,gmt_modified=NOW() WHERE id=?",
+                name, price, durationDays, description, sortOrder, id);
+        if (updated == 0) {
+            jdbcTemplate.update(
+                    "INSERT INTO navi_vip_product (id,name,price,duration_days,description,enabled,sort_order,gmt_create,gmt_modified) VALUES (?,?,?,?,?,1,?,NOW(),NOW())",
+                    id, name, price, durationDays, description, sortOrder);
+        }
+    }
+
+    public void setProductEnabled(String id, int enabled) {
+        jdbcTemplate.update("UPDATE navi_vip_product SET enabled=?,gmt_modified=NOW() WHERE id=?", enabled, id);
+    }
+
+    public void removeProduct(String id) {
+        jdbcTemplate.update("DELETE FROM navi_vip_product WHERE id=?", id);
     }
 
     @Transactional

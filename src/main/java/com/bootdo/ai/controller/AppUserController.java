@@ -2,6 +2,7 @@ package com.bootdo.ai.controller;
 
 import com.bootdo.ai.domain.AppUserDO;
 import com.bootdo.ai.service.AppUserService;
+import com.bootdo.ai.service.NaviVipService;
 import com.bootdo.common.domain.PageDO;
 import com.bootdo.common.utils.Query;
 import com.bootdo.common.utils.R;
@@ -20,6 +21,9 @@ import java.util.Map;
 public class AppUserController {
     @Autowired
     AppUserService appUserService;
+
+    @Autowired(required = false)
+    NaviVipService naviVipService;
 
     String prefix = "ai/appuser";
 
@@ -63,5 +67,22 @@ public class AppUserController {
     R batchRemove(@RequestParam("ids[]") Long[] ids) {
         appUserService.batchRemove(ids);
         return R.ok("删除成功");
+    }
+
+    @ResponseBody
+    @GetMapping("/quota-config")
+    R getQuotaConfig() {
+        if (naviVipService == null) return R.error("VIP服务未启用");
+        return R.ok().put("data", naviVipService.getQuotaConfig("agentclaw"));
+    }
+
+    @ResponseBody
+    @PostMapping("/quota-config")
+    R updateQuotaConfig(@RequestParam int freeVideo, @RequestParam int freeImage,
+                        @RequestParam int vipVideo, @RequestParam int vipImage,
+                        @RequestParam int remindDays) {
+        if (naviVipService == null) return R.error("VIP服务未启用");
+        naviVipService.updateQuotaConfig("agentclaw", freeVideo, freeImage, vipVideo, vipImage, remindDays);
+        return R.ok("保存成功");
     }
 }

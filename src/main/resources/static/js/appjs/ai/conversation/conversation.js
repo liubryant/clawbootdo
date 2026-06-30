@@ -117,6 +117,10 @@ function reLoad() {
     $('#exampleTable').bootstrapTable('refresh');
 }
 
+function openTodayHotspots() {
+    window.location.href = '/ai/today-hotspot';
+}
+
 function remove(id) {
     layer.confirm('确定要删除选中的记录？', {
         btn: ['确定', '取消']

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>今日热点 <small>动态配置 Android 对话顶部推荐内容</small></h5>
+                <div class="ibox-tools">
+                    <button class="btn btn-default btn-sm" onclick="backToConversation()" style="margin-right:6px;">
+                        <i class="fa fa-arrow-left"></i> 返回对话管理
+                    </button>
+                    <button class="btn btn-default btn-sm" onclick="loadList()" style="margin-right:6px;">
+                        <i class="fa fa-refresh"></i> 刷新
+                    </button>
+                    <button class="btn btn-primary btn-sm" onclick="addHotspot()">
+                        <i class="fa fa-plus"></i> 新增热点
+                    </button>
+                </div>
+            </div>
+            <div class="ibox-body">
+                <div class="alert alert-info">
+                    Android 每次进入对话页会拉取已启用内容；接口失败时自动使用 App 内置默认内容。
+                </div>
+                <table class="table table-striped table-bordered">
+                    <thead><tr>
+                        <th width="55">排序</th><th width="70">ID</th><th width="190">标题 title</th>
+                        <th width="240">副标题 subtitle</th><th>提示词 promptTemplate</th>
+                        <th width="75">状态</th><th width="170">操作</th>
+                    </tr></thead>
+                    <tbody id="hotspotBody"><tr><td colspan="7" class="text-center">加载中…</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script type="text/javascript" src="/js/appjs/ai/today_hotspot/today_hotspot.js?v=20260629a"></script>
+</body>
+</html>

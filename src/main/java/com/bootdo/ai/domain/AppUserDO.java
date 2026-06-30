@@ -17,6 +17,8 @@ public class AppUserDO {
     private Date gmtCreate;
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date gmtModified;
+    private Boolean vipActive;
+    private String vipExpiresAt;
 
     public Long getId() {
         return id;
@@ -82,6 +84,11 @@ public class AppUserDO {
     public void setGmtModified(Date gmtModified) {
         this.gmtModified = gmtModified;
     }
+
+    public Boolean getVipActive() { return vipActive; }
+    public void setVipActive(Boolean vipActive) { this.vipActive = vipActive; }
+    public String getVipExpiresAt() { return vipExpiresAt; }
+    public void setVipExpiresAt(String vipExpiresAt) { this.vipExpiresAt = vipExpiresAt; }
 
     public boolean isHasPassword() {
         return password != null && !password.isEmpty();

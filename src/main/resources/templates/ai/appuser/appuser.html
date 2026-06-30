@@ -15,6 +15,9 @@
                             <button class="btn btn-danger" onclick="batchRemove()">
                                 <i class="fa fa-trash" aria-hidden="true"></i>删除
                             </button>
+                            <button class="btn btn-warning" onclick="openQuotaConfig()">
+                                <i class="fa fa-cog" aria-hidden="true"></i>配置额度
+                            </button>
                         </div>
                         <div class="columns pull-right" role="group">
                             <button class="btn btn-success" onclick="reLoad()">
@@ -31,6 +34,6 @@
         </div>
     </div>
     <div th:include="include :: footer"></div>
-    <script type="text/javascript" src="/js/appjs/ai/appuser/appuser.js"></script>
+    <script type="text/javascript" src="/js/appjs/ai/appuser/appuser.js?v=20260628b"></script>
 </body>
 </html>

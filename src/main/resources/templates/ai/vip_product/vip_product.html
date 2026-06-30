@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>会员套餐管理</h5>
+                <div class="ibox-tools">
+                    <button class="btn btn-default btn-sm" onclick="loadList()" style="margin-right:6px;">
+                        <i class="fa fa-refresh"></i> 查询
+                    </button>
+                    <button class="btn btn-primary btn-sm" onclick="addProduct()">
+                        <i class="fa fa-plus"></i> 新增套餐
+                    </button>
+                </div>
+            </div>
+            <div class="ibox-body">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th width="50">排序</th>
+                        <th width="130">套餐ID</th>
+                        <th width="120">名称</th>
+                        <th width="90">价格(元)</th>
+                        <th width="80">天数</th>
+                        <th>描述</th>
+                        <th width="70">状态</th>
+                        <th width="170">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="productBody">
+                    <tr><td colspan="8" style="text-align:center;color:#999">加载中…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script type="text/javascript" src="/js/appjs/ai/vip_product/vip_product.js?v=20260628d"></script>
+</body>
+</html>
