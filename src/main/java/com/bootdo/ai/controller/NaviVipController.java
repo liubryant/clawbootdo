@@ -2,6 +2,7 @@ package com.bootdo.ai.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.bootdo.ai.dto.AppleVerifyRequest;
 import com.bootdo.ai.dto.CreateNaviVipOrderRequest;
 import com.bootdo.ai.service.AlipayClient;
 import com.bootdo.ai.service.AppAccessTokenService;
@@ -80,6 +81,34 @@ public class NaviVipController {
         }
         try {
             return R.ok().put("data", vipService.createOrder(phone, request.getProductId(), request.getAppid(), request.getPayChannel()));
+        } catch (IllegalArgumentException e) {
+            return R.error(400, e.getMessage());
+        } catch (RuntimeException e) {
+            return R.error(503, e.getMessage());
+        }
+    }
+
+    /**
+     * 苹果内购(StoreKit 2)校验并发放会员。
+     * 客户端购买成功后上报已签名交易(JWS)，服务端本地验签(Apple 证书链)后发放会员。
+     */
+    @PostMapping("/apple/verify")
+    public R appleVerify(@RequestHeader(value = "Authorization", required = false) String authorization,
+                         @RequestBody(required = false) AppleVerifyRequest request) {
+        String phone = authenticatedPhone(authorization);
+        if (phone == null) {
+            return R.error(401, "登录状态已失效，请重新登录");
+        }
+        if (request == null || request.getJws() == null || request.getJws().isEmpty()) {
+            return R.error(400, "缺少支付凭证");
+        }
+        try {
+            return R.ok().put("data", vipService.verifyApplePurchase(
+                    phone, request.getProductId(), request.getAppleProductId(),
+                    request.getTransactionId(), request.getJws()));
+        } catch (SecurityException e) {
+            log.warn("苹果内购凭证校验失败: {}", e.getMessage());
+            return R.error(400, "支付凭证校验未通过");
         } catch (IllegalArgumentException e) {
             return R.error(400, e.getMessage());
         } catch (RuntimeException e) {

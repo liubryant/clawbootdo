@@ -29,6 +29,7 @@ public class NaviVipService {
     private final AppUserDao appUserDao;
     private final WeChatPayClient weChatPayClient;
     private final AlipayClient alipayClient;
+    private final AppleIapVerifier appleIapVerifier;
 
     @Value("${navi.vip.mode:disabled}")
     private String mode;
@@ -39,12 +40,16 @@ public class NaviVipService {
     @Value("${agentclaw.alipay.appId:2021006169619056}")
     private String agentClawAlipayAppId;
 
+    @Value("${apple.iap.bundleId:ai.cjym.agentclaw}")
+    private String appleBundleId;
+
     public NaviVipService(JdbcTemplate jdbcTemplate, AppUserDao appUserDao, WeChatPayClient weChatPayClient,
-                           AlipayClient alipayClient) {
+                           AlipayClient alipayClient, AppleIapVerifier appleIapVerifier) {
         this.jdbcTemplate = jdbcTemplate;
         this.appUserDao = appUserDao;
         this.weChatPayClient = weChatPayClient;
         this.alipayClient = alipayClient;
+        this.appleIapVerifier = appleIapVerifier;
     }
 
     public Map<String, Object> getMembershipStatus(String phone) {
@@ -259,6 +264,77 @@ public class NaviVipService {
         result.put("payChannel", "wechat");
         result.put("payParams", weChatPayClient.buildAppPayParams(prepayId));
         return result;
+    }
+
+    /**
+     * 苹果内购校验并发放会员。
+     * 安全要点：会员时长以 JWS 内经证书链校验的 productId 为准，绝不信任客户端传入的套餐/时长；
+     * 以 "AP"+transactionId 作为订单主键实现天然防重放，重复交易只发放一次。
+     */
+    @Transactional
+    public Map<String, Object> verifyApplePurchase(String phone, String requestProductId,
+                                                   String requestAppleProductId, String transactionId, String jws) {
+        requireEnabled();
+        AppUserDO user = appUserDao.getByPhone(phone);
+        if (user == null) {
+            throw new IllegalArgumentException("登录用户不存在");
+        }
+
+        // 1) 本地校验 JWS：ES256 签名 + Apple Root CA G3 证书链
+        AppleIapVerifier.VerifiedTransaction tx = appleIapVerifier.verify(jws);
+
+        // 2) 业务校验：应用归属、退款、商品合法性
+        if (!appleBundleId.equals(tx.bundleId)) {
+            log.warn("苹果内购 bundleId 不匹配, expected={}, actual={}", appleBundleId, tx.bundleId);
+            throw new IllegalArgumentException("支付凭证与当前应用不匹配");
+        }
+        if (tx.revoked) {
+            throw new IllegalArgumentException("该交易已退款，无法开通会员");
+        }
+        int durationDays = appleDurationDays(tx.productId); // 以已验签的 productId 为准
+
+        // 3) 幂等发放：主键去重，重复交易直接返回当前状态
+        String orderId = "AP" + tx.transactionId;
+        List<Map<String, Object>> exist = jdbcTemplate.queryForList(
+                "SELECT id FROM navi_vip_order WHERE id=?", orderId);
+        if (exist.isEmpty()) {
+            BigDecimal amount = BigDecimal.ZERO;
+            String productIdForRow = tx.productId;
+            if (StringUtils.isNotBlank(requestProductId)) {
+                List<Map<String, Object>> p = jdbcTemplate.queryForList(
+                        "SELECT id,price FROM navi_vip_product WHERE id=?", requestProductId);
+                if (!p.isEmpty()) {
+                    productIdForRow = (String) p.get(0).get("id");
+                    amount = (BigDecimal) p.get(0).get("price");
+                }
+            }
+            Date now = new Date();
+            jdbcTemplate.update("INSERT INTO navi_vip_order " +
+                            "(id,user_id,product_id,amount,status,mock_order,pay_channel,wx_transaction_id,gmt_create,gmt_modified) " +
+                            "VALUES (?,?,?,?,?,0,?,?,?,?)",
+                    orderId, user.getId(), productIdForRow, amount, "PAID", "apple", tx.transactionId, now, now);
+            grantMembership(user.getId(), durationDays);
+            log.info("苹果内购发放会员成功 user={} product={} days={} env={} tx={}",
+                    user.getId(), tx.productId, durationDays, tx.environment, tx.transactionId);
+        } else {
+            log.info("苹果内购交易已处理，跳过重复发放 tx={}", tx.transactionId);
+        }
+
+        return getMembershipStatus(phone);
+    }
+
+    /** 苹果内购商品 -> 会员天数，权威映射(与 App Store Connect 的 week/month/year 一一对应)。 */
+    private int appleDurationDays(String appleProductId) {
+        if (appleProductId == null) {
+            throw new IllegalArgumentException("缺少商品信息");
+        }
+        switch (appleProductId) {
+            case "ai.cjym.agentclaw.vip.week":  return 7;
+            case "ai.cjym.agentclaw.vip.month": return 30;
+            case "ai.cjym.agentclaw.vip.year":  return 365;
+            default:
+                throw new IllegalArgumentException("未知的苹果内购商品: " + appleProductId);
+        }
     }
 
     public Map<String, Object> getOrder(String phone, String orderId) {
