@@ -162,6 +162,11 @@ public class NaviVipService {
 
     @Transactional
     public Map<String, Object> createOrder(String phone, String productId, String requestedAppId, String payChannel) {
+        return createOrder(phone, productId, requestedAppId, payChannel, null);
+    }
+
+    @Transactional
+    public Map<String, Object> createOrder(String phone, String productId, String requestedAppId, String payChannel, String platform) {
         requireEnabled();
         boolean isAgentClaw = agentClawAlipayAppId.equals(requestedAppId);
         boolean isNavi = appId.equals(requestedAppId);
@@ -210,18 +215,25 @@ public class NaviVipService {
             BigDecimal price = (BigDecimal) product.get("price");
             String subject = "Agent智能助手-" + product.get("name");
             String orderString;
+            String h5PayUrl = null;
             try {
                 if (isAgentClaw) {
                     if (!alipayClient.isAgentClawConfigured()) {
                         throw new IllegalStateException("AgentClaw支付宝密钥未配置，请检查 agentclaw.alipay.* 配置");
                     }
                     orderString = alipayClient.buildAgentClawAppPayOrderString(orderId, subject, price.toPlainString());
+                    if (alipayClient.isAgentClawWapPayEnabled()) {
+                        h5PayUrl = alipayClient.buildAgentClawWapPayUrl(orderId, subject, price.toPlainString());
+                    }
                 } else {
                     if (!alipayClient.isConfigured()) {
                         throw new IllegalStateException("支付宝商户密钥未配置完整，请检查 navi.alipay.* 配置");
                     }
                     subject = "卫星导航地图-" + product.get("name");
                     orderString = alipayClient.buildAppPayOrderString(orderId, subject, price.toPlainString());
+                    if (alipayClient.isWapPayEnabled()) {
+                        h5PayUrl = alipayClient.buildWapPayUrl(orderId, subject, price.toPlainString());
+                    }
                 }
             } catch (RuntimeException e) {
                 log.warn("创建支付宝订单失败 orderId={}: {}", orderId, e.getMessage());
@@ -237,6 +249,14 @@ public class NaviVipService {
             result.put("status", "PENDING");
             result.put("payChannel", "alipay");
             result.put("aliPayOrderString", orderString);
+            // Android 继续使用 aliPayOrderString；仅在支付宝后台已开通手机网站支付时返回 H5 收银台。
+            if (StringUtils.isNotBlank(h5PayUrl)) {
+                result.put("payUrl", h5PayUrl);
+                result.put("h5Url", h5PayUrl);
+            }
+            if (StringUtils.isNotBlank(platform)) {
+                result.put("platform", platform);
+            }
             return result;
         }
 

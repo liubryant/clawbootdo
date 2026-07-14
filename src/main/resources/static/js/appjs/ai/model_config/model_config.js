@@ -4,7 +4,7 @@ var TYPE_LABELS = {
     'TEXT':       { name: '生成文本',  badge: 'primary',   defaultProvider: 'glm',         defaultBase: 'https://open.bigmodel.cn/api/paas/v4', defaultModel: 'glm-4.7' },
     'IMAGE':      { name: '文生图',    badge: 'success',   defaultProvider: 'glm',         defaultBase: 'https://open.bigmodel.cn/api/paas/v4', defaultModel: 'glm-image' },
     'VIDEO':      { name: '生成视频',  badge: 'warning',   defaultProvider: 'glm',         defaultBase: 'https://open.bigmodel.cn/api/paas/v4', defaultModel: 'cogvideox-3' },
-    'IMAGE_EDIT': { name: '图生图',    badge: 'danger',    defaultProvider: 'siliconflow', defaultBase: 'https://api.siliconflow.cn/v1',       defaultModel: 'Qwen/Qwen-Image-Edit-2509' }
+    'IMAGE_EDIT': { name: '图生图',    badge: 'danger',    defaultProvider: 'dashscope',   defaultBase: 'https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation', defaultModel: 'qwen-image-edit' }
 };
 
 $(function () {

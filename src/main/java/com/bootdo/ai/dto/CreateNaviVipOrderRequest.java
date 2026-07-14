@@ -4,6 +4,7 @@ public class CreateNaviVipOrderRequest {
     private String productId;
     private String appid;
     private String payChannel;
+    private String platform;
 
     public String getProductId() {
         return productId;
@@ -27,5 +28,13 @@ public class CreateNaviVipOrderRequest {
 
     public void setPayChannel(String payChannel) {
         this.payChannel = payChannel;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
     }
 }

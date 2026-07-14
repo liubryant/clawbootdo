@@ -37,6 +37,9 @@ public class GlmChatService {
     private static final String RESPONSE_MODE_IMAGE_ONLY = "image_only";
     private static final String RESPONSE_MODE_VIDEO_ONLY = "video_only";
     private static final String RESPONSE_MODE_DEFAULT = "default";
+    private static final String DASHSCOPE_IMAGE_EDIT_DEFAULT_BASE_URL =
+            "https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation";
+    private static final String DASHSCOPE_TASKS_BASE_URL = "https://dashscope.aliyuncs.com/api/v1/tasks";
     private static final Pattern URL_PATTERN = Pattern.compile("https?://\\S+");
 
     private final AiProperties aiProperties;
@@ -228,7 +231,21 @@ public class GlmChatService {
     }
 
     public String imageEdits(ChatCompletionRequest request, HttpServletResponse response) throws IOException {
-        HttpURLConnection conn = openSiliconflowImageEditConnection(buildImageEditPayload(request));
+        DynamicChatUpstreamConfig routeConfig = apiKeyProvider.getImageEditRouteConfig();
+        if (isDashScopeProvider(routeConfig)) {
+            JSONObject fullResult = convertImageEditResponseToOpenAiJson(
+                    awaitDashScopeImageEditResult(request, routeConfig).toJSONString(), request);
+            String result = fullResult.toJSONString();
+            JSONObject clientPayload = new JSONObject(fullResult);
+            clientPayload.remove("upstream");
+            response.setStatus(200);
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json;charset=UTF-8");
+            response.getWriter().write(clientPayload.toJSONString());
+            return result;
+        }
+
+        HttpURLConnection conn = openSiliconflowImageEditConnection(buildImageEditPayload(request), routeConfig);
         int code = conn.getResponseCode();
         InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
         String body = readAll(stream);
@@ -322,8 +339,7 @@ public class GlmChatService {
                 apiKeyProvider.getImageRouteConfig());
     }
 
-    private HttpURLConnection openSiliconflowImageEditConnection(String payload) throws IOException {
-        DynamicChatUpstreamConfig cfg = apiKeyProvider.getImageEditRouteConfig();
+    private HttpURLConnection openSiliconflowImageEditConnection(String payload, DynamicChatUpstreamConfig cfg) throws IOException {
         String apiKey = cfg.getApiKey();
         if (apiKey == null || apiKey.trim().isEmpty()) {
             throw new IOException("image edit apiKey is empty, please configure IMAGE_EDIT in model management or set ai.siliconflow.apiKey");
@@ -347,6 +363,102 @@ public class GlmChatService {
         conn.setRequestProperty("Content-Type", "application/json");
         conn.setRequestProperty("Accept", "application/json");
         conn.setRequestProperty("Authorization", "Bearer " + trimmedKey);
+
+        byte[] bytes = payload.getBytes(StandardCharsets.UTF_8);
+        try (OutputStream os = conn.getOutputStream()) {
+            os.write(bytes);
+        }
+        return conn;
+    }
+
+    private JSONObject awaitDashScopeImageEditResult(ChatCompletionRequest request,
+                                                     DynamicChatUpstreamConfig routeConfig) throws IOException {
+        JSONObject submitted = submitDashScopeImageEdit(request, routeConfig);
+        String taskId = extractDashScopeTaskId(submitted);
+        if (taskId.isEmpty()) {
+            return submitted;
+        }
+
+        long timeoutMs = Math.max(10000L, aiProperties.getGlm().getVideoPollTimeoutMs() == null
+                ? 600000L : aiProperties.getGlm().getVideoPollTimeoutMs());
+        long intervalMs = Math.max(1000L, aiProperties.getGlm().getVideoPollIntervalMs() == null
+                ? 5000L : aiProperties.getGlm().getVideoPollIntervalMs());
+        long deadline = System.currentTimeMillis() + timeoutMs;
+        JSONObject latest = submitted;
+
+        while (System.currentTimeMillis() <= deadline) {
+            latest = fetchDashScopeTaskResult(taskId, routeConfig);
+            if (hasCompletedDashScopeImageResult(latest) || isFailedDashScopeTask(latest)) {
+                return normalizeDashScopeImageEditResult(latest, submitted);
+            }
+            sleepQuietly(intervalMs);
+        }
+        latest.put("task_status", safeTrim(latest.getString("task_status"), "TIMEOUT"));
+        return normalizeDashScopeImageEditResult(latest, submitted);
+    }
+
+    private JSONObject submitDashScopeImageEdit(ChatCompletionRequest request,
+                                                DynamicChatUpstreamConfig routeConfig) throws IOException {
+        HttpURLConnection conn = openDashScopeImageEditConnection(buildDashScopeImageEditPayload(request), routeConfig);
+        try {
+            int code = conn.getResponseCode();
+            InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
+            String body = readAll(stream);
+            if (code >= 400) {
+                throw new IOException("DashScope image edit upstream error: HTTP " + code + ", body=" + body);
+            }
+            return JSON.parseObject(body);
+        } finally {
+            conn.disconnect();
+        }
+    }
+
+    private JSONObject fetchDashScopeTaskResult(String taskId, DynamicChatUpstreamConfig routeConfig) throws IOException {
+        String apiKey = safeTrim(routeConfig == null ? null : routeConfig.getApiKey());
+        if (apiKey.isEmpty()) {
+            throw new IOException("image edit apiKey is empty, please configure IMAGE_EDIT in model management");
+        }
+        String url = DASHSCOPE_TASKS_BASE_URL + "/" + safe(taskId).trim();
+        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+        conn.setRequestMethod("GET");
+        conn.setConnectTimeout(aiProperties.getConnectTimeoutMs());
+        conn.setReadTimeout(aiProperties.getReadTimeoutMs());
+        conn.setRequestProperty("Accept", "application/json");
+        conn.setRequestProperty("Authorization", "Bearer " + apiKey);
+        try {
+            int code = conn.getResponseCode();
+            InputStream stream = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
+            String body = readAll(stream);
+            if (code >= 400) {
+                throw new IOException("DashScope task upstream error: HTTP " + code + ", body=" + body);
+            }
+            return JSON.parseObject(body);
+        } finally {
+            conn.disconnect();
+        }
+    }
+
+    private HttpURLConnection openDashScopeImageEditConnection(String payload,
+                                                               DynamicChatUpstreamConfig routeConfig) throws IOException {
+        String apiKey = safeTrim(routeConfig == null ? null : routeConfig.getApiKey());
+        if (apiKey.isEmpty()) {
+            throw new IOException("image edit apiKey is empty, please configure IMAGE_EDIT in model management");
+        }
+        log.info("DashScope imageEdit apiKey suffix: ...{}", lastN(apiKey, 6));
+
+        String url = safeTrim(routeConfig == null ? null : routeConfig.getBaseUrl(), DASHSCOPE_IMAGE_EDIT_DEFAULT_BASE_URL);
+        if (!url.toLowerCase().startsWith("https://")) {
+            throw new IOException("DashScope image edit baseUrl must use HTTPS, got: " + url);
+        }
+
+        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+        conn.setRequestMethod("POST");
+        conn.setDoOutput(true);
+        conn.setConnectTimeout(aiProperties.getConnectTimeoutMs());
+        conn.setReadTimeout(aiProperties.getReadTimeoutMs());
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setRequestProperty("Accept", "application/json");
+        conn.setRequestProperty("Authorization", "Bearer " + apiKey);
 
         byte[] bytes = payload.getBytes(StandardCharsets.UTF_8);
         try (OutputStream os = conn.getOutputStream()) {
@@ -574,6 +686,55 @@ public class GlmChatService {
         if (images.size() > 2) {
             root.put("image3", normalizeImageEditInput(images.get(2)));
         }
+        return root.toJSONString();
+    }
+
+    private String buildDashScopeImageEditPayload(ChatCompletionRequest request) {
+        JSONObject root = new JSONObject();
+        DynamicChatUpstreamConfig routeConfig = apiKeyProvider.getImageEditRouteConfig();
+        String model = safeTrim(request == null ? null : request.getModel(),
+                safeTrim(routeConfig == null ? null : routeConfig.getModel(), "qwen-image-edit"));
+        String prompt = buildImagePrompt(request);
+        List<String> images = extractImageEditInputs(request);
+        if (images.isEmpty()) {
+            throw new IllegalArgumentException("image is required for image edit");
+        }
+
+        JSONArray content = new JSONArray();
+        JSONObject imagePart = new JSONObject();
+        imagePart.put("image", normalizeImageEditInput(images.get(0)));
+        content.add(imagePart);
+
+        JSONObject textPart = new JSONObject();
+        textPart.put("text", prompt);
+        content.add(textPart);
+
+        JSONObject message = new JSONObject();
+        message.put("role", "user");
+        message.put("content", content);
+
+        JSONArray messages = new JSONArray();
+        messages.add(message);
+
+        JSONObject input = new JSONObject();
+        input.put("messages", messages);
+
+        JSONObject parameters = new JSONObject();
+        String negativePrompt = safeTrim(request == null ? null : request.getExtraString("negative_prompt"),
+                "低清晰度、模糊、变形、错误文字、畸形、主体丢失");
+        if (!negativePrompt.isEmpty()) {
+            parameters.put("negative_prompt", negativePrompt);
+        }
+        parameters.put("watermark", false);
+
+        String size = normalizeDashScopeImageSize(request == null ? null : request.getSize());
+        if (!size.isEmpty()) {
+            parameters.put("size", size);
+        }
+
+        root.put("model", model);
+        root.put("input", input);
+        root.put("parameters", parameters);
         return root.toJSONString();
     }
 
@@ -900,7 +1061,39 @@ public class GlmChatService {
         appendImageUrls(images, upstreamData);
         JSONArray upstreamImages = upstream == null ? null : upstream.getJSONArray("images");
         appendImageUrls(images, upstreamImages);
+        JSONObject output = upstream == null ? null : upstream.getJSONObject("output");
+        JSONArray outputResults = output == null ? null : output.getJSONArray("results");
+        appendImageUrls(images, outputResults);
+        JSONArray outputImages = output == null ? null : output.getJSONArray("images");
+        appendImageUrls(images, outputImages);
+        appendDashScopeChoiceImages(images, output == null ? null : output.getJSONArray("choices"));
         return images;
+    }
+
+    private void appendDashScopeChoiceImages(JSONArray images, JSONArray choices) {
+        if (images == null || choices == null) {
+            return;
+        }
+        JSONArray items = new JSONArray();
+        for (int i = 0; i < choices.size(); i++) {
+            JSONObject choice = choices.getJSONObject(i);
+            JSONObject message = choice == null ? null : choice.getJSONObject("message");
+            JSONArray content = message == null ? null : message.getJSONArray("content");
+            if (content == null) {
+                continue;
+            }
+            for (int j = 0; j < content.size(); j++) {
+                JSONObject part = content.getJSONObject(j);
+                String image = part == null ? "" : safe(part.getString("image")).trim();
+                if (image.isEmpty()) {
+                    continue;
+                }
+                JSONObject item = new JSONObject();
+                item.put("url", image);
+                items.add(item);
+            }
+        }
+        appendImageUrls(images, items);
     }
 
     private void appendImageUrls(JSONArray images, JSONArray upstreamItems) {
@@ -922,6 +1115,9 @@ public class GlmChatService {
                 continue;
             }
             String url = safe(item.getString("url")).trim();
+            if (url.isEmpty()) {
+                url = safe(item.getString("image_url")).trim();
+            }
             if (url.isEmpty() || existing.contains(url)) {
                 continue;
             }
@@ -1626,6 +1822,91 @@ public class GlmChatService {
         }
         String status = safe(upstream.getString("task_status")).trim().toLowerCase();
         return "failed".equals(status) || "fail".equals(status) || "canceled".equals(status) || "cancelled".equals(status);
+    }
+
+    private boolean hasCompletedDashScopeImageResult(JSONObject upstream) {
+        if (upstream == null) {
+            return false;
+        }
+        JSONArray images = extractImages(normalizeDashScopeImageEditResult(upstream, null));
+        if (images != null && !images.isEmpty()) {
+            return true;
+        }
+        String status = dashScopeTaskStatus(upstream);
+        return "succeeded".equals(status) || "success".equals(status) || "succeed".equals(status);
+    }
+
+    private boolean isFailedDashScopeTask(JSONObject upstream) {
+        String status = dashScopeTaskStatus(upstream);
+        return "failed".equals(status) || "fail".equals(status) || "canceled".equals(status) || "cancelled".equals(status);
+    }
+
+    private String dashScopeTaskStatus(JSONObject upstream) {
+        if (upstream == null) {
+            return "";
+        }
+        JSONObject output = upstream.getJSONObject("output");
+        String status = output == null ? "" : safe(output.getString("task_status")).trim();
+        if (status.isEmpty()) {
+            status = safe(upstream.getString("task_status")).trim();
+        }
+        return status.toLowerCase();
+    }
+
+    private String extractDashScopeTaskId(JSONObject upstream) {
+        if (upstream == null) {
+            return "";
+        }
+        JSONObject output = upstream.getJSONObject("output");
+        String taskId = output == null ? "" : safe(output.getString("task_id")).trim();
+        if (taskId.isEmpty()) {
+            taskId = safe(upstream.getString("task_id")).trim();
+        }
+        if (taskId.isEmpty()) {
+            taskId = safe(upstream.getString("id")).trim();
+        }
+        return taskId;
+    }
+
+    private JSONObject normalizeDashScopeImageEditResult(JSONObject latest, JSONObject submitted) {
+        JSONObject normalized = latest == null ? new JSONObject() : new JSONObject(latest);
+        JSONObject output = latest == null ? null : latest.getJSONObject("output");
+        if (output != null) {
+            JSONArray results = output.getJSONArray("results");
+            if (results != null && !results.isEmpty()) {
+                normalized.put("data", results);
+                normalized.put("images", results);
+            }
+            String status = safe(output.getString("task_status")).trim();
+            if (!status.isEmpty()) {
+                normalized.put("task_status", status);
+            }
+            String taskId = safe(output.getString("task_id")).trim();
+            if (!taskId.isEmpty()) {
+                normalized.put("id", taskId);
+            }
+        }
+        if (safe(normalized.getString("request_id")).trim().isEmpty() && submitted != null) {
+            normalized.put("request_id", submitted.getString("request_id"));
+        }
+        return normalized;
+    }
+
+    private boolean isDashScopeProvider(DynamicChatUpstreamConfig config) {
+        String provider = safeTrim(config == null ? null : config.getProvider()).toLowerCase();
+        if ("dashscope".equals(provider) || "aliyun".equals(provider) || "qwen".equals(provider)) {
+            return true;
+        }
+        String baseUrl = safeTrim(config == null ? null : config.getBaseUrl()).toLowerCase();
+        return baseUrl.contains("dashscope.aliyuncs.com");
+    }
+
+    private String normalizeDashScopeImageSize(String size) {
+        String normalized = safe(size).trim();
+        if (normalized.isEmpty()) {
+            return "";
+        }
+        return normalized.replace('x', '*').replace('X', '*');
     }
 
     private void sleepQuietly(long millis) throws IOException {

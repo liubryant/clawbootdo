@@ -80,7 +80,8 @@ public class NaviVipController {
             return R.error(400, "Request body is required");
         }
         try {
-            return R.ok().put("data", vipService.createOrder(phone, request.getProductId(), request.getAppid(), request.getPayChannel()));
+            return R.ok().put("data", vipService.createOrder(phone, request.getProductId(), request.getAppid(),
+                    request.getPayChannel(), request.getPlatform()));
         } catch (IllegalArgumentException e) {
             return R.error(400, e.getMessage());
         } catch (RuntimeException e) {

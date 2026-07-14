@@ -47,6 +47,10 @@ public class AlipayClient {
     private String publicKeyPath;
     @Value("${navi.alipay.notifyUrl:}")
     private String notifyUrl;
+    @Value("${navi.alipay.returnUrl:https://www.cjym123.cn/}")
+    private String returnUrl;
+    @Value("${navi.alipay.wapPayEnabled:false}")
+    private boolean wapPayEnabled;
 
     // ── agentclaw 支付宝配置 ─────────────────────────────────────────────────
     @Value("${agentclaw.alipay.appId:}")
@@ -57,6 +61,10 @@ public class AlipayClient {
     private String acPublicKeyPath;
     @Value("${agentclaw.alipay.notifyUrl:}")
     private String acNotifyUrl;
+    @Value("${agentclaw.alipay.returnUrl:https://www.cjym123.cn/}")
+    private String acReturnUrl;
+    @Value("${agentclaw.alipay.wapPayEnabled:false}")
+    private boolean acWapPayEnabled;
 
     private volatile PrivateKey appPrivateKey;
     private volatile PublicKey alipayPublicKey;
@@ -102,6 +110,28 @@ public class AlipayClient {
         return doBuildAppPayOrderString(acAppId, acNotifyUrl, outTradeNo, subject, totalAmountYuan, true);
     }
 
+    public boolean isWapPayEnabled() {
+        return wapPayEnabled;
+    }
+
+    public boolean isAgentClawWapPayEnabled() {
+        return acWapPayEnabled;
+    }
+
+    /**
+     * 构建 navi 支付宝 H5/WAP 收银台 URL，供 HarmonyOS 等无 PayTask SDK 的客户端直接打开。
+     */
+    public String buildWapPayUrl(String outTradeNo, String subject, String totalAmountYuan) {
+        return doBuildWapPayUrl(appId, notifyUrl, returnUrl, outTradeNo, subject, totalAmountYuan, false);
+    }
+
+    /**
+     * 构建 agentclaw 支付宝 H5/WAP 收银台 URL。
+     */
+    public String buildAgentClawWapPayUrl(String outTradeNo, String subject, String totalAmountYuan) {
+        return doBuildWapPayUrl(acAppId, acNotifyUrl, acReturnUrl, outTradeNo, subject, totalAmountYuan, true);
+    }
+
     private String doBuildAppPayOrderString(String aid, String nUrl, String outTradeNo,
                                              String subject, String totalAmountYuan, boolean useAc) {
         TreeMap<String, String> params = new TreeMap<>();
@@ -124,6 +154,32 @@ public class AlipayClient {
 
         String sign = signWith(buildSignSource(params), useAc ? acPrivateKey() : privateKey());
         return buildQueryString(params, sign);
+    }
+
+    private String doBuildWapPayUrl(String aid, String nUrl, String rUrl, String outTradeNo,
+                                    String subject, String totalAmountYuan, boolean useAc) {
+        TreeMap<String, String> params = new TreeMap<>();
+        params.put("app_id", aid);
+        params.put("method", "alipay.trade.wap.pay");
+        params.put("format", "JSON");
+        params.put("charset", "UTF-8");
+        params.put("sign_type", "RSA2");
+        params.put("timestamp", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        params.put("version", "1.0");
+        params.put("notify_url", nUrl);
+        params.put("return_url", rUrl);
+
+        JSONObject bizContent = new JSONObject(true);
+        bizContent.put("subject", subject);
+        bizContent.put("out_trade_no", outTradeNo);
+        bizContent.put("total_amount", totalAmountYuan);
+        bizContent.put("product_code", "QUICK_WAP_WAY");
+        bizContent.put("quit_url", rUrl);
+        bizContent.put("timeout_express", "30m");
+        params.put("biz_content", bizContent.toJSONString());
+
+        String sign = signWith(buildSignSource(params), useAc ? acPrivateKey() : privateKey());
+        return GATEWAY_URL + "?" + buildQueryString(params, sign);
     }
 
     public static final class TradeQueryResult {
