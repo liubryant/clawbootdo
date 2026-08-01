@@ -350,8 +350,8 @@ public class NaviVipService {
         }
         switch (appleProductId) {
             case "ai.cjym.agentclaw.vip.week":  return 7;
-            case "ai.cjym.agentclaw.vip.month": return 30;
-            case "ai.cjym.agentclaw.vip.year":  return 365;
+            case "agent123": return 30;
+            case "agent124": return 365;
             default:
                 throw new IllegalArgumentException("未知的苹果内购商品: " + appleProductId);
         }

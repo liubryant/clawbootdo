@@ -546,7 +546,17 @@ public class GlmChatService {
                     provider, path, safeTrim(chatConfig.getModel()), lastN(apiKey, 6));
         }
 
-        String url = (base.endsWith("/") ? base.substring(0, base.length() - 1) : base) + path;
+        String normalizedBase = base.endsWith("/") ? base.substring(0, base.length() - 1) : base;
+        String normalizedPath = path.startsWith("/") ? path : "/" + path;
+        // Dynamic chat configuration may contain either an OpenAI-compatible
+        // base URL or the complete endpoint. Avoid appending the path twice.
+        String url = normalizedBase.endsWith(normalizedPath)
+                ? normalizedBase
+                : normalizedBase + normalizedPath;
+
+        if (log.isInfoEnabled()) {
+            log.info("Chat upstream resolved url={}", url);
+        }
 
         if (!url.toLowerCase().startsWith("https://")) {
             throw new IOException("chat upstream baseUrl must use HTTPS, got: " + url);
