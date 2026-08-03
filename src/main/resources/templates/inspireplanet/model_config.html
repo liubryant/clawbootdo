@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html><meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row"><div class="col-sm-12"><div class="ibox">
+    <div class="ibox-title"><h5>灵感星球 · 模型管理</h5></div>
+    <div class="ibox-content">
+      <h4>生成文本 <span class="label label-primary">TEXT</span></h4><hr/>
+      <form id="modelForm" class="form-horizontal">
+        <div class="form-group"><label class="col-sm-2 control-label">服务商</label><div class="col-sm-10"><input name="aiProvider" class="form-control" placeholder="doubao"/></div></div>
+        <div class="form-group"><label class="col-sm-2 control-label">接口地址</label><div class="col-sm-10"><input name="aiBaseUrl" class="form-control" placeholder="https://ark.cn-beijing.volces.com/api/v3"/></div></div>
+        <div class="form-group"><label class="col-sm-2 control-label">API Key</label><div class="col-sm-10"><input name="aiApiKey" type="text" autocomplete="off" class="form-control" placeholder="请输入 API Key"/><span id="keyHint" class="help-block"></span></div></div>
+        <div class="form-group"><label class="col-sm-2 control-label">模型</label><div class="col-sm-10"><input name="aiModel" class="form-control" placeholder="doubao-seed-evolving"/></div></div>
+        <div class="form-group"><div class="col-sm-offset-2 col-sm-10"><button type="button" id="saveButton" class="btn btn-primary"><i class="fa fa-save"></i> 保存配置</button></div></div>
+      </form>
+    </div>
+  </div></div></div>
+</div>
+<div th:include="include :: footer"></div>
+<script src="/js/appjs/inspireplanet/model_config.js"></script>
+</body></html>
