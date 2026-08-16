@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
+import javax.servlet.DispatcherType;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 
@@ -121,12 +122,17 @@ public class DruidDBConfig {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
         filterRegistrationBean.setFilter(new WebStatFilter());
         filterRegistrationBean.addUrlPatterns("/*");
+        // StreamingResponseBody/SSE 会触发 ASYNC 二次分发。异步线程没有 Shiro
+        // ThreadContext，Druid 若在该线程读取 HttpSession 会抛出
+        // UnavailableSecurityManagerException。Web 统计只处理原始请求即可。
+        filterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST);
         filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
         filterRegistrationBean.addInitParameter("profileEnable", "true");
+        // Session 统计会强制调用 request.getSession()，对公开下载和流式接口
+        // 没有业务价值；关闭后仍保留 URI、耗时、并发和 SQL 等 Druid 统计。
+        filterRegistrationBean.addInitParameter("sessionStatEnable", "false");
         filterRegistrationBean.addInitParameter("principalCookieName","USER_COOKIE");
-        filterRegistrationBean.addInitParameter("principalSessionName","USER_SESSION");
         filterRegistrationBean.addInitParameter("DruidWebStatFilter","/*");
         return filterRegistrationBean;
     }
 }
-

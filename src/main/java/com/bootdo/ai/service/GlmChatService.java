@@ -758,13 +758,41 @@ public class GlmChatService {
             withAudio = aiProperties.getGlm().getVideoWithAudio();
         }
         root.put("with_audio", withAudio == null || withAudio);
-        root.put("size", safeTrim(request == null ? null : request.getSize(), safeTrim(aiProperties.getGlm().getVideoSize(), "1920x1080")));
+        String requestedSize = request == null ? null : request.getSize();
+        if (safeTrim(requestedSize).isEmpty() && request != null) {
+            requestedSize = safeTrim(request.getExtraString("aspect_ratio"), request.getExtraString("aspectRatio"));
+        }
+        root.put("size", normalizeVideoSize(requestedSize));
         Integer fps = request == null ? null : request.getFps();
         if (fps == null || fps <= 0) {
             fps = aiProperties.getGlm().getVideoFps();
         }
         root.put("fps", fps == null || fps <= 0 ? 30 : fps);
         return root.toJSONString();
+    }
+
+    /**
+     * 智谱视频接口要求传具体分辨率。继续兼容原有 size 值，同时允许客户端按比例/方向传参。
+     * 竖屏为 9:16（720x1280），横屏为 16:9（1280x720）。
+     */
+    private String normalizeVideoSize(String requestedSize) {
+        String fallback = safeTrim(aiProperties.getGlm().getVideoSize(), "1920x1080");
+        String value = safeTrim(requestedSize, fallback);
+        String normalized = value.toLowerCase(java.util.Locale.ROOT)
+                .replace(" ", "")
+                .replace("：", ":");
+        if ("9:16".equals(normalized) || "portrait".equals(normalized)
+                || "vertical".equals(normalized) || "竖屏".equals(normalized)) {
+            return "720x1280";
+        }
+        if ("16:9".equals(normalized) || "landscape".equals(normalized)
+                || "horizontal".equals(normalized) || "横屏".equals(normalized)) {
+            return "1280x720";
+        }
+        if ("1:1".equals(normalized) || "square".equals(normalized) || "方形".equals(normalized)) {
+            return "1024x1024";
+        }
+        return value;
     }
 
     private JSONObject submitVideoGeneration(ChatCompletionRequest request) throws IOException {

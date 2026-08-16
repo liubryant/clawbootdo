@@ -24,12 +24,12 @@ public class InspirePlanetModelConfigController {
 
     @GetMapping("/get")
     @ResponseBody
-    public AppModelConfigDO get(HttpServletResponse response) {
+    public AppModelConfigDO get(String configType, HttpServletResponse response) {
         // 该页面受后台登录鉴权保护；按模型管理需求回显已保存的 Key，
         // 同时禁止浏览器和中间代理缓存包含密钥的响应。
         response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
         response.setHeader("Pragma", "no-cache");
-        return dao.get(APP_CODE, "TEXT");
+        return dao.get(APP_CODE, normalizeType(configType));
     }
 
     @PostMapping("/update")
@@ -42,9 +42,13 @@ public class InspirePlanetModelConfigController {
             return R.error("接口地址必须使用 HTTPS");
         }
         config.setAppCode(APP_CODE);
-        config.setConfigType("TEXT");
+        config.setConfigType(normalizeType(config.getConfigType()));
         config.setEnabled(1);
         return dao.update(config) > 0 ? R.ok() : R.error("保存失败");
+    }
+
+    private String normalizeType(String value) {
+        return "VIDEO_TEXT".equalsIgnoreCase(value) ? "VIDEO_TEXT" : "TEXT";
     }
 
     private boolean blank(String value) { return value == null || value.trim().isEmpty(); }

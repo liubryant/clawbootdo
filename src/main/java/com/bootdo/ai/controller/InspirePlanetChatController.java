@@ -25,7 +25,9 @@ public class InspirePlanetChatController {
     public void completion(@RequestBody(required = false) ChatCompletionRequest request,
                            @RequestHeader(value = "Authorization", required = false) String authorization,
                            HttpServletResponse response) throws IOException {
-        if (authenticatedPhone(authorization) == null) {
+        // AI 对话不属于必须依赖账户的功能：未携带 Authorization 时按游客访问。
+        // 已携带凭证时仍校验其有效性，避免把过期/伪造 Token 静默降级为游客。
+        if (hasAuthorization(authorization) && authenticatedPhone(authorization) == null) {
             writeError(response, 401, "unauthorized", "登录状态已失效，请重新登录");
             return;
         }
@@ -45,6 +47,10 @@ public class InspirePlanetChatController {
     private String authenticatedPhone(String authorization) {
         if (authorization == null || !authorization.startsWith("Bearer ")) return null;
         return tokenService.verifyAndGetPhone(authorization.substring(7).trim());
+    }
+
+    private boolean hasAuthorization(String authorization) {
+        return authorization != null && !authorization.trim().isEmpty();
     }
 
     private void writeError(HttpServletResponse response, int status, String code, String message) throws IOException {

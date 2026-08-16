@@ -26,6 +26,16 @@ public class AppModelConfigSchemaInitializer {
         jdbcTemplate.update("INSERT IGNORE INTO ai_app_model_config " +
                         "(app_code,config_type,ai_provider,ai_base_url,ai_api_key,ai_model,enabled,gmt_create,gmt_modified) " +
                         "VALUES ('inspireplanet','TEXT','doubao','https://ark.cn-beijing.volces.com/api/v3','','doubao-seed-evolving',1,NOW(),NOW())");
+        jdbcTemplate.update("INSERT IGNORE INTO ai_app_model_config " +
+                        "(app_code,config_type,ai_provider,ai_base_url,ai_api_key,ai_model,enabled,note,gmt_create,gmt_modified) " +
+                        "VALUES ('inspireplanet','VIDEO_TEXT','doubao','https://ark.cn-beijing.volces.com/api/v3',''," +
+                        "'doubao-seedance-1-5-pro-251215',1,'豆包文生视频（支持后台独立配置）',NOW(),NOW())");
+        // 首次升级时沿用同一应用已配置的豆包 Key，管理员之后仍可在文生视频区域独立修改。
+        jdbcTemplate.update("UPDATE ai_app_model_config video " +
+                "JOIN ai_app_model_config text_config ON text_config.app_code=video.app_code AND text_config.config_type='TEXT' " +
+                "SET video.ai_api_key=text_config.ai_api_key, video.gmt_modified=NOW() " +
+                "WHERE video.app_code='inspireplanet' AND video.config_type='VIDEO_TEXT' " +
+                "AND (video.ai_api_key IS NULL OR video.ai_api_key='') AND text_config.ai_api_key<>''");
         ensureMenus();
     }
 

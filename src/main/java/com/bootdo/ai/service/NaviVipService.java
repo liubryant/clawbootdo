@@ -349,9 +349,9 @@ public class NaviVipService {
             throw new IllegalArgumentException("缺少商品信息");
         }
         switch (appleProductId) {
-            case "ai.cjym.agentclaw.vip.week":  return 7;
-            case "agent123": return 30;
-            case "agent124": return 365;
+            case "cn.agent.vip.week":  return 7;
+            case "cn.agent.vip.month": return 30;
+            case "cn.agent.vip.year": return 365;
             default:
                 throw new IllegalArgumentException("未知的苹果内购商品: " + appleProductId);
         }

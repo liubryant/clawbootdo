@@ -18,6 +18,7 @@ public class ChatCompletionRequest {
     private Boolean withAudio;
     private String size;
     private Integer fps;
+    private Integer duration;
     private String deviceName;
     private String deviceId;
     private String clientId;
@@ -93,6 +94,10 @@ public class ChatCompletionRequest {
     public void setFps(Integer fps) {
         this.fps = fps;
     }
+
+    public Integer getDuration() { return duration; }
+
+    public void setDuration(Integer duration) { this.duration = duration; }
 
     public String getDeviceName() {
         return deviceName;
