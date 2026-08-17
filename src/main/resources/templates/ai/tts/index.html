@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row"><div class="col-sm-12"><div class="ibox float-e-margins">
+    <div class="ibox-title"><h5>AI 长语音生成</h5></div>
+    <div class="ibox-content">
+      <div class="alert alert-info">上传一段清晰的 MP3/WAV 人声，系统会把长文本按自然语句分段生成并合并为一个 MP3。任务按顺序执行，避免服务器负载过高。</div>
+      <form id="ttsForm" class="form-horizontal">
+        <div class="form-group"><label class="col-sm-2 control-label">参考声音</label><div class="col-sm-8"><input class="form-control" type="file" name="voiceFile" accept=".mp3,.wav,audio/mpeg,audio/wav" required><span class="help-block">建议 5～15 秒、单人、无背景音乐的清晰语音，最大 30MB。</span></div></div>
+        <div class="form-group"><label class="col-sm-2 control-label">参考音频文字</label><div class="col-sm-8"><textarea class="form-control" name="referenceText" rows="3" maxlength="1000" required placeholder="请准确填写参考音频中说出的原文"></textarea></div></div>
+        <div class="form-group"><label class="col-sm-2 control-label">生成文字</label><div class="col-sm-8"><textarea class="form-control" id="text" name="text" rows="12" maxlength="10000" required placeholder="输入需要生成的长文本，建议使用完整标点"></textarea><span class="help-block"><span id="count">0</span> / 10000 字</span></div></div>
+        <div class="form-group"><div class="col-sm-offset-2 col-sm-8"><button id="submitBtn" class="btn btn-primary" type="submit"><i class="fa fa-play"></i> 开始生成</button></div></div>
+      </form>
+      <div id="progressPanel" style="display:none"><h4 id="statusText">等待生成</h4><div class="progress progress-striped active"><div id="progressBar" class="progress-bar progress-bar-success" style="width:0%">0%</div></div><p id="chunkText"></p><a id="downloadBtn" class="btn btn-success" style="display:none"><i class="fa fa-download"></i> 下载 MP3</a></div>
+    </div>
+  </div></div></div>
+</div>
+<div th:include="include :: footer"></div>
+<script src="/js/appjs/ai/tts/tts.js"></script>
+</body></html>

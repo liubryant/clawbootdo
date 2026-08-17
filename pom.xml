@@ -94,6 +94,12 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.5</version>
 		</dependency>
+		<!-- 纯 Java LAME 编码器：长语音合并后输出 MP3，无需服务器安装 ffmpeg -->
+		<dependency>
+			<groupId>de.sciss</groupId>
+			<artifactId>jump3r</artifactId>
+			<version>1.0.5</version>
+		</dependency>
 		<!--shiro -->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
