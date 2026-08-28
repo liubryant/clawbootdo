@@ -70,7 +70,11 @@ public class VipProductController {
     @ResponseBody
     public R remove(@RequestParam String id) {
         if (naviVipService == null) return R.error("VIP服务未启用");
-        naviVipService.removeProduct(id);
-        return R.ok("删除成功");
+        try {
+            naviVipService.removeProduct(id);
+            return R.ok("删除成功");
+        } catch (Exception e) {
+            return R.error(e.getMessage());
+        }
     }
 }

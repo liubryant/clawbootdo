@@ -20,13 +20,18 @@ import java.util.concurrent.*;
 
 @Service
 public class LongTtsService {
+    private static final String ENGINE_SGLANG = "sglang";
+    private static final String ENGINE_ONNX = "onnx";
     private static final int MAX_TEXT_LENGTH = 10000;
     private static final long MAX_UPLOAD_BYTES = 15L * 1024 * 1024;
     private static final int CHUNK_UNITS = 120;
     private static final int ERROR_LIMIT = 8192;
 
     @Value("${ai.tts.endpoint:https://audio8-audio8-tts-preview-0-6b.hf.space/api/generate}")
-    private String endpoint;
+    private String sglangEndpoint;
+
+    @Value("${ai.tts.onnx-endpoint:https://audio8-audio8-tts-preview-0-6b-onnx-int4.hf.space/api/generate}")
+    private String onnxEndpoint;
 
     @Value("${ai.tts.output-dir:/var/uploaded_files/ai-tts}")
     private String outputDir;
@@ -45,8 +50,10 @@ public class LongTtsService {
                 return thread;
             }, new ThreadPoolExecutor.AbortPolicy());
 
-    public Job submit(MultipartFile voiceFile, String referenceText, String text) throws IOException {
+    public Job submit(MultipartFile voiceFile, String referenceText, String text, String engine) throws IOException {
         validate(voiceFile, referenceText, text);
+        String normalizedEngine = normalizeEngine(engine);
+        String selectedEndpoint = ENGINE_ONNX.equals(normalizedEngine) ? onnxEndpoint : sglangEndpoint;
         File root = new File(outputDir);
         if (!root.exists() && !root.mkdirs()) throw new IOException("无法创建语音输出目录");
 
@@ -60,10 +67,10 @@ public class LongTtsService {
         }
 
         List<String> chunks = splitText(text, CHUNK_UNITS);
-        Job job = new Job(id, chunks.size());
+        Job job = new Job(id, chunks.size(), normalizedEngine);
         jobs.put(id, job);
         try {
-            executor.submit(() -> generate(job, jobDir, referenceFile, referenceText.trim(), chunks));
+            executor.submit(() -> generate(job, jobDir, referenceFile, referenceText.trim(), chunks, selectedEndpoint));
         } catch (RejectedExecutionException e) {
             jobs.remove(id);
             Files.deleteIfExists(referenceFile.toPath());
@@ -84,14 +91,15 @@ public class LongTtsService {
         return file.isFile() ? file : null;
     }
 
-    private void generate(Job job, File jobDir, File referenceFile, String referenceText, List<String> chunks) {
+    private void generate(Job job, File jobDir, File referenceFile, String referenceText, List<String> chunks,
+                          String selectedEndpoint) {
         job.status = "RUNNING";
         job.message = "正在生成第 1 段";
         try {
             List<File> wavFiles = new ArrayList<>();
             for (int i = 0; i < chunks.size(); i++) {
                 File wav = new File(jobDir, String.format(Locale.ROOT, "chunk-%03d.wav", i + 1));
-                requestAudio(chunks.get(i), referenceText, referenceFile, wav);
+                requestAudio(chunks.get(i), referenceText, referenceFile, wav, selectedEndpoint);
                 wavFiles.add(wav);
                 job.completedChunks = i + 1;
                 job.progress = Math.min(90, (int) Math.round((i + 1) * 90.0 / chunks.size()));
@@ -111,9 +119,10 @@ public class LongTtsService {
         }
     }
 
-    private void requestAudio(String text, String referenceText, File referenceFile, File target) throws IOException {
+    private void requestAudio(String text, String referenceText, File referenceFile, File target,
+                              String selectedEndpoint) throws IOException {
         String boundary = "----BootdoTts" + UUID.randomUUID().toString().replace("-", "");
-        HttpURLConnection conn = (HttpURLConnection) new URL(endpoint).openConnection();
+        HttpURLConnection conn = (HttpURLConnection) new URL(selectedEndpoint).openConnection();
         conn.setConnectTimeout(connectTimeoutMs);
         conn.setReadTimeout(readTimeoutMs);
         conn.setRequestMethod("POST");
@@ -222,6 +231,14 @@ public class LongTtsService {
         if (text.length() > MAX_TEXT_LENGTH) throw new IllegalArgumentException("生成文字不能超过 " + MAX_TEXT_LENGTH + " 字");
     }
 
+    private static String normalizeEngine(String engine) {
+        if (engine == null || engine.trim().isEmpty() || ENGINE_SGLANG.equalsIgnoreCase(engine.trim())) {
+            return ENGINE_SGLANG;
+        }
+        if (ENGINE_ONNX.equalsIgnoreCase(engine.trim())) return ENGINE_ONNX;
+        throw new IllegalArgumentException("不支持的语音生成引擎");
+    }
+
     private static void writeField(OutputStream out, String boundary, String name, String value) throws IOException {
         out.write(("--" + boundary + "\r\nContent-Disposition: form-data; name=\"" + name + "\"\r\n\r\n" + value + "\r\n").getBytes(StandardCharsets.UTF_8));
     }
@@ -260,14 +277,21 @@ public class LongTtsService {
     public static class Job {
         private final String id;
         private final int totalChunks;
+        private final String engine;
         private volatile int completedChunks;
         private volatile int progress;
         private volatile String status = "QUEUED";
         private volatile String message = "等待生成";
         private volatile long fileSize;
-        Job(String id, int totalChunks) { this.id = id; this.totalChunks = totalChunks; }
+        Job(String id, int totalChunks, String engine) {
+            this.id = id;
+            this.totalChunks = totalChunks;
+            this.engine = engine;
+        }
         public String getId() { return id; }
         public int getTotalChunks() { return totalChunks; }
+        public String getEngine() { return engine; }
+        public String getEngineName() { return ENGINE_ONNX.equals(engine) ? "ONNX Runtime" : "SGLang-Omni"; }
         public int getCompletedChunks() { return completedChunks; }
         public int getProgress() { return progress; }
         public String getStatus() { return status; }

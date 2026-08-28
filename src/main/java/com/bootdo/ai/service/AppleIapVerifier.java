@@ -49,6 +49,8 @@ public class AppleIapVerifier {
         public String bundleId;
         public String productId;
         public String environment;
+        public Long purchaseDate;
+        public Long expiresDate;
         public boolean revoked;
     }
 
@@ -100,6 +102,8 @@ public class AppleIapVerifier {
             tx.bundleId = payload.getString("bundleId");
             tx.productId = payload.getString("productId");
             tx.environment = payload.getString("environment");
+            tx.purchaseDate = payload.getLong("purchaseDate");
+            tx.expiresDate = payload.getLong("expiresDate");
             tx.revoked = payload.get("revocationDate") != null;
             if (tx.transactionId == null || tx.productId == null || tx.bundleId == null) {
                 throw new SecurityException("JWS payload 缺少必要字段");

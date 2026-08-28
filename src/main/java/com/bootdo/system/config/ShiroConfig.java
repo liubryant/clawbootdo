@@ -94,12 +94,14 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/v1/token/usage", "anon");
         filterChainDefinitionMap.put("/api/info", "anon");
         filterChainDefinitionMap.put("/api/sounds/**", "anon");
+        filterChainDefinitionMap.put("/api/mindfulness/**", "anon");
         filterChainDefinitionMap.put("/im/bot/login-code", "anon");
         filterChainDefinitionMap.put("/im/bot/login-by-code", "anon");
         filterChainDefinitionMap.put("/im/bot/login-by-password", "anon");
         filterChainDefinitionMap.put("/im/bot/set-password", "anon");
         filterChainDefinitionMap.put("/im/bot/remove_account", "anon");
         filterChainDefinitionMap.put("/im/bot/navi/vip/**", "anon");
+        filterChainDefinitionMap.put("/im/bot/sleep/vip/**", "anon");
         filterChainDefinitionMap.put("/im/bot/navi/hotspots", "anon");
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/", "anon");

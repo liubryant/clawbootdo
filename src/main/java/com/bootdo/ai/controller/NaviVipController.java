@@ -2,6 +2,7 @@ package com.bootdo.ai.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.bootdo.ai.dto.AppleBindRequest;
 import com.bootdo.ai.dto.AppleVerifyRequest;
 import com.bootdo.ai.dto.CreateNaviVipOrderRequest;
 import com.bootdo.ai.service.AlipayClient;
@@ -47,7 +48,14 @@ public class NaviVipController {
     public R membership(@RequestHeader(value = "Authorization", required = false) String authorization) {
         String phone = authenticatedPhone(authorization);
         if (phone == null) {
-            return R.error(401, "登录状态已失效，请重新登录");
+            if (authorization != null && !authorization.trim().isEmpty()) {
+                return R.error(401, "登录状态已失效，请重新登录");
+            }
+            Map<String, Object> data = new LinkedHashMap<>();
+            data.put("active", false);
+            data.put("expiresAt", null);
+            data.put("quota", vipService.getQuotaConfig("agentclaw"));
+            return R.ok().put("data", data);
         }
         try {
             return R.ok().put("data", vipService.getMembershipStatus(phone));
@@ -66,6 +74,20 @@ public class NaviVipController {
             return R.ok().put("data", data);
         } catch (RuntimeException e) {
             return R.error(503, e.getMessage());
+        }
+    }
+
+    /** iOS 专用 Apple 订阅状态；原 membership 接口保持不变。 */
+    @GetMapping("/apple/membership")
+    public R appleMembership(@RequestHeader(value = "Authorization", required = false) String authorization) {
+        String phone = authenticatedPhone(authorization);
+        if (phone == null) return R.error(401, "登录状态已失效，请重新登录");
+        try {
+            return R.ok().put("data", vipService.getAppleMembershipStatus(phone));
+        } catch (IllegalArgumentException e) {
+            return R.error(404, e.getMessage());
+        } catch (RuntimeException e) {
+            return R.error(503, "Apple 订阅状态查询失败");
         }
     }
 
@@ -97,7 +119,7 @@ public class NaviVipController {
     public R appleVerify(@RequestHeader(value = "Authorization", required = false) String authorization,
                          @RequestBody(required = false) AppleVerifyRequest request) {
         String phone = authenticatedPhone(authorization);
-        if (phone == null) {
+        if (phone == null && authorization != null && !authorization.trim().isEmpty()) {
             return R.error(401, "登录状态已失效，请重新登录");
         }
         if (request == null || request.getJws() == null || request.getJws().isEmpty()) {
@@ -110,6 +132,24 @@ public class NaviVipController {
         } catch (SecurityException e) {
             log.warn("苹果内购凭证校验失败: {}", e.getMessage());
             return R.error(400, "支付凭证校验未通过");
+        } catch (IllegalArgumentException e) {
+            return R.error(400, e.getMessage());
+        } catch (RuntimeException e) {
+            log.error("苹果内购会员发放失败", e);
+            return R.error(503, "会员权益同步失败，请点击恢复购买重试");
+        }
+    }
+
+    /** 用户自愿登录后，将此前游客购买的 Apple 权益同步到账号；不作为购买前提。 */
+    @PostMapping("/apple/bind")
+    public R bindAppleMembership(@RequestHeader(value = "Authorization", required = false) String authorization,
+                                 @RequestBody(required = false) AppleBindRequest request) {
+        String phone = authenticatedPhone(authorization);
+        if (phone == null) return R.error(401, "登录状态已失效，请重新登录");
+        String guestToken = request == null ? null : request.getGuestAccessToken();
+        String guestPhone = tokenService.verifyAndGetPhone(guestToken);
+        try {
+            return R.ok().put("data", vipService.bindAppleGuestMembership(phone, guestPhone));
         } catch (IllegalArgumentException e) {
             return R.error(400, e.getMessage());
         } catch (RuntimeException e) {
@@ -172,7 +212,7 @@ public class NaviVipController {
      */
     @PostMapping("/alipay/notify")
     public ResponseEntity<String> alipayNotify(@RequestParam Map<String, String> params) {
-        return doAlipayNotify(params, false);
+        return doAlipayNotify(params, "navi");
     }
 
     /**
@@ -180,21 +220,29 @@ public class NaviVipController {
      */
     @PostMapping("/agentclaw/alipay/notify")
     public ResponseEntity<String> agentClawAlipayNotify(@RequestParam Map<String, String> params) {
-        return doAlipayNotify(params, true);
+        return doAlipayNotify(params, "agentclaw");
     }
 
-    private ResponseEntity<String> doAlipayNotify(Map<String, String> params, boolean isAgentClaw) {
+    /** 时光睡眠支付宝异步回调，使用时光睡眠支付宝公钥验签。 */
+    @PostMapping("/hossleep/alipay/notify")
+    public ResponseEntity<String> hossleepAlipayNotify(@RequestParam Map<String, String> params) {
+        return doAlipayNotify(params, "hossleep");
+    }
+
+    private ResponseEntity<String> doAlipayNotify(Map<String, String> params, String app) {
         try {
-            boolean valid = isAgentClaw
-                    ? alipayClient.verifyAgentClawNotifySign(params)
-                    : alipayClient.verifyNotifySign(params);
+            boolean valid = "hossleep".equals(app) ? alipayClient.verifyHossleepNotifySign(params)
+                    : ("agentclaw".equals(app) ? alipayClient.verifyAgentClawNotifySign(params)
+                    : alipayClient.verifyNotifySign(params));
             if (!valid) {
-                log.warn("支付宝回调签名校验失败 isAgentClaw={}", isAgentClaw);
+                log.warn("支付宝回调签名校验失败 app={}", app);
                 return ResponseEntity.ok("failure");
             }
             String tradeStatus = params.get("trade_status");
             if ("TRADE_SUCCESS".equals(tradeStatus) || "TRADE_FINISHED".equals(tradeStatus)) {
-                vipService.confirmPaid(params.get("out_trade_no"), params.get("trade_no"));
+                String requiredPrefix = "hossleep".equals(app) ? "HS" : ("agentclaw".equals(app) ? "AC" : "NV");
+                vipService.confirmAlipayPaid(params.get("out_trade_no"), params.get("trade_no"),
+                        params.get("total_amount"), requiredPrefix);
             }
             return ResponseEntity.ok("success");
         } catch (Exception e) {

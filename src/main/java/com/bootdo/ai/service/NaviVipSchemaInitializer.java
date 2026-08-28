@@ -36,8 +36,21 @@ public class NaviVipSchemaInitializer {
         jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS navi_vip_membership (" +
                 "user_id bigint NOT NULL, expires_at datetime NOT NULL, gmt_modified datetime NOT NULL," +
                 "PRIMARY KEY (user_id)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+        jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS navi_apple_entitlement (" +
+                "original_transaction_id varchar(64) NOT NULL, guest_user_id bigint NOT NULL," +
+                "latest_transaction_id varchar(64) NOT NULL, apple_product_id varchar(128) NOT NULL," +
+                "expires_at datetime NOT NULL, environment varchar(20) DEFAULT NULL," +
+                "gmt_create datetime NOT NULL, gmt_modified datetime NOT NULL," +
+                "PRIMARY KEY (original_transaction_id), UNIQUE KEY uk_apple_guest_user (guest_user_id)," +
+                "KEY idx_apple_latest_tx (latest_transaction_id)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+        jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS navi_apple_account_binding (" +
+                "user_id bigint NOT NULL, original_transaction_id varchar(64) NOT NULL," +
+                "gmt_create datetime NOT NULL, gmt_modified datetime NOT NULL," +
+                "PRIMARY KEY (user_id), KEY idx_apple_binding_original (original_transaction_id))" +
+                " ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
         addPayChannelColumnIfMissing();
         initQuotaConfig();
+        ensureProductMenuEntry();
         if ("mock".equalsIgnoreCase(mode)) {
             jdbcTemplate.update("INSERT IGNORE INTO navi_vip_product " +
                             "(id,name,price,duration_days,description,enabled,sort_order,gmt_create,gmt_modified) " +
@@ -63,6 +76,39 @@ public class NaviVipSchemaInitializer {
                 "(app_name,free_video_daily,free_image_daily,vip_video_daily,vip_image_daily,vip_remind_days,gmt_create,gmt_modified) " +
                 "VALUES (?,?,?,?,?,?,NOW(),NOW())",
                 "agentclaw", 1, 10, 5, 50, 3);
+    }
+
+    /**
+     * 在“对话管理”下注册商品列表，并授权给超级管理员。
+     * 全部语句均为幂等操作，菜单初始化失败不会影响支付服务启动。
+     */
+    private void ensureProductMenuEntry() {
+        try {
+            Integer tableExists = jdbcTemplate.queryForObject(
+                    "SELECT COUNT(*) FROM information_schema.tables " +
+                            "WHERE table_schema=DATABASE() AND table_name='sys_menu'",
+                    Integer.class);
+            if (tableExists == null || tableExists == 0) return;
+
+            jdbcTemplate.update(
+                    "INSERT IGNORE INTO sys_menu " +
+                            "(menu_id,parent_id,name,url,perms,type,icon,order_num,gmt_create,gmt_modified) " +
+                            "VALUES (200,0,'对话管理','','',0,'fa fa-comments',8,NOW(),NULL)");
+            jdbcTemplate.update(
+                    "INSERT IGNORE INTO sys_menu " +
+                            "(menu_id,parent_id,name,url,perms,type,icon,order_num,gmt_create,gmt_modified) " +
+                            "VALUES (218,200,'商品列表','ai/vip-product','ai:vip-product:view',1,'fa fa-shopping-cart',5,NOW(),NULL)");
+            jdbcTemplate.update(
+                    "INSERT INTO sys_role_menu(role_id,menu_id) " +
+                            "SELECT 1,200 FROM DUAL WHERE NOT EXISTS " +
+                            "(SELECT 1 FROM sys_role_menu WHERE role_id=1 AND menu_id=200)");
+            jdbcTemplate.update(
+                    "INSERT INTO sys_role_menu(role_id,menu_id) " +
+                            "SELECT 1,218 FROM DUAL WHERE NOT EXISTS " +
+                            "(SELECT 1 FROM sys_role_menu WHERE role_id=1 AND menu_id=218)");
+        } catch (Exception ignored) {
+            // 后台菜单异常不能阻断支付接口启动。
+        }
     }
 
     /**

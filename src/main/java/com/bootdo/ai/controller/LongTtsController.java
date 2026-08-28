@@ -24,10 +24,11 @@ public class LongTtsController {
     @PostMapping("/generate")
     @ResponseBody
     public R generate(@RequestParam("voiceFile") MultipartFile voiceFile,
+                      @RequestParam(value = "engine", defaultValue = "sglang") String engine,
                       @RequestParam("referenceText") String referenceText,
                       @RequestParam("text") String text) {
         try {
-            return R.ok().put("job", service.submit(voiceFile, referenceText, text));
+            return R.ok().put("job", service.submit(voiceFile, referenceText, text, engine));
         } catch (IllegalArgumentException e) {
             return R.error(e.getMessage());
         } catch (Exception e) {

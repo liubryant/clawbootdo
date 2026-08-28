@@ -12,6 +12,7 @@ $(function () {
             success: function (res) {
                 if (res.code !== 0) { fail(res.msg || '创建任务失败'); return; }
                 $('#progressPanel').show();
+                $('#chunkText').text('生成引擎：' + (res.job.engineName || 'SGLang-Omni'));
                 poll(res.job.id);
             },
             error: function () { fail('上传或创建任务失败'); }
@@ -24,7 +25,7 @@ $(function () {
             var job = res.job;
             $('#statusText').text(job.message);
             $('#progressBar').css('width', job.progress + '%').text(job.progress + '%');
-            $('#chunkText').text('已完成 ' + job.completedChunks + ' / ' + job.totalChunks + ' 段');
+            $('#chunkText').text('生成引擎：' + (job.engineName || 'SGLang-Omni') + '；已完成 ' + job.completedChunks + ' / ' + job.totalChunks + ' 段');
             if (job.status === 'SUCCESS') {
                 $('#progressPanel .progress').removeClass('active');
                 $('#downloadBtn').attr('href', job.downloadUrl).show();

@@ -128,6 +128,13 @@ agentclaw:
     publicKeyPath: config/agentclaw/alipay/alipay_public_key.pem
     notifyUrl: https://www.cjym123.cn/im/bot/navi/vip/agentclaw/alipay/notify
 
+hossleep:
+  alipay:
+    appId: "2021006190660434"
+    privateKeyPath: ${HOSSLEEP_ALIPAY_PRIVATE_KEY_PATH:config/hossleep/alipay/app_private_key.pem}
+    publicKeyPath: ${HOSSLEEP_ALIPAY_PUBLIC_KEY_PATH:config/hossleep/alipay/alipay_public_key.pem}
+    notifyUrl: ${HOSSLEEP_ALIPAY_NOTIFY_URL:https://www.cjym123.cn/im/bot/navi/vip/hossleep/alipay/notify}
+
 sms:
   aliyun:
     enabled: true

@@ -66,10 +66,22 @@ public class AlipayClient {
     @Value("${agentclaw.alipay.wapPayEnabled:false}")
     private boolean acWapPayEnabled;
 
+    // ── hossleep 支付宝配置 ───────────────────────────────────────
+    @Value("${hossleep.alipay.appId:}")
+    private String hossleepAppId;
+    @Value("${hossleep.alipay.privateKeyPath:config/hossleep/alipay/app_private_key.pem}")
+    private String hossleepPrivateKeyPath;
+    @Value("${hossleep.alipay.publicKeyPath:config/hossleep/alipay/alipay_public_key.pem}")
+    private String hossleepPublicKeyPath;
+    @Value("${hossleep.alipay.notifyUrl:}")
+    private String hossleepNotifyUrl;
+
     private volatile PrivateKey appPrivateKey;
     private volatile PublicKey alipayPublicKey;
     private volatile PrivateKey acAppPrivateKey;
     private volatile PublicKey acAlipayPublicKey;
+    private volatile PrivateKey hossleepAppPrivateKey;
+    private volatile PublicKey hossleepAlipayPublicKey;
     private final Object keyLock = new Object();
 
     public boolean isConfigured() {
@@ -78,6 +90,15 @@ public class AlipayClient {
 
     public boolean isAgentClawConfigured() {
         return !StringUtils.isBlank(acAppId) && !StringUtils.isBlank(acNotifyUrl) && tryLoadAcKeys();
+    }
+
+    public boolean isHossleepConfigured() {
+        try {
+            return !StringUtils.isBlank(hossleepAppId) && !StringUtils.isBlank(hossleepNotifyUrl)
+                    && hossleepPrivateKey() != null && hossleepPublicKey() != null;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     private boolean tryLoadKeys() {
@@ -108,6 +129,38 @@ public class AlipayClient {
      */
     public String buildAgentClawAppPayOrderString(String outTradeNo, String subject, String totalAmountYuan) {
         return doBuildAppPayOrderString(acAppId, acNotifyUrl, outTradeNo, subject, totalAmountYuan, true);
+    }
+
+    public String buildHossleepAppPayOrderString(String outTradeNo, String subject, String totalAmountYuan) {
+        return doBuildAppPayOrderString(hossleepAppId, hossleepNotifyUrl, outTradeNo, subject,
+                totalAmountYuan, hossleepPrivateKey());
+    }
+
+    private String doBuildAppPayOrderString(String aid, String nUrl, String outTradeNo,
+                                             String subject, String totalAmountYuan, PrivateKey signingKey) {
+        TreeMap<String, String> params = appPayParams(aid, nUrl, outTradeNo, subject, totalAmountYuan);
+        return buildQueryString(params, signWith(buildSignSource(params), signingKey));
+    }
+
+    private TreeMap<String, String> appPayParams(String aid, String nUrl, String outTradeNo,
+                                                  String subject, String totalAmountYuan) {
+        TreeMap<String, String> params = new TreeMap<>();
+        params.put("app_id", aid);
+        params.put("method", "alipay.trade.app.pay");
+        params.put("format", "JSON");
+        params.put("charset", "UTF-8");
+        params.put("sign_type", "RSA2");
+        params.put("timestamp", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        params.put("version", "1.0");
+        params.put("notify_url", nUrl);
+        JSONObject bizContent = new JSONObject(true);
+        bizContent.put("subject", subject);
+        bizContent.put("out_trade_no", outTradeNo);
+        bizContent.put("total_amount", totalAmountYuan);
+        bizContent.put("product_code", "QUICK_MSECURITY_PAY");
+        bizContent.put("timeout_express", "30m");
+        params.put("biz_content", bizContent.toJSONString());
+        return params;
     }
 
     public boolean isWapPayEnabled() {
@@ -200,6 +253,38 @@ public class AlipayClient {
         return doQueryTrade(outTradeNo, acAppId, true);
     }
 
+    public TradeQueryResult queryTradeForHossleep(String outTradeNo) throws IOException {
+        return doQueryTrade(outTradeNo, hossleepAppId, hossleepPrivateKey());
+    }
+
+    private TradeQueryResult doQueryTrade(String outTradeNo, String aid, PrivateKey signingKey) throws IOException {
+        TreeMap<String, String> params = new TreeMap<>();
+        params.put("app_id", aid);
+        params.put("method", "alipay.trade.query");
+        params.put("format", "JSON");
+        params.put("charset", "UTF-8");
+        params.put("sign_type", "RSA2");
+        params.put("timestamp", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        params.put("version", "1.0");
+        JSONObject bizContent = new JSONObject(true);
+        bizContent.put("out_trade_no", outTradeNo);
+        params.put("biz_content", bizContent.toJSONString());
+        String body = buildQueryString(params, signWith(buildSignSource(params), signingKey));
+        return parseTradeQueryResponse(post(body));
+    }
+
+    private TradeQueryResult parseTradeQueryResponse(String responseBody) throws IOException {
+        JSONObject root = JSON.parseObject(responseBody);
+        JSONObject response = root == null ? null : root.getJSONObject("alipay_trade_query_response");
+        if (response == null) throw new IOException("支付宝查单响应格式异常");
+        String code = response.getString("code");
+        if (!"10000".equals(code)) {
+            if ("40004".equals(code) || "40006".equals(code)) return new TradeQueryResult("NOTPAY", null);
+            throw new IOException("支付宝查单失败 code=" + code + " msg=" + response.getString("sub_msg"));
+        }
+        return new TradeQueryResult(response.getString("trade_status"), response.getString("trade_no"));
+    }
+
     private TradeQueryResult doQueryTrade(String outTradeNo, String aid, boolean useAc) throws IOException {
         TreeMap<String, String> params = new TreeMap<>();
         params.put("app_id", aid);
@@ -240,6 +325,10 @@ public class AlipayClient {
     /** 验证 agentclaw 支付宝异步通知签名。 */
     public boolean verifyAgentClawNotifySign(Map<String, String> params) {
         return doVerifyNotifySign(params, acPublicKey());
+    }
+
+    public boolean verifyHossleepNotifySign(Map<String, String> params) {
+        return doVerifyNotifySign(params, hossleepPublicKey());
     }
 
     private boolean doVerifyNotifySign(Map<String, String> params, PublicKey pubKey) {
@@ -351,6 +440,24 @@ public class AlipayClient {
             }
         }
         return acAlipayPublicKey;
+    }
+
+    private PrivateKey hossleepPrivateKey() {
+        if (hossleepAppPrivateKey == null) {
+            synchronized (keyLock) {
+                if (hossleepAppPrivateKey == null) hossleepAppPrivateKey = loadPrivateKey(hossleepPrivateKeyPath);
+            }
+        }
+        return hossleepAppPrivateKey;
+    }
+
+    private PublicKey hossleepPublicKey() {
+        if (hossleepAlipayPublicKey == null) {
+            synchronized (keyLock) {
+                if (hossleepAlipayPublicKey == null) hossleepAlipayPublicKey = loadPublicKey(hossleepPublicKeyPath);
+            }
+        }
+        return hossleepAlipayPublicKey;
     }
 
     private PrivateKey loadPrivateKey(String path) {
